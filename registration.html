@@ -28,7 +28,6 @@ require_once "PHP/default.php";
 		
 		<div class="navbar-container">
 		
-		
             <a href="/" class="navbar-brand"></a>
             <div id="i1pfjb" class="navbar-burger">
                 <div class="navbar-burger-line">
@@ -40,20 +39,13 @@ require_once "PHP/default.php";
             </div>
             <div data-gjs="navbar-items" class="navbar-items-c">
                 <nav data-gjs="navbar-menu" class="navbar-menu">
-				
-					
-				
-					<a href="home.php" class="navbar-menu-link">Home
-					</a>
-					<a href="help.php" class="navbar-menu-link">Help
-					</a>
-					<a href="profile.php" data-highlightable="1" title="Profile" class="navbar-menu-link gjs-comp-selected">Profile
-					</a>
-					<a href="account.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Account
-					</a>
+					<a href="home.php" class="navbar-menu-link">Home</a>
+					<a href="help.php" class="navbar-menu-link">Help</a>
+					<a href="profile.php" data-highlightable="1" title="Profile" class="navbar-menu-link gjs-comp-selected">Profile</a>
+					<a href="account.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Account</a>
 					<!-- add log out functionality to below -->
-					<a href="PHP/logout.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Log Out
-					</a>
+					<a href="PHP/logout.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Log Out</a>
+					
 				</nav>
             </div>
         </div>
@@ -64,10 +56,8 @@ require_once "PHP/default.php";
 			
             <div data-tabs="1" id="iitw8i">
                 <nav data-tab-container="1" class="tab-container">
-					<a href="#login-tab" data-tab="1" class="tab">Login
-					</a>
-					<a href="#register-tab" data-tab="1" class="tab">Register
-					</a>
+					<a href="#login-tab" data-tab="1" class="tab">Login</a>
+					<a href="#register-tab" data-tab="1" class="tab">Register</a>
 				</nav>
 				
                 <div id="login-tab" data-tab-content="1" class="tab-content">
@@ -91,11 +81,8 @@ require_once "PHP/default.php";
                             </form>
                         </div>
                     </div>
-					
-                    <div id="bootstable-row" class="row">
-                        <div id="bootstable-cell" class="cell c12511"></div>
-                    </div>
                 </div>
+				
                 <div id="register-tab" data-tab-content="1" class="tab-content">
                     <div id="tab-title" class="c15657"></div>
 					
@@ -123,25 +110,25 @@ require_once "PHP/default.php";
                                 <input name ="tPassword"placeholder="Password" type="password" class="input" required 
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
                                 <input name = "tConfirm" placeholder="Confirm Password" type="password" required class="input" />
+								
+								
                                 Have you worked with the Uni before?
                                 <input type = "radio" name ="workUni" value="1"/> Yes
 								<input type = "radio" name ="workUni" value="0"/> No
-                            </p><p style="font-size: 0.8em;"> Do you have a Bachelor's Degree? 
-								<input type = "radio" name ="bachelor"  id="yes" onClick="document.getElementById('sub').disabled
+								<br>
+								<!--</p><p style="font-size: 0.8em;"> -->
+								Do you have a Bachelor's Degree? 
+								<input type = "radio" name ="bachelor"  id="yes" 
+										onClick="document.getElementById('sub').disabled=false;" /> Yes
 
-=false;
-
-" /> Yes
-	  <input type = "radio" name ="bachelor" id="no" onClick="document.getElementById('sub').disabled=true;
-alert('You must have at least a Bachelor\'s Degree in order to proceed with the registration process.');" /> No </p>
+								<input type = "radio" name ="bachelor" id="no" onClick="document.getElementById('sub').disabled=true;
+										alert('You must have at least a Bachelor\'s Degree in order to proceed with the 
+										registration process.');" /> No 
+										
                                 <div class="form-group">
                                     <button type="submit" class="button">Register</button>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                    <div id="bootstable-row" class="row">
-                        <div id="bootstable-cell" class="cell c12511">
                         </div>
                     </div>
                 </div>

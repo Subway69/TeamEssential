@@ -79,6 +79,9 @@ button:hover{
 
 
 /* ******************************LINKS****************************** */
+a{
+	text-decoration:none;
+}
 /* a:link { */
 	/* color: #cc0000; /*red*/ 
 /* } */
@@ -111,19 +114,12 @@ input:invalid {
 	/* background-color: #a76868; pinkish */
 	/* background: linear-gradient(#dbdbdb, #f7f7f7); */
 	/* border-color: #f42c2c; */	
-	  
 }
-/* form:invalid {
-  border 5px sqolid #f42c2c;
-} */
 input:valid {
 	/* background-color: #8383f9; */
 	background-color: #93d0ad;
 	/* border:1px solid black; /* working */ 
 }
-/* form:valid {
-  border: 5px solid #ddffdd;
-} */
 input:required {
   /* border-color: #800000; */
 	border-width: 1px;
@@ -140,6 +136,12 @@ input:focus {
 select {
 	border-radius: 4px;
 }
+/* form:valid {
+  border: 5px solid #ddffdd;
+} */
+/* form:invalid {
+  border 5px sqolid #f42c2c;
+} */
 
 /* ******************************TABLES****************************** */
 
@@ -212,17 +214,19 @@ form#reg { /* reg form style */
 	border-radius:10px;
 	border-color: #068;
 }
-<<<<<<< HEAD
+
+
+
+/* ******************************HELP****************************** */
 
 #help {
 	font-size: 7em;
 }
 
-=======
-.radio class {text-align:center;}
->>>>>>> master
+/* ******************************RADIO****************************** */
 
-
+.radio class {
+	text-align:center;
+}
 
 /* ****************************** ****************************** */
-

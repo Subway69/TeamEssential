@@ -26,8 +26,9 @@ require_once "PHP/default.php";
 			<a href="registration.html">
 				<img src="img/logo_r.png" class="logo">
 			</a>
+			
 			<div class="navbar-container">
-				<a href="/" class="navbar-brand"></a>
+				
 				<div id="i1pfjb" class="navbar-burger">
 					<div class="navbar-burger-line">
 					</div>
@@ -150,7 +151,7 @@ require_once "PHP/default.php";
 									<script src="JS/addEducation1.js"></script>
 								</form>
 								<div id = "showEducation">
-						  Hello!
+						  <!--Hello!-->
 						  </div>
 							</div>
 						</div>

@@ -19,8 +19,12 @@ require_once "PHP/default.php";
       $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
       ?>
       <div data-gjs="navbar" class="navbar">
+		<a href="registration.html">
+			<img src="img/logo_r.png" class="logo">
+		</a>
+		
          <div class="navbar-container">
-            <a href="/" class="navbar-brand"></a>
+           
             <div id="i1pfjb" class="navbar-burger">
                <div class="navbar-burger-line">
                </div>

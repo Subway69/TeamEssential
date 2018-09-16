@@ -27,14 +27,13 @@ CREATE TABLE Users
     year_dob INT NOT NULL,
    -- permisison can be (0) for standard (1) for admin (2) for super admin
     permission INT NOT NULL,
-    uniWork INT NOT NULL,
-    avail INT
+    uniWork INT NOT NULL
 );
 
-INSERT INTO Users(title,first_name,middle_name,last_name,email,address,phone_number,password,day_dob,month_dob,year_dob,permission,uniWork,avail) VALUES 
-    ("Dr","Michael","Ernest","Munro","michael@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
-    ("Dr","Admin","Admin","Admin","Admin@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,1,0,0),
-    ("Dr","SuperAdmin","SuperAdmin","SuperAdmin","Super@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1);
+INSERT INTO Users(title,first_name,middle_name,last_name,email,address,phone_number,password,day_dob,month_dob,year_dob,permission,uniWork) VALUES 
+    ("Dr","Michael","Ernest","Munro","michael@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0),
+    ("Dr","Admin","Admin","Admin","Admin@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,1,0),
+    ("Dr","SuperAdmin","SuperAdmin","SuperAdmin","Super@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0);
 CREATE TABLE Qualification
 (
     qualification_id INT PRIMARY KEY AUTO_INCREMENT,
