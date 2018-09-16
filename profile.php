@@ -68,8 +68,11 @@ require_once "PHP/default.php";
 				
 				<div data-tabs="1" id="iitw8i">
 					<nav data-tab-container="1" class="tab-container">
+					<a href="#preferences-tab" data-tab="1" class="tab">Preferences
+					</a>
 						<a href="#education-tab" data-tab="1" class="tab">Education
 						</a>
+						
 						<?php
 							if(getWork() == 1){
 								?>
@@ -85,7 +88,29 @@ require_once "PHP/default.php";
 						<a href="#contact-tab" data-tab="1" class="tab">Contact Details
 						</a>
 					</nav>
-					
+					<div id="preferences-tab" data-tab-content="1" class="tab-content">
+				 
+				 <div id="tab-title" class="c15657">Preferences
+		
+				  </div>
+								
+				  <div id="tab-row" class="row">
+									 <div id="form-cell" class="cell">
+								<form class="form">
+								<p style="font-size: 0.8em;"> Have you worked with Federation University before?
+                                 <input type = "radio" name ="workUni" id ="worked0"value="1"/> Yes
+							   <input type = "radio" name ="workUni"id ="worked1" value="0"/> No
+							   <p style="font-size: 0.8em;"> Please select your availability
+                                 <input id= "avail0"type = "radio" name ="availUni" value="1"/> Full Time
+                               <input id= "avail1"type = "radio" name ="availUni" value="0"/> Part Time
+
+									 </div>
+								  </div>
+								  <div id="bootstable-row" class="row">
+									 <div id="bootstable-cell" class="cell c12511">
+									 </div>
+								  </div>
+							   </div>
 					<div id="education-tab" data-tab-content="1" class="tab-content">
 						<div id="tab-title" class="c15657">Education History
 						</div>
@@ -118,40 +143,15 @@ require_once "PHP/default.php";
 									
 									<div class="form-group">
 									</div>
-									
-									<input id="date0" placeholder="Completion Date (Optional)" class="input" />
-									<div class="form-group"><button type="button" onClick="addQual()" class="button">Add</button>
-									</div>
+									<input id = "date0"type = "date" placeholder="Completion Date (Optional)" class="input" style="display:none;"/>
+						   <div class="form-group"><button id = "addQualBut"type="button" onClick= "addQual()" class="button">Add</button></div>
+						   <div class="form-group"><button id="updQualBut" type="button" class="button"onClick="updEdu()"style="display:none;">Update</button></div>
+						   <div class="form-group"><button id="canQualBut" type="button" class="button"onClick="resetter()"style="display:none;">Cancel Update</button></div>
 									<script src="JS/addEducation1.js"></script>
 								</form>
-								
-								<?php
-									$query = "SELECT qualification.qualification_id,qualification.qualification_name,qualification.qualification_type,qualification.end_date, qualification.finished  FROM Qualification INNER JOIN Study ON qualification.qualification_id=Study.qualification_id WHERE Study.user_id = ? ;";
-									$stmt= mysqli_prepare($conn,$query);
-									mysqli_stmt_bind_param($stmt,"d",$user_id);
-
-									$success = mysqli_stmt_execute($stmt);
-									$results = mysqli_stmt_get_result($stmt);
-
-									$query2 = "SELECT University.university_id,University.university_name  FROM University INNER JOIN Study ON University.university_id=Study.university_id WHERE Study.user_id = ? ;";
-									$stmt2= mysqli_prepare($conn,$query2);
-									mysqli_stmt_bind_param($stmt2,"d",$user_id);
-
-									$success2 = mysqli_stmt_execute($stmt2);
-									$results2 = mysqli_stmt_get_result($stmt2);
-									$row2;
-									while($row1=mysqli_fetch_assoc($results)){
-									
-										if($row2=mysqli_fetch_assoc($results2)){
-											if($row1['finished']==0){
-											  echo "Still Studying: ".$row1['qualification_name']. "(".$row1['qualification_type'].") at ".$row2['university_name']."</p>";
-											}
-											else{
-											  echo "Completed ".$row1['qualification_name']. "(".$row1['qualification_type'].") at ".$row2['university_name']." finished at ".$row1['end_date']."</p>";
-											}
-										}
-									}
-								?>
+								<div id = "showEducation">
+						  Hello!
+						  </div>
 							</div>
 						</div>
 						
@@ -189,29 +189,18 @@ require_once "PHP/default.php";
 									
 									<div class="form-group">
 									</div>
-									
-									<input id="startDate1" placeholder="Start Date" required="" class="input" />
-									<input id="endDate1" placeholder="End Date (Optional)" class="input" />
+									<input id = "startDate1" type = "date" placeholder="Start Date" required="" class="input"/>
+						   <input id = "endDate1" type = "date" placeholder="End Date (Optional)" class="input"/>
+
 									<input id="tasks1" placeholder="Tasks Completed" class="input" />
+									<div class="form-group"><button id="addEmpBut" type="button" class="button"onClick="addEmp()">Add</button></div></p>
+						   <div class="form-group"><button id="updEmpBut" type="button" class="button"onClick="updEmp()"style="display:none;">Update</button></div></p>
+						   <div class="form-group"><button id="canEmpBut" type="button" class="button"onClick="resettter()"style="display:none;">Cancel Update</button></div>
 									
-									<div class="form-group"><button type="button" class="button" onClick="addEmp()">Add</button>
-									</div>
 									<script src="JS/addEmploy.js"></script>
 								</form>
-								
-								<?php
-									$query = "SELECT Employment.work_rate, Employment.position_title,Employment.manager,Employment.manager_phone,Employment.organisation,Employment.startDate,employment.endDate,Employment.tasks  FROM Employment INNER JOIN User_Employment ON Employment.employment_id=User_Employment.employment_id WHERE User_Employment.user_id = ? ;";
-									$stmt= mysqli_prepare($conn,$query);
-									mysqli_stmt_bind_param($stmt,"d",$user_id);
-
-									$success = mysqli_stmt_execute($stmt);
-									$results = mysqli_stmt_get_result($stmt);
-
-									while($row1 = mysqli_fetch_assoc($results))
-									{
-									echo $row1['work_rate']. " ".$row1['position_title']." at ".$row1['organisation']. ".Manager Name: ".$row1['manager'].", Phone: ".$row1['manager_phone'].". Started ".$row1['startDate']." ended: ".$row1['endDate']. ". Performed:". $row1['tasks']."</p>";
-									}
-								?>
+								<div id ="showEmployment">
+						  </div>
 							</div>
 						</div>
 						
@@ -313,7 +302,7 @@ require_once "PHP/default.php";
 				</div>
 			</div>
 		</div>
-		
+		<script src = "JS/preferences.js"></script>
 		<script>
 			var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {

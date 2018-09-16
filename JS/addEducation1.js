@@ -1,12 +1,37 @@
             
-var httEducation;            
+var httEducation; 
+var httLoadEducation;
+var httLoadUni;
+var httUpdateEducation;           
 var num = 1;
 var start = 1
 var size;
 var list;
 var httd;
-loadUni();
+var qualList;   
+var x = 0;
+var y = 0;
 
+var qualId;
+var UniID
+var addQualBut=document.getElementById("addQualBut");
+var updQualButton=document.getElementById("updQualBut");
+var canQualUpd=document.getElementById("canQualBut");
+
+var selection = document.getElementById("study0");
+selection.addEventListener('change',function(ev)
+{
+    if (selection.value ==1)
+    {
+        document.getElementById("date0").style.display="block";
+    }
+    else
+    {
+        document.getElementById("date0").style.display="none";
+    }
+},false)
+loadUni();
+loadEducation();
 //Loads all the Universities using Ajax
 function loadUni()
 {
@@ -61,14 +86,16 @@ function addQual()
     hID.uniData=uniArr;
     hID.dateData=dateArr;
     hID.studyData=studyArr;
-    resetEducation();
     httEducation.send(JSON.stringify(hID));               
 }
 
 //Lets the user know if the Education was successfully added
 function showEducation(ev)
 {
+    y++;
+    
     alert(JSON.parse(httEducation.responseText));
+    resetEducation();
 }
 
 //Resets all the fields
@@ -79,5 +106,158 @@ function resetEducation()
     document.getElementById("uni0").getElementsByTagName('option')[0].selected='selected';
     document.getElementById("date0").value="";
     document.getElementById("study0").getElementsByTagName('option')[0].selected='selected';
+
+    var div1 = document.getElementById("showEducation");
+    while(div1.firstChild)
+    {
+        div1.removeChild(div1.firstChild);
+    }
+    loadEducation();
+
     
 }
+
+function loadEducation()
+{
+    x=0;
+    console.log("x is "+0);
+    loadQualification();
+   
+}
+function loadQualification()
+{
+    httLoadEducation = new XMLHttpRequest();
+    httLoadEducation.open("GET","PHP/getEducation.php",true);
+    httLoadEducation.onload= listEducation;
+    httLoadEducation.send();
+}
+
+
+
+function listEducation()
+{
+    qualList=JSON.parse(httLoadEducation.responseText);
+    var listSize=qualList.length;
+    for(var i=0;i<listSize;i++)
+    {
+        console.log("hello")
+        var div = document.getElementById("showEducation");
+        var str;
+        if(qualList[i].finished==0)
+        {
+            str = "Still Studying: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name;
+        }
+        if(qualList[i].finished==1)
+        {
+            str = "Completed: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name+" finished at " + qualList[i].end_date +".";
+        }
+        var text = document.createTextNode(str);
+        var eduHidden = document.createElement("input");
+        eduHidden.setAttribute("type","hidden");
+        eduHidden.setAttribute("id", "edu"+i);
+        eduHidden.setAttribute("value",qualList[i].qualification_id);
+
+        var uniHidden = document.createElement("input");
+        uniHidden.setAttribute("type","hidden");
+        uniHidden.setAttribute("id", "univ"+i);
+        uniHidden.setAttribute("value",qualList[i].university_id);
+
+        var updUniBut = document.createElement("input");
+        updUniBut.setAttribute("type","button");
+        updUniBut.setAttribute("id",i);
+        updUniBut.setAttribute("value","Update");
+        updUniBut.setAttribute("onClick","updateQualification(this.id)");
+
+        div.appendChild(text);
+        div.appendChild(eduHidden);
+        div.appendChild(eduHidden);
+        div.appendChild(updUniBut);
+        div.appendChild(document.createElement("P"));
+    }
+}
+function resetter()
+{
+    addQualBut.style.display="block";
+    updQualButton.style.display="none";
+     canQualUpd.style.display="none";
+     resetEducation();
+}
+function updateQualification(ids)
+{
+    addQualBut.style.display="none";
+    updQualButton.style.display="block";
+     canQualUpd.style.display="block";
+
+
+     typeUpd = document.getElementById("type0");
+     if(qualList[ids].qualification_type=="Higher Ed")
+     {
+        typeUpd.getElementsByTagName('option')[1].selected='selected';
+     }
+     if(qualList[ids].qualification_type=="VET")
+     {
+        typeUpd.getElementsByTagName('option')[2].selected='selected';
+     }
+     if(qualList[ids].qualification_type=="TAFE")
+     {
+        typeUpd.getElementsByTagName('option')[3].selected='selected';
+     }    
+
+     degUpd=document.getElementById("degree0");
+     uniUpd=document.getElementById("uni0");
+     dateUpd=studyArr=document.getElementById("date0");
+     studyUpd =document.getElementById("study0");
+     if(qualList[ids].finished==0)
+     {
+         console.log("HIII");
+        studyUpd.getElementsByTagName('option')[1].selected='selected';
+        document.getElementById("date0").style.display="none";
+
+    }
+     if(qualList[ids].finished==1)
+     {
+        console.log("HIooo");
+        //studyUpd.value = "Completed";
+        studyUpd.getElementsByTagName('option')[2].selected='selected';
+        document.getElementById("date0").style.display="block";
+        dateUpd.value=qualList[ids].end_date;
+    }
+
+     degUpd.value=qualList[ids].qualification_name;
+     uniUpd.value=qualList[ids].University_name;
+    qualId=document.getElementById("edu"+ids).value;
+    
+     //Make sure you store old id of uni and new id so when you do the where when update the study tbale you only update the ne where the study id and uni id matches  
+
+     
+    }
+
+    function updEdu()
+    {
+        var typeUpdate = document.getElementById("type0").value;
+        var degUpdate= document.getElementById("degree0").value;
+        var uniUpdate= document.getElementById("uni0").value;
+        var dateUpdate=document.getElementById("date0").value;
+        var studyUpdate=document.getElementById("study0").value;
+        console.log("qaul"+qualId+ typeUpdate+degUpdate+uniUpdate+dateUpdate+studyUpdate); 
+                                    
+        //Sends the inputs to the backend to be added
+        httUpdateEducation = new XMLHttpRequest();
+        httUpdateEducation.open("POST","PHP/updateEducation.php",true);
+        httUpdateEducation.onload=showEducationUpdate;
+        var hIDUpdate = {};
+        
+        hIDUpdate.qualId=qualId; 
+        hIDUpdate.typeData= typeUpdate; 
+        hIDUpdate.degData=degUpdate;
+        hIDUpdate.uniData=uniUpdate;
+        hIDUpdate.dateData=dateUpdate;
+        hIDUpdate.studyData=studyUpdate;
+        httUpdateEducation.send(JSON.stringify(hIDUpdate)); 
+    }
+
+    function showEducationUpdate(ev)
+    {
+        alert(JSON.parse(httUpdateEducation.responseText));
+        resetter();
+    }

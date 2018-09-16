@@ -126,7 +126,14 @@ require_once "PHP/default.php";
                                 Have you worked with the Uni before?
                                 <input type = "radio" name ="workUni" value="1"/> Yes
 								<input type = "radio" name ="workUni" value="0"/> No
-								
+                            </p><p style="font-size: 0.8em;"> Do you have a Bachelor's Degree? 
+								<input type = "radio" name ="bachelor"  id="yes" onClick="document.getElementById('sub').disabled
+
+=false;
+
+" /> Yes
+	  <input type = "radio" name ="bachelor" id="no" onClick="document.getElementById('sub').disabled=true;
+alert('You must have at least a Bachelor\'s Degree in order to proceed with the registration process.');" /> No </p>
                                 <div class="form-group">
                                     <button type="submit" class="button">Register</button>
                                 </div>
