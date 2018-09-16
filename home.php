@@ -33,7 +33,7 @@ require_once "PHP/default.php";
 		?>
 		
 		<div data-gjs="navbar" class="navbar">
-			<a href="index.html">
+			<a href="registration.html">
 				<img src="img/logo_r.png" class="logo">
 			</a>
 	
