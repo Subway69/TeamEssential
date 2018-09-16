@@ -228,28 +228,19 @@ require_once "PHP/default.php";
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
 								<form class="form" id="form0" style="width:600px; text-align:left;">
+									<table>
+										<thead>
+											<th>Skill Level</th>
+											<th>Low</th>
+											<th>Medium</th>
+											<th>High</th>
+										</thead>
+										<tbody id="gensklstable">
+										</tbody>
+									</table>
 									<script src="JS/skills.js"></script>
 									<div class="form-group"><button type="button" onClick="addGeneralSkill()" class="button">Add</button></div>
-
 								</form>
-								<?php    
-									$query = "SELECT Skills.skill_name, User_Skills.skill_level  FROM Skills INNER JOIN User_Skills ON Skills.skill_id=User_Skills.skill_id WHERE User_Skills.user_id = ?;";
-									$stmt= mysqli_prepare($conn,$query);
-									mysqli_stmt_bind_param($stmt,"d",$user_id);
-
-									$success = mysqli_stmt_execute($stmt);
-									$results = mysqli_stmt_get_result($stmt);
-									echo "<h1>Skills</h1>";
-									while($row1 = mysqli_fetch_assoc($results))
-									{
-									echo $row1['skill_name']. " at ".$row1['skill_level']."</p>";
-									}
-								?>
-							</div>
-						</div>
-						
-						<div id="bootstable-row" class="row">
-							<div id="bootstable-cell" class="cell c12511">
 							</div>
 						</div>
 					</div>

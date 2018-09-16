@@ -15,16 +15,31 @@ function listsSkill(ev)
 {
     listsa = JSON.parse(httad.responseText);
     sizea = listsa.length;
-
+	var table = document.getElementById("gensklstable");
+	
     //Iterate through each skill, list the skill name and create 3 radio buttons(low med high) for each skill
     for(var i = 0;i<sizea;i++)
     {
+		var row = document.createElement("tr");
+		var cell1 = document.createElement("td");
+		var cell2 = document.createElement("td");
+		var cell3 = document.createElement("td");
+		var cell4 = document.createElement("td");
+		var cell5 = document.createElement("td");
+		
+		cell2.style
+		
+		
         var skillName = document.createTextNode(listsa[i].skill_name);
         
+		cell1.appendChild(skillName);
+		
         var skillHid = document.createElement("input");
         skillHid.setAttribute("type","hidden");
         skillHid.setAttribute("id","hid"+i);
         skillHid.setAttribute("value",listsa[i].skill_id);
+		
+		cell5.appendChild(skillHid);
 
         var lowRad = document.createElement("input");
         lowRad.setAttribute("id","low"+i);
@@ -33,7 +48,7 @@ function listsSkill(ev)
         lowRad.setAttribute("name","tRadio"+i);
         lowRad.setAttribute("value","Low");
         
-      
+      	cell2.appendChild(lowRad);
         
         
         var medRad = document.createElement("input");
@@ -43,7 +58,7 @@ function listsSkill(ev)
         medRad.setAttribute("name","tRadio"+i);
         medRad.setAttribute("value","Medium");
         
-        
+        cell3.appendChild(medRad);
 
         var highRad = document.createElement("input");
         highRad.setAttribute("id","high"+i);
@@ -52,19 +67,16 @@ function listsSkill(ev)
         highRad.setAttribute("name","tRadio"+i);
         highRad.setAttribute("value","High");
         
-     
+		cell4.appendChild(highRad);
         
-        //Appends each skill and associated radio buttons to form
-        skillForm.appendChild(skillName);
-        skillForm.appendChild(skillHid);
-        skillForm.appendChild(lowRad);
-        // skillForm.appendChild(low);
-        skillForm.appendChild(medRad);
-        // skillForm.appendChild(med);
-        skillForm.appendChild(highRad);
-        // skillForm.appendChild(high);
-        skillForm.appendChild(document.createElement("P"));
-
+		
+        row.appendChild(cell1);
+		row.appendChild(cell2);
+		row.appendChild(cell3);
+		row.appendChild(cell4);
+		row.appendChild(cell5);
+		
+		table.appendChild(row);
         
     }
     check();

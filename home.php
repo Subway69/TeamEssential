@@ -191,8 +191,9 @@ require_once "PHP/default.php";
 									
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName0"/>
 									<input type = "button"class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"/>
+									<table>
 									<script src = "JS/addSkill.js"></script>
-									
+									</table>
 								</form>
 								<form class="form" id="addSkillsForm"/></form>
 								
