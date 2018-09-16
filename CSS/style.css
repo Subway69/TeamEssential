@@ -4,15 +4,15 @@
  body {
     margin: 0;
 }
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 
 #helptext {
 	font-size: 0.95em;
 	font-family: Arial;
 }
 
-=======
->>>>>>> master
+/* ======= */
+/* >>>>>>> master */
 #form-cell{
     margin:0 0 0 5px;
 }
@@ -20,15 +20,11 @@
     padding:0 0 0 5px;
 }
 .form{
-    padding-top:10px;
-    padding-right:15px;
-    padding-bottom:10px;
-    padding-left:15px;
     background-color:rgba(122, 125, 127, 0.2);
     width:500px;
-    display:block;
+    /* display:block; */
     /* float:none; */
-    text-align:center;
+    /* text-align:center; */
     flex-direction:row;
     justify-content:center;
     position:static;
@@ -38,11 +34,12 @@
 }
 .input{
     width:100%;
-    /* margin-bottom:10px; */
+    margin-bottom:10px;
     background-color:rgb(126, 124, 132);
     /* display:inline-block; */
     text-align:center;
     font-family:Arial, Helvetica, sans-serif;
+	font-size:0.9em;
 }
 .select{
     width:100%;
@@ -91,6 +88,7 @@
     min-height:50px;
     width:100%;
     /* background-color:rgb(62, 47, 124); */
+	
 }
 .navbar-container{
     max-width:950px;
@@ -231,12 +229,6 @@ body{
     margin-right:0px;
     margin-bottom:0px;
     margin-left:0px;
-}
-#tab-row{
-    padding-top:0px;
-    padding-right:0px;
-    padding-bottom:0px;
-    padding-left:0px;
 }
 #form-cell{
     justify-content:center;

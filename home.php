@@ -7,20 +7,20 @@ require_once "PHP/default.php";
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="CSS/master.css">
-		<link rel="stylesheet" href="CSS/style.css">
-		<link rel="stylesheet" href="CSS/class numbered.css">
-		<link rel="stylesheet" href="CSS/media.css">
-		<link rel="stylesheet" href="CSS/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="CSS/datatable.min.css" media="screen">
+		<link rel="stylesheet" href="./css/master.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/class numbered.css">
+		<link rel="stylesheet" href="./css/media.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="./css/datatable.min.css" media="screen">
 		<!--<link rel="stylesheet" type="text/css" href="css/datatable-bootstrap.min.css" media="screen">-->
 		<!-- JS files -->
-		<script type="text/javascript" src="JS/datatable.min.js"></script>
+		<script type="text/javascript" src="js/datatable.min.js"></script>
 		
 		<!-- Add the following if you want to use the jQuery wrapper (you still need datatable.min.js): -->
-		<script type="text/javascript" src="JS/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
 		
-		<script type="text/javascript" src="JS/datatable.jquery.min.js"></script>
+		<script type="text/javascript" src="js/datatable.jquery.min.js"></script>
 		
 	</head>
   
@@ -38,7 +38,6 @@ require_once "PHP/default.php";
 			</a>
 	
 			<div class="navbar-container">
-				<a href="/" class="navbar-brand"></a>
 				
 				<div id="i1pfjb" class="navbar-burger">
 					<div class="navbar-burger-line"></div>
@@ -62,7 +61,7 @@ require_once "PHP/default.php";
 							if (is_logged_in()){
 							
 								?>
-									<a href="PHP/logout.php" class="navbar-menu-link">Logout</a>
+									<a href="PHP/logout.php" class="navbar-menu-link">Log Out</a>
 								
 								<?php
 							}
@@ -75,7 +74,7 @@ require_once "PHP/default.php";
 		<?php
 			if(getPermission() ==1 || getPermission()==2){
 			
-				?> 
+				?> <!--WHAT IS THIS-->
 				
 				<div id="ii4vcy" class="row c3690">
 					<div id="iuxvnm" class="cell">
@@ -103,7 +102,7 @@ require_once "PHP/default.php";
 										
 									while($row = mysqli_fetch_assoc($results)){
 										?>
-										
+									
 										<table  class="table table-responsive" id="user-table">
 											<tHead>
 												<tr>
@@ -133,8 +132,7 @@ require_once "PHP/default.php";
 													$success = mysqli_stmt_execute($stmt);
 													$results = mysqli_stmt_get_result($stmt);
 													while($row = mysqli_fetch_assoc($results)){
-?>
-													
+														?>
 														<?php
 															if ($row['permission']==0){
 																$uType="User";
@@ -157,23 +155,20 @@ require_once "PHP/default.php";
 
 														<?php
 															$person =$row['user_id']; 
-														?><form action = "viewProfile.php" method = "POST">
+														?>
 
 														<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
 
 														<input type = "submit" name = "tSub" value = "Go" />
-														</form>
 
 														</td> <!-- what -->
 														</tr>
-														
 														<?php 
-														
 													} 
-												?> <!--^ what -->
+														?> <!--^ what -->
 											</tbody>	
 										</table>
-										
+
 
 										<?php
 									}?>					
@@ -196,10 +191,10 @@ require_once "PHP/default.php";
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName0"/>
 									<input type = "button"class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"/>
 									<table>
-									<script src = "JS/addSkill.js"></script>
+										<script src = "JS/addSkill.js"></script>
 									</table>
 								</form>
-								<form class="form" id="addSkillsForm"/></form>
+								<!--<form class="form" id="addSkillsForm"/></form> -->
 								
 							</div>
 						</div>
@@ -211,11 +206,12 @@ require_once "PHP/default.php";
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
 							<form class="form">
-								<input type="text" placeholder = "Enter Category Name" class="input" id ="catName0"/>
+								<input type="text" placeholder = "Enter Category Name" class="input" />
 								<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"/>
-								<input type = "button"class = "button" id = "catBut" onClick= "addCategory()" value = "Add Category"/>
+								<input type = "button" id = "catBut" onClick= "addCategory()" value = "Add Category"/>
+								<!--class = "button" -->
 							</form>
-							<form class="form" id = "addCat0"></form>
+							<form class="form" id = "addCat0"></form> <!-- the buttons -->
 							
 						</div>
 					</div>
@@ -238,17 +234,17 @@ require_once "PHP/default.php";
 					<div id="tab-title" class="c15657">Mailing Lists</div>
 					
 					
-					<div id="tab-row" class="row">
-						<table id="user-table" class="table table-responsive" style="width:90%">
+					<div class="row" id="mailing">
+						<table id="user-table" class="table table-responsive">
 							<tHead>
 								<tr>
 									<th>User Permission Level</th>
 									
-									<i class="fa fa-sort float-right" aria-hidden="true"></i>
+									<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
 									
 									<th>Include?</th>
 									
-									<i class="fa fa-sort float-right" aria-hidden="true"></i>
+									<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
 									
 								</tr>
 							</tHead>

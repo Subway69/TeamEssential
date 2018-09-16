@@ -69,50 +69,47 @@ require_once "PHP/default.php";
 				
 				<div data-tabs="1" id="iitw8i">
 					<nav data-tab-container="1" class="tab-container">
-					<a href="#preferences-tab" data-tab="1" class="tab">Preferences
-					</a>
-						<a href="#education-tab" data-tab="1" class="tab">Education
-						</a>
+						<a href="#preferences-tab" data-tab="1" class="tab">Preferences</a>
 						
+						<a href="#education-tab" data-tab="1" class="tab">Education</a>
 						<?php
 							if(getWork() == 1){
 								?>
-									<a href="#employment-tab" data-tab="1" class="tab">FedUni Employment
-									</a>
+									<a href="#employment-tab" data-tab="1" class="tab">FedUni Employment</a>
+									
 								<?php
 							}
 						?>
-						<a href="#genskl-tab" data-tab="1" class="tab">General Skills
-						</a>
-						<a href="#specskl-tab" data-tab="1" class="tab">Discipline Skills
-						</a>
-						<a href="#contact-tab" data-tab="1" class="tab">Contact Details
-						</a>
+						<a href="#genskl-tab" data-tab="1" class="tab">General Skills</a>
+						
+						<a href="#specskl-tab" data-tab="1" class="tab">Discipline Skills</a>
+						
+						<a href="#contact-tab" data-tab="1" class="tab">Contact Details</a>
+						
 						<a href="#files-tab" data-tab="1" class="tab">Files</a>
 					</nav>
+					
 					<div id="preferences-tab" data-tab-content="1" class="tab-content">
 				 
-				 <div id="tab-title" class="c15657">Preferences
-		
-				  </div>
+						<div id="tab-title" class="c15657">Preferences</div>
 								
-				  <div id="tab-row" class="row">
-									 <div id="form-cell" class="cell">
+						<div id="tab-row" class="row">
+							<div id="form-cell" class="cell">
 								<form class="form">
-								<p style="font-size: 0.8em;"> Have you worked with Federation University before?
-                                 <input type = "radio" name ="workUni" id ="worked0"value="1"/> Yes
-							   <input type = "radio" name ="workUni"id ="worked1" value="0"/> No
-							   <p style="font-size: 0.8em;"> Please select your availability
-                                 <input id= "avail0"type = "radio" name ="availUni" value="1"/> Full Time
-                               <input id= "avail1"type = "radio" name ="availUni" value="0"/> Part Time
-
-									 </div>
-								  </div>
-								  <div id="bootstable-row" class="row">
-									 <div id="bootstable-cell" class="cell c12511">
-									 </div>
-								  </div>
-							   </div>
+									<p style="font-size: 0.8em;"> Have you worked with Federation University before?
+									<input type = "radio" name ="workUni" id ="worked0"value="1"/> Yes
+									<input type = "radio" name ="workUni"id ="worked1" value="0"/> No
+									
+									<p style="font-size: 0.8em;"> Please select your availability
+									<input id= "avail0"type = "radio" name ="availUni" value="1"/> Full Time
+									<input id= "avail1"type = "radio" name ="availUni" value="0"/> Part Time
+								</form>
+							</div>
+						</div>
+								  
+					</div>
+							   
+							   
 					<div id="education-tab" data-tab-content="1" class="tab-content">
 						<div id="tab-title" class="c15657">Education History
 						</div>
@@ -213,12 +210,11 @@ require_once "PHP/default.php";
 					</div>
 					
 					<div id="genskl-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">General Skills
-						</div>
+						<div id="tab-title" class="c15657">General Skills</div>
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form class="form" id="form0" style="width:600px; text-align:left;">
+								<form class="form" id="gen" ">
 									<table>
 										<thead>
 											<th>Skill Level</th>
@@ -227,10 +223,14 @@ require_once "PHP/default.php";
 											<th>High</th>
 										</thead>
 										<tbody id="gensklstable">
+										
 										</tbody>
 									</table>
 									<script src="JS/skills.js"></script>
-									<div class="form-group"><button type="button" onClick="addGeneralSkill()" class="button">Add</button></div>
+									
+									<div class="form-group">
+										<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
+									</div>
 								</form>
 							</div>
 						</div>
@@ -241,11 +241,12 @@ require_once "PHP/default.php";
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form id="forms" class="form">
-									Discipline: <select id="category" name="tCategory">
-									<option>Psychology</option>
-									<option>Information Technology</option>
-									</select></p>
+								<form id="forms" class="form">Discipline: 
+									
+									<select id="category" name="tCategory">
+										<option>Psychology</option>
+										<option>Information Technology</option>
+									</select>
 								</form>
 								
 								<form id="form10" class="form">
@@ -255,10 +256,7 @@ require_once "PHP/default.php";
 
 							</div>
 						</div>
-					<div id="bootstable-row" class="row">
-						<div id="bootstable-cell" class="cell c12511">
-						</div>
-					</div>
+					
 					</div>
 						<div id="contact-tab" data-tab-content="1" class="tab-content">
 						<div id="tab-title" class="c15657">Contact Information
@@ -302,23 +300,23 @@ require_once "PHP/default.php";
 								<?php
 								$query = "SELECT files.file_name,files.file_location FROM files INNER JOIN User_Files ON files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
 		
-$stmt= mysqli_prepare($conn,$query);
+											$stmt= mysqli_prepare($conn,$query);
 								mysqli_stmt_bind_param($stmt,"d",$user_id);
 
 								$success = mysqli_stmt_execute($stmt);
 								$results = mysqli_stmt_get_result($stmt);
 				                                   
 							
-echo "<h1>Files</h1>";
-		
-while($row1 = mysqli_fetch_assoc($results))
-	
-{
-	$fname=$row1['file_name'];
-$path=	$row1['file_location'];				
-echo "<h6>".$row1['file_name']."</h6>"."<a download='$fname' href='$path'>download</a><br>";
-	
-}
+								echo "<h1>Files</h1>";
+										
+								while($row1 = mysqli_fetch_assoc($results))
+									
+								{
+									$fname=$row1['file_name'];
+								$path=	$row1['file_location'];				
+								echo "<h6>".$row1['file_name']."</h6>"."<a download='$fname' href='$path'>download</a><br>";
+									
+								}
 								?>
                             
                         </div>
@@ -327,9 +325,11 @@ echo "<h6>".$row1['file_name']."</h6>"."<a download='$fname' href='$path'>downlo
                         <div id="bootstable-cell" class="cell c12511">
                         </div></div>
                     </div>
+					</div>
+				<!--</div>-->
 				</div>
-			</div>
-		</div>
+			</div> <!-- added this -->
+		</div> <!-- added this -->
 		
 		<script src = "JS/preferences.js"></script>
 		<script>

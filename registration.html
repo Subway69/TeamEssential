@@ -104,13 +104,14 @@ require_once "PHP/default.php";
                                     <option value="Dr">Dr</option>
                                 </select>
 								
-                                <input name = "tFirstName"placeholder="First Name" required class="input" />
-                                <input name = "tLastName" placeholder="Last Name" required class="input" />
-                                <input name = "tEmail" type="email" placeholder="Email Address" required class="input" />
-                                <input name ="tPassword"placeholder="Password" type="password" class="input" required 
-											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
-                                <input name = "tConfirm" placeholder="Confirm Password" type="password" required class="input" />
-								
+                                <input name = "tFirstName"placeholder="First Name" required class="input" id="val"/>
+                                <input name = "tLastName" placeholder="Last Name" required class="input" id="val"/>
+                                <input name = "tEmail" type="email" placeholder="Email Address" required class="input" id="val"/>
+                                <input name ="tPassword" placeholder="Password" type="password" class="input" required 
+											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="val"/>
+											
+                                <input name = "tConfirm" placeholder="Confirm Password" type="password" required class="input" 
+											id="val" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
 								
                                 Have you worked with the Uni before?
                                 <input type = "radio" name ="workUni" value="1"/> Yes
@@ -168,6 +169,7 @@ require_once "PHP/default.php";
             }.bind(items[i]))();
         }
     </script>
+
 	<footer>
 		
 	</footer>

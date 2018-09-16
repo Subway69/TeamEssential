@@ -7,10 +7,10 @@ require_once "PHP/default.php";
 ?>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="CSS/master.css">
-		<link rel="stylesheet" href="CSS/style.css">
-		<link rel="stylesheet" href="CSS/class numbered.css">
-		<link rel="stylesheet" href="CSS/media.css">
+		<link rel="stylesheet" href="./css/master.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/class numbered.css">
+		<link rel="stylesheet" href="./css/media.css">
 	</head>
 	
 	<body>
@@ -115,22 +115,23 @@ require_once "PHP/default.php";
 							</div>
 							
 						</div>
+						
 						<div id="specskl-tab" data-tab-content="1" class="tab-content">
-							<div id="tab-title" class="c15657">Special Skills
-							</div>
+							<div id="tab-title" class="c15657">Special Skills</div>
+							
 							<div id="tab-row" class="row">
 								<div id="form-cell" class="cell">
 									<form class="form">
+										<div class="form-group"></div>
+										
+										<div class="form-group"></div>
+										
+										<div class="form-group"></div>
+										
+										<input placeholder="Insert Special Skill" required="" class="input"/>
 										<div class="form-group">
-										</div>
-									<div class="form-group">
-									</div>
-									<div class="form-group">
-									</div>
-									<input placeholder="Insert Special Skill" required="" class="input"/>
-										<div class="form-group">
-											<button type="submit" class="button">Add
-											</button>
+											<button type="submit" class="button">Add</button>
+											
 										</div>
 									</form>
 								</div>
