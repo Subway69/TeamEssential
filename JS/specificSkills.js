@@ -11,7 +11,7 @@ var choice;
 
 //This ajax requests gets all the cattegories
 httCat = new XMLHttpRequest();
-httCat.open("POST","php/getCategory.php",true);
+httCat.open("POST","PHP/getCategory.php",true);
 httCat.onload=listCat;
 httCat.send();
 

@@ -32,7 +32,7 @@ session_start();
     $last_id = mysqli_insert_id($conn);
 
     //Retrieves the uni selected
-    $query2 = "SELECT University_id FROM University WHERE University_Name = ?;";
+    $query2 = "SELECT University_id FROM University WHERE University_name = ?;";
     $stmt2 = mysqli_prepare($conn,$query2);
     mysqli_stmt_bind_param($stmt2,"s",$uniID);
     $success2 = mysqli_stmt_execute($stmt2);

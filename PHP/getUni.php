@@ -8,7 +8,7 @@
     $user_id = logged_in_user();
    
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-    $query2 = "SELECT University.university_id,University.university_name  FROM University INNER JOIN Study ON University.university_id=Study.university_id WHERE Study.user_id = ? ;";
+    $query2 = "SELECT University.University_id,University.University_name  FROM University INNER JOIN Study ON University.University_id=Study.University_id WHERE Study.user_id = ? ;";
     $stmt2= mysqli_prepare($conn,$query2);
     mysqli_stmt_bind_param($stmt2,"d",$user_id);
 

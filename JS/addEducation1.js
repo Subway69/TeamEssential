@@ -160,7 +160,7 @@ function listEducation()
         var uniHidden = document.createElement("input");
         uniHidden.setAttribute("type","hidden");
         uniHidden.setAttribute("id", "univ"+i);
-        uniHidden.setAttribute("value",qualList[i].university_id);
+        uniHidden.setAttribute("value",qualList[i].University_id);
 
         var updUniBut = document.createElement("input");
         updUniBut.setAttribute("type","button");

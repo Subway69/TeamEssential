@@ -8,7 +8,7 @@
     $user_id = logged_in_user();
    
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-    $query = "SELECT qualification.end_date,qualification.finished,qualification.qualification_id,qualification.qualification_name,qualification.qualification_type,university.University_name,study.user_id,university.University_id FROM qualification, university, study WHERE qualification.qualification_id=study.qualification_id AND university.University_id=study.University_id AND study.user_id=?;";
+    $query = "SELECT Qualification.end_date,Qualification.finished,Qualification.qualification_id,Qualification.qualification_name,Qualification.qualification_type,University.University_name,Study.user_id,University.University_id FROM Qualification, University, Study WHERE Qualification.qualification_id=Study.qualification_id AND University.University_id=Study.University_id AND Study.user_id=?;";
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"d",$user_id);
 

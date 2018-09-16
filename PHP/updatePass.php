@@ -21,6 +21,6 @@
     {
         echo "password don't match";
     ?>
-        <form action = "index.html" method = "POST"> <input type = "Submit" name= "back" value =="Go back"/> </form> <script src = "../JS/alerts.js"></script><?php
+        <form action = "../index.html" method = "POST"> <input type = "Submit" name= "back" value =="Go back"/> </form> <script src = "../JS/alerts.js"></script><?php
     } 
 ?> 

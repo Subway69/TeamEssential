@@ -84,14 +84,17 @@ function somethingElse(ev)
 		if(mailLists[i].permission==0)
 		{
 			userArray[uCount]=mailLists[i].email;
+			uCount++;
 		} 
 		if(mailLists[i].permission==1)
 		{
-			adminArray[uCount]=mailLists[i].email;
+			adminArray[aCount]=mailLists[i].email;
+			aCount++;
 		} 
 		if(mailLists[i].permission==2)
 		{
-			sAdminArray[uCount]=mailLists[i].email;
+			sAdminArray[sCount]=mailLists[i].email;
+			sCount++;
 		} 
     }
 	groupMail();

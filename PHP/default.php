@@ -1,7 +1,7 @@
 <?php
     $DB_HOST= "localhost";
 	$DB_USER="raUser";
-	$DB_PASSWORD="password123";
+	$DB_PASSWORD="T#aM3Ss3nt1al";
 	$DB_NAME= "FedUni_RA_Register";
 	function login($username) {
 	$_SESSION['username'] = $username;

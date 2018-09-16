@@ -7,10 +7,10 @@ require_once "PHP/default.php";
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="./css/master.css">
-		<link rel="stylesheet" href="./css/style.css">
-		<link rel="stylesheet" href="./css/class numbered.css">
-		<link rel="stylesheet" href="./css/media.css">
+		<link rel="stylesheet" href="CSS/master.css">
+		<link rel="stylesheet" href="CSS/style.css">
+		<link rel="stylesheet" href="CSS/class numbered.css">
+		<link rel="stylesheet" href="CSS/media.css">
 	</head>
    <body>
       <title>View Profile</title>
@@ -108,14 +108,14 @@ require_once "PHP/default.php";
             }
         }
 
-        $query = "SELECT qualification.qualification_id,qualification.qualification_name,qualification.qualification_type,qualification.end_date, qualification.finished  FROM Qualification INNER JOIN Study ON qualification.qualification_id=Study.qualification_id WHERE Study.user_id = ? ;";
+        $query = "SELECT Qualification.qualification_id,Qualification.qualification_name,Qualification.qualification_type,Qualification.end_date, Qualification.finished  FROM Qualification INNER JOIN Study ON Qualification.qualification_id=Study.qualification_id WHERE Study.user_id = ? ;";
         $stmt= mysqli_prepare($conn,$query);
         mysqli_stmt_bind_param($stmt,"d",$user_id);
 
         $success = mysqli_stmt_execute($stmt);
         $results = mysqli_stmt_get_result($stmt);
 
-        $query2 = "SELECT University.university_id,University.university_name  FROM University INNER JOIN Study ON University.university_id=Study.university_id WHERE Study.user_id = ? ;";
+        $query2 = "SELECT University.University_id,University.University_name  FROM University INNER JOIN Study ON University.University_id=Study.University_id WHERE Study.user_id = ? ;";
         $stmt2= mysqli_prepare($conn,$query2);
         mysqli_stmt_bind_param($stmt2,"d",$user_id);
 
@@ -129,11 +129,11 @@ require_once "PHP/default.php";
             if($row2=mysqli_fetch_assoc($results2)){
                 if($row1['finished']==0)
                 {
-                    echo "Still Studying: ".$row1['qualification_name']. "(".$row1['qualification_type'].") at ".$row2['university_name']."</p>";
+                    echo "Still Studying: ".$row1['qualification_name']. "(".$row1['qualification_type'].") at ".$row2['University_name']."</p>";
                 }
                 else
                 {
-                    echo "Completed ".$row1['qualification_name']. "(".$row1['qualification_type'].") at ".$row2['university_name']." finished at ".$row1['end_date']."</p>";
+                    echo "Completed ".$row1['qualification_name']. "(".$row1['qualification_type'].") at ".$row2['University_name']." finished at ".$row1['end_date']."</p>";
                 }
             }
         
@@ -151,11 +151,18 @@ require_once "PHP/default.php";
 
         $success = mysqli_stmt_execute($stmt);
         $results = mysqli_stmt_get_result($stmt);
-        echo "<h1>Employment</h1>";
+        echo "<h1>Federation University Employment</h1>";
+        							if(getWork() == 1){
+								
         while($row1 = mysqli_fetch_assoc($results))
         {
             echo $row1['work_rate']. " ".$row1['position_title']." at ".$row1['organisation']. ".Manager Name: ".$row1['manager'].", Phone: ".$row1['manager_phone'].". Started ".$row1['startDate']." ended: ".$row1['endDate']. ". Performed:". $row1['tasks']."</p>";
         }
+                                    }
+        else{
+            echo "Hasn't worked with the Uni before.";
+        }
+                                    
 ?>
 
 
@@ -176,9 +183,11 @@ require_once "PHP/default.php";
         
 
 
-                ?>
+?>
+
+
             </div>
-            <div class="c14791">Footer
+            <div class="c14791">
             </div>
          </div>
       </div>

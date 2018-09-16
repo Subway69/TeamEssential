@@ -62,7 +62,7 @@ require_once "default.php" ?>
             else 
             {
                 echo "password don't match";
-                ?><form action = "index.html" method = "POST"> <input type = "Submit" name= "back" value =="Go back"/> </form> <?php
+                ?><form action = "../index.html" method = "POST"> <input type = "Submit" name= "back" value =="Go back"/> </form> <?php
             } ?> <script src = "../JS/alerts.js"></script> <?php
         }
     } 

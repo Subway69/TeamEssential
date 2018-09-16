@@ -32,7 +32,7 @@ $file_new_name=uniqid(' ',true).".".$file_real_ext;
 $file_location='Files/'.$file_new_name;
 move_uploaded_file($file_tmp_name,$file_location);
 
-$query = "INSERT INTO FILES(file_name,file_location,file_size) VALUES(?,?,?);";
+$query = "INSERT INTO files(file_name,file_location,file_size) VALUES(?,?,?);";
 $stmt=mysqli_prepare($conn,$query);
 mysqli_stmt_bind_param($stmt,"ssd",$file_name,$file_location,$file_size);
 $success=mysqli_stmt_execute($stmt);
@@ -40,7 +40,7 @@ $success=mysqli_stmt_execute($stmt);
 
  
 
-$query1 = "INSERT INTO USER_FILES(file_id,user_id) VALUES(?,?);";
+$query1 = "INSERT INTO User_Files(file_id,user_id) VALUES(?,?);";
 $stmt1=mysqli_prepare($conn,$query1);
 mysqli_stmt_bind_param($stmt1,"dd",$last_id,$user_id);
 $success1=mysqli_stmt_execute($stmt1);

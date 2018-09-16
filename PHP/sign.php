@@ -15,7 +15,7 @@ session_start();
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 
     //Inserts each skill to the user
-    $query= "INSERT INTO user_skills(user_id,skill_id,skill_level) VALUES(?,?,?);";
+    $query= "INSERT INTO User_Skills(user_id,skill_id,skill_level) VALUES(?,?,?);";
     $x = $req_obj->lengths;
     $i=0;
     $count=0;

@@ -11,7 +11,7 @@
     $sid = $req_obj->category;
 
     //Gets the users for the specified category
-    $query="SELECT permission, email FROM users WHERE permission = ?;";
+    $query="SELECT permission, email FROM Users WHERE permission = ?;";
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"d",$sid);
     $success = mysqli_stmt_execute($stmt);

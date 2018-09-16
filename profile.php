@@ -7,10 +7,10 @@ require_once "PHP/default.php";
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="./css/master.css">
-		<link rel="stylesheet" href="./css/style.css">
-		<link rel="stylesheet" href="./css/class numbered.css">
-		<link rel="stylesheet" href="./css/media.css">
+		<link rel="stylesheet" href="CSS/master.css">
+		<link rel="stylesheet" href="CSS/style.css">
+		<link rel="stylesheet" href="CSS/class numbered.css">
+		<link rel="stylesheet" href="CSS/media.css">
 	</head>
 
 	<body>
@@ -77,17 +77,18 @@ require_once "PHP/default.php";
 						<?php
 							if(getWork() == 1){
 								?>
-									<a href="#employment-tab" data-tab="1" class="tab">Employment
+									<a href="#employment-tab" data-tab="1" class="tab">FedUni Employment
 									</a>
 								<?php
 							}
 						?>
 						<a href="#genskl-tab" data-tab="1" class="tab">General Skills
 						</a>
-						<a href="#specskl-tab" data-tab="1" class="tab">Specific Skills
+						<a href="#specskl-tab" data-tab="1" class="tab">Discipline Skills
 						</a>
 						<a href="#contact-tab" data-tab="1" class="tab">Contact Details
 						</a>
+						<a href="#files-tab" data-tab="1" class="tab">Files</a>
 					</nav>
 					<div id="preferences-tab" data-tab-content="1" class="tab-content">
 				 
@@ -151,7 +152,7 @@ require_once "PHP/default.php";
 									<script src="JS/addEducation1.js"></script>
 								</form>
 								<div id = "showEducation">
-						  <!--Hello!-->
+						 
 						  </div>
 							</div>
 						</div>
@@ -163,7 +164,7 @@ require_once "PHP/default.php";
 					</div>
 					
 					<div id="employment-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Employment History
+						<div id="tab-title" class="c15657">Federation University Employment History
 						</div>
 						
 						<div id="tab-row" class="row">
@@ -179,7 +180,7 @@ require_once "PHP/default.php";
 									</select>
 									
 									<input id="title1" placeholder="Position Title" required="" class="input" />
-									<input id="org1" placeholder="Employer" required="" class="input" />
+									<input id="org1" placeholder="Department" required="" class="input" />
 									
 									<div class="form-group"><input id="manager1" placeholder="Manager's Name" required="" class="input" />
 										<input id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
@@ -235,7 +236,7 @@ require_once "PHP/default.php";
 						</div>
 					</div>
 					<div id="specskl-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Special Skills
+						<div id="tab-title" class="c15657">Discipline Skills
 						</div>
 						
 						<div id="tab-row" class="row">
@@ -251,19 +252,6 @@ require_once "PHP/default.php";
 									<script src="JS/specificSkills.js"></script>
 								</form>
 								
-								<?php
-									$query = "SELECT Skills.skill_name, User_Skills.skill_level  FROM Skills INNER JOIN User_Skills ON Skills.skill_id=User_Skills.skill_id WHERE User_Skills.user_id = ?;";
-									$stmt= mysqli_prepare($conn,$query);
-									mysqli_stmt_bind_param($stmt,"d",$user_id);
-
-									$success = mysqli_stmt_execute($stmt);
-									$results = mysqli_stmt_get_result($stmt);
-									echo "<h1>Skills</h1>";
-									while($row1 = mysqli_fetch_assoc($results))
-									{
-									echo $row1['skill_name']. " at ".$row1['skill_level']."</p>";
-									}
-								?>
 
 							</div>
 						</div>
@@ -300,9 +288,49 @@ require_once "PHP/default.php";
 							</div>
 						</div>
 					</div>
+								                   <div id="files-tab" data-tab-content="1" class="tab-content">
+                    <div id="tab-title" class="c15657">Files</div>
+                    <div id="tab-row" class="row">
+                        <div id="form-cell" class="cell">
+                            <form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="file" id="file" name="file"/ >
+                                <div class="form-group">
+                                    <button type="submit" class="button" name="submit">upload</button>
+                                </div>
+								</form>
+								<?php
+								$query = "SELECT files.file_name,files.file_location FROM files INNER JOIN User_Files ON files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
+		
+$stmt= mysqli_prepare($conn,$query);
+								mysqli_stmt_bind_param($stmt,"d",$user_id);
+
+								$success = mysqli_stmt_execute($stmt);
+								$results = mysqli_stmt_get_result($stmt);
+				                                   
+							
+echo "<h1>Files</h1>";
+		
+while($row1 = mysqli_fetch_assoc($results))
+	
+{
+	$fname=$row1['file_name'];
+$path=	$row1['file_location'];				
+echo "<h6>".$row1['file_name']."</h6>"."<a download='$fname' href='$path'>download</a><br>";
+	
+}
+								?>
+                            
+                        </div>
+                    </div>
+                    <div id="bootstable-row" class="row">
+                        <div id="bootstable-cell" class="cell c12511">
+                        </div></div>
+                    </div>
 				</div>
 			</div>
 		</div>
+		
 		<script src = "JS/preferences.js"></script>
 		<script>
 			var items = document.querySelectorAll('#iitw8i');
@@ -338,7 +366,7 @@ require_once "PHP/default.php";
 
 		</script>
 		<footer>
-		foot
+		
 		</footer>
 	</body>
 <html>

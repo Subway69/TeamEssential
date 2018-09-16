@@ -11,7 +11,7 @@
     $sid = $req_obj->category;
 
     //Gets the skills for the specified category
-    $query="SELECT * FROM skills WHERE  skill_type = ?;";
+    $query="SELECT * FROM Skills WHERE  skill_type = ?;";
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"s",$sid);
     $success = mysqli_stmt_execute($stmt);

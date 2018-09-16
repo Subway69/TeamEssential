@@ -12,7 +12,7 @@ loadCategories();
 function loadCategories()
 {
     httCats = new XMLHttpRequest();
-    httCats.open("POST","php/getCategory.php",true);
+    httCats.open("POST","PHP/getCategory.php",true);
     httCats.onload=listCats;
     httCats.send();
 }

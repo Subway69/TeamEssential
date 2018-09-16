@@ -11,7 +11,7 @@ require_once "default.php";
 	{
 		$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 		//Gets all users
-		$query = "SELECT user_id,first_name,email,password,permission,uniWork FROM users WHERE email=?;";
+		$query = "SELECT user_id,first_name,email,password,permission,uniWork FROM Users WHERE email=?;";
 		$stmt= mysqli_prepare($conn,$query);
 		mysqli_stmt_bind_param($stmt,"s",$email);
 		$success = mysqli_stmt_execute($stmt);
