@@ -4,6 +4,15 @@
  body {
     margin: 0;
 }
+<<<<<<< HEAD
+
+#helptext {
+	font-size: 0.95em;
+	font-family: Arial;
+}
+
+=======
+>>>>>>> master
 #form-cell{
     margin:0 0 0 5px;
 }
