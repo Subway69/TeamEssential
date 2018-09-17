@@ -13,7 +13,7 @@ require_once "PHP/default.php";
     <link rel="stylesheet" href="CSS/style.css">
 	<link rel="stylesheet" href="CSS/class numbered.css">
 	<link rel="stylesheet" href="CSS/media.css">
-	
+	<script src="JS/passwordMatch.js"></script>
 </head>
 
 <body>
@@ -84,11 +84,13 @@ require_once "PHP/default.php";
                 </div>
 				
                 <div id="register-tab" data-tab-content="1" class="tab-content">
-                    <div id="tab-title" class="c15657"></div>
+                    <div id="tab-title" class="c15657"></div>  <!-- for what -->
 					
                     <div id="tab-row" class="row">
                         <div id="form-cell" class="cell">
                             <form class="form" id="reg" action = "PHP/register.php" method="POST">
+							
+								<!--QUESTION why this -->
                                 <div class="form-group"></div>
 								
                                 <div class="form-group"></div>
@@ -104,14 +106,18 @@ require_once "PHP/default.php";
                                     <option value="Dr">Dr</option>
                                 </select>
 								
-                                <input name = "tFirstName"placeholder="First Name" required class="input" id="val"/>
-                                <input name = "tLastName" placeholder="Last Name" required class="input" id="val"/>
-                                <input name = "tEmail" type="email" placeholder="Email Address" required class="input" id="val"/>
-                                <input name ="tPassword" placeholder="Password" type="password" class="input" required 
-											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="val"/>
-											
-                                <input name = "tConfirm" placeholder="Confirm Password" type="password" required class="input" 
-											id="val" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+                                <input name = "tFirstName"placeholder="First Name" required class="input val" />
+                                <input name = "tLastName" placeholder="Last Name" required class="input val" />
+                                <input name = "tEmail" type="email" placeholder="Email Address" required class="input val" />
+
+                                <input name ="tPassword" class="input val" id="field_pwd1" placeholder="Password" type="password" required 
+											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>
+								
+                                <input name = "tConfirm" class="input val" id="field_pwd2" placeholder="Confirm Password" type="password" 
+											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
 								
                                 Have you worked with the Uni before?
                                 <input type = "radio" name ="workUni" value="1"/> Yes
@@ -126,7 +132,7 @@ require_once "PHP/default.php";
 										alert('You must have at least a Bachelor\'s Degree in order to proceed with the 
 										registration process.');" /> No 
 										
-                                <div class="form-group">
+                                <div class="form-group"> <!-- why do we need to div this? -->
                                     <button type="submit" class="button">Register</button>
                                 </div>
                             </form>

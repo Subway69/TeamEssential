@@ -115,7 +115,7 @@ input {
 	border: 1px inset black;
 	/* background-color: #000000; */
 }
-.input#val:valid{
+.val:valid{ /*valid input class */
 	background-color: #93d0ad;
 }
 input:invalid {
@@ -126,11 +126,6 @@ input:invalid {
 	/* background-color: #a76868; pinkish */
 	/* background: linear-gradient(#dbdbdb, #f7f7f7); */
 	/* border-color: #f42c2c; */	
-}
-input:valid {
-	/* background-color: #8383f9; */
-	/* background-color: #93d0ad; */
-	/* border:1px solid black; /* working */ 
 }
 input:required {
   /* border-color: #800000; */
