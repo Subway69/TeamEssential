@@ -40,7 +40,8 @@ function listCats(ev)
             
             selCates.appendChild(catSkill);
             var delButs = document.createElement("input");
-            delButs.setAttribute("type","button");
+            delButs.setAttribute("type","cdbutton");
+			delButs.setAttribute("class", "button");
             delButs.setAttribute("id",catList[i].skill_type);
             delButs.setAttribute("onClick","deleteCat(this.id)");
             delButs.setAttribute("value","Delete");

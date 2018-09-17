@@ -11,6 +11,7 @@ require_once "PHP/default.php";
 		<link rel="stylesheet" href="./css/style.css">
 		<link rel="stylesheet" href="./css/class numbered.css">
 		<link rel="stylesheet" href="./css/media.css">
+		<script src="JS/passwordMatch.js"></script>
 	</head>
 	
 	<body>
@@ -81,10 +82,23 @@ require_once "PHP/default.php";
 									<div class="form-group">
 										<input type = "hidden" id="passUser" name = "tUser"value = <?php echo $user_id;?>/>
 										<input placeholder="Current Password" required type="password"class="input"/>
+										<!--
 										<input placeholder="New Password" type="password" name = "tPassword" id= "currPass" 
-													class="input" required/>
-										<input placeholder="Confirm New Password" type="password" class="input" required/>
-										<input type="submit" class="button" value="Submit new Password"/>
+													class="input" required />
+										<input placeholder="Confirm New Password" type="password" class="input" required />
+										-->
+										<input name = "tPassword" type="password" class="input val" id= "field_pwd1" 
+											placeholder="New Password" required
+											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>			  
+										
+										<input name = "tConfirm" type="password" class="input val" id="field_pwd2" 
+											placeholder="Confirm New Password" required 
+											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
+										
+										<input type="submit" class="button" value="Update Password"/>
 									</div>
 								</form>
 								<script src="JS/updates.js"></script>

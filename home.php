@@ -107,21 +107,9 @@ require_once "PHP/default.php";
 											<tHead>
 												<tr>
 													<th>First Name </th>
-
-													<i class="fa fa-sort float-right" aria-hidden="true"></i>
-
 													<th>Last Name</th>
-
-													<i class="fa fa-sort float-right" aria-hidden="true"> </i>
-
 													<th>User Type </th>
-
-													<i class="fa fa-sort float-right" aria-hidden="true"></i>
-
 													<th>Profile</th>
-
-													<i class="fa fa-sort float-right" aria-hidden="true"> </i>
-
 												</tr>
 											</tHead>
 
@@ -159,13 +147,13 @@ require_once "PHP/default.php";
 
 														<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
 
-														<input type = "submit" name = "tSub" value = "Go" />
+														<input type = "submit" class="button" name = "tSub" value = "Go" />
 
-														</td> <!-- what -->
+														</td> 
 														</tr>
 														<?php 
 													} 
-														?> <!--^ what -->
+														?> 
 											</tbody>	
 										</table>
 
@@ -189,7 +177,7 @@ require_once "PHP/default.php";
 									</select>
 									
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName0"/>
-									<input type = "button"class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"/>
+									<input type = "button" class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"/>
 									<table>
 										<script src = "JS/addSkill.js"></script>
 									</table>
@@ -200,88 +188,88 @@ require_once "PHP/default.php";
 						</div>
 						
 					</div>
-				 <!--</div> ADDED THIS -->
 				
-				<div id="category-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-row" class="row">
-						<div id="form-cell" class="cell">
-							<form class="form">
-								<input type="text" placeholder = "Enter Category Name" class="input" />
-								<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"/>
-								<input type = "button" id = "catBut" onClick= "addCategory()" value = "Add Category"/>
-								<!--class = "button" -->
-							</form>
-							<form class="form" id = "addCat0"></form> <!-- the buttons -->
+					<div id="category-tab" data-tab-content="1" class="tab-content">
+						<div id="tab-row" class="row">
+							<div id="form-cell" class="cell">
+								<form class="form">
+									<input type="text" placeholder = "Enter Category Name" class="input" />
+									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"/>
+									<input type = "button" class="button" id = "catBut" onClick= "addCategory()" value = "Add Category"/>
+									<!--class = "button" -->
+								</form>
+								
+								<form class="form" id = "addCat0"></form> <!-- the buttons -->
+								
+							</div>
+						</div>
+						
+					</div>
+				
+					<div id="specskl-tab" data-tab-content="1" class="tab-content">
+						<div id="tab-title" class="c15657"></div>
+						
+						<div id="tab-row" class="row">
+							<div id="form-cell" class="cell">					 
+								<form  class= "form" ></form>
+							
+							</div>
+						</div>
+						
+					</div>
+				
+					<div id="email-tab" data-tab-content="4">
+						<div id="tab-title" class="c15657">Mailing Lists</div>
+						
+						
+						<div class="row" id="mailing">
+							<table id="user-table" class="table table-responsive">
+								<tHead>
+									<tr>
+										<th>User Permission Level</th>
+										
+										<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
+										
+										<th>Include?</th>
+										
+										<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
+										
+									</tr>
+								</tHead>
+								<tbody>
+									<tr>
+										<td> User </td>
+										
+										<td> 	
+											<input type = "checkbox" id= "userCheck" name = "tCheck" value = 0 /> 
+										</td>
+									</tr>
+									<tr>
+										<td> Admin </td>
+										
+										<td> 	
+											<input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /> 
+										</td>
+									</tr>
+									<tr>
+										<td> Super Admin </td>
+										
+										<td> 	
+											<input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /> 
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div id="tab-row" class="row">
+							<div id="mailBox" class="cell" ></div>
 							
 						</div>
 					</div>
 					
-				</div>
-				
-				<div id="specskl-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657"></div>
-					
-					<div id="tab-row" class="row">
-						<div id="form-cell" class="cell">					 
-							<form  class= "form" ></form>
-						
-						</div>
-					</div>
-					
-				</div>
-				
-				<div id="email-tab" data-tab-content="4">
-					<div id="tab-title" class="c15657">Mailing Lists</div>
-					
-					
-					<div class="row" id="mailing">
-						<table id="user-table" class="table table-responsive">
-							<tHead>
-								<tr>
-									<th>User Permission Level</th>
-									
-									<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
-									
-									<th>Include?</th>
-									
-									<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
-									
-								</tr>
-							</tHead>
-							<tbody>
-								<tr>
-									<td> User </td>
-									
-									<td> 	
-										<input type = "checkbox" id= "userCheck" name = "tCheck" value = 0 /> 
-									</td>
-								</tr>
-								<tr>
-									<td> Admin </td>
-									
-									<td> 	
-										<input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /> 
-									</td>
-								</tr>
-								<tr>
-									<td> Super Admin </td>
-									
-									<td> 	
-										<input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /> 
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div id="tab-row" class="row">
-						<div id="mailBox" class="cell" ></div>
-						
-					</div>
-				</div>
-				
-				<?php
-			}
-		?>
+					<?php
+				}
+			?>
 
 
 		<script>var items = document.querySelectorAll('#iitw8i');

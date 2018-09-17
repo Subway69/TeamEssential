@@ -11,6 +11,7 @@ require_once "PHP/default.php";
 		<link rel="stylesheet" href="CSS/style.css">
 		<link rel="stylesheet" href="CSS/class numbered.css">
 		<link rel="stylesheet" href="CSS/media.css">
+		<script src = "JS/preferences.js"></script>
 	</head>
 
 	<body>
@@ -30,12 +31,9 @@ require_once "PHP/default.php";
 			<div class="navbar-container">
 				
 				<div id="i1pfjb" class="navbar-burger">
-					<div class="navbar-burger-line">
-					</div>
-					<div class="navbar-burger-line">
-					</div>
-					<div class="navbar-burger-line">
-					</div>
+					<div class="navbar-burger-line"></div>
+					<div class="navbar-burger-line"></div>
+					<div class="navbar-burger-line"></div>
 				</div>
 				
 				<div data-gjs="navbar-items" class="navbar-items-c">
@@ -51,11 +49,9 @@ require_once "PHP/default.php";
 						<?php
 						if (is_logged_in())
 						{
-						?>
-						<a href="PHP/logout.php" class="navbar-menu-link">Logout</a>
-
-						<?php
-
+							?>
+								<a href="PHP/logout.php" class="navbar-menu-link">Logout</a>
+							<?php
 						}
 						?>
 					</nav>
@@ -108,11 +104,10 @@ require_once "PHP/default.php";
 						</div>
 								  
 					</div>
-							   
-							   
+						   
 					<div id="education-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Education History
-						</div>
+						<div id="tab-title" class="c15657">Education History</div>
+						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
 								<form class="form">
@@ -127,7 +122,7 @@ require_once "PHP/default.php";
 									
 									<div class="form-group">
 										<select placeholder="Educational Institution" id="uni0" required="" class="select">
-										<option>-- Select Education Institution --</option>
+											<option>-- Select Education Institution --</option>
 										</select>
 									</div>
 									
@@ -137,32 +132,42 @@ require_once "PHP/default.php";
 										<option value="1">Completed</option>
 									</select>
 									
+									<div class="form-group"></div>
+									
+									
+									<div class="form-group"></div>
+									
+									<input id = "date0"type = "date" placeholder="Completion Date (Optional)" class="input" 
+												style="display:none;"/>
+												
 									<div class="form-group">
+										<button id = "addQualBut"type="button" onClick= "addQual()" class="button">Add</button>
 									</div>
 									
 									<div class="form-group">
+										<button id="updQualBut" type="button" class="button"onClick="updEdu()"
+											style="display:none;">Update
+										</button>
 									</div>
-									<input id = "date0"type = "date" placeholder="Completion Date (Optional)" class="input" style="display:none;"/>
-						   <div class="form-group"><button id = "addQualBut"type="button" onClick= "addQual()" class="button">Add</button></div>
-						   <div class="form-group"><button id="updQualBut" type="button" class="button"onClick="updEdu()"style="display:none;">Update</button></div>
-						   <div class="form-group"><button id="canQualBut" type="button" class="button"onClick="resetter()"style="display:none;">Cancel Update</button></div>
+									
+									<div class="form-group">
+										<button id="canQualBut" type="button" class="button"onClick="resetter()"
+											style="display:none;">Cancel Update
+										</button>
+									</div>
+
 									<script src="JS/addEducation1.js"></script>
 								</form>
+								
 								<div id = "showEducation">
 						 
-						  </div>
-							</div>
-						</div>
-						
-						<div id="bootstable-row" class="row">
-							<div id="bootstable-cell" class="cell c12511">
+								</div>
 							</div>
 						</div>
 					</div>
 					
 					<div id="employment-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Federation University Employment History
-						</div>
+						<div id="tab-title" class="c15657">Federation University Employment History</div>
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
@@ -183,28 +188,34 @@ require_once "PHP/default.php";
 										<input id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
 									</div>
 									
-									<div class="form-group">
-									</div>
+									<div class="form-group"></div>
 									
-									<div class="form-group">
-									</div>
+									
+									<div class="form-group"></div>
+									
 									<input id = "startDate1" type = "date" placeholder="Start Date" required="" class="input"/>
-						   <input id = "endDate1" type = "date" placeholder="End Date (Optional)" class="input"/>
+									<input id = "endDate1" type = "date" placeholder="End Date (Optional)" class="input"/>
 
 									<input id="tasks1" placeholder="Tasks Completed" class="input" />
-									<div class="form-group"><button id="addEmpBut" type="button" class="button"onClick="addEmp()">Add</button></div></p>
-						   <div class="form-group"><button id="updEmpBut" type="button" class="button"onClick="updEmp()"style="display:none;">Update</button></div></p>
-						   <div class="form-group"><button id="canEmpBut" type="button" class="button"onClick="resettter()"style="display:none;">Cancel Update</button></div>
 									
+									<div class="form-group">
+										<button id="addEmpBut" type="button" class="button"onClick="addEmp()">Add</button>
+									</div>
+									
+									<div class="form-group">
+										<button id="updEmpBut" type="button" class="button"onClick="updEmp()"
+										style="display:none;">Update</button>
+									</div>
+									<div class="form-group">
+										<button id="canEmpBut" type="button" class="button"onClick="resettter()"
+										style="display:none;">Cancel Update</button>
+									</div>
+
 									<script src="JS/addEmploy.js"></script>
 								</form>
+								
 								<div id ="showEmployment">
-						  </div>
-							</div>
-						</div>
-						
-						<div id="bootstable-row" class="row">
-							<div id="bootstable-cell" class="cell c12511">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -214,7 +225,7 @@ require_once "PHP/default.php";
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form class="form" id="gen" ">
+								<form class="form gen">
 									<table>
 										<thead>
 											<th>Skill Level</th>
@@ -235,10 +246,9 @@ require_once "PHP/default.php";
 							</div>
 						</div>
 					</div>
+					
 					<div id="specskl-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Discipline Skills
-						</div>
-						
+						<div id="tab-title" class="c15657">Discipline Skills</div>
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
 								<form id="forms" class="form">Discipline: 
@@ -252,51 +262,47 @@ require_once "PHP/default.php";
 								<form id="form10" class="form">
 									<script src="JS/specificSkills.js"></script>
 								</form>
-								
-
 							</div>
 						</div>
-					
 					</div>
-						<div id="contact-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Contact Information
-						</div>
+					
+					<div id="contact-tab" data-tab-content="1" class="tab-content">
+						<div id="tab-title" class="c15657">Contact Information</div>
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-							<?php $query = "SELECT * FROM Users WHERE user_id=?;";
-							$stmt= mysqli_prepare($conn,$query);
-							mysqli_stmt_bind_param($stmt,"d",$user_id);
+								<?php $query = "SELECT * FROM Users WHERE user_id=?;";
+								$stmt= mysqli_prepare($conn,$query);
+								mysqli_stmt_bind_param($stmt,"d",$user_id);
 
-							$success = mysqli_stmt_execute($stmt);
-							$results = mysqli_stmt_get_result($stmt);
-							$row = mysqli_fetch_assoc($results);
+								$success = mysqli_stmt_execute($stmt);
+								$results = mysqli_stmt_get_result($stmt);
+								$row = mysqli_fetch_assoc($results);
 
-							echo "<h1>Contact Info</h1>";
+								echo "<h1>Contact Info</h1>";
 
-							echo "Full Name: ". $row['title']." ". $row['first_name']." ". $row['middle_name']." ". $row['last_name'];
-							echo "</p>";
-							echo "Email: ". $row['email']?>
+								echo "Full Name: ". $row['title']." ". $row['first_name']." ". $row['middle_name']." ". $row['last_name'];
+								echo "</p>";
+								echo "Email: ". $row['email']?>
 
 							</div>
-						</div>
-						
-						<div id="bootstable-row" class="row">
-							<div id="bootstable-cell" class="cell c12511">
-							</div>
-						</div>
+						</div> 
 					</div>
-								                   <div id="files-tab" data-tab-content="1" class="tab-content">
-                    <div id="tab-title" class="c15657">Files</div>
-                    <div id="tab-row" class="row">
-                        <div id="form-cell" class="cell">
-                            <form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <input type="file" id="file" name="file"/ >
-                                <div class="form-group">
-                                    <button type="submit" class="button" name="submit">upload</button>
-                                </div>
+					
+					<div id="files-tab" data-tab-content="1" class="tab-content">
+						<div id="tab-title" class="c15657">Files</div>
+						
+						<div id="tab-row" class="row">
+							<div id="form-cell" class="cell">
+								<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
+									<div class="form-group">
+										<input type="file" id="file" name="file"/ >
+										<div class="form-group">
+											<button type="submit" class="button" name="submit">Upload</button>
+										</div>
+									</div> <!-- added -->
 								</form>
+								
 								<?php
 								$query = "SELECT files.file_name,files.file_location FROM files INNER JOIN User_Files ON files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
 		
@@ -305,12 +311,11 @@ require_once "PHP/default.php";
 
 								$success = mysqli_stmt_execute($stmt);
 								$results = mysqli_stmt_get_result($stmt);
-				                                   
+												   
 							
 								echo "<h1>Files</h1>";
 										
 								while($row1 = mysqli_fetch_assoc($results))
-									
 								{
 									$fname=$row1['file_name'];
 								$path=	$row1['file_location'];				
@@ -318,20 +323,18 @@ require_once "PHP/default.php";
 									
 								}
 								?>
-                            
-                        </div>
-                    </div>
-                    <div id="bootstable-row" class="row">
-                        <div id="bootstable-cell" class="cell c12511">
-                        </div></div>
-                    </div>
+							
+							</div>
+						</div>
+				   
 					</div>
+					<!--</div>-->
 				<!--</div>-->
 				</div>
 			</div> <!-- added this -->
 		</div> <!-- added this -->
 		
-		<script src = "JS/preferences.js"></script>
+		
 		<script>
 			var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {
