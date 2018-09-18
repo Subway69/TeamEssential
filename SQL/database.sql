@@ -36,13 +36,13 @@ INSERT INTO Users(title,first_name,middle_name,last_name,email,address,phone_num
     ("Dr","Admin","Admin","Admin","Admin@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,1,0,0),
     ("Mr","Bruce","Batman","Wayne","batman@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
     ("Miss","Taylor","Alison","Swift","Taylor@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
-    ("Miss","Diana","Wonder-Woman","Prince","Diana@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1);
+    ("Miss","Diana","Wonder-Woman","Prince","Diana@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1),
     ("Mr","John","Quincey","Adams","John@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
     ("Miss","Libby","","Pellow","Libby@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
     ("Mr","Alec","","Baldwin","Alec@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
     ("Miss","Christina","","Perri","Perri@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
     ("Mr","Kevin","Crispy","Bacon","Bacon@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
-    ("Miss","Stacey","","Goodwin","Goodwin@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
+    ("Miss","Stacey","","Goodwin","Goodwin@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0);
 
 CREATE TABLE Qualification
 (

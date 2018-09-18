@@ -33,6 +33,7 @@ function listsSkill(ev)
         var skillName = document.createTextNode(listsa[i].skill_name);
         
 		cell1.appendChild(skillName);
+		cell1.setAttribute("class","sname");
 		
         var skillHid = document.createElement("input");
         skillHid.setAttribute("type","hidden");
@@ -40,35 +41,36 @@ function listsSkill(ev)
         skillHid.setAttribute("value",listsa[i].skill_id);
 		
 		cell5.appendChild(skillHid);
-
+		
         var lowRad = document.createElement("input");
         lowRad.setAttribute("id","low"+i);
         lowRad.setAttribute("type","radio");
-        lowRad.setAttribute("class","radio");
+        lowRad.setAttribute("class","radio rpadding");
         lowRad.setAttribute("name","tRadio"+i);
         lowRad.setAttribute("value","Low");
         
       	cell2.appendChild(lowRad);
-        
+     
         
         var medRad = document.createElement("input");
         medRad.setAttribute("id","med"+i);
         medRad.setAttribute("type","radio");
-        medRad.setAttribute("class","radio");
+        medRad.setAttribute("class","radio rpadding");
         medRad.setAttribute("name","tRadio"+i);
         medRad.setAttribute("value","Medium");
         
         cell3.appendChild(medRad);
-
+		
+		
         var highRad = document.createElement("input");
         highRad.setAttribute("id","high"+i);
         highRad.setAttribute("type","radio");
-        highRad.setAttribute("class","radio");
+        highRad.setAttribute("class","radio rpadding");
         highRad.setAttribute("name","tRadio"+i);
         highRad.setAttribute("value","High");
         
 		cell4.appendChild(highRad);
-        
+       
 		
         row.appendChild(cell1);
 		row.appendChild(cell2);

@@ -113,14 +113,14 @@ require_once "PHP/default.php";
 												</tr>
 											</tHead>
 
-											<tbody>
+											<tbody class="table utable">
 												<?php
 													$query = "SELECT * FROM Users;";
 													$stmt= mysqli_prepare($conn,$query);
 													$success = mysqli_stmt_execute($stmt);
 													$results = mysqli_stmt_get_result($stmt);
 													while($row = mysqli_fetch_assoc($results)){
-?>
+												?>
 													
 														<?php
 															if ($row['permission']==0){
@@ -144,11 +144,12 @@ require_once "PHP/default.php";
 
 														<?php
 															$person =$row['user_id']; 
-														?><form action = "viewProfile.php" method = "POST">
+														?>
+														<form class="blank" action = "viewProfile.php" method = "POST">
 
-														<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
+															<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
 
-														<input type = "submit" name = "tSub" value = "Go" />
+															<input type = "submit" class="ubutton button" name = "tSub" value = "Go" />
 														</form>
 
 														</td> 

@@ -236,24 +236,13 @@ label {
   margin-bottom: 0.5rem;
 }
 
-button {
-  border-radius: 0;
-}
 
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-input,
-button,
-select,
-optgroup,
-textarea {
-  margin: 0;
-  font-family: inherit;
-  line-height: inherit;
-}
+
 
 button,
 input {
@@ -278,12 +267,6 @@ button::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   padding: 0;
   border-style: none;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-  box-sizing: border-box;
-  padding: 0;
 }
 
 input[type="date"],
@@ -591,8 +574,6 @@ pre code {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 .no-gutters {
@@ -1519,10 +1500,6 @@ pre code {
   background-color: transparent;
 }
 
-.table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
-}
 
 .table tbody + tbody {
   border-top: 2px solid #dee2e6;
@@ -1788,13 +1765,6 @@ pre code {
   }
 }
 
-.table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-}
 
 .table-responsive > .table-bordered {
   border: 0;

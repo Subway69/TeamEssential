@@ -11,6 +11,7 @@ require_once "PHP/default.php";
 		<link rel="stylesheet" href="CSS/style.css">
 		<link rel="stylesheet" href="CSS/class numbered.css">
 		<link rel="stylesheet" href="CSS/media.css">
+		<!--<link rel="stylesheet" href="CSS/bootstrap.css"> -->
 	</head>
 
 	<body>
@@ -135,7 +136,7 @@ require_once "PHP/default.php";
 												
 												
 									<div class="form-group">
-										<button id = "addQualBut"type="button" onClick= "addQual()" class="button optional">Add</button>
+										<button id = "addQualBut"type="button" onClick= "addQual()" class="button">Add</button>
 									</div>
 									
 									<div class="form-group">
@@ -214,24 +215,33 @@ require_once "PHP/default.php";
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
+							
 								<form class="form gen">
-									<table>
-										<thead>
-											<th>Skill Level</th>
-											<th>Low</th>
-											<th>Medium</th>
-											<th>High</th>
+								
+									<table class="table-striped gstable">
+										<thead class="shead">
+											<tr>
+												<td class="sheads">Skill Level</td>
+												<td class="sheadr">Low</td>
+												<td class="sheadr">Medium</td>
+												<td class="sheadr">High</td>
+											<tr>
 										</thead>
-										<tbody id="gensklstable">
+										
+										
+										
+										<tbody id="gensklstable" class="specificTable">
 										
 										</tbody>
 									</table>
 									<script src="JS/skills.js"></script>
 									
-									<div class="form-group">
-										<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
-									</div>
+									
+									<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
+									
 								</form>
+								
+							
 							</div>
 						</div>
 					</div>

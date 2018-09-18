@@ -68,12 +68,12 @@ input[type=cdbutton]{ /*category delete button */
 	line-height:normal;
 	float:right;
 }
-.button{
-	transition-duration: 2s;
+form.blank > input[type=submit]{
+	margin:5px 0 5px 0; 
 }
 .button:hover{
-	/* background: linear-gradient(180deg,#80c6ff 0,#0067fd 50%,#0021ff 51%,#80c6ff 100%);		 */
-	background:#09c450;
+	background: linear-gradient(180deg,#80c6ff 0,#66a5ff 50%,#4b95ff 51%,#80c6ff 100%);		
+	/* background:#09c450; */
     color: white;
 }
 .optional{
@@ -81,7 +81,7 @@ input[type=cdbutton]{ /*category delete button */
 }
 input {
 	padding:5px 0 5px 0;
-	margin: 0 0 10px 0;
+	/* margin: 0 0 10px 0; */
 	/* font-size:1em; */
     /* margin-bottom:15px; */
 	border-radius:4px;
@@ -157,6 +157,9 @@ a:active {
 
 /* ******************************TABLES****************************** */
 
+table{
+	border-collapse:collapse;
+}
 .table {
     display:table;
     text-align:center;
@@ -167,21 +170,53 @@ a:active {
 	/* top: 50%; */
 	/* left: 50%; */
 	/* transform: translate(-50%, -50%); */
-	
+	/* border-collapse:collapse; */
 	align-self:center;
 	align-items:flex-start;
 	position: static;
 }
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+
 .table th,.table td {
-	/* padding: 0.75rem; */
 	padding: 10px;
 	vertical-align: middle;
 	border-top: 1px solid #dee2e6;
 }
+.table td{ /*user table*/
+	padding: 5px 10px 5px 10px;;
+}
 .table thead th {
 	vertical-align: bottom;
-	border-bottom: 2px solid #dee2e6;
+	/* border-bottom: 2px solid #dee2e6; */
+	border-bottom: 1px solid #dee2e6;
 }
+.table tbody{
+	display:table-row-group;
+}
+
+
+.gstable{
+	display:block;
+}
+.specificTable  thread > tr , tbody{
+  display:block;
+  height:340px;
+  vertical-align:middle;
+  overflow:auto;
+}
+
+
+
+
+
+
+
+
+
 .table-responsive {
 	display: block;
 	width: 100%;
@@ -199,7 +234,23 @@ a:active {
 	margin-right:auto;
 	padding-left:0px;
 }
-
+.sname{ /*skill name */
+	line-height:25px;
+	width:365px;
+	font-size:0.99em;
+}
+.shead{ /*SKILL HEADER*/
+	width:555px;
+	font-weight:bold;
+}
+.sheadr{	/*SKILL HEADER RADIO*/
+	width:60px;
+	text-align:center;
+}
+.sheads{	/*SKILL HEADER SKILL*/
+	width:365px;
+}
+	
 /* ******************************FORMS****************************** */
 
 form{
@@ -222,12 +273,18 @@ form#reg { /* reg form style */
 }
 form.gen {
 	width:600px;
-	height:490px;
+	/* height:490px; */
+	height:380px;
 	text-align:left;
-	overflow-x:auto;
+	/* overflow-x:auto; */
 	word-wrap:break-word;
 }
 
+.blank{
+	border:none;
+	padding:0px;
+	margin:0px;
+}
 
 
 /* ******************************HELP****************************** */
@@ -238,8 +295,15 @@ form.gen {
 
 /* ******************************RADIO****************************** */
 
-.radio class {
-	text-align:center;
+/* .radio class { */
+	/* text-align:center; */
+/* } */
+
+.rpadding{
+	margin: 0 20px 0 20px;
+	border-bottom:1px;
+	vertical-align:middle;
+	width:20px;
 }
 
 /* ****************************** ****************************** */
