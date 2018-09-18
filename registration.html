@@ -119,12 +119,13 @@ require_once "PHP/default.php";
 											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
 								
-                                Have you worked with the Uni before?
+                                <p style="font-size: 0.8em;"> Have you worked with Federation University before?
                                 <input type = "radio" name ="workUni" value="1"/> Yes
 								<input type = "radio" name ="workUni" value="0"/> No
 								<br>
-								<!--</p><p style="font-size: 0.8em;"> -->
-								Do you have a Bachelor's Degree? 
+								
+								
+								</p><p style="font-size: 0.8em;"> Do you have minimum of a Bachelor's Degree? 
 								<input type = "radio" name ="bachelor"  id="yes" 
 										onClick="document.getElementById('sub').disabled=false;" /> Yes
 
