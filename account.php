@@ -7,10 +7,10 @@ require_once "PHP/default.php";
 ?>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="./css/master.css">
-		<link rel="stylesheet" href="./css/style.css">
-		<link rel="stylesheet" href="./css/class numbered.css">
-		<link rel="stylesheet" href="./css/media.css">
+		<link rel="stylesheet" href="CSS/master.css">
+		<link rel="stylesheet" href="CSS/style.css">
+		<link rel="stylesheet" href="CSS/class numbered.css">
+		<link rel="stylesheet" href="CSS/media.css">
 		<script src="JS/passwordMatch.js"></script>
 	</head>
 	

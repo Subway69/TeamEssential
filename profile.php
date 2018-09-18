@@ -11,7 +11,6 @@ require_once "PHP/default.php";
 		<link rel="stylesheet" href="CSS/style.css">
 		<link rel="stylesheet" href="CSS/class numbered.css">
 		<link rel="stylesheet" href="CSS/media.css">
-		<script src = "JS/preferences.js"></script>
 	</head>
 
 	<body>
@@ -330,11 +329,48 @@ require_once "PHP/default.php";
 					</div>
 					<!--</div>-->
 				<!--</div>-->
+								                   <div id="files-tab" data-tab-content="1" class="tab-content">
+                    <div id="tab-title" class="c15657">Files</div>
+                    <div id="tab-row" class="row">
+                        <div id="form-cell" class="cell">
+                            <form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="file" id="file" name="file"/ >
+                                <div class="form-group">
+                                    <button type="submit" class="button" name="submit">upload</button>
+                                </div>
+								</form>
+								<?php
+								$query = "SELECT files.file_name,files.file_location FROM files INNER JOIN User_Files ON files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
+		
+$stmt= mysqli_prepare($conn,$query);
+								mysqli_stmt_bind_param($stmt,"d",$user_id);
+
+								$success = mysqli_stmt_execute($stmt);
+								$results = mysqli_stmt_get_result($stmt);
+				                                   
+							
+echo "<h1>Files</h1>";
+		
+while($row1 = mysqli_fetch_assoc($results))
+	
+{
+	$fname=$row1['file_name'];
+$path=	$row1['file_location'];				
+echo "<h6>".$row1['file_name']."</h6>"."<a download='$fname' href='$path'>download</a><br>";
+	
+}
+								?>
+                            
+                        </div>
+                    </div>
 				</div>
 			</div> <!-- added this -->
 		</div> <!-- added this -->
 		
 		
+		
+		<script src = "JS/preferences.js"></script>
 		<script>
 			var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {

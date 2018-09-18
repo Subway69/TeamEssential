@@ -7,20 +7,20 @@ require_once "PHP/default.php";
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="./css/master.css">
-		<link rel="stylesheet" href="./css/style.css">
-		<link rel="stylesheet" href="./css/class numbered.css">
-		<link rel="stylesheet" href="./css/media.css">
-		<link rel="stylesheet" href="./css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="./css/datatable.min.css" media="screen">
+		<link rel="stylesheet" href="CSS/master.css">
+		<link rel="stylesheet" href="CSS/style.css">
+		<link rel="stylesheet" href="CSS/class numbered.css">
+		<link rel="stylesheet" href="CSS/media.css">
+		<link rel="stylesheet" href="CSS/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="CSS/datatable.min.css" media="screen">
 		<!--<link rel="stylesheet" type="text/css" href="css/datatable-bootstrap.min.css" media="screen">-->
 		<!-- JS files -->
-		<script type="text/javascript" src="js/datatable.min.js"></script>
+		<script type="text/javascript" src="JS/datatable.min.js"></script>
 		
 		<!-- Add the following if you want to use the jQuery wrapper (you still need datatable.min.js): -->
-		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="JS/jquery.min.js"></script>
 		
-		<script type="text/javascript" src="js/datatable.jquery.min.js"></script>
+		<script type="text/javascript" src="JS/datatable.jquery.min.js"></script>
 		
 	</head>
   
@@ -74,7 +74,7 @@ require_once "PHP/default.php";
 		<?php
 			if(getPermission() ==1 || getPermission()==2){
 			
-				?> <!--WHAT IS THIS-->
+				?> 
 				
 				<div id="ii4vcy" class="row c3690">
 					<div id="iuxvnm" class="cell">
@@ -102,7 +102,7 @@ require_once "PHP/default.php";
 										
 									while($row = mysqli_fetch_assoc($results)){
 										?>
-									
+										
 										<table  class="table table-responsive" id="user-table">
 											<tHead>
 												<tr>
@@ -120,7 +120,8 @@ require_once "PHP/default.php";
 													$success = mysqli_stmt_execute($stmt);
 													$results = mysqli_stmt_get_result($stmt);
 													while($row = mysqli_fetch_assoc($results)){
-														?>
+?>
+													
 														<?php
 															if ($row['permission']==0){
 																$uType="User";
@@ -143,20 +144,23 @@ require_once "PHP/default.php";
 
 														<?php
 															$person =$row['user_id']; 
-														?>
+														?><form action = "viewProfile.php" method = "POST">
 
 														<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
 
-														<input type = "submit" class="button" name = "tSub" value = "Go" />
+														<input type = "submit" name = "tSub" value = "Go" />
+														</form>
 
 														</td> 
 														</tr>
+														
 														<?php 
+														
 													} 
 														?> 
 											</tbody>	
 										</table>
-
+										
 
 										<?php
 									}?>					
