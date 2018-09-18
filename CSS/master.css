@@ -76,6 +76,9 @@ input[type=cdbutton]{ /*category delete button */
 	background:#09c450;
     color: white;
 }
+.optional{
+	display:none;
+}
 input {
 	padding:5px 0 5px 0;
 	margin: 0 0 10px 0;

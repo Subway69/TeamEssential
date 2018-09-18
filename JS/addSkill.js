@@ -8,6 +8,16 @@ var selCats = document.getElementById("skillCat0");
 loadCategories();
 
 
+// formSkills.addEventListener('change',function(ev)){
+	// if(formSkills.value==""){
+		// formSkills.style.display="none";
+	// }
+	// else{
+		// formSkills.style.display="block";
+	// }
+// }
+
+
 //Loads all the categories
 function loadCategories()
 {
@@ -149,7 +159,13 @@ function listSkills(ev)
     skillSize = skillLists.length;
     var formSkill = document.getElementById("addSkillsForm");
 
-    for(var i =0; i<skillSize;i++)
+	if(selCats.value==""){
+		formSkill.style.display="none";
+	}
+	else{
+		
+		formSkill.style.display="block";
+		for(var i =0; i<skillSize;i++)
         {
             var nameSkill = document.createTextNode(skillLists[i].skill_name);
             formSkill.appendChild(nameSkill);
@@ -164,6 +180,11 @@ function listSkills(ev)
             
 
         }
+	}
+	
+	
+	
+    
 }
 //Clears the skills so skills from other categories can be shown
 function clear()

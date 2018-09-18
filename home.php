@@ -160,7 +160,9 @@ require_once "PHP/default.php";
 														?> 
 											</tbody>	
 										</table>
+										<div id="user-datatable">
 										
+										</div>
 
 										<?php
 									}?>					
@@ -186,7 +188,8 @@ require_once "PHP/default.php";
 										<script src = "JS/addSkill.js"></script>
 									</table>
 								</form>
-								<!--<form class="form" id="addSkillsForm"/></form> -->
+								
+								<form class="form optional" id="addSkillsForm" /></form>
 								
 							</div>
 						</div>
@@ -307,7 +310,7 @@ require_once "PHP/default.php";
 			sort: [ true,true,false],
 			filters: [ true,true, 'select'],
 			filterText: 'Type to filter... ',
-			pagingDivSelector: "#paging-first-datatable"
+			pagingDivSelector: "#user-datatable"
 			}
 											 );
 		</script>
