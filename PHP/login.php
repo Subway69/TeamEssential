@@ -1,10 +1,15 @@
 <?php
-session_start();
-require_once "default.php";
-?>
-<?php
-	$email= $_POST['tUsername'];
-	$password=$_POST['tPassword'];
+ session_start();
+    require_once "default.php";
+ //This gets the raw request body
+    $req = file_get_contents('php://input');
+
+    $req_obj = json_decode($req);
+
+    $json_result= array();
+	$email= $req_obj->user;
+	$password=$req_obj->pass;
+	$text="hello";
 
 	//Email and Password must be entered
 	if($email and $password)
@@ -20,6 +25,7 @@ require_once "default.php";
 		{
 			$results = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_array($results);
+			
 
 			if($row)
 			{
@@ -39,15 +45,22 @@ require_once "default.php";
 					login($dbID);
 					setPermission($perm);
 					setWork($work);
-					header('Location: ../home.php');
-					exit;
+					$text="success";
+					//exit;
 				}
                 else
 				{
-					echo "Incorrect Password";
+					$text ="Incorrect Password";
                 }
-            }
-        }
-    }
+			}
+			
+		}
 
-                ?>			
+	}
+
+
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+    ?>

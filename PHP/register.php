@@ -1,14 +1,17 @@
 <?php session_start();
 require_once "default.php" ?> 
 <?php 
-    $title = $_POST["tTitle"];
-    $last = $_POST["tLastName"];
-    $first = $_POST["tFirstName"];
-    $email = $_POST['tEmail'];
+        $req = file_get_contents('php://input');
+        //Converts the contents into a PHP Object
+        $req_obj = json_decode($req);
+    $title = $req_obj->title;
+    $last = $req_obj->lName;
+    $first =$req_obj->fName;
+    $email = $req_obj->email;
     $errPass = "";
-    $password = $_POST['tPassword'];
-    $cPassword = $_POST['tConfirm'];
-    $work = $_POST['workUni'];
+    $password = $req_obj->pass1;
+    $cPassword = $req_obj->pass2;
+    $work = $req_obj->uni;
     $perm = 0;
     $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
     $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
@@ -21,21 +24,21 @@ require_once "default.php" ?>
     $success1 = mysqli_stmt_execute($stmt3);
     $results1= mysqli_stmt_get_result($stmt3);
     $i=0;
+    $text="";
     while($row = mysqli_fetch_assoc($results1))
     {
         $i++;
     }
     if($i>0)
     {
-        $em_error="email already exists";
-        echo $em_error;
-    }
+        $text="email already exists";
+         }
     else
     {
         if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
         {
-            $err_password = "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
-            echo $err_password;
+            $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
+         
         } 
         else 
         {
@@ -56,14 +59,18 @@ require_once "default.php" ?>
             
                 if ($success) 
                 {
-                    header('Location: ../profile.php');
+                    $text="Success";
                 } 
             }
             else 
             {
-                echo "password don't match";
-                ?><form action = "../index.html" method = "POST"> <input type = "Submit" name= "back" value =="Go back"/> </form> <?php
-            } ?> <script src = "../JS/alerts.js"></script> <?php
+                $text= "password don't match";
+                ?>  <?php
+            } ?> <?php
         }
     } 
+        //Inform the client that we are sending back JSON    
+        header("Content-Type: application/json");
+        //Encodes and sends it back
+        echo json_encode($text);
 ?>

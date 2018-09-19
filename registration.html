@@ -65,10 +65,10 @@ require_once "PHP/default.php";
 					
                     <div id="tab-row" class="row">
                         <div id="form-cell" class="cell">
-                            <form class="form" id="login" action = "PHP/login.php" method = "POST">
+                            <form class="form" id="login" action = "home.php" method = "POST">
                                 <div class="form-group">
-                                    <input name = "tUsername"placeholder="Email Address"  type="email" class="input" required />
-                                    <input name = "tPassword" placeholder="Password"  type="password" class="input" required />
+                                    <input id = "tUsername"placeholder="Email Address"  type="email" class="input" required />
+                                    <input id = "tPassword" placeholder="Password"  type="password" class="input" required />
                                 </div>
 								
                                 <div class="form-group"></div>
@@ -76,7 +76,8 @@ require_once "PHP/default.php";
                                 <div class="form-group"></div>
                                 
                                 <div class="form-group">
-                                    <button type="submit" class="button">Login</button>
+                                    <!--<input type="submit" id = "subButton"style="display:none;" class="button"/>-->
+                                    <input type="button" onClick="login()" class="button"value = "Login"/>
                                 </div>
                             </form>
                         </div>
@@ -88,7 +89,7 @@ require_once "PHP/default.php";
 					
                     <div id="tab-row" class="row">
                         <div id="form-cell" class="cell">
-                            <form class="form" id="reg" action = "PHP/register.php" method="POST">
+                            <form class="form" id="reg" action = "profile.php" method="POST">
 							
 								<!--QUESTION why this -->
                                 <div class="form-group"></div>
@@ -97,7 +98,7 @@ require_once "PHP/default.php";
                                 
                                 <div class="form-group"></div>
                                 
-                                <select name = "tTitle" required class="select">
+                                <select id = "tTitle" required class="select">
                                     <option value="">- Title -</option>
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
@@ -106,26 +107,26 @@ require_once "PHP/default.php";
                                     <option value="Dr">Dr</option>
                                 </select>
 								
-                                <input name = "tFirstName"placeholder="First Name" required class="input val" />
-                                <input name = "tLastName" placeholder="Last Name" required class="input val" />
-                                <input name = "tEmail" type="email" placeholder="Email Address" required class="input val" />
+                                <input id = "tFirstName"placeholder="First Name" required class="input val" />
+                                <input id = "tLastName" placeholder="Last Name" required class="input val" />
+                                <input id = "tEmail" type="email" placeholder="Email Address" required class="input val" />
 
-                                <input name ="tPassword" class="input val" id="field_pwd1" placeholder="Password" type="password" required 
+                                <input id ="regPassword" class="input val" id="field_pwd1" placeholder="Password" type="password" required 
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
 												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>
 								
-                                <input name = "tConfirm" class="input val" id="field_pwd2" placeholder="Confirm Password" type="password" 
+                                <input id = "tConfirm" class="input val" id="field_pwd2" placeholder="Confirm Password" type="password" 
 											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
 								
                                 <p style="font-size: 0.8em;"> I have been OR am currently employed by Federation University
-                                <input type = "checkbox" name ="workUni" value="1"/>
+                                <input id = "uniCheck"type = "checkbox" name ="workUni" value="1"/>
 								<br>
 								
 								
 								</p><p style="font-size: 0.8em;"> I have minimum of a Bachelor's Degree
-								<input type = "checkbox" name ="bachelor" value="1"/
+								<input id = "bachelorCheck" type = "checkbox" name ="bachelor" value="1"/
 										onClick="document.getElementById('sub').disabled=false;" /> 
 
 								<!-- <input type = "radio" name ="bachelor" id="no" onClick="document.getElementById('sub').disabled=true;
@@ -133,7 +134,7 @@ require_once "PHP/default.php";
 										registration process.');" /> No -->
 										
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <button type="submit" class="button">Register</button>
+                                    <input type="button" class="button" onClick ="register()"value = "Register"/>
                                 </div>
                             </form>
                         </div>
@@ -175,6 +176,7 @@ require_once "PHP/default.php";
             }.bind(items[i]))();
         }
     </script>
+    <script src = "JS/login.js"></script>
 
 	<footer>
 		
