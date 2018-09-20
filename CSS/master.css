@@ -204,7 +204,8 @@ table{
 }
 .specificTable  thread > tr , tbody{
   display:block;
-  height:340px;
+  /* height:340px; */
+  height:350px;
   vertical-align:middle;
   overflow:auto;
 }
@@ -274,7 +275,7 @@ form#reg { /* reg form style */
 form.gen {
 	width:600px;
 	/* height:490px; */
-	height:380px;
+	height:390px;
 	text-align:left;
 	/* overflow-x:auto; */
 	word-wrap:break-word;
