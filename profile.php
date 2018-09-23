@@ -327,20 +327,24 @@ $stmt= mysqli_prepare($conn,$query);
 								$success = mysqli_stmt_execute($stmt);
 								$results = mysqli_stmt_get_result($stmt);
 				                                   
-							
-echo "<h1>Files</h1>";
-echo "<table cellspacing='10'><center>";
+?>
+<h1>Files</h1>
+<table class="table" ><tbody>
+				    
+<?php
 		
 while($row1 = mysqli_fetch_assoc($results))
 	
 {
 	$fname=$row1['file_name'];
 $path=	$row1['file_location'];				
-echo "<tr><td>".$row1['file_name']."</td><td>"."<button><a download='$fname' href='$path'>download</a></button></td></tr>";
+echo "<tr><td>".$row1['file_name']."</td><td>"."<button ><a download='$fname' href='$path'>download</i></a></button></td></tr>";
 	
 }
-echo "</center></table>";
+
 								?>
+								</tbody></table>
+								
 								
 							</div>
 						</div>
