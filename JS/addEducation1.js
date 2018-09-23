@@ -132,7 +132,6 @@ function resetEducation()
 function loadEducation()
 {
     x=0;
-    console.log("x is "+0);
     loadQualification();
    
 }
@@ -152,7 +151,6 @@ function listEducation()
     var listSize=qualList.length;
     for(var i=0;i<listSize;i++)
     {
-        console.log("hello")
         var div = document.getElementById("showEducation");
         var str;
         if(qualList[i].finished==0)
@@ -221,14 +219,12 @@ function updateQualification(ids)
      studyUpd =document.getElementById("study0");
      if(qualList[ids].finished==0)
      {
-         console.log("HIII");
         studyUpd.getElementsByTagName('option')[1].selected='selected';
         document.getElementById("date0").style.display="none";
 
     }
      if(qualList[ids].finished==1)
      {
-        console.log("HIooo");
         //studyUpd.value = "Completed";
         studyUpd.getElementsByTagName('option')[2].selected='selected';
         document.getElementById("date0").style.display="block";
@@ -251,7 +247,6 @@ function updateQualification(ids)
         var uniUpdate= document.getElementById("uni0").value;
         var dateUpdate=document.getElementById("date0").value;
         var studyUpdate=document.getElementById("study0").value;
-        console.log("qaul"+qualId+ typeUpdate+degUpdate+uniUpdate+dateUpdate+studyUpdate); 
                                     
         //Sends the inputs to the backend to be added
         httUpdateEducation = new XMLHttpRequest();

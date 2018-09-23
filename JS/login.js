@@ -9,7 +9,7 @@ function register()
     var pass1 = document.getElementById("regPassword").value;
     var pass2 = document.getElementById("tConfirm").value;
     var bachelor= document.getElementById("bachelorCheck");
-    var uniWork=document.getElementById("uniCheck").value;
+    var uniWork=document.getElementById("uniCheck");
     var bach=0;
     var unis;
     if(bachelor.checked)
@@ -42,7 +42,7 @@ function register()
     reg.pass1=pass1;
     reg.pass2=pass2;
   //  reg.bach = bach;
-    reg.uni = uniWork;
+    reg.uni = unis;
     httRegister.send(JSON.stringify(reg));
 
 }
@@ -69,12 +69,8 @@ function login()
    
     httLogin=new XMLHttpRequest();
     httLogin.open("POST","PHP/login.php",true);
-<<<<<<< Updated upstream
   
-    httLogin.onload=loginResponse
-=======
     httLogin.onload=loginResponse;
->>>>>>> Stashed changes
     var log={};
     log.user=userName;
     log.pass=passWord;

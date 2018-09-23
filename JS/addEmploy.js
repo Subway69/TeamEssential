@@ -124,7 +124,6 @@ function updateEmploy(id)
     updTypeArr =document.getElementById("type1");
     if(employList[id].work_rate=="Full Time")
     {
-        console.log("Howdy");
         updTypeArr.getElementsByTagName('option')[1].selected='selected';
     }
     if(employList[id].work_rate=="Part Time")
@@ -160,7 +159,7 @@ function updateEmploy(id)
     updEndArr.value=employList[id].endDate;
     updTaskArr.value=employList[id].tasks;
     empID = document.getElementById("emp"+id).value;
-    console.log(empID);
+
 
 
 }
