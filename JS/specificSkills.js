@@ -9,7 +9,7 @@ var httChecks;
 var checkListss;
 var choice;
 
-//This ajax requests gets all the cattegories
+//This ajax requests gets all the categories
 httCat = new XMLHttpRequest();
 httCat.open("POST","PHP/getCategory.php",true);
 httCat.onload=listCat;
@@ -29,6 +29,7 @@ function listCat(ev)
         {
             var catOption = document.createElement("option");
             catOption.setAttribute("value",catText);
+			catOption.setAttribute("class","select");
             catOption.innerHTML=catText;
             selCat.appendChild(catOption);
         }                      
@@ -81,46 +82,58 @@ function listy(ev)
     {
         var skillNames = document.createTextNode(lists[i].skill_name);
         
+		var row = document.createElement("tr");
+		var cell1 = document.createElement("td");
+		var cell2 = document.createElement("td");
+		var cell3 = document.createElement("td");
+		var cell4 = document.createElement("td");
+		var cell5 = document.createElement("td");
+		
+		cell1.appendChild(skillNames);
+		cell1.setAttribute("class", "sname");
+		
         var skillHids = document.createElement("input");
         skillHids.setAttribute("type","hidden");
         skillHids.setAttribute("id","hids"+i);
         skillHids.setAttribute("value",lists[i].skill_id);
-
+		
+		cell5.appendChild(skillHids);
+		
         var lowRads = document.createElement("input");
         lowRads.setAttribute("id","lows"+i);
         lowRads.setAttribute("type","radio");
+		lowRads.setAttribute("class","radio rpadding");
         lowRads.setAttribute("name","tRadios"+i);
         lowRads.setAttribute("value","Low");
         
-        var lows =document.createTextNode("Low");
-        
+		cell2.appendChild(lowRads);
         
         var medRads = document.createElement("input");
         medRads.setAttribute("id","meds"+i);
         medRads.setAttribute("type","radio");
+		medRads.setAttribute("class","radio rpadding");
         medRads.setAttribute("name","tRadios"+i);
         medRads.setAttribute("value","Medium");
         
-        var meds =document.createTextNode("Medium");
+		cell3.appendChild(medRads);
 
         var highRads = document.createElement("input");
         highRads.setAttribute("id","highs"+i);
         highRads.setAttribute("type","radio");
+		highRads.setAttribute("class","radio rpadding");
         highRads.setAttribute("name","tRadios"+i);
         highRads.setAttribute("value","High");
         
-        var highs =document.createTextNode("High");
+		cell4.appendChild(highRads);
+		
+		row.appendChild(cell1);
+		row.appendChild(cell2);
+		row.appendChild(cell3);
+		row.appendChild(cell4);
+		row.appendChild(cell5);
 
-        //Appends each skill and associated radio buttons to form
-        skillForms.appendChild(skillNames);
-        skillForms.appendChild(skillHids);
-        skillForms.appendChild(lowRads);
-        skillForms.appendChild(lows);
-        skillForms.appendChild(medRads);
-        skillForms.appendChild(meds);
-        skillForms.appendChild(highRads);
-        skillForms.appendChild(highs);
-        skillForms.appendChild(document.createElement("P"));
+		skillForms.appendChild(row);
+        
     }
 
     var specBut = document.createElement("input");

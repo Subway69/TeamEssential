@@ -27,7 +27,7 @@ function listsSkill(ev)
 		var cell4 = document.createElement("td");
 		var cell5 = document.createElement("td");
 		
-		cell2.style
+		//cell2.style
 		
 		
         var skillName = document.createTextNode(listsa[i].skill_name);

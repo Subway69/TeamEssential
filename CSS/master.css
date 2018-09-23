@@ -205,12 +205,13 @@ table{
 .specificTable  thread > tr , tbody{
   display:block;
   /* height:340px; */
-  height:350px;
+  height:375px;
   vertical-align:middle;
   overflow:auto;
 }
-
-
+.discipline{
+	height:300px;
+}
 
 
 
@@ -241,7 +242,8 @@ table{
 	font-size:0.99em;
 }
 .shead{ /*SKILL HEADER*/
-	width:555px;
+	/* width:555px; */
+	width:570px;
 	font-weight:bold;
 }
 .sheadr{	/*SKILL HEADER RADIO*/
@@ -249,7 +251,8 @@ table{
 	text-align:center;
 }
 .sheads{	/*SKILL HEADER SKILL*/
-	width:365px;
+	/* width:365px; */
+	width:362px;
 }
 	
 /* ******************************FORMS****************************** */
@@ -275,12 +278,22 @@ form#reg { /* reg form style */
 form.gen {
 	width:600px;
 	/* height:490px; */
-	height:390px;
+	height:460px;
 	text-align:left;
 	/* overflow-x:auto; */
 	word-wrap:break-word;
 }
-
+div > form.disc{
+	background-color:rgba(122, 125, 127, 0.2);
+	width:600px;
+	display:block;
+	border: 2px inset black;
+	border-radius:10px;
+	border-color: #068;
+	align-self:center;
+	margin:0 -5px 16px -5px;
+	padding:0px;
+}
 .blank{
 	border:none;
 	padding:0px;

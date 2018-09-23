@@ -228,22 +228,17 @@ require_once "PHP/default.php";
 												<td class="sheadr">Medium</td>
 												<td class="sheadr">High</td>
 											<tr>
+											<p><p>
 										</thead>
-										
-										
-										
 										<tbody id="gensklstable" class="specificTable">
 										
 										</tbody>
 									</table>
 									<script src="JS/skills.js"></script>
 									
-									
 									<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
 									
 								</form>
-								
-							
 							</div>
 						</div>
 					</div>
@@ -252,16 +247,38 @@ require_once "PHP/default.php";
 						<div id="tab-title" class="c15657">Discipline Skills</div>
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form id="forms" class="form">Discipline: 
+							
+							
+								<form id="forms" class="disc"> 
+									<p style="text-align:center">Discipline: 
 									
-									<select id="category" name="tCategory">
-
-									</select>
+										<select id="category" name="tCategory">
+										</select>
+									</p>
 								</form>
 								
-								<form id="form10" class="form">
+							
+								<form class="form discipline gen">
+								
+									<table class="table-striped gstable">
+										<thead class="shead">
+											<tr>
+												<td class="sheads">Skill Level</td>
+												<td class="sheadr">Low</td>
+												<td class="sheadr">Medium</td>
+												<td class="sheadr">High</td>
+											<tr>
+										</thead>
+										<tbody id="form10" class="specificTable ">
+										
+										</tbody>
+									</table>
 									<script src="JS/specificSkills.js"></script>
+									
+									
+									
 								</form>
+								
 							</div>
 						</div>
 					</div>
