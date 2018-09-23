@@ -4,6 +4,7 @@ var listsa;
 var htts;
 var httCheck;
 var checkLists;
+var updates=[];
 //This Ajax request retrieves all the General and Research skills from the Database
 httad = new XMLHttpRequest();
 httad.open("POST","PHP/getSkills.php",true);
@@ -78,7 +79,8 @@ function listsSkill(ev)
 		row.appendChild(cell4);
 		row.appendChild(cell5);
 		
-		table.appendChild(row);
+        table.appendChild(row);
+         updates[i]=1;
         
     }
     check();
@@ -116,6 +118,7 @@ function checkSkill(ev)
                     {
                         var tRadios = document.getElementById("low"+counts);
                         tRadios.checked=true;
+                        updates[counts]=0;
                         break;
 
                     }
@@ -123,12 +126,14 @@ function checkSkill(ev)
                     {
                         var tRadios = document.getElementById("med"+counts);
                         tRadios.checked=true;
+                        updates[counts]=0;
                         break;
                     }
                     if(checkLists[y].skill_level=="High")
                     {
                         var tRadios = document.getElementById("high"+counts);
                         tRadios.checked=true;
+                        updates[counts]=0;
                         break;
                     }
                 
@@ -177,6 +182,7 @@ function addGeneralSkill()
     hID.checkData= array; 
     hID.skillData=arr;
     hID.lengths =array.length;
+        hID.updates=updates;
     htts.send(JSON.stringify(hID));
     
 

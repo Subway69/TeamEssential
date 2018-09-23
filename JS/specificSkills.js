@@ -8,6 +8,7 @@ var htts;
 var httChecks;
 var checkListss;
 var choice;
+var update=[];
 
 //This ajax requests gets all the categories
 httCat = new XMLHttpRequest();
@@ -132,7 +133,8 @@ function listy(ev)
 		row.appendChild(cell4);
 		row.appendChild(cell5);
 
-		skillForms.appendChild(row);
+        skillForms.appendChild(row);
+        update[i]=1;
         
     }
 
@@ -182,6 +184,7 @@ function addSpecificSkills()
     hIDs.checkData= checkArrays; 
     hIDs.skillData=skillArrays;
     hIDs.lengths =checkArrays.length;
+    hIDs.updates=update;
     htts.send(JSON.stringify(hIDs));
 
 }
@@ -189,6 +192,8 @@ function addSpecificSkills()
 function result(ev)
 {
     alert(JSON.parse(htts.responseText));
+     update=[];
+     checks(choice);
 }
 function checks(hi)
 {
@@ -223,6 +228,7 @@ function checkSkills(ev)
                     {
                         var tRadio = document.getElementById("lows"+countss);
                         tRadio.checked=true;
+                        update[countss]=0;
                         break;
 
                     }
@@ -230,12 +236,14 @@ function checkSkills(ev)
                     {
                         var tRadio = document.getElementById("meds"+countss);
                         tRadio.checked=true;
+                        update[countss]=0;
                         break;
                     }
                     if(checkListss[s].skill_level=="High")
                     {
                         var tRadio = document.getElementById("highs"+countss);
                         tRadio.checked=true;
+                        update[countss]=0;
                         break;
                     }     
                 
