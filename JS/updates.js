@@ -16,7 +16,7 @@ function updatePerm()
 function updatePass()
 {
     var newPass = document.getElementById("currPass").value;
-    console.log(newPass);
+ 
     var userID= document.getElementById("passUser").value;
     var httPerm = new XMLHttpRequest();
     httPerm.open("POST","PHP/updatePass.php",true);

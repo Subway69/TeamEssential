@@ -11,7 +11,7 @@ function register()
     var bachelor= document.getElementById("bachelorCheck");
     var uniWork=document.getElementById("uniCheck");
     var bach=0;
-    var unis=0;
+    var unis;
     if(bachelor.checked)
     {
         bach = 1;
@@ -20,11 +20,12 @@ function register()
     {
         bach = 0;
     }
-    if(unis.checked)
+    if(uniWork.checked)
     {
         unis=1;
+      
     }
-    if(!unis.checked)
+    if(!uniWork.checked)
     {
         unis=0;
     }
@@ -61,13 +62,14 @@ function registerResponse(ev)
 }
 function login()
 {
-    console.log("Hello");
+   
     var userName= document.getElementById("tUsername").value;
-    console.log(userName);
+    
     var passWord=  document.getElementById("tPassword").value;
-    console.log(passWord);
+   
     httLogin=new XMLHttpRequest();
     httLogin.open("POST","PHP/login.php",true);
+  
     httLogin.onload=loginResponse
     var log={};
     log.user=userName;

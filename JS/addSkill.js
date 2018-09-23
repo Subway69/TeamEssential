@@ -72,7 +72,7 @@ function addSkill()
     {
         if(nameToAdd!="")
         {
-           console.log("The name is ." + nameToAdd+".");
+         
             skillHtts = new XMLHttpRequest();
             skillHtts.open("POST","PHP/addNewSkill.php",true);
             var skillToAdd={};

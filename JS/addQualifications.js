@@ -3,7 +3,7 @@ var list;
 var htt;
 function loadUni()
 {
-    console.log("Loading Uni's");
+   
     htt = new XMLHttpRequest();
     htt.open("GET","../PHP/getUniversity.php",true);
     htt.onload= lists;

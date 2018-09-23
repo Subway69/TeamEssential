@@ -52,7 +52,7 @@ function updateFed(value)
 
 function reload(ev)
 {
-    console.log("Please reload");
+    
     location.reload();
 }
 
