@@ -1,4 +1,4 @@
-            
+                
 var httEducation; 
 var httLoadEducation;
 var httLoadUni;
@@ -75,8 +75,16 @@ function addQual()
     var dateArr=document.getElementById("date0").value;
     var studyArr=document.getElementById("study0").value;
 
-                                
-    //Sends the inputs to the backend to be added
+     if(typeArr==''|| degArr==''||studyArr==''||uniArr=='')
+	 {
+		 document.getElementById('msg').innerHTML='All fields are mandatory';
+	 }	
+	 
+
+	else{
+		document.getElementById('msg').innerHTML='';
+		
+		//Sends the inputs to the backend to be added
     httEducation = new XMLHttpRequest();
     httEducation.open("POST","PHP/addEducation.php",true);
     httEducation.onload=showEducation;
@@ -86,7 +94,11 @@ function addQual()
     hID.uniData=uniArr;
     hID.dateData=dateArr;
     hID.studyData=studyArr;
-    httEducation.send(JSON.stringify(hID));               
+    httEducation.send(JSON.stringify(hID));  
+	}
+	
+				 
+                   
 }
 
 //Lets the user know if the Education was successfully added

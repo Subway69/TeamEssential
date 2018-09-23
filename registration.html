@@ -14,6 +14,7 @@ require_once "PHP/default.php";
 	<link rel="stylesheet" href="CSS/class numbered.css">
 	<link rel="stylesheet" href="CSS/media.css">
 	<script src="JS/passwordMatch.js"></script>
+	
 </head>
 
 <body>
@@ -109,8 +110,18 @@ require_once "PHP/default.php";
 								
                                 <input id = "tFirstName"placeholder="First Name" required class="input val" />
                                 <input id = "tLastName" placeholder="Last Name" required class="input val" />
-                                <input id = "tEmail" type="email" placeholder="Email Address" required class="input val" />
-
+                                <input id = "tEmail" type="email" placeholder="Email Address" required class="input val" onchange="
+								var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+								if((document.getElementById('tEmail').value).match(mailformat)){
+								document.getElementById('msg').innerHTML='';
+								}else
+								{document.getElementById('msg').style.color='red';
+								document.getElementById('msg').innerHTML='invalid email';
+								}
+								
+								" />  
+								
+                                <label id="msg"  ></label>
                                 <input id ="regPassword" class="input val" id="field_pwd1" placeholder="Password" type="password" required 
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
@@ -118,7 +129,18 @@ require_once "PHP/default.php";
 								
                                 <input id = "tConfirm" class="input val" id="field_pwd2" placeholder="Confirm Password" type="password" 
 											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
+											onchange="
+						if(document.getElementById('regPassword').value==document.getElementById('tConfirm').value)
+								{
+								document.getElementById('msg1').innerHTML='';
+								
+								}
+								else{
+								document.getElementById('msg1').style.color='red';
+								document.getElementById('msg1').innerHTML='password do not match';
+								}
+								"/>
+								<label id="msg1" ></label>
 								
                                 <p style="font-size: 0.8em;"> I have been OR am currently employed by Federation University
                                 <input id = "uniCheck"type = "checkbox" name ="workUni" value="1"/>
@@ -126,15 +148,17 @@ require_once "PHP/default.php";
 								
 								
 								</p><p style="font-size: 0.8em;"> I have minimum of a Bachelor's Degree
-								<input id = "bachelorCheck" type = "checkbox" name ="bachelor" value="1"/
-										onClick="document.getElementById('sub').disabled=false;" /> 
+								
+                         <input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck" onClick="document.getElementById('sub').disabled
+
+=false;" /> 
 
 								<!-- <input type = "radio" name ="bachelor" id="no" onClick="document.getElementById('sub').disabled=true;
 										alert('You must have at least a Bachelor\'s Degree in order to proceed with the 
 										registration process.');" /> No -->
 										
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <input type="button" class="button" onClick ="register()"value = "Register"/>
+                                    <input type="button" class="button" id="sub" onclick="register()"  disabled value="Register"/>
                                 </div>
                             </form>
                         </div>

@@ -21,8 +21,11 @@ function addEmp()
     var startArr= document.getElementById("startDate1").value;
     var endArr=document.getElementById("endDate1").value;
     var taskArr = document.getElementById("tasks1").value;
-
-    
+if(typeArr==''||titleArr==''||manArr==''||orgArr==''||startArr=='')
+{document.getElementById('msg1').innerHTML='Field is mandatory';
+}
+else{
+    document.getElementById('msg1').innerHTML='';
     httEmploy = new XMLHttpRequest();
     httEmploy.open("POST","PHP/addEmployment.php",true);
     httEmploy.onload=showEmp;
@@ -36,6 +39,7 @@ function addEmp()
     hID.endData=endArr;
     hID.taskData=taskArr;
     httEmploy.send(JSON.stringify(hID));
+}
     
     
 }

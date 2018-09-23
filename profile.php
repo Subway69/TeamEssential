@@ -111,6 +111,7 @@ require_once "PHP/default.php";
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
 								<form class="form">
+								<span id="msg" style="color:red;font-size:0.8em;"></span>
 									<select required="" name="Education Level" id="type0" class="select">
 										<option value="">- Education Level -</option>
 										<option value="Higher Ed">Higher Ed</option>
@@ -167,6 +168,7 @@ require_once "PHP/default.php";
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
 								<form class="form">
+								<span id="msg1" style="color:red;font-size:0.8em;"></span>
 									<select id="type1" required="" name="Employment Type" class="select">
 										<option value="">-Employment Type -</option>
 										<option value="Full Time">Full Time</option>
@@ -288,79 +290,41 @@ require_once "PHP/default.php";
 						</div> 
 					</div>
 					
+					
 					<div id="files-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Files</div>
-						
-						<div id="tab-row" class="row">
-							<div id="form-cell" class="cell">
-								<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
-									<div class="form-group">
-										<input type="file" id="file" name="file"/ >
-										<div class="form-group">
-											<button type="submit" class="button" name="submit">Upload</button>
-										</div>
-									</div> <!-- added -->
+                    <div id="tab-title" class="c15657">Files</div>
+                    <div id="tab-row" class="row">
+                        <div id="form-cell" class="cell">
+                            <form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                   <input type="file" id="file" name="file" onChange="if( document.getElementById('file').files.length>0)document.getElementById('upload').disabled=false;"/ >
+                                <div class="form-group">
+                                    <button type="submit" class="button" name="submit" id="upload" disabled>upload</button>
+                                </div>
 								</form>
-								
-								<?php
-								$query = "SELECT files.file_name,files.file_location FROM files INNER JOIN User_Files ON files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
+									<?php
+								$query = "SELECT Files.file_name,Files.file_location FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
 		
-											$stmt= mysqli_prepare($conn,$query);
+$stmt= mysqli_prepare($conn,$query);
 								mysqli_stmt_bind_param($stmt,"d",$user_id);
 
 								$success = mysqli_stmt_execute($stmt);
 								$results = mysqli_stmt_get_result($stmt);
-												   
+				                                   
 							
-								echo "<h1>Files</h1>";
-										
-								while($row1 = mysqli_fetch_assoc($results))
-								{
-									$fname=$row1['file_name'];
-								$path=	$row1['file_location'];				
-								echo "<h6>".$row1['file_name']."</h6>"."<a download='$fname' href='$path'>download</a><br>";
-									
-								}
+echo "<h1>Files</h1>";
+echo "<table cellspacing='10'><center>";
+		
+while($row1 = mysqli_fetch_assoc($results))
+	
+{
+	$fname=$row1['file_name'];
+$path=	$row1['file_location'];				
+echo "<tr><td>".$row1['file_name']."</td><td>"."<button><a download='$fname' href='$path'>download</a></button></td></tr>";
+	
+}
+echo "</center></table>";
 								?>
-							
-							</div>
-						</div>
-				   
-					</div>
-					<!--</div>-->
-				<!--</div>-->
-					<div id="files-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657">Files</div>
-						<div id="tab-row" class="row">
-							<div id="form-cell" class="cell">
-								<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
-									<div class="form-group">
-										<input type="file" id="file" name="file"/ >
-									<div class="form-group">
-										<button type="submit" class="button" name="submit">upload</button>
-									</div>
-									</form>
-									<?php
-									$query = "SELECT files.file_name,files.file_location FROM files INNER JOIN User_Files ON files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
-			
-												$stmt= mysqli_prepare($conn,$query);
-									mysqli_stmt_bind_param($stmt,"d",$user_id);
-
-									$success = mysqli_stmt_execute($stmt);
-									$results = mysqli_stmt_get_result($stmt);
-													   
-								
-									echo "<h1>Files</h1>";
-											
-									while($row1 = mysqli_fetch_assoc($results))
-										
-									{
-										$fname=$row1['file_name'];
-									$path=	$row1['file_location'];				
-									echo "<h6>".$row1['file_name']."</h6>"."<a download='$fname' href='$path'>download</a><br>";
-										
-									}
-									?>
 								
 							</div>
 						</div>
