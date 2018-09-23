@@ -1,12 +1,9 @@
-<?php
- session_start();
-    require_once "default.php";
- //This gets the raw request body
-    $req = file_get_contents('php://input');
-
-    $req_obj = json_decode($req);
-
-    $json_result= array();
+<?php session_start();
+require_once "default.php" ?> 
+<?php 
+ $req = file_get_contents('php://input');
+        //Converts the contents into a PHP Object
+        $req_obj = json_decode($req);
 	$email= $req_obj->user;
 	$password=$req_obj->pass;
 	$text="hello";

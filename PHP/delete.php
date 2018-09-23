@@ -3,7 +3,7 @@ session_start();
 require_once "default.php";
 ?>
 <?php
-    $id =$_POST['tDelete'];
+     $id=$_POST['tDelete'];
     
 
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);

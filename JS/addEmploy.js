@@ -21,7 +21,7 @@ function addEmp()
     var startArr= document.getElementById("startDate1").value;
     var endArr=document.getElementById("endDate1").value;
     var taskArr = document.getElementById("tasks1").value;
-if(typeArr==''||titleArr==''||manNArr==''||manPArr==''||orgArr==''||startArr=='')
+if(typeArr==''||titleArr==''||manArr==''||orgArr==''||startArr=='')
 {document.getElementById('msg1').innerHTML='Field is mandatory';
 }
 else{
@@ -124,7 +124,7 @@ function updateEmploy(id)
     updTypeArr =document.getElementById("type1");
     if(employList[id].work_rate=="Full Time")
     {
-        
+        console.log("Howdy");
         updTypeArr.getElementsByTagName('option')[1].selected='selected';
     }
     if(employList[id].work_rate=="Part Time")
@@ -160,7 +160,7 @@ function updateEmploy(id)
     updEndArr.value=employList[id].endDate;
     updTaskArr.value=employList[id].tasks;
     empID = document.getElementById("emp"+id).value;
-   
+    console.log(empID);
 
 
 }

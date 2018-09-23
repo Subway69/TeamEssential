@@ -12,6 +12,7 @@ require_once "PHP/default.php";
 		<link rel="stylesheet" href="CSS/class numbered.css">
 		<link rel="stylesheet" href="CSS/media.css">
 		<script src="JS/passwordMatch.js"></script>
+		<script type="text/javascript" src="JS/delete.js"></script>
 	</head>
 	
 	<body>
@@ -111,7 +112,7 @@ require_once "PHP/default.php";
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form class="form" action = "PHP/delete.php" method = "POST">
+								<form class="form" method="POST" action="PHP/delete.php">
 									<div class="form-group"></div>
 									
 									<div class="form-group"></div>
@@ -120,8 +121,8 @@ require_once "PHP/default.php";
 									
 									<div class="form-group">
 										<div class="form-group">
-											<button type="submit" class="button"name="tDelete" value =<?php echo $user_id ?>>Delete Account
-											</button>
+											<button type="submit" value="<?PHP echo $user_id?>" class="button" name="tDelete">Delete</button>
+											
 										</div>
 									</div>	
 								</form>
