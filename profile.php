@@ -255,8 +255,7 @@ require_once "PHP/default.php";
 								<form id="forms" class="form">Discipline: 
 									
 									<select id="category" name="tCategory">
-										<option>Psychology</option>
-										<option>Information Technology</option>
+
 									</select>
 								</form>
 								
