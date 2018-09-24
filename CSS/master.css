@@ -54,9 +54,10 @@ button,  input[type=submit], input[type=reset], input[type=button]{ /*button sty
 	background: linear-gradient(#eeeeee, #80c6ff);
 	margin:10px 0 5px 0;
 	text-align:center;
-	border-color:#068;
+	border:2px inset #068;
 	border-radius: 15px;
 	line-height:normal;
+	padding:0px;
 }
 
 form#addCat0.form > input[type=button], form#addSkillsForm.form.optional > tr > td > input[type=button]{ /* 50% width buttons*/
@@ -183,9 +184,9 @@ table{
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05);
 }
-
-
-
+tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
+	background-color: #adadff;
+}
 .table th,.table td {
 	padding: 10px;
 	vertical-align: middle;
@@ -241,6 +242,7 @@ table{
 	/* width:555px; */
 	width:570px;
 	font-weight:bold;
+	/* background:#8fa3ff; */
 }
 .sheadr{	/*SKILL HEADER RADIO*/
 	width:60px;
@@ -249,7 +251,8 @@ table{
 }
 .sheads{	/*SKILL HEADER SKILL*/
 	/* width:365px; */
-	width:362px;
+	/*width:362px; */
+	width:370px;
 	padding-bottom:10px;
 }
 .sn{
@@ -295,11 +298,11 @@ div > form.disc{	/* CATEGORY DISCIPLINE */
 	padding:0px;
 }
 div > .form.gen.discipline{
-	height:300px;
+	height:390px;
 }
 
 .form.gen.discipline > table > tbody{
-	height:100px;
+	height:300px;
 }
 /* form#addSkillsForm.form.optional > tr > td { */
 	/* width:30%; */
@@ -326,4 +329,26 @@ div > .form.gen.discipline{
 	width:20px;
 }
 
-/* ****************************** ****************************** */
+/* ******************************SCROLLS****************************** */
+
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+::-webkit-scrollbar-track {
+/* border: 1px solid yellowgreen; */
+border: 1px solid #80c6ff;
+border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+/* background: yellowgreen;   */
+	/* background:linear-gradient(  #80c6ff,#e0eef9); */
+	/* background: linear-gradient(#7c88da, #00126d ); light to dark */
+	background: linear-gradient( #00126d , #7c88da); /*dark to light*/
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+/* background: #88ba1c;  greenish */
+	/* background:red;	*/
+	background: linear-gradient(#9956c9,#c9a2e5);
+}
