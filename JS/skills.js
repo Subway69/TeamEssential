@@ -10,7 +10,7 @@ httad = new XMLHttpRequest();
 httad.open("POST","PHP/getSkills.php",true);
 httad.onload= listsSkill;
 httad.send(); 
-var skillForm = document.getElementById("form0");
+// var skillForm = document.getElementById("form0");
 
 function listsSkill(ev)
 {
@@ -28,9 +28,7 @@ function listsSkill(ev)
 		var cell4 = document.createElement("td");
 		var cell5 = document.createElement("td");
 		
-		//cell2.style
-		
-		
+	
         var skillName = document.createTextNode(listsa[i].skill_name);
         
 		cell1.appendChild(skillName);
@@ -80,7 +78,7 @@ function listsSkill(ev)
 		row.appendChild(cell5);
 		
         table.appendChild(row);
-         updates[i]=1;
+        updates[i]=1;
         
     }
     check();
@@ -150,7 +148,7 @@ function checkSkill(ev)
 function addGeneralSkill()
 {
     var count = 0;
-    var array= [];
+    var array1= []; 
     var arr=[];
     
     //Iterate through each skill
@@ -164,7 +162,7 @@ function addGeneralSkill()
             if(tRads[i].checked)
             {   
                 //adds the  skill data and resets the radio
-                array[count] = document.getElementById("hid"+count).value;
+                array1[count] = document.getElementById("hid"+count).value;
                 arr[count]= tRads[i].value;
                 
             }
@@ -179,10 +177,10 @@ function addGeneralSkill()
     htts.open("POST","PHP/sign.php",true);
     htts.onload=results;
     var hID = {};
-    hID.checkData= array; 
+    hID.checkData= array1; 
     hID.skillData=arr;
-    hID.lengths =array.length;
-        hID.updates=updates;
+    hID.lengths =array1.length;
+    hID.updates=updates;
     htts.send(JSON.stringify(hID));
     
 

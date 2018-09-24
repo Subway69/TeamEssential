@@ -137,14 +137,14 @@ function listy(ev)
         update[i]=1;
         
     }
-
-    var specBut = document.createElement("input");
-    specBut.setAttribute("type","button");
-    specBut.setAttribute("class","button");
-    specBut.setAttribute("onClick","addSpecificSkills()");
-    specBut.setAttribute('value',"Add");
-    skillForms.appendChild(specBut);
-    checks(choice);
+	checks(choice);
+    // var specBut = document.createElement("input");
+    // specBut.setAttribute("type","button");
+    // specBut.setAttribute("class","button");
+    // specBut.setAttribute("onClick","addSpecificSkills()");
+    // specBut.setAttribute('value',"Add");
+    // skillForms.appendChild(specBut);
+    // 
 
 }
 

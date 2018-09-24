@@ -75,7 +75,6 @@ require_once "PHP/default.php";
 					</nav>
 					
 					<div id="password-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657"></div>
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
@@ -83,11 +82,7 @@ require_once "PHP/default.php";
 									<div class="form-group">
 										<input type = "hidden" id="passUser" name = "tUser"value = <?php echo $user_id;?>/>
 										<input placeholder="Current Password" required type="password"class="input"/>
-										<!--
-										<input placeholder="New Password" type="password" name = "tPassword" id= "currPass" 
-													class="input" required />
-										<input placeholder="Confirm New Password" type="password" class="input" required />
-										-->
+										
 										<input name = "tPassword" type="password" class="input val" id= "field_pwd1" 
 											placeholder="New Password" required
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
@@ -107,51 +102,20 @@ require_once "PHP/default.php";
 						</div>
 						
 					</div>
+					
 					<div id="removal-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657"></div>
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
 								<form class="form" method="POST" action="PHP/delete.php">
-									<div class="form-group"></div>
-									
-									<div class="form-group"></div>
-									
-									<div class="form-group"></div>
-									
+								
 									<div class="form-group">
-										<div class="form-group">
-											<button type="submit" value="<?PHP echo $user_id?>" class="button" name="tDelete">Delete</button>
-											
-										</div>
-									</div>	
+										<button type="submit" value="<?PHP echo $user_id?>" class="button" name="tDelete">Delete Account</button>
+									</div>
+								
 								</form>
 									
 							</div>
-							
-						</div>
-						
-						<div id="specskl-tab" data-tab-content="1" class="tab-content">
-							<div id="tab-title" class="c15657">Special Skills</div>
-							
-							<div id="tab-row" class="row">
-								<div id="form-cell" class="cell">
-									<form class="form">
-										<div class="form-group"></div>
-										
-										<div class="form-group"></div>
-										
-										<div class="form-group"></div>
-										
-										<input placeholder="Insert Special Skill" required="" class="input"/>
-										<div class="form-group">
-											<button type="submit" class="button">Add</button>
-											
-										</div>
-									</form>
-								</div>
-							</div>
-						
 						</div>
 					</div>
 				</div>

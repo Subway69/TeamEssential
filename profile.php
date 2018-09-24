@@ -11,7 +11,6 @@ require_once "PHP/default.php";
 		<link rel="stylesheet" href="CSS/style.css">
 		<link rel="stylesheet" href="CSS/class numbered.css">
 		<link rel="stylesheet" href="CSS/media.css">
-		<!--<link rel="stylesheet" href="CSS/bootstrap.css"> -->
 	</head>
 
 	<body>
@@ -228,7 +227,7 @@ require_once "PHP/default.php";
 												<td class="sheadr">Medium</td>
 												<td class="sheadr">High</td>
 											<tr>
-											<p><p>
+											
 										</thead>
 										<tbody id="gensklstable" class="specificTable">
 										
@@ -256,8 +255,7 @@ require_once "PHP/default.php";
 										</select>
 									</p>
 								</form>
-								
-							
+
 								<form class="form discipline gen">
 								
 									<table class="table-striped gstable">
@@ -269,13 +267,15 @@ require_once "PHP/default.php";
 												<td class="sheadr">High</td>
 											<tr>
 										</thead>
-										<tbody id="form10" class="specificTable ">
+										<tbody id="form10">
 										
 										</tbody>
+									
 									</table>
 									<script src="JS/specificSkills.js"></script>
 									
-									
+									<button type="button" onClick="addSpecificSkills()" class="button">Add</button>
+								<!-- is it possible to move button here -->
 									
 								</form>
 								
@@ -308,50 +308,55 @@ require_once "PHP/default.php";
 					
 					
 					<div id="files-tab" data-tab-content="1" class="tab-content">
-                    <div id="tab-title" class="c15657">Files</div>
-                    <div id="tab-row" class="row">
-                        <div id="form-cell" class="cell">
-                            <form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
-                                <div class="form-group">
-                                   <input type="file" id="file" name="file" onChange="if( document.getElementById('file').files.length>0)document.getElementById('upload').disabled=false;"/ >
-                                <div class="form-group">
-                                    <button type="submit" class="button" name="submit" id="upload" disabled>upload</button>
-                                </div>
+						<div id="tab-title" class="c15657">Files</div>
+						
+						<div id="tab-row" class="row">
+							<div id="form-cell" class="cell">
+								<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
+									<div class="form-group">
+									<input type="file" id="file" name="file" 
+										onChange="if(document.getElementById('file').files.length>0)document.getElementById('upload').disabled=false;"/ >
+									
+									<div class="form-group">
+										<button type="submit" class="button" name="submit" id="upload" disabled>Upload</button>
+									</div>
 								</form>
-									<?php
-								$query = "SELECT Files.file_name,Files.file_location FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id WHERE User_Files.user_id = ?;";
-		
-$stmt= mysqli_prepare($conn,$query);
+								
+								<?php
+								$query = "SELECT Files.file_name,Files.file_location FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
+										WHERE User_Files.user_id = ?;";
+
+								$stmt= mysqli_prepare($conn,$query);
 								mysqli_stmt_bind_param($stmt,"d",$user_id);
 
 								$success = mysqli_stmt_execute($stmt);
 								$results = mysqli_stmt_get_result($stmt);
-				                                   
-							
-echo "<h1>Files</h1>";
-echo "<table cellspacing='10'><center>";
-		
-while($row1 = mysqli_fetch_assoc($results))
-	
-{
-	$fname=$row1['file_name'];
-$path=	$row1['file_location'];				
-echo "<tr><td>".$row1['file_name']."</td><td>"."<button><a download='$fname' href='$path'>download</a></button></td></tr>";
-	
-}
-echo "</center></table>";
+
+
+								echo "<h1>Files</h1>";
+								echo "<table cellspacing='10'><center>";
+
+								while($row1 = mysqli_fetch_assoc($results))
+
+								{
+									$fname=$row1['file_name'];
+									$path=	$row1['file_location'];				
+									echo "<tr><td>".$row1['file_name']."</td><td>"."<button><a download='$fname' href='$path'>download</a></button></td></tr>";
+
+								}
+								echo "</center></table>";
 								?>
-								
+
+									</div>
 							</div>
+
 						</div>
-						
-						</div>
-					<!--</div>-->
 					</div>
 				</div> <!-- added this -->
 			</div> <!-- added this -->
 		
 		<script src = "JS/preferences.js"></script>
+		
 		<script>
 			var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {

@@ -50,7 +50,7 @@ function listCats(ev)
             
             selCates.appendChild(catSkill);
             var delButs = document.createElement("input");
-            delButs.setAttribute("type","cdbutton");
+            delButs.setAttribute("type","button");
 			delButs.setAttribute("class", "button");
             delButs.setAttribute("id",catList[i].skill_type);
             delButs.setAttribute("onClick","deleteCat(this.id)");
@@ -167,18 +167,36 @@ function listSkills(ev)
 		formSkill.style.display="block";
 		for(var i =0; i<skillSize;i++)
         {
+			var row = document.createElement("tr");
+			var cell1 = document.createElement("td");
+			var cell2 = document.createElement("td");
+			
             var nameSkill = document.createTextNode(skillLists[i].skill_name);
-            formSkill.appendChild(nameSkill);
-            var delBut = document.createElement("input");
+			
+            // formSkill.appendChild(nameSkill);
+            cell1.appendChild(nameSkill);
+			cell1.setAttribute("class","sn");
+			
+			var delBut = document.createElement("input");
             delBut.setAttribute("type","button");
+			delBut.setAttribute("class","button");
             delBut.setAttribute("id",skillLists[i].skill_id);
             delBut.setAttribute("onClick","deleteSkill(this.id)");
             delBut.setAttribute("value","Delete");
 
-            formSkill.appendChild(delBut);
-            formSkill.appendChild(document.createElement("P"));
+            /* formSkill.appendChild(delBut);
+            formSkill.appendChild(document.createElement("P")); */
             
-
+			cell2.appendChild(delBut);
+			
+			row.appendChild(cell1);
+			row.appendChild(cell2);
+			
+			formSkill.appendChild(row);
+			
+			
+			
+			
         }
 	}
 	
