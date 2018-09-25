@@ -6,7 +6,7 @@ require_once "default.php" ?>
         $req_obj = json_decode($req);
 	$email= $req_obj->user;
 	$password=$req_obj->pass;
-	$text="hello";
+	$text="Account doesn't exist.";
 
 	//Email and Password must be entered
 	if($email and $password)
@@ -51,10 +51,11 @@ require_once "default.php" ?>
                 }
 			}
 			
+		}else{
+			$text="Incorrect email";
 		}
 
 	}
-
 
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");

@@ -86,6 +86,7 @@ function loginResponse(ev)
     var res = JSON.parse(httLogin.responseText);
     if (res=="success")
     {
+		alert(res);
         document.getElementById("login").submit();  
     }
     else

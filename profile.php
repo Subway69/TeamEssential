@@ -233,10 +233,11 @@ require_once "PHP/default.php";
 										
 										</tbody>
 									</table>
-									<script src="JS/skills.js"></script>
+									<script src="JS/skillstest.js"></script> <!--take note. wrong js -->
 									
 									<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
-									
+									<p id="test"></p>
+									<p id="test1"></p>
 								</form>
 							</div>
 						</div>

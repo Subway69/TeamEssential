@@ -10,6 +10,17 @@
   /* font-family: Georgia, "Times New Roman", Times, serif; */
   /* background: linear-gradient(to left, #e0eef9, #80c6ff); */
 /* } */
+body{
+	overflow:hidden;
+}
+#ii4vcy{		/*check this */
+	height:640px;
+	overflow:auto;
+}
+footer{
+	height:50px; /*overflow doesn't show */
+	background-color:gray;
+}
 #log-in-container {
   position: absolute;
   margin:0px;

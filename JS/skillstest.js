@@ -109,7 +109,8 @@ function checkSkill(ev)
 
         for(y =0;y<checkSize;y++)
             {
-                 var x=checkLists[y].skill_id;
+                var x = checkLists[y].skill_id;
+				
                 if(x==hidValue)   
                 {        
                     if(checkLists[y].skill_level=="Low")
@@ -167,11 +168,18 @@ function addGeneralSkill()
                 
             }
 			else if(!(tRads[i].checked)){
-				array1[count] = document.getElementById("hid"+count).value;
-				arr[count]="";
+				// array1[count] = document.getElementById("hid"+count).value;
+				
 				
 				
 			}
+			
+			if(count==0){
+				
+				document.getElementById("test").innerHTML=array1[count]; //skill#
+				document.getElementById("test1").innerHTML = arr[count]; //skill grades
+			}
+			
 
         }
         count++;

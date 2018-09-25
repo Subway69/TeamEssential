@@ -23,15 +23,11 @@ require_once "PHP/default.php";
 		<script type="text/javascript" src="JS/datatable.jquery.min.js"></script>
 		
 	</head>
-  
+ 
 	<body>
 		<title>Dashboard</title>
     
-		<?php
-			$user_id = logged_in_user(); 
-			$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-		?>
-		
+	 <header>
 		<div data-gjs="navbar" class="navbar">
 			<a href="registration.html">
 				<img src="img/logo_r.png" class="logo">
@@ -70,6 +66,16 @@ require_once "PHP/default.php";
 				</div>
 			</div>
 		</div>
+		</header>
+	
+	
+	
+		<?php
+			$user_id = logged_in_user(); 
+			$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+		?>
+		
+		
 		
 		<?php
 			if(getPermission() ==1 || getPermission()==2){
@@ -274,7 +280,10 @@ require_once "PHP/default.php";
 							
 						</div>
 					</div>
-					
+						</div> <!--added -->
+					</div> <!--added -->
+				</div> <!--added -->
+			
 					<?php
 				}
 			?>
@@ -317,10 +326,9 @@ require_once "PHP/default.php";
 		</script>
 		<script src="JS/mailList.js"></script>
 
-		<!--
 		<footer>
 			foot
-		</footer> -->
+		</footer> 
 	</body>
 
 <html>
