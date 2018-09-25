@@ -14,13 +14,12 @@ require_once "PHP/default.php";
 	<link rel="stylesheet" href="CSS/class numbered.css">
 	<link rel="stylesheet" href="CSS/media.css">
 	<script src="JS/passwordMatch.js"></script>
-	
+	<link rel="icon" href="img/favicon_feduni.ico">
 </head>
 
 <body>
     <title>Research Assistant Database</title>
-    
-	
+
 		
     <div data-gjs="navbar" class="navbar">
         <a href="registration.html">
@@ -75,10 +74,11 @@ require_once "PHP/default.php";
                                 <div class="form-group"></div>
                                 
                                 <div class="form-group"></div>
+								
                                 
                                 <div class="form-group">
                                     <!--<input type="submit" id = "subButton"style="display:none;" class="button"/>-->
-                                    <input type="button" onClick="login()" class="button"value = "Login"/>
+                                    <input type="button" onClick="login()" class="button" value ="Login"/>
                                 </div>
                             </form>
                         </div>
@@ -86,19 +86,12 @@ require_once "PHP/default.php";
                 </div>
 				
                 <div id="register-tab" data-tab-content="1" class="tab-content">
-                    <div id="tab-title" class="c15657"></div>  <!-- for what -->
+                <!--    <div id="tab-title" class="c15657"></div>   for what -->
 					
                     <div id="tab-row" class="row">
                         <div id="form-cell" class="cell">
                             <form class="form" id="reg" action = "profile.php" method="POST">
-							
-								<!--QUESTION why this -->
-                                <div class="form-group"></div>
 								
-                                <div class="form-group"></div>
-                                
-                                <div class="form-group"></div>
-                                
                                 <select id = "tTitle" required class="select">
                                     <option value="">- Title -</option>
                                     <option value="Mr">Mr</option>
@@ -110,7 +103,13 @@ require_once "PHP/default.php";
 								
                                 <input id = "tFirstName"placeholder="First Name" required class="input val" />
                                 <input id = "tLastName" placeholder="Last Name" required class="input val" />
-                                <input id = "tEmail" type="email" placeholder="Email Address" required class="input val" onchange="
+                                
+								
+								
+								<input id = "tEmail" type="email" placeholder="Email Address" required class="input val" 
+											/>  
+								<!--
+								onchange="
 								var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 								if((document.getElementById('tEmail').value).match(mailformat)){
 								document.getElementById('msg').innerHTML='';
@@ -119,18 +118,25 @@ require_once "PHP/default.php";
 								document.getElementById('msg').innerHTML='invalid email';
 								}
 								
-								" />  
+								" 
 								
-                                <label id="msg"  ></label>
-                                <input id ="regPassword" class="input val" id="field_pwd1" placeholder="Password" type="password" required 
-											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+								-->
+                                <!--<label id="msg"  ></label>-->
+                                
+								<input id ="regPassword" class="input val" id="field_pwd1" placeholder="Password" type="password" required 
+											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=""
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
 												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>
 								
-                                <input id = "tConfirm" class="input val" id="field_pwd2" placeholder="Confirm Password" type="password" 
-											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-											onchange="
-						if(document.getElementById('regPassword').value==document.getElementById('tConfirm').value)
+                                <input id ="tConfirm" class="input val" id="field_pwd2" placeholder="Confirm Password" type="password" 
+											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=""
+											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+											
+											/>
+											
+								<!--				
+								"
+								if(document.getElementById('regPassword').value==document.getElementById('tConfirm').value)
 								{
 								document.getElementById('msg1').innerHTML='';
 								
@@ -139,34 +145,41 @@ require_once "PHP/default.php";
 								document.getElementById('msg1').style.color='red';
 								document.getElementById('msg1').innerHTML='password do not match';
 								}
-								"/>
+								"			
+											
+								-->			
+											
+											
 								<label id="msg1" ></label>
 								
                                 <p style="font-size: 0.8em;"> I have been OR am currently employed by Federation University
-                                <input id = "uniCheck"type = "checkbox" name ="workUni" value="1"/>
-								<br>
+                                <input type = "checkbox" id = "uniCheck" name ="workUni" value="1"/>
 								
 								
-								</p><p style="font-size: 0.8em;"> I have minimum of a Bachelor's Degree
+								<p style="font-size: 0.8em;"> I have minimum of a Bachelor's Degree
 								
-                         <input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck" onClick="document.getElementById('sub').disabled
+								<input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck" 
+										 /> 
 
-=false;" /> 
+								<!--
+								onClick="document.getElementById('sub').disabled=false;"
+								-->
 
-								<!-- <input type = "radio" name ="bachelor" id="no" onClick="document.getElementById('sub').disabled=true;
-										alert('You must have at least a Bachelor\'s Degree in order to proceed with the 
-										registration process.');" /> No -->
 										
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <input type="button" class="button" id="sub" onclick="register()"  disabled value="Register"/>
+                                    <input type="button" class="button" id="sub" onclick="register()" value="Register" />
+									<!--disabled-->
+									
                                 </div>
                             </form>
+							
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+	
     <script>
 	
         var items = document.querySelectorAll('#iitw8i');
@@ -202,6 +215,7 @@ require_once "PHP/default.php";
     </script>
     <script src = "JS/login.js"></script>
 
+	
 	<footer>
 		
 	</footer>

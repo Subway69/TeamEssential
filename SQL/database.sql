@@ -33,6 +33,7 @@ CREATE TABLE Users
 
 INSERT INTO Users(title,first_name,middle_name,last_name,email,address,phone_number,password,day_dob,month_dob,year_dob,permission,uniWork,avail) VALUES 
     ("Dr","Michael","Ernest","Munro","michael@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
+	("Dr","SuperAdmin","SuperAdmin","SuperAdmin","Super@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1),
     ("Dr","Admin","Admin","Admin","Admin@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,1,0,0),
     ("Mr","Bruce","Batman","Wayne","batman@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
     ("Miss","Taylor","Alison","Swift","Taylor@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
