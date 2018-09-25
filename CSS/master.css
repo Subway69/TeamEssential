@@ -344,11 +344,11 @@ border-radius: 10px;
 /* background: yellowgreen;   */
 	/* background:linear-gradient(  #80c6ff,#e0eef9); */
 	/* background: linear-gradient(#7c88da, #00126d ); light to dark */
-	background: linear-gradient( #00126d , #7c88da); /*dark to light*/
+	background:#00126d; /*dark to light*/
 	border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
 /* background: #88ba1c;  greenish */
 	/* background:red;	*/
-	background: linear-gradient(#9956c9,#c9a2e5);
+	/* background: linear-gradient(#9956c9,#c9a2e5); */
 }

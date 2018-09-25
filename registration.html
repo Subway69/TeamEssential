@@ -86,7 +86,7 @@ require_once "PHP/default.php";
                 </div>
 				
                 <div id="register-tab" data-tab-content="1" class="tab-content">
-                <!--    <div id="tab-title" class="c15657"></div>   for what -->
+                  <div id="tab-title" class="c15657"></div>   
 					
                     <div id="tab-row" class="row">
                         <div id="form-cell" class="cell">
@@ -107,8 +107,8 @@ require_once "PHP/default.php";
 								
 								
 								<input id = "tEmail" type="email" placeholder="Email Address" required class="input val" 
-											/>  
-								<!--
+											
+								
 								onchange="
 								var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 								if((document.getElementById('tEmail').value).match(mailformat)){
@@ -119,16 +119,16 @@ require_once "PHP/default.php";
 								}
 								
 								" 
+								/>  
 								
-								-->
-                                <!--<label id="msg"  ></label>-->
+                                <label id="msg"  ></label>
                                 
-								<input id ="regPassword" class="input val" id="field_pwd1" placeholder="Password" type="password" required 
+								<input id ="regPassword" class="input val" placeholder="Password" type="password" required 
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=""
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
 												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>
 								
-                                <input id ="tConfirm" class="input val" id="field_pwd2" placeholder="Confirm Password" type="password" 
+                                <input id ="tConfirm" class="input val" placeholder="Confirm Password" type="password" 
 											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=""
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
 											
@@ -150,7 +150,7 @@ require_once "PHP/default.php";
 								-->			
 											
 											
-								<label id="msg1" ></label>
+								<!-- <label id="msg1" ></label> -->
 								
                                 <p style="font-size: 0.8em;"> I have been OR am currently employed by Federation University
                                 <input type = "checkbox" id = "uniCheck" name ="workUni" value="1"/>
@@ -159,20 +159,20 @@ require_once "PHP/default.php";
 								<p style="font-size: 0.8em;"> I have minimum of a Bachelor's Degree
 								
 								<input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck" 
-										 /> 
+										  
 
-								<!--
+								
 								onClick="document.getElementById('sub').disabled=false;"
-								-->
+								/>
 
 										
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <input type="button" class="button" id="sub" onclick="register()" value="Register" />
-									<!--disabled-->
+                                    <input type="button" class="button" id="sub" onclick="register()" disabled value="Register" />
+									<!---->
 									
                                 </div>
                             </form>
-							
+							<script src = "JS/login.js"></script>
                         </div>
                     </div>
                 </div>
@@ -213,7 +213,7 @@ require_once "PHP/default.php";
             }.bind(items[i]))();
         }
     </script>
-    <script src = "JS/login.js"></script>
+    
 
 	
 	<footer>

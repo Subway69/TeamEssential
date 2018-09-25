@@ -12,6 +12,7 @@ function register()
     var uniWork=document.getElementById("uniCheck");
     var bach=0;
     var unis;
+	
     if(bachelor.checked)
     {
         bach = 1;
@@ -29,14 +30,14 @@ function register()
     {
         unis=0;
     }
-    
+  
     httRegister = new XMLHttpRequest();
     httRegister.open("POST","PHP/register.php",true);
     httRegister.onload = registerResponse;
     var reg = {};
-
-    reg.title = title;
-    reg.fName = fName;
+	
+    reg.title=title;
+    reg.fName=fName;
     reg.lName=lName;
     reg.email=email;
     reg.pass1=pass1;
@@ -44,6 +45,7 @@ function register()
   //  reg.bach = bach;
     reg.uni = unis;
     httRegister.send(JSON.stringify(reg));
+	
 
 }
 
@@ -51,7 +53,7 @@ function registerResponse(ev)
 {
     var regRes = JSON.parse(httRegister.responseText);
 
-    if(regRes=="Success")
+    if(regRes=="Registration Success")
     {
         document.getElementById("reg").submit();
     }

@@ -1,9 +1,9 @@
 <?php session_start();
 require_once "default.php" ?> 
 <?php 
-        $req = file_get_contents('php://input');
-        //Converts the contents into a PHP Object
-        $req_obj = json_decode($req);
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
     $title = $req_obj->title;
     $last = $req_obj->lName;
     $first =$req_obj->fName;
@@ -59,8 +59,11 @@ require_once "default.php" ?>
             
                 if ($success) 
                 {
-                    $text="Success";
-                } 
+                    $text="Registration Success";
+                }
+				else{
+					$text="Registration Failed";
+				}				
             }
             else 
             {

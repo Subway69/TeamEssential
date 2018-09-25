@@ -10,7 +10,6 @@ GRANT SELECT, INSERT, UPDATE, DELETE
 	IDENTIFIED BY 'T#aM3Ss3nt1al';
 
 
-
 CREATE TABLE Users
 (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -24,7 +23,7 @@ CREATE TABLE Users
     password VARCHAR(255) NOT NULL,
     day_dob INT,
     month_dob VARCHAR(15),
-    year_dob INT NOT NULL,
+    year_dob INT,
    -- permisison can be (0) for standard (1) for admin (2) for super admin
     permission INT NOT NULL,
     uniWork INT NOT NULL,
