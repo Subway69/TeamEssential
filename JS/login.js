@@ -30,7 +30,8 @@ function register()
     {
         unis=0;
     }
-  
+  if(bachelor.checked)
+{
     httRegister = new XMLHttpRequest();
     httRegister.open("POST","PHP/register.php",true);
     httRegister.onload = registerResponse;
@@ -45,6 +46,10 @@ function register()
   //  reg.bach = bach;
     reg.uni = unis;
     httRegister.send(JSON.stringify(reg));
+}
+if(!bachelor.checked){
+alert("Please ensure you have a minimum of  a bachelor degree")
+}
 	
 
 }

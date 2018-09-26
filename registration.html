@@ -113,8 +113,11 @@ require_once "PHP/default.php";
 								var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 								if((document.getElementById('tEmail').value).match(mailformat)){
 								document.getElementById('msg').innerHTML='';
+								document.getElementById('sub').disabled=false		;
 								}else
-								{document.getElementById('msg').style.color='red';
+								{
+								document.getElementById('sub').disabled=true;
+								document.getElementById('msg').style.color='red';
 								document.getElementById('msg').innerHTML='invalid email';
 								}
 								
@@ -159,15 +162,12 @@ require_once "PHP/default.php";
 								<p style="font-size: 0.8em;"> I have minimum of a Bachelor's Degree
 								
 								<input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck" 
-										  
-
 								
-								onClick="document.getElementById('sub').disabled=false;"
 								/>
 
 										
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <input type="button" class="button" id="sub" onclick="register()" disabled value="Register" />
+                                    <input type="button" class="button" id="sub" onclick="register()" value="Register"disabled  />
 									<!---->
 									
                                 </div>
