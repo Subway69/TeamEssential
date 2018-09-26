@@ -9,6 +9,7 @@ var httChecks;
 var checkListss;
 var choice;
 var update=[];
+var aS=[];
 
 //This ajax requests gets all the categories
 httCat = new XMLHttpRequest();
@@ -102,8 +103,8 @@ function listy(ev)
 		
         var lowRads = document.createElement("input");
         lowRads.setAttribute("id","lows"+i);
-        lowRads.setAttribute("type","radio");
-		lowRads.setAttribute("class","radio rpadding");
+        lowRads.setAttribute("type","checkbox");
+		lowRads.setAttribute("class","radio cpadding");
         lowRads.setAttribute("name","tRadios"+i);
         lowRads.setAttribute("value","Low");
         
@@ -111,8 +112,8 @@ function listy(ev)
         
         var medRads = document.createElement("input");
         medRads.setAttribute("id","meds"+i);
-        medRads.setAttribute("type","radio");
-		medRads.setAttribute("class","radio rpadding");
+        medRads.setAttribute("type","checkbox");
+		medRads.setAttribute("class","radio cpadding");
         medRads.setAttribute("name","tRadios"+i);
         medRads.setAttribute("value","Medium");
         
@@ -120,8 +121,8 @@ function listy(ev)
 
         var highRads = document.createElement("input");
         highRads.setAttribute("id","highs"+i);
-        highRads.setAttribute("type","radio");
-		highRads.setAttribute("class","radio rpadding");
+        highRads.setAttribute("type","checkbox");
+		highRads.setAttribute("class","radio cpadding");
         highRads.setAttribute("name","tRadios"+i);
         highRads.setAttribute("value","High");
         
@@ -185,6 +186,8 @@ function addSpecificSkills()
     hIDs.skillData=skillArrays;
     hIDs.lengths =checkArrays.length;
     hIDs.updates=update;
+	hIDs.meow=aS;
+	hIDs.varrr=aS.length;
     htts.send(JSON.stringify(hIDs));
 
 }
@@ -212,7 +215,7 @@ function checkSkills(ev)
     var checkSizes = checkListss.length;
 
     var countss = 0;
-
+	var testcountS = 0;
 
     while(countss<sizes)
     {
@@ -220,10 +223,15 @@ function checkSkills(ev)
         for(s =0;s<checkSizes;s++)
             {
                 
-                 var a=checkListss[s].skill_id;
+                var a=checkListss[s].skill_id;
                 
+				
                 if(a==hidValues)   
-                {        
+                {  
+
+					aS[testcountS]=a;
+					testcountS++;					
+					
                     if(checkListss[s].skill_level=="Low")
                     {
                         var tRadio = document.getElementById("lows"+countss);
