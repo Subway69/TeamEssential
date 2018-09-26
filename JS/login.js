@@ -1,5 +1,56 @@
 var httLogin;
 var httRegister;
+var titles= document.getElementById("tTitle");
+var fNames= document.getElementById("tFirstName");
+var lNames = document.getElementById("tLastName");
+var emails = document.getElementById("tEmail");
+var pass1s = document.getElementById("regPassword");
+var pass2s = document.getElementById("tConfirm");
+
+titles.addEventListener('change',function(ev)
+{
+    validate();
+},false);
+fNames.addEventListener('change',function(ev)
+{
+    validate();
+},false);
+lNames.addEventListener('change',function(ev)
+{
+    validate();
+},false);
+emails.addEventListener('change',function(ev)
+{
+    validate();
+},false);
+pass1s.addEventListener('change',function(ev)
+{
+    validate();
+},false);
+pass2s.addEventListener('change',function(ev)
+{
+    validate();
+},false);
+
+function validate()
+{
+    console.log("Hello there");
+    var titlea= document.getElementById("tTitle").value;
+    var fNamea= document.getElementById("tFirstName").value;
+    var lNamea = document.getElementById("tLastName").value;
+    var emaila = document.getElementById("tEmail").value;
+    var pass1a = document.getElementById("regPassword").value;
+    var pass2a = document.getElementById("tConfirm").value;
+    if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a)
+    {
+        
+        document.getElementById("sub").disabled=true;
+        }
+   // if(titlea!=''&&fNamea!=''&&lNamea!=''&&emaila!=''&&pass1a!=''&&pass2a!=''){
+   else{  
+   document.getElementById("sub").disabled=false;
+        }
+}
 function register()
 {
     var title= document.getElementById("tTitle").value;
@@ -12,7 +63,7 @@ function register()
     var uniWork=document.getElementById("uniCheck");
     var bach=0;
     var unis;
-	
+
     if(bachelor.checked)
     {
         bach = 1;
