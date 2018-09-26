@@ -101,25 +101,12 @@ require_once "PHP/default.php";
                                 
 								
 								
-								<input id = "tEmail" type="email" placeholder="Email Address" required class="input val" 
-											
+								<input id = "tEmail" type="email" placeholder="Email Address" required class="input val" /> 
+					
+						<label id="msg"></label>
+								 
 								
-								onchange="
-								var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-								if((document.getElementById('tEmail').value).match(mailformat)){
-								document.getElementById('msg').innerHTML='';
-								document.getElementById('sub').disabled=false		;
-								}else
-								{
-								document.getElementById('sub').disabled=true;
-								document.getElementById('msg').style.color='red';
-								document.getElementById('msg').innerHTML='invalid email';
-								}
-								
-								" 
-								/>  
-								
-                                <label id="msg"  ></label>
+                            
                                 
 								<input id ="regPassword" class="input val" placeholder="Password" type="password" required 
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=""

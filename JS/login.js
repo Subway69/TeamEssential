@@ -7,6 +7,8 @@ var emails = document.getElementById("tEmail");
 var pass1s = document.getElementById("regPassword");
 var pass2s = document.getElementById("tConfirm");
 
+
+
 titles.addEventListener('change',function(ev)
 {
     validate();
@@ -41,15 +43,36 @@ function validate()
     var emaila = document.getElementById("tEmail").value;
     var pass1a = document.getElementById("regPassword").value;
     var pass2a = document.getElementById("tConfirm").value;
+	
+
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	
+	
+
+	/*	
     if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a)
     {
         
         document.getElementById("sub").disabled=true;
-        }
+    }
    // if(titlea!=''&&fNamea!=''&&lNamea!=''&&emaila!=''&&pass1a!=''&&pass2a!=''){
-   else{  
-   document.getElementById("sub").disabled=false;
-        }
+	else{  
+		document.getElementById("sub").disabled=false;
+    } */
+	
+	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a||!(emaila.match(mailformat)))
+    {
+        	document.getElementById('msg').style.color='red';
+	document.getElementById('msg').innerHTML='invalid email';
+        document.getElementById("sub").disabled=true;
+    }
+	else{  
+		document.getElementById("sub").disabled=false;
+    }
+	
+	
+	
+	
 }
 function register()
 {

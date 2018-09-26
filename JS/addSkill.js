@@ -124,8 +124,8 @@ function clears(ev)
     alert(JSON.parse(catHtts.responseText));
     document.getElementById("catName0").value="";
     document.getElementById("skillName1").value="";
-    
-
+    clearCategories();
+	loadCategories();
 }
 
 //Retrieves all the skills for the selected category

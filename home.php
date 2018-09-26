@@ -204,7 +204,7 @@ require_once "PHP/default.php";
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
 								<form class="form">
-									<input type="text" placeholder = "Enter Category Name" class="input" />
+									<input type="text" id="catName0" placeholder = "Enter Category Name" class="input" />
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"/>
 									<input type = "button" class="button" id = "catBut" onClick= "addCategory()" value = "Add Category"/>
 									<!--class = "button" -->
