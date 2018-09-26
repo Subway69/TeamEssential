@@ -69,14 +69,10 @@ require_once "PHP/default.php";
 		</div>
 		</header>
 	
-	
-	
 		<?php
 			$user_id = logged_in_user(); 
 			$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 		?>
-		
-		
 		
 		<?php
 			if(getPermission() ==1 || getPermission()==2){
@@ -214,7 +210,7 @@ require_once "PHP/default.php";
 									<!--class = "button" -->
 								</form>
 								
-								<form class="form" id = "addCat0"></form> <!-- the buttons -->
+								<form class="form" id = "addCat0"></form> 
 								
 							</div>
 						</div>
@@ -241,13 +237,9 @@ require_once "PHP/default.php";
 							<table id="user-table" class="table table-responsive">
 								<tHead>
 									<tr>
-										<th>User Permission Level</th>
-										
-										<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
+										<th>User Permission Level</th>										
 										
 										<th>Include?</th>
-										
-										<!-- <i class="fa fa-sort float-right" aria-hidden="true"></i> -->
 										
 									</tr>
 								</tHead>

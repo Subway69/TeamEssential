@@ -62,7 +62,8 @@ body{
 	width:100%;
 	/* background: linear-gradient(to left, #e0eef9, #80c6ff);  */
 	/* background: linear-gradient(to left, #e0eef9, #1f8ce4); */
-	background: linear-gradient(to left, #7c88da, #00126d );
+	/* background: linear-gradient(to left, #7c88da, #00126d ); */
+	background: #00126d;
 	font-weight:bold;
 	
 }
