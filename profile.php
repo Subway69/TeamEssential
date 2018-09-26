@@ -7,6 +7,7 @@ require_once "PHP/default.php";
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<link rel="icon" href="img/favicon_feduni.ico">
 		<link rel="stylesheet" href="CSS/master.css">
 		<link rel="stylesheet" href="CSS/style.css">
 		<link rel="stylesheet" href="CSS/class numbered.css">

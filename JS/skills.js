@@ -5,7 +5,7 @@ var htts;
 var httCheck;
 var checkLists;
 var updates=[];
-var a=[]; //test
+var aG=[]; 
 
 //This Ajax request retrieves all the General and Research skills from the Database
 httad = new XMLHttpRequest();
@@ -47,12 +47,9 @@ function listsSkill(ev)
         var lowRad = document.createElement("input");
         lowRad.setAttribute("id","low"+i);
         lowRad.setAttribute("type","checkbox");
-        lowRad.setAttribute("class","radio rpadding");
-        lowRad.setAttribute("name","tRadio"+i);
+        lowRad.setAttribute("class","radio cpadding");
+        lowRad.setAttribute("name","tChck"+i);
         lowRad.setAttribute("value","Low");
-		//lowRad.setAttribute("checked",false);
-        
-
 		
       	cell2.appendChild(lowRad);
      
@@ -60,10 +57,9 @@ function listsSkill(ev)
         var medRad = document.createElement("input");
         medRad.setAttribute("id","med"+i);
         medRad.setAttribute("type","checkbox");
-        medRad.setAttribute("class","radio rpadding");
-        medRad.setAttribute("name","tRadio"+i);
+        medRad.setAttribute("class","radio cpadding");
+        medRad.setAttribute("name","tChck"+i);
         medRad.setAttribute("value","Medium");
-        //medRad.setAttribute("checked",false);
 		
         cell3.appendChild(medRad);
 		
@@ -71,10 +67,9 @@ function listsSkill(ev)
         var highRad = document.createElement("input");
         highRad.setAttribute("id","high"+i);
         highRad.setAttribute("type","checkbox");
-        highRad.setAttribute("class","radio rpadding");
-        highRad.setAttribute("name","tRadio"+i);
+        highRad.setAttribute("class","radio cpadding");
+        highRad.setAttribute("name","tChck"+i);
         highRad.setAttribute("value","High");
-        //highRad.setAttribute("checked",false);
 		
 		cell4.appendChild(highRad);
        
@@ -88,12 +83,8 @@ function listsSkill(ev)
         table.appendChild(row);
         updates[i]=1;  
 			
-			
-			
-		
     }
 	
-			
     check();
 }
 
@@ -122,16 +113,13 @@ function checkSkill(ev)
 
         for(y =0;y<checkSize;y++)
             {
-				
-
                 var x = checkLists[y].skill_id;
 				
                 if(x==hidValue)   
                 {        
 			
-					a[testcount]=x;
+					aG[testcount]=x;
 					testcount++;
-			
 			
                     if(checkLists[y].skill_level=="Low")
                     {
@@ -155,9 +143,7 @@ function checkSkill(ev)
                         updates[counts]=0;
                         break;
                     }
-                
-                
-                
+               
                 }
             }
         
@@ -171,25 +157,17 @@ function addGeneralSkill()
     var count = 0;
 	var array1= [];		//	count array1
 	var arr=[];			//	L/M/H
-	var g =0;			//	count per row
-	var z =0;			//	skills
+		
 	while(count<sizea){
-		var tRads = document.getElementsByName("tRadio"+count);
+		var tRads = document.getElementsByName("tChck"+count);
 		for(var i=0;i<tRads.length;i++){
 			if(tRads[i].checked){
 				
 				array1[count] = document.getElementById("hid"+count).value;;
                 arr[count]= tRads[i].value;break;
 			}
-			
 		}
-		
 		count++;
-	}
-	document.getElementById("test").innerHTML= z + " unchecked"; //displays total unchecked
-	
-	for(var m=0;m<a.length;m++){
-		console.log("hallo"+a[m]);
 	}
 
     //Ajax request that  sends skill data to backend for processing
@@ -201,10 +179,9 @@ function addGeneralSkill()
     hID.skillData=arr;
     hID.lengths =array1.length;
     hID.updates=updates;
-	hID.meow=a;
-	hID.varrr=a.length;
+	hID.meow=aG;
+	hID.varrr=aG.length;
     htts.send(JSON.stringify(hID));
-   
 
 }
 

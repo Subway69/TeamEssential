@@ -7,17 +7,6 @@ var catHtts;
 var selCats = document.getElementById("skillCat0");
 loadCategories();
 
-
-// formSkills.addEventListener('change',function(ev)){
-	// if(formSkills.value==""){
-		// formSkills.style.display="none";
-	// }
-	// else{
-		// formSkills.style.display="block";
-	// }
-// }
-
-
 //Loads all the categories
 function loadCategories()
 {

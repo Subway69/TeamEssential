@@ -343,7 +343,7 @@ div > .form.gen.discipline{
 
 /* ******************************RADIO****************************** */
 
-.rpadding{
+.cpadding{
 	margin: 0 20px 0 20px;
 	border-bottom:1px;
 	vertical-align:middle;
@@ -358,8 +358,8 @@ height: 12px;
 }
 ::-webkit-scrollbar-track {
 /* border: 1px solid yellowgreen; */
-border: 1px solid #80c6ff;
-border-radius: 10px;
+/* border: 1px solid #80c6ff; */
+/* border-radius: 10px; */
 }
 ::-webkit-scrollbar-thumb {
 /* background: yellowgreen;   */
