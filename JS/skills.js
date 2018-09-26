@@ -5,6 +5,8 @@ var htts;
 var httCheck;
 var checkLists;
 var updates=[];
+var a=[]; //test
+
 //This Ajax request retrieves all the General and Research skills from the Database
 httad = new XMLHttpRequest();
 httad.open("POST","PHP/getSkills.php",true);
@@ -21,6 +23,7 @@ function listsSkill(ev)
     //Iterate through each skill, list the skill name and create 3 radio buttons(low med high) for each skill
     for(var i = 0;i<sizea;i++)
     {
+		
 		var row = document.createElement("tr");
 		var cell1 = document.createElement("td");
 		var cell2 = document.createElement("td");
@@ -47,7 +50,10 @@ function listsSkill(ev)
         lowRad.setAttribute("class","radio rpadding");
         lowRad.setAttribute("name","tRadio"+i);
         lowRad.setAttribute("value","Low");
+		//lowRad.setAttribute("checked",false);
         
+
+		
       	cell2.appendChild(lowRad);
      
         
@@ -57,7 +63,8 @@ function listsSkill(ev)
         medRad.setAttribute("class","radio rpadding");
         medRad.setAttribute("name","tRadio"+i);
         medRad.setAttribute("value","Medium");
-        
+        //medRad.setAttribute("checked",false);
+		
         cell3.appendChild(medRad);
 		
 		
@@ -67,7 +74,8 @@ function listsSkill(ev)
         highRad.setAttribute("class","radio rpadding");
         highRad.setAttribute("name","tRadio"+i);
         highRad.setAttribute("value","High");
-        
+        //highRad.setAttribute("checked",false);
+		
 		cell4.appendChild(highRad);
        
 		
@@ -78,9 +86,14 @@ function listsSkill(ev)
 		row.appendChild(cell5);
 		
         table.appendChild(row);
-        updates[i]=1;
-        
+        updates[i]=1;  
+			
+			
+			
+		
     }
+	
+			
     check();
 }
 
@@ -100,8 +113,8 @@ function checkSkill(ev)
     var checkSize = checkLists.length;
 
     var counts = 0;
-    
-
+    var testcount = 0;
+	
     while(counts<sizea)
     {
         
@@ -109,16 +122,24 @@ function checkSkill(ev)
 
         for(y =0;y<checkSize;y++)
             {
-                 var x=checkLists[y].skill_id;
+				
+
+                var x = checkLists[y].skill_id;
+				
                 if(x==hidValue)   
                 {        
+			
+					a[testcount]=x;
+					testcount++;
+			
+			
                     if(checkLists[y].skill_level=="Low")
                     {
                         var tRadios = document.getElementById("low"+counts);
                         tRadios.checked=true;
                         updates[counts]=0;
                         break;
-
+					
                     }
                     if(checkLists[y].skill_level=="Medium")
                     {
@@ -148,35 +169,28 @@ function checkSkill(ev)
 function addGeneralSkill()
 {
     var count = 0;
-    var array1= []; 
-    var arr=[];
-    
-    //Iterate through each skill
-    while(count<sizea)
-    {
-        var tRads = document.getElementsByName("tRadio"+count);
-        //Iterate through each radio button for each skill to see which one is checked
-        for(var i = 0; i<tRads.length;i++)
-        {
-            //Checks each radio button
-            if(tRads[i].checked)
-            {   
-                //adds the  skill data and resets the radio
-                array1[count] = document.getElementById("hid"+count).value;
-                arr[count]= tRads[i].value;
-                
-            }
-			else if(!(tRads[i].checked)){
-				array1[count] = document.getElementById("hid"+count).value;
-				arr[count]="";
+	var array1= [];		//	count array1
+	var arr=[];			//	L/M/H
+	var g =0;			//	count per row
+	var z =0;			//	skills
+	while(count<sizea){
+		var tRads = document.getElementsByName("tRadio"+count);
+		for(var i=0;i<tRads.length;i++){
+			if(tRads[i].checked){
 				
-				
+				array1[count] = document.getElementById("hid"+count).value;;
+                arr[count]= tRads[i].value;break;
 			}
-
-        }
-        count++;
-    }
-
+			
+		}
+		
+		count++;
+	}
+	document.getElementById("test").innerHTML= z + " unchecked"; //displays total unchecked
+	
+	for(var m=0;m<a.length;m++){
+		console.log("hallo"+a[m]);
+	}
 
     //Ajax request that  sends skill data to backend for processing
     htts = new XMLHttpRequest();
@@ -187,8 +201,10 @@ function addGeneralSkill()
     hID.skillData=arr;
     hID.lengths =array1.length;
     hID.updates=updates;
+	hID.meow=a;
+	hID.varrr=a.length;
     htts.send(JSON.stringify(hID));
-    
+   
 
 }
 
@@ -198,5 +214,4 @@ function results(ev)
     alert(JSON.parse(htts.responseText));
     check();
 }
-
 
