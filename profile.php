@@ -43,8 +43,6 @@ require_once "PHP/default.php";
 				</nav>
 				
 				<div id="preferences-tab" data-tab-content="1" class="tab-content">
-			 
-					<div id="tab-title" class="c15657">Preferences</div>
 							
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
@@ -63,7 +61,6 @@ require_once "PHP/default.php";
 				</div>
 					   
 				<div id="education-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657">Education History</div>
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
@@ -98,15 +95,11 @@ require_once "PHP/default.php";
 								</div>
 								
 								<div class="form-group">
-									<button id="updQualBut" type="button" class="button optional"onClick="updEdu()"
-										>Update
-									</button>
+									<button id="updQualBut" type="button" class="button optional"onClick="updEdu()">Update</button>
 								</div>
 								
 								<div class="form-group">
-									<button id="canQualBut" type="button" class="button optional"onClick="resetter()"
-										>Cancel Update
-									</button>
+									<button id="canQualBut" type="button" class="button optional"onClick="resetter()">Cancel Update</button>
 								</div>
 
 								<script src="JS/addEducation1.js"></script>
@@ -125,7 +118,8 @@ require_once "PHP/default.php";
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
 							<form class="form">
-							<span id="msg1" style="color:red;font-size:0.8em;"></span>
+								<span id="msg1" style="color:red;font-size:0.8em;"></span>
+								
 								<select id="type1" required="" name="Employment Type" class="select">
 									<option value="">-Employment Type -</option>
 									<option value="Full Time">Full Time</option>
@@ -152,12 +146,11 @@ require_once "PHP/default.php";
 								</div>
 								
 								<div class="form-group">
-									<button id="updEmpBut" type="button" class="button optional" onClick="updEmp()"
-									>Update</button>
+									<button id="updEmpBut" type="button" class="button optional" onClick="updEmp()">Update</button>
 								</div>
 								<div class="form-group">
 									<button id="canEmpBut" type="button" class="button optional"onClick="resettter()"
-									style="display:none;">Cancel Update</button>
+											style="display:none;">Cancel Update</button>
 								</div>
 
 								<script src="JS/addEmploy.js"></script>
@@ -170,7 +163,6 @@ require_once "PHP/default.php";
 				</div>
 				
 				<div id="genskl-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657">General Skills</div>
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
@@ -201,7 +193,6 @@ require_once "PHP/default.php";
 				</div>
 				
 				<div id="specskl-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657">Discipline Skills</div>
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
 						
@@ -233,7 +224,7 @@ require_once "PHP/default.php";
 								<script src="JS/specificSkills.js"></script>
 								
 								<button type="button" onClick="addSpecificSkills()" class="button">Add</button>
-							<!-- is it possible to move button here -->
+							
 								
 							</form>
 							
@@ -242,7 +233,6 @@ require_once "PHP/default.php";
 				</div>
 				
 				<div id="contact-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657">Contact Information</div>
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
@@ -266,7 +256,6 @@ require_once "PHP/default.php";
 				
 				
 				<div id="files-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657">Files</div>
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
@@ -314,41 +303,41 @@ require_once "PHP/default.php";
 		</div> <!-- added this -->
 	</div> <!-- added this -->	
 		
-		<script src = "JS/preferences.js"></script>
-		
-		<script>
-			var items = document.querySelectorAll('#iitw8i');
-			for (var i = 0, len = items.length; i < len; i++) {
-			(function() {
-				var t, e = this,
-				a = "[data-tab]",
-				n = document.body,
-				r = n.matchesSelector || n.webkitMatchesSelector || n.mozMatchesSelector || n.msMatchesSelector,
-				o = function() {
-					var a = e.querySelectorAll("[data-tab-content]") || [];
-					for (t = 0; t < a.length; t++) a[t].style.display = "none"
-				},
-				i = function(n) {
-					var r = e.querySelectorAll(a) || [];
-					for (t = 0; t < r.length; t++) {
-						var i = r[t],
-						s = i.className.replace("tab-active", "").trim();
-						i.className = s
-					}
-					o(), n.className += " tab-active";
-					var l = n.getAttribute("href"),
-					c = e.querySelector(l);
-					c && (c.style.display = "")
-				},
-				s = e.querySelector(".tab-active" + a);
-				s = s || e.querySelector(a), s && i(s), e.addEventListener("click", function(t) {
-				var e = t.target;
-				r.call(e, a) && i(e)
-				})
-			}.bind(items[i]))();
-			}
+	<script src = "JS/preferences.js"></script>
+	
+	<script>
+		var items = document.querySelectorAll('#iitw8i');
+		for (var i = 0, len = items.length; i < len; i++) {
+		(function() {
+			var t, e = this,
+			a = "[data-tab]",
+			n = document.body,
+			r = n.matchesSelector || n.webkitMatchesSelector || n.mozMatchesSelector || n.msMatchesSelector,
+			o = function() {
+				var a = e.querySelectorAll("[data-tab-content]") || [];
+				for (t = 0; t < a.length; t++) a[t].style.display = "none"
+			},
+			i = function(n) {
+				var r = e.querySelectorAll(a) || [];
+				for (t = 0; t < r.length; t++) {
+					var i = r[t],
+					s = i.className.replace("tab-active", "").trim();
+					i.className = s
+				}
+				o(), n.className += " tab-active";
+				var l = n.getAttribute("href"),
+				c = e.querySelector(l);
+				c && (c.style.display = "")
+			},
+			s = e.querySelector(".tab-active" + a);
+			s = s || e.querySelector(a), s && i(s), e.addEventListener("click", function(t) {
+			var e = t.target;
+			r.call(e, a) && i(e)
+			})
+		}.bind(items[i]))();
+		}
 
-		</script>
+	</script>
 		<footer>
 		
 		</footer>

@@ -61,7 +61,7 @@ require_once "PHP/default.php";
 												</tr>
 											</tHead>
 
-											<tbody class="table utable">
+											<tbody class="table">
 												<?php
 													$query = "SELECT * FROM Users;";
 													$stmt= mysqli_prepare($conn,$query);
