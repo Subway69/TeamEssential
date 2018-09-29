@@ -1,15 +1,64 @@
 
-/* ******************************BASE****************************** */
+/* ****************************** BASE ****************************** */
 * {
     box-sizing: border-box;
 }
+@-ms-viewport {
+  width: device-width;
+}
+
+/* ****************************** NAVBAR ****************************** */
+
+.navbar{		
+	width:100%;
+	background: #00126d;
+	font-weight:bold;
+	position:fixed;
+	min-height:50px;
+}
+.navbar-brand{
+	content: url("../img/logo_r.png");  
+	width:230px;
+	height:40px;
+}
+.logo{ /*brand*/
+	padding: 5px;
+	margin-top:2px;
+	margin-left:20px;
+	float:left;
+	height:50px;
+	width:230px;
+	border:0;
+}
+@media screen and (max-width:450px){
+	.navbar{
+		position:inherit;
+	}
+	.navbar-brand{
+		content: url("../img/logo_flag.png");
+		height:15px;
+		width:15px;
+	}
+	.c3690{
+		display:flex;
+	}
+}
+
+/* @media screen and (max-width:600px){ */
+	/* .navbar-brand{ */
+		/* height:5px; */
+		/* width:15px; */
+	/* } */
+	
+/* } */
+
+
+
+/* ****************************** MEDIA ****************************** */
+
 
 
 /* ******************************REGISTRATION****************************** */
-
-
-
-
 
 /* ******************************BASE****************************** */
 
@@ -19,14 +68,14 @@
   /* padding: 10px; */
   /* font-family: Georgia, "Times New Roman", Times, serif; */
   /* background: linear-gradient(to left, #e0eef9, #80c6ff); */
-/* } */
+/* } *//*
 body{
 	/* overflow:hidden; */
-}
+/*} 
 #ii4vcy{		/*check this */
 	/* height:640px; */
 	/* overflow:auto; */
-}
+/*}*/ 
 /* footer{ */
 	/* height:50px; overflow doesn't show  */
 	/* background-color:gray; */
@@ -68,15 +117,7 @@ body{
 	transform: translate(-50%, -50%);
 } */
 
-.navbar{
-	width:100%;
-	/* background: linear-gradient(to left, #e0eef9, #80c6ff);  */
-	/* background: linear-gradient(to left, #e0eef9, #1f8ce4); */
-	/* background: linear-gradient(to left, #7c88da, #00126d ); */
-	background: #00126d;
-	font-weight:bold;
-	
-}
+
 
 /* ******************************ELEMENTS****************************** */
 
@@ -155,18 +196,7 @@ input:focus {
 select {
 	border-radius: 4px;
 }
-.logo{
-	/* background-image: url("/img/logo.jpg"); */
-	/* background-color: #cccccc; */
-	/* padding-top:10px; */
-	padding: 5px;
-	margin-top:2px;
-	margin-left:20px;
-	float:left;
-	height:50px;
-	width:230px;
-	border:0;
-}
+
 #space{
 	padding: 10px;
 }

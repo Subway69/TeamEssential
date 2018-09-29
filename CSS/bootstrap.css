@@ -3834,7 +3834,7 @@ input[type="button"].btn-block {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding-left: 0;
+  /* padding-left: 0; */
   margin-bottom: 0;
   list-style: none;
 }
@@ -3922,9 +3922,9 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  position: relative;
+  /* position: relative; */
   display: -ms-flexbox;
-  /* display: flex; */
+  display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -ms-flex-align: center;

@@ -83,15 +83,8 @@
     display:inline-block;
     float:right;
 }
-.navbar{
-    /* color:rgb(221, 221, 221); */
-    min-height:50px;
-    width:100%;
-    /* background-color:rgb(62, 47, 124); */
-	
-}
 .navbar-container{
-    max-width:950px;
+    /* max-width:950px; */
     margin-top:0px;
     margin-right:auto;
     margin-bottom:0px;
@@ -102,6 +95,21 @@
     content:"";
     clear:both;
     display:block;
+}
+.navbar-brand{
+	margin-top:2px;
+    vertical-align:top;
+    display:inline-block;
+    padding-top:5px;
+    padding-right:5px;
+    padding-bottom:5px;
+    padding-left:5px;
+    min-height:50px;
+    min-width:50px;
+    color:inherit;
+    text-decoration-line:none;
+    text-decoration-style:initial;
+    text-decoration-color:initial;
 }
 .navbar-menu{
     padding-top:10px;
