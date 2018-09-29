@@ -6,59 +6,60 @@ require_once "PHP/default.php";
 <!-- need to add - logout functionality to menu -->
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="img/favicon_feduni.ico">
-		<link rel="stylesheet" href="CSS/master.css">
-		<link rel="stylesheet" href="CSS/style.css">
-		<link rel="stylesheet" href="CSS/class numbered.css">
-		<link rel="stylesheet" href="CSS/media.css">
-	</head>
+<head>
+	<meta charset="utf-8">
+	<link rel="icon" href="img/favicon_feduni.ico">
+	<link rel="stylesheet" href="CSS/master.css">
+	<link rel="stylesheet" href="CSS/style.css">
+	<link rel="stylesheet" href="CSS/class numbered.css">
+	<link rel="stylesheet" href="CSS/media.css">
+</head>
 	
-	<body>
-		<title>Help!</title>
-		
-		<?php
-		  $user_id = logged_in_user(); 
-		  $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-		?>
-		<div data-gjs="navbar" class="navbar">
-			<a href="registration.html">
-				<img src="img/logo_r.png" class="logo">
-			</a>
+<body>
+	<title>Help!</title>
+	
+	<?php
+	  $user_id = logged_in_user(); 
+	  $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+	?>
+	
+	<nav class="navbar"> 
 			
-			<div class="navbar-container">
-				<div id="i1pfjb" class="navbar-burger">
-					<div class="navbar-burger-line"></div>
-					
-					<div class="navbar-burger-line"></div>
-					
-					<div class="navbar-burger-line"></div>
-					
-				</div>
+		<div class="navbar-container">
+		
+            <a href="registration.html" class="navbar-brand"></a>
+			
+            <div id="i1pfjb" class="navbar-burger" data-target="#navvy">
+                <div class="navbar-burger-line"></div>
+                
+                <div class="navbar-burger-line"></div>
+                
+                <div class="navbar-burger-line"></div>
+               
+            </div> 
+			
+            <div data-gjs="navbar-items" class="navbar-items-c " id="navvy">
+                <nav data-gjs="navbar-menu" class=" navbar-menu">
 				
-				<div data-gjs="navbar-items" class="navbar-items-c">
-					<nav data-gjs="navbar-menu" class="navbar-menu">
-						<a href="home.php" class="navbar-menu-link">Home</a>
-						
-						<a href="help.php" class="navbar-menu-link">Help</a>
-						
-						<a href="profile.php" data-highlightable="1" title="Profile" class="navbar-menu-link gjs-comp-selected">Profile</a>
-						
-						<a href="account.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Account</a>
-						
-						<?php
+					<a href="home.php" class=" navbar-menu-link">Home</a>
+					<a href="help.php" class=" navbar-menu-link">Help</a>
+					<a href="profile.php"  class="navbar-menu-link ">Profile</a> <!-- data-highlightable="1" title="Profile"-->
+					<a href="account.php"  class="navbar-menu-link ">Account</a> <!--data-highlightable="1" title="Account" -->
+					<!-- add log out functionality to below -->
+					<?php
 						if (is_logged_in()){
+						
 							?>
-								<a href="PHP/logout.php" class="navbar-menu-link">Logout</a>
-						   
+								<a href="PHP/logout.php" class="navbar-menu-link">Log Out</a>
+							
 							<?php
-						}			   
-						?>
-					</nav>
-				</div>
-			</div>
-		</div>
+						}
+					?>
+					
+				</nav>
+            </div>
+        </div>
+    </nav>
 		
 		<div id="ii4vcy" class="row c3690">
 			<div id="iuxvnm" class="cell">
