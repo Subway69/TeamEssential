@@ -12,11 +12,7 @@ session_start();
     $name = $req_obj->name;
     $cat = $req_obj->cat;
 
-    //Checks if the skill name is empty
-    if(strcmp($name,""))
-    {
-        $text= "Please enter a skill";
-    }
+    //Checks if the skill name is emp
     //Check if the category is empty
     if(strcmp($cat,"")==0||strcmp($cat," ")==0)
     {

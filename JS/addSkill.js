@@ -4,6 +4,14 @@ var skillSize;
 var skillHtts;
 var catSizes;
 var catHtts;
+var skillLists;
+var httSkillUpdate;
+var httCatUpdate;
+var updSkillID=0;
+var updCatID=0;
+var catList;
+var oldCat;
+
 var selCats = document.getElementById("skillCat0");
 loadCategories();
 
@@ -27,7 +35,7 @@ function listCats(ev)
 {
     var selCates= document.getElementById("addCat0");
     
-    var catList = JSON.parse(httCats.responseText);
+    catList = JSON.parse(httCats.responseText);
     catSizes = catList.length;
     for(var i=0;i<catSizes;i++)
         {
@@ -45,7 +53,15 @@ function listCats(ev)
             delButs.setAttribute("onClick","deleteCat(this.id)");
             delButs.setAttribute("value","Delete");
 
+            var updButs = document.createElement("input");
+            updButs.setAttribute("type","button");
+			updButs.setAttribute("class", "button");
+            updButs.setAttribute("id",i);
+            updButs.setAttribute("onClick","updateCategory(this.id)");
+            updButs.setAttribute("value","Update");
+
             selCates.appendChild(delButs);
+            selCates.appendChild(updButs);
             selCates.appendChild(document.createElement("P"));
                        
         }
@@ -97,8 +113,7 @@ function addCategory()
 
     if (newCat !="")
     {
-        if(newSkill!="")
-        {
+        
             catHtts = new XMLHttpRequest();
             catHtts.open("POST","PHP/addNewCategory.php",true);
             var catToAdd={};
@@ -106,11 +121,7 @@ function addCategory()
             catToAdd.name = newSkill;
             catHtts.onload=clears;
             catHtts.send(JSON.stringify(catToAdd));
-        }
-        else
-        {
-            alert("Please Enter a Skill");
-        }
+
     }
     else
     {
@@ -144,7 +155,7 @@ function showSkills(cats)
 function listSkills(ev)
 {
     clear();
-    var skillLists = JSON.parse(httSkills.responseText);
+    skillLists = JSON.parse(httSkills.responseText);
     skillSize = skillLists.length;
     var formSkill = document.getElementById("addSkillsForm");
 
@@ -173,25 +184,105 @@ function listSkills(ev)
             delBut.setAttribute("onClick","deleteSkill(this.id)");
             delBut.setAttribute("value","Delete");
 
+            var updBut = document.createElement("input");
+            updBut.setAttribute("type","button");
+			updBut.setAttribute("class","button");
+            updBut.setAttribute("id",i);
+            updBut.setAttribute("onClick","updateSkill(this.id)");
+            updBut.setAttribute("value","Update");
+
             /* formSkill.appendChild(delBut);
             formSkill.appendChild(document.createElement("P")); */
-            
-			cell2.appendChild(delBut);
+			cell2.appendChild(delBut);            
+            cell2.appendChild(updBut);
+
 			
 			row.appendChild(cell1);
 			row.appendChild(cell2);
 			
 			formSkill.appendChild(row);
 			
-			
-			
-			
         }
 	}
-	
-	
-	
     
+}
+
+function updateSkill(sID)
+{
+    document.getElementById("updSkillBut").style.display="block";
+    document.getElementById("canSkillBut").style.display="block";
+    document.getElementById("skillBut").style.display="none";
+    document.getElementById("skillName0").value=skillLists[sID].skill_name;
+    updSkillID=skillLists[sID].skill_id;
+}
+
+function canSkill()
+{
+    document.getElementById("updSkillBut").style.display="none";
+    document.getElementById("canSkillBut").style.display="none";
+    document.getElementById("skillBut").style.display="block";
+    document.getElementById("skillName0").value="";
+}
+function updSkill()
+{
+    httSkillUpdate = new XMLHttpRequest();
+    httSkillUpdate.open("POST","PHP/updateSkill.php");
+    httSkillUpdate.onload=showSkillUpdate;
+    var skillHid={};
+    skillHid.sID=updSkillID;
+    skillHid.value=document.getElementById("skillName0").value;
+    httSkillUpdate.send(JSON.stringify(skillHid));
+    
+}
+
+function showSkillUpdate(ev)
+{
+    alert(JSON.parse(httSkillUpdate.responseText));
+    document.getElementById("updSkillBut").style.display="none";
+    document.getElementById("canSkillBut").style.display="none";
+    document.getElementById("skillBut").style.display="block";
+    document.getElementById("skillName0").value="";
+    showSkills(document.getElementById("skillCat0").value);
+}
+
+function updateCategory(cID)
+{
+    document.getElementById("updCatBut").style.display="block";
+    document.getElementById("canCatBut").style.display="block";
+    document.getElementById("catBut").style.display="none";
+    document.getElementById("catName0").value=catList[cID].skill_type;
+    oldCat=catList[cID].skill_type;
+    updCatID=catList[cID].skill_type;
+}
+
+function canCategory()
+{
+    document.getElementById("updSkillBut").style.display="none";
+    document.getElementById("canSkillBut").style.display="none";
+    document.getElementById("skillBut").style.display="block";
+    document.getElementById("catName0").value="";
+}
+function updCategory()
+{
+    httCatUpdate = new XMLHttpRequest();
+    httCatUpdate.open("POST","PHP/updateCategory.php");
+    httCatUpdate.onload=showCatUpdate;
+    var catHid={};
+    catHid.sID=oldCat;
+    catHid.value=document.getElementById("catName0").value;
+    httCatUpdate.send(JSON.stringify(catHid));
+    
+}
+
+function showCatUpdate(ev)
+{
+    alert(JSON.parse(httCatUpdate.responseText));
+    document.getElementById("updCatBut").style.display="none";
+    document.getElementById("canCatBut").style.display="none";
+    document.getElementById("catBut").style.display="block";
+    document.getElementById("catName0").value="";
+    clearCategories();
+    loadCategories();
 }
 //Clears the skills so skills from other categories can be shown
 function clear()

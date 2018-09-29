@@ -2,7 +2,8 @@
 var httEducation; 
 var httLoadEducation;
 var httLoadUni;
-var httUpdateEducation;           
+var httUpdateEducation;
+var httDeleteEducation;           
 var num = 1;
 var start = 1
 var size;
@@ -178,10 +179,17 @@ function listEducation()
         updUniBut.setAttribute("value","Update");
         updUniBut.setAttribute("onClick","updateQualification(this.id)");
 
+        var delUniBut = document.createElement("input");
+        delUniBut.setAttribute("type","button");
+        delUniBut.setAttribute("id",qualList[i].qualification_id);
+        delUniBut.setAttribute("value","Delete");
+        delUniBut.setAttribute("onClick","deleteQualification(this.id)");
+
         div.appendChild(text);
         div.appendChild(eduHidden);
         div.appendChild(eduHidden);
         div.appendChild(updUniBut);
+        div.appendChild(delUniBut);
         div.appendChild(document.createElement("P"));
     }
 }
@@ -191,6 +199,22 @@ function resetter()
     updQualButton.style.display="none";
      canQualUpd.style.display="none";
      resetEducation();
+}
+
+function deleteQualification(delID)
+{
+    httDeleteEducation=new XMLHttpRequest();
+    httDeleteEducation.open("POST","PHP/deleteEducation.php",true);
+    httDeleteEducation.onload=listDelete;
+    var delHID={};
+    delHID.delID=delID;
+    httDeleteEducation.send(JSON.stringify(delHID));
+}
+function listDelete(ev)
+{
+    alert(JSON.parse(httDeleteEducation.responseText));
+    resetter();
+
 }
 function updateQualification(ids)
 {

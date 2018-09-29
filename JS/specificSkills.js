@@ -23,7 +23,7 @@ function listCat(ev)
     var selCat = document.getElementById("category");
     var catLists = JSON.parse(httCat.responseText);
     var catSize = catLists.length;
-
+    aS=[];
     for(var i=0;i<catSize;i++)
     {
         var catText=catLists[i].skill_type;

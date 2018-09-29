@@ -2,6 +2,7 @@ var num = 1;
 var httEmploy;
 var httLoadEmploy;
 var httUpdateEmploy;
+var httDeleteEmploy;
 var employList;
 var addEmpBut=document.getElementById("addEmpBut");
 var updEmpButton=document.getElementById("updEmpBut");
@@ -21,7 +22,7 @@ function addEmp()
     var startArr= document.getElementById("startDate1").value;
     var endArr=document.getElementById("endDate1").value;
     var taskArr = document.getElementById("tasks1").value;
-if(typeArr==''||titleArr==''||manArr==''||orgArr==''||startArr=='')
+if(typeArr==''||titleArr==''||manNArr==''||manPArr==''||orgArr==''||startArr=='')
 {document.getElementById('msg1').innerHTML='Field is mandatory';
 }
 else{
@@ -100,9 +101,16 @@ function listEmployment(ev)
         updEmpBut.setAttribute("id",i);
         updEmpBut.setAttribute("value","Update");
         updEmpBut.setAttribute("onClick","updateEmploy(this.id)");
+        
+        var delEmpBut = document.createElement("input");
+        delEmpBut.setAttribute("type","button");
+        delEmpBut.setAttribute("id",employList[i].employment_id);
+        delEmpBut.setAttribute("value","Delete");
+        delEmpBut.setAttribute("onClick","DeleteEmploy(this.id)");
 
         divEmp.appendChild(textEmploy);
         divEmp.appendChild(updEmpBut);
+        divEmp.appendChild(delEmpBut);
         divEmp.appendChild(empHidden);
         divEmp.appendChild(document.createElement("P"));
     }
@@ -114,6 +122,23 @@ function resettter()
     updEmpButton.style.display="none";
      canEmpUpd.style.display="none";
      reset();
+}
+
+function DeleteEmploy(delEmpID)
+{
+    httDeleteEmploy=new XMLHttpRequest();
+    httDeleteEmploy.open("POST","PHP/deleteEmployment.php",true);
+    httDeleteEmploy.onload=listEmployDelete;
+    var delEmpHID={};
+    delEmpHID.delID=delEmpID;
+    httDeleteEmploy.send(JSON.stringify(delEmpHID));
+}
+
+function listEmployDelete(ev)
+{
+    alert(JSON.parse(httDeleteEmploy.responseText));
+    resettter();
+
 }
 
 function updateEmploy(id)

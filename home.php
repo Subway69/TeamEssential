@@ -187,7 +187,10 @@ require_once "PHP/default.php";
 									</select>
 									
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName0"/>
-									<input type = "button" class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"/>
+									<input type = "button" class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"style="display:none;"/>
+									<input type = "button" class = "button" id = "updSkillBut" onClick= "updSkill()" value = "Update Skill"style = "display:none;"/>
+									<input type = "button" class = "button" id = "canSkillBut" onClick= "canSkill()" value = "Cancel Skill"style = "display:none;"/>
+									
 									<table>
 										<script src = "JS/addSkill.js"></script>
 									</table>
@@ -207,7 +210,9 @@ require_once "PHP/default.php";
 									<input type="text" id="catName0" placeholder = "Enter Category Name" class="input" />
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"/>
 									<input type = "button" class="button" id = "catBut" onClick= "addCategory()" value = "Add Category"/>
-									<!--class = "button" -->
+									<input type = "button" class = "button" id = "updCatBut" onClick= "updCategory()" value = "Update Category"style = "display:none;"/>
+									<input type = "button" class = "button" id = "canCatBut" onClick= "canCategory()" value = "Cancel Update"style = "display:none;"/>
+									
 								</form>
 								
 								<form class="form" id = "addCat0"></form> 
