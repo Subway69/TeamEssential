@@ -19,7 +19,7 @@ require_once "default.php"
             $success = mysqli_stmt_execute($stmt);
             if($success)
             {
-                $text="Skill Successfully Updated.";
+                $text="Category Successfully Updated.";
             }
             
     
