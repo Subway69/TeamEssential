@@ -5,27 +5,11 @@ require_once "PHP/default.php";
 ?>
 <!-- need to add - logout functionality to menu -->
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="img/favicon_feduni.ico">
-		<link rel="stylesheet" href="CSS/master.css">
-		<link rel="stylesheet" href="CSS/style.css">
-		<link rel="stylesheet" href="CSS/class numbered.css">
-		<link rel="stylesheet" href="CSS/media.css">
-		<link rel="stylesheet" href="CSS/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="CSS/datatable.min.css" media="screen">
-		<!--<link rel="stylesheet" type="text/css" href="css/datatable-bootstrap.min.css" media="screen">-->
-		<!-- JS files -->
-		<script type="text/javascript" src="JS/datatable.min.js"></script>
-		
-		<!-- Add the following if you want to use the jQuery wrapper (you still need datatable.min.js): -->
-		<script type="text/javascript" src="JS/jquery.min.js"></script>
-		
-		<script type="text/javascript" src="JS/datatable.jquery.min.js"></script>
-		
-	</head>
- 
+
+	<?php include_once('header.php') ?>
+
 	<body>
+	
 		<title>Dashboard</title>
     
 	<nav class="navbar"> 
