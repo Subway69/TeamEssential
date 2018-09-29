@@ -109,7 +109,7 @@ function reset(ev)
 function addCategory()
 {
     var newCat= document.getElementById("catName0").value;
-    var newSkill= document.getElementById("skillName1").value;
+    var newSkill= "Other "+ newCat + " Skill";
 
     if (newCat !="")
     {
@@ -257,9 +257,9 @@ function updateCategory(cID)
 
 function canCategory()
 {
-    document.getElementById("updSkillBut").style.display="none";
-    document.getElementById("canSkillBut").style.display="none";
-    document.getElementById("skillBut").style.display="block";
+    document.getElementById("updCatBut").style.display="none";
+    document.getElementById("canCatBut").style.display="none";
+    document.getElementById("catBut").style.display="block";
     document.getElementById("catName0").value="";
 }
 function updCategory()
