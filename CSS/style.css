@@ -1,8 +1,6 @@
-* {
-     box-sizing: border-box;
-}
- body {
+body {
     margin: 0;
+	background-color:#afb4d2;
 }
 /* <<<<<<< HEAD */
 
@@ -20,7 +18,7 @@
     padding:0 0 0 5px;
 }
 .form{
-    background-color:rgba(122, 125, 127, 0.2);
+    
     width:500px;
     /* display:block; */
     /* float:none; */
@@ -35,7 +33,7 @@
 .input{
     width:100%;
     margin-bottom:10px;
-    background-color:rgb(126, 124, 132);
+    background-color:#d6d9eb;
     /* display:inline-block; */
     text-align:center;
     font-family:Arial, Helvetica, sans-serif;
@@ -49,7 +47,7 @@
     padding-bottom:7px;
     padding-left:10px;
    
-    color:rgb(255, 255, 255);
+    color:#4d557f;
     border-top-width:initial;
     border-right-width:initial;
     border-bottom-width:initial;
@@ -74,7 +72,7 @@
     margin-top:0px;
     margin-right:0px;
     margin-left:0px;
-    background-color:rgb(126, 124, 132);
+    background-color:#d6d9eb;
     text-align-last:center;
     direction:rtl;
 }
@@ -203,7 +201,7 @@
     margin-right:10px;
 }
 .tab.tab-active{
-    background-color:rgb(13, 148, 230);
+    background-color:#4d557f;
     color:white;
 }
 .tab-content{
@@ -226,11 +224,7 @@
     text-align:center;
     align-self:flex-start;
     float:none;
-    color:blue;
-}
-
-*{
-    box-sizing:border-box;
+    color:#263169;
 }
 body{
     margin-top:0px;
@@ -252,7 +246,7 @@ body{
     padding-left:0px;
 }
 ::placeholder{
-    color:rgb(255, 255, 255);
+    color:#4d557f;
     opacity:0.8;
 }
 #iuxvnm{

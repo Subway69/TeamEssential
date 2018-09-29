@@ -67,7 +67,7 @@ require_once "PHP/default.php";
                     <div id="tab-title" class="c15657"></div>
 					
                     <div id="tab-row" class="row">
-                        <div id="form-cell" class="cell">
+                        
                             <form class="form" id="login" action = "home.php" method = "POST">
                                 <div class="form-group">
                                     <input id = "tUsername"placeholder="Email Address"  type="email" class="input" required />
@@ -79,7 +79,7 @@ require_once "PHP/default.php";
                                     <input type="button" onClick="login()" class="button" value ="Login"/>
                                 </div>
                             </form>
-                        </div>
+                        
                     </div>
                 </div>
 				
@@ -87,7 +87,7 @@ require_once "PHP/default.php";
                   <div id="tab-title" class="c15657"></div>   
 					
                     <div id="tab-row" class="row">
-                        <div id="form-cell" class="cell">
+                       
                             <form class="form" id="reg" action = "profile.php" method="POST">
 								
                                 <select id = "tTitle" required class="select">
@@ -104,9 +104,11 @@ require_once "PHP/default.php";
                                 
 								
 								
-								<input id = "tEmail" type="email" placeholder="Email Address" required class="input val" /> 
+								<input id = "tEmail" type="email" placeholder="Email Address" required class="input val" 
+											pattern="(^\w+@[a-zA-Z_]+?\.[a-zA-Z]{3}$)";
+								/> 
 					
-						<label id="msg"></label>
+								<!-- <label id="msg"></label> -->
 								 
 								
                             
@@ -118,9 +120,9 @@ require_once "PHP/default.php";
 								
                                 <input id ="tConfirm" class="input val" placeholder="Confirm Password" type="password" 
 											required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title=""
-											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
 											
-											/>
+											
 											
 								<!--				
 								"
@@ -140,25 +142,19 @@ require_once "PHP/default.php";
 											
 								<!-- <label id="msg1" ></label> -->
 								
-                                <p style="font-size: 0.8em;"> I have been OR am currently employed by Federation University
+                                <p style="font-size: 0.8em;"> I have been employed by Federation University
                                 <input type = "checkbox" id = "uniCheck" name ="workUni" value="1"/>
 								
 								
-								<p style="font-size: 0.8em;"> I have minimum of a Bachelor's Degree
+								<p style="font-size: 0.8em;"> I have a Bachelor's Degree
+								<input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck"/> 
 								
-								<input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck" 
-								
-								/>
-
-										
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <input type="button" class="button" id="sub" onclick="register()" value="Register"disabled  />
-									<!---->
-									
+                                    <input type="button" class="button" id="sub" onclick="register()" value="Register" disabled  />
                                 </div>
                             </form>
 							<script src = "JS/login.js"></script>
-                        </div>
+                        <!-- </> -->
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ require_once "PHP/default.php";
 
 <html lang="en">
 
-<<?php include_once('header.php') ?>
+<?php include_once('header.php') ?>
 	
 <body>
 	<title>Help!</title>

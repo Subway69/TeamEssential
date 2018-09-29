@@ -7,48 +7,12 @@ require_once "PHP/default.php";
 <html lang="en">
 
 	<?php include_once('header.php') ?>
-
+	
 	<body>
 	
 		<title>Dashboard</title>
     
-	<nav class="navbar"> 
-			
-		<div class="navbar-container">
-		
-            <a href="registration.html" class="navbar-brand"></a>
-			
-            <div id="i1pfjb" class="navbar-burger" data-target="#navvy">
-                <div class="navbar-burger-line"></div>
-                
-                <div class="navbar-burger-line"></div>
-                
-                <div class="navbar-burger-line"></div>
-               
-            </div> 
-			
-            <div data-gjs="navbar-items" class="navbar-items-c " id="navvy">
-                <nav data-gjs="navbar-menu" class=" navbar-menu">
-				
-					<a href="home.php" class=" navbar-menu-link">Home</a>
-					<a href="help.php" class=" navbar-menu-link">Help</a>
-					<a href="profile.php"  class="navbar-menu-link ">Profile</a> <!-- data-highlightable="1" title="Profile"-->
-					<a href="account.php"  class="navbar-menu-link ">Account</a> <!--data-highlightable="1" title="Account" -->
-					<!-- add log out functionality to below -->
-					<?php
-						if (is_logged_in()){
-						
-							?>
-								<a href="PHP/logout.php" class="navbar-menu-link">Log Out</a>
-							
-							<?php
-						}
-					?>
-					
-				</nav>
-            </div>
-        </div>
-    </nav>
+
 	
 		<?php
 			$user_id = logged_in_user(); 
@@ -87,7 +51,7 @@ require_once "PHP/default.php";
 									while($row = mysqli_fetch_assoc($results)){
 										?>
 										
-										<table  class="table table-responsive" id="user-table">
+										<table  class="table table-responsive table-striped" id="user-table">
 											<tHead>
 												<tr>
 													<th>First Name </th>
@@ -168,7 +132,7 @@ require_once "PHP/default.php";
 									</select>
 									
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName0"/>
-									<input type = "button" class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"style="display:none;"/>
+									<input type = "button" class = "button" id = "skillBut" onClick= "addSkill()" value = "Add Skill"style="display:block;"/>
 									<input type = "button" class = "button" id = "updSkillBut" onClick= "updSkill()" value = "Update Skill"style = "display:none;"/>
 									<input type = "button" class = "button" id = "canSkillBut" onClick= "canSkill()" value = "Cancel Skill"style = "display:none;"/>
 									
