@@ -36,8 +36,8 @@
 				
 					<a href="home.php" class=" navbar-menu-link">Home</a>
 					<a href="help.php" class=" navbar-menu-link">Help</a>
-					<a href="profile.php"  class="navbar-menu-link ">Profile</a> <!-- data-highlightable="1" title="Profile"-->
-					<a href="account.php"  class="navbar-menu-link ">Account</a> <!--data-highlightable="1" title="Account" -->
+					<a href="profile.php"  class="navbar-menu-link ">Profile</a> 
+					<a href="account.php"  class="navbar-menu-link ">Account</a> 
 					<!-- add log out functionality to below -->
 					<a href="PHP/logout.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Log Out</a>
 					
@@ -45,4 +45,4 @@
             </div>
         </div>
     </nav>
-	</head>
+</head>

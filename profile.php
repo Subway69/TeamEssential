@@ -339,7 +339,7 @@ require_once "PHP/default.php";
 
 	</script>
 		<footer>
-		
+			foo
 		</footer>
 	</body>
 <html>

@@ -109,7 +109,7 @@ require_once "PHP/default.php";
 														?> 
 											</tbody>	
 										</table>
-										<div id="user-datatable">
+										<div id="user-datatable" class="pagination-datatables">
 										
 										</div>
 
@@ -180,7 +180,6 @@ require_once "PHP/default.php";
 					</div>
 				
 					<div id="email-tab" data-tab-content="4">
-						<div id="tab-title" class="c15657">Mailing Lists</div>
 						
 						
 						<div class="row" id="mailing">

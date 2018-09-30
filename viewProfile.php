@@ -5,59 +5,15 @@ require_once "PHP/default.php";
 <!doctype html>
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="img/favicon_feduni.ico">
-		<link rel="stylesheet" href="CSS/master.css">
-		<link rel="stylesheet" href="CSS/style.css">
-		<link rel="stylesheet" href="CSS/class numbered.css">
-		<link rel="stylesheet" href="CSS/media.css">
-	</head>
+	<?php include_once('header.php') ?>
+	
    <body>
       <title>View Profile</title>
       <?php
       $user_id = $_POST['tID'];
       $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
       ?>
-      <div data-gjs="navbar" class="navbar">
-		<a href="registration.html">
-			<img src="img/logo_r.png" class="logo">
-		</a>
-		
-         <div class="navbar-container">
-           
-            <div id="i1pfjb" class="navbar-burger">
-               <div class="navbar-burger-line">
-               </div>
-               <div class="navbar-burger-line">
-               </div>
-               <div class="navbar-burger-line">
-               </div>
-            </div>
-            <div data-gjs="navbar-items" class="navbar-items-c">
-                <nav data-gjs="navbar-menu" class="navbar-menu">
-					<a href="home.php" class="navbar-menu-link">Home
-					</a>
-					<a href="help.php" class="navbar-menu-link">Help
-					</a>
-					<a href="profile.php" data-highlightable="1" title="Profile" class="navbar-menu-link gjs-comp-selected">Profile
-					</a>
-					<a href="account.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Account
-					</a>
-                   <?php
-                   if (is_logged_in())
-                   {
-                       ?>
-                   <a href="PHP/logout.php" class="navbar-menu-link">Logout</a>
-                   
-                   <?php
-
-}
-?>
-</nav>
-            </div>
-         </div>
-      </div>
+    
       <div id="ii4vcy" class="row c3690">
          <div id="iuxvnm" class="cell">
             <div class="c13731">Profile

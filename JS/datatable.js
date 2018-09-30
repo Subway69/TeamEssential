@@ -1579,7 +1579,7 @@ DataTable.defaultOptions = {
      * Specify the class for the paging div element.
      *
      */
-    pagingDivClass: 'text-center',
+    // pagingDivClass: 'text-center',
 
     /**
      * Specify the class for the paging list element.

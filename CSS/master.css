@@ -3,8 +3,11 @@
 * {
     box-sizing: border-box;
 }
+*, *:before, *:after {
+	box-sizing: inherit;
+}
 @-ms-viewport {
-  width: device-width;
+	width: device-width;
 }
 :root{
 	--navbar: #263169;
@@ -23,12 +26,38 @@
 	--striped:rgba(0, 0, 0, 0.05);
 	--tr-hover-bg: #adadff;
 	--tbl-border: #dee2e6;
-	--scroll: #00126d;
+	--scroll: #000;
+	/* 00126d scroll */
+}
+html {
+	height: 100%;
+	box-sizing: border-box;
+	overflow-y:scroll;
 }
 body{
 	background-color:var(--body-bg);
 	margin:0px;
+	position:relative;
+	padding-bottom:2rem;
+	min-height:100%;
 }
+footer{
+	position: absolute;
+	right:0;
+	left: 0;
+	bottom: 0;
+	padding:0.5rem;
+	background-color: var(--navbar);
+	color: var(--white);
+	text-align: center;
+	font-size:0.5rem;
+}
+
+
+
+
+
+
 /* ****************************** NAVBAR ****************************** */
 
 .navbar{		
@@ -37,6 +66,7 @@ body{
 	font-weight:bold;
 	position:fixed;
 	min-height:50px;
+	z-index:1;
 }
 .navbar-brand{
 	content: url("../img/logo_r.png");  
@@ -47,10 +77,17 @@ body{
 	min-height:50px;
 	min-width:50px;
 }
-
-
-
-
+a.navbar-brand:hover{
+	background-color:transparent;
+}
+a.navbar-menu-link:hover{
+	color: var(--tab-text);
+	background-color: var(--body-bg);
+}
+.navbar-menu-link:active{	/*require update. doesn't work*/
+	color: var(--tab-text);
+	background-color: var(--body-bg);
+}
 .tab.tab-active{
     background-color:var(--tab-active);
     color:var(--white);
@@ -235,7 +272,7 @@ a:hover {
 	background-color: var(--a-hover-bg);
 }
 /* a:active { */
-	/* color: #99cc33; /*greenish*/ */
+	/* color: #99cc33; /*greenish*/ 
 /* } */
 
 
@@ -299,7 +336,8 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 
 .table-responsive {
 	display: block;
-	width: 100%;
+	width: calc(85%); /*to .table in boo */
+	margin: 0 auto;
 	/* overflow-x: auto; */
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
@@ -346,8 +384,7 @@ form{
 	/* background-color:#e4e5e5; */
 	display:block;
 	padding:15px;
-	margin-left:auto;
-	margin-right:auto;
+	margin: 0 auto;
 	/* border: 2px inset black; */
 	/* border-radius:10px; */
 	/* border-color: #068; */
@@ -362,7 +399,7 @@ form{
     position:static;
     align-self:center;
     align-items:flex-start;
-    margin:0 -5px 16px -5px;
+    /* margin:0 -5px 16px -5px; */
 }
 form#login { /* log-in form style */
 	border-color:#068;
@@ -397,13 +434,9 @@ div > form.disc{	/* CATEGORY DISCIPLINE */
 div > .form.gen.discipline{
 	height:390px;
 }
-
 .form.gen.discipline > table > tbody{
 	height:300px;
 }
-/* form#addSkillsForm.form.optional > tr > td { */
-	/* width:30%; */
-/* } */
 .blank{
 	border:none;
 	padding:0px;
@@ -421,7 +454,7 @@ div > .form.gen.discipline{
 	font-size: 7em;
 }
 
-/* ******************************RADIO****************************** */
+/* ******************************CHKBX****************************** */
 
 .cpadding{
 	margin: 0 20px 0 20px;
@@ -433,7 +466,7 @@ div > .form.gen.discipline{
 /* ******************************SCROLLS****************************** */
 
 ::-webkit-scrollbar {
-	width: 12px;
+	width: 5px;
 	height: 12px;
 }
 ::-webkit-scrollbar-track {
@@ -442,6 +475,7 @@ div > .form.gen.discipline{
 /* border-radius: 10px; */
 }
 ::-webkit-scrollbar-thumb {
+	position:absolute;
 /* background: yellowgreen;   */
 	/* background:linear-gradient(  #80c6ff,#e0eef9); */
 	/* background: linear-gradient(#7c88da, #00126d ); light to dark */
