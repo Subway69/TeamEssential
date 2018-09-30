@@ -4,27 +4,56 @@ session_start();
 ?>
 <?php
 
-    $req = file_get_contents('php://input');
-    //Converts the contents into a PHP Object
-    $req_obj = json_decode($req);
+$req = file_get_contents('php://input');
+//Converts the contents into a PHP Object
+$req_obj = json_decode($req);
 
-    //Grabs the data from the AJAX
-    $typeID = $req_obj->typeData;
-    $titleID = $req_obj->titleData;
-    $manID = $req_obj->manData;
-    $manPID = $req_obj->manPData;
-    $orgID = $req_obj->orgData;
-    $manID = $req_obj->manData;
-    $manPID = $req_obj->manPData;
-    $orgID = $req_obj->orgData;
-    $startID = $req_obj->startData;
-    $endID = $req_obj->endData;
-    $taskID = $req_obj->taskData;
-
-    //Gets the id of the user logged in
-    $userid = logged_in_user();
-    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-
+//Grabs the data from the AJAX
+$typeID = $req_obj->typeData;
+$titleID = $req_obj->titleData;
+$manID = $req_obj->manData;
+$manPID = $req_obj->manPData;
+$orgID = $req_obj->orgData;
+$manID = $req_obj->manData;
+$manPID = $req_obj->manPData;
+$orgID = $req_obj->orgData;
+$startID = $req_obj->startData;
+$endID = $req_obj->endData;
+$taskID = $req_obj->taskData;
+$text="";
+//Gets the id of the user logged in
+$userid = logged_in_user();
+$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+if($typeID=="")
+{
+    $text= $text."Invalid/Empty Type \n";
+}
+if($titleID=="")
+{
+    $text= $text."Invalid/Empty Title\n";
+}
+if($manID=='')
+{
+    $text= $text."Invalid/Empty Manager Name\n";
+}
+if($manPID=='')
+{
+    $text= $text."Invalid/Empty Manager Phone\n";
+}
+if($startID=='')
+{
+    $text= $text."Invalid/Empty Start Date\n";
+}
+if($endID!=''&&strtotime($endID)<strtotime($startID))
+{
+    $text= $text."End Date is before Start Date\n";
+}
+if($taskID=="")
+{
+    $text= $text."Invalid/Empty Tasks\n";
+}
+else
+{
     //Inserts the Job into the database
     $query = "INSERT INTO Employment(work_rate,position_title,manager,manager_phone,organisation,startDate,endDate,tasks) VALUES (?,?,?,?,?,?,?,?);";   
     $stmt = mysqli_prepare($conn, $query);
@@ -51,7 +80,7 @@ session_start();
 
     }
        
-		
+}	
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
     //Encodes and sends it back

@@ -76,13 +76,8 @@ function addQual()
     var dateArr=document.getElementById("date0").value;
     var studyArr=document.getElementById("study0").value;
 
-     if(typeArr==''|| degArr==''||studyArr==''||uniArr=='')
-	 {
-		 document.getElementById('msg').innerHTML='All fields are mandatory';
-	 }	
-	 
 
-	else{
+	
 		document.getElementById('msg').innerHTML='';
 		
 		//Sends the inputs to the backend to be added
@@ -96,7 +91,7 @@ function addQual()
     hID.dateData=dateArr;
     hID.studyData=studyArr;
     httEducation.send(JSON.stringify(hID));  
-	}
+	
 	
 				 
                    

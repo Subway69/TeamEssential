@@ -4,18 +4,41 @@ session_start();
 ?>
 <?php
 
-    $req = file_get_contents('php://input');
-    //Converts the contents into a PHP Object
-    $req_obj = json_decode($req);
+$req = file_get_contents('php://input');
+//Converts the contents into a PHP Object
+$req_obj = json_decode($req);
 
-    //Collects the data from the Json object
-    $typeID = $req_obj->typeData;
-    $degID = $req_obj->degData;
-    $uniID = $req_obj->uniData;
-    $dateID = $req_obj->dateData;
-    $studyID = $req_obj->studyData;
-    
-    //Grabs the user of the user currently logged in
+//Collects the data from the Json object
+$typeID = $req_obj->typeData;
+$degID = $req_obj->degData;
+$uniID = $req_obj->uniData;
+$dateID = $req_obj->dateData;
+$studyID = $req_obj->studyData;
+$text="";
+if($typeID=="")
+{
+    $text = $text."Please select a Qualification type \n";
+}
+
+if($degID=="")
+{
+    $text = $text."Invalid/Empty Degree \n";
+}
+if($uniID=="")
+{
+    $text = $text."Please select an University \n";
+}
+if($studyID=="")
+{
+    $text = $text."Please specify the status of your qualification \n";
+}
+if($studyID==1 && $dateID=='')
+{
+    $text = $text."Please enter a completion date \n";
+}
+else
+{
+        //Grabs the user of the user currently logged in
    $userid = logged_in_user();
 
    
@@ -47,7 +70,7 @@ session_start();
     $results1 = mysqli_stmt_get_result($stmt1);
 
     //Checks if it was successful
-    $text ="";
+    
     if($success1)
     {
         $text = "Education Successfully Added.";
@@ -57,11 +80,12 @@ session_start();
         $text = "Education was unsuccessful";
 
     }
-      
-	//Inform the client that we are sending back JSON    
-    header("Content-Type: application/json");
-    //Encodes and sends it back
-    echo json_encode($text);
+}
+    
+//Inform the client that we are sending back JSON    
+header("Content-Type: application/json");
+//Encodes and sends it back
+echo json_encode($text);
 
 
     
