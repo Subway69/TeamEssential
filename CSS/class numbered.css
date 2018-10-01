@@ -1,3 +1,14 @@
+
+
+
+.c3690{		/*body*/
+	padding-top:60px;
+    font-family:Helvetica, serif;
+    align-self:center;
+    justify-content:center;
+	margin: 0 auto;
+	width:94%;
+}
 .c13731{ /*footer-ish*/
     padding:10px;
     align-self:center;
@@ -5,18 +16,6 @@
     font-size:25px;
     font-weight:600;
     display:block;
-    padding-top:10px;
-    padding-right:10px;
-    padding-bottom:10px;
-    padding-left:10px;
-}
-.c3690{		/*body*/
-	padding-top:60px;
-    font-family:Helvetica, serif;
-    align-self:center;
-    justify-content:center;
-	margin: 0 auto;
-	width:94%
 }
 .c12511{
     flex-basis:100%;

@@ -23,7 +23,7 @@ require_once "PHP/default.php";
 			if(getPermission() ==1 || getPermission()==2){
 			
 				?> 
-				
+<div>				
 				<div id="ii4vcy" class="row c3690">
 					<div id="iuxvnm" class="cell">
 						<div class="c13731">Dashboard</div>
@@ -110,8 +110,8 @@ require_once "PHP/default.php";
 											</tbody>	
 										</table>
 										<div id="user-datatable" class="pagination-datatables">
-										
 										</div>
+										
 
 										<?php
 									}?>					
@@ -217,7 +217,7 @@ require_once "PHP/default.php";
 					<?php
 				}
 			?>
-
+</div>
 
 		<script>var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {

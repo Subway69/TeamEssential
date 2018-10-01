@@ -4,15 +4,10 @@
 	font-size: 0.95em;
 	font-family: Arial;
 }
-
-
 #form-cell{
     margin:0 0 0 5px;
+	padding:0 0 0 5px;
 }
-#form-cell{
-    padding:0 0 0 5px;
-}
-
 .input{
     width:100%;
     margin-bottom:10px;
@@ -43,7 +38,7 @@
     float:right;
 }
 .navbar-container{
-    /* max-width:950px; */
+    max-height:50px;
     margin-top:0px;
     margin-right:auto;
     margin-bottom:0px;
@@ -147,10 +142,7 @@
 }
 
 .tab-content{
-    padding-top:6px;
-    padding-right:10px;
-    padding-bottom:6px;
-    padding-left:10px;
+	padding: 6px 10px;
     min-height:100px;
     animation-duration:1s;
     animation-timing-function:ease;
@@ -160,7 +152,7 @@
     animation-fill-mode:none;
     animation-play-state:running;
     animation-name:fadeEffect;
-    padding:6px 10px 6px 10px;
+	margin-top:25px;
 }
 .tab-container{
     text-align:center;
@@ -168,7 +160,7 @@
     float:none;
     color:var(--tab-text);
 	margin: 0 auto;
-	padding-bottom:20px;
+	/* padding-bottom:20px; */
 }
 #form-cell{
     justify-content:center;

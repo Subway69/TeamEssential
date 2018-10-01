@@ -60,7 +60,8 @@ p{
 	padding:10px 0;
 	margin:0;
 }
-input[type=checkbox]{
+
+p > input[type=checkbox]{
 	height: 15px;
 	margin:0;
 	vertical-align:top;
@@ -77,14 +78,15 @@ input[type=checkbox]{
 	background: var(--navbar);
 	font-weight:bold;
 	position:fixed;
-	min-height:50px;
+	left:0;
+	top: 0;
+	max-height:50px;
 	z-index:1;
 }
 .navbar-brand{
 	content: url("../img/logo_r.png");  
 	width:230px;
 	height:40px;
-	margin-top:2px;
 	padding:5px;
 	min-height:50px;
 	min-width:50px;
@@ -104,6 +106,9 @@ a.navbar-menu-link:hover{
     background-color:var(--tab-active);
     color:var(--white);
 }
+
+
+
 /* ****************************** MEDIA ****************************** */
 
 @media (max-width:480px){
@@ -112,26 +117,73 @@ a.navbar-menu-link:hover{
 	}
 	.navbar-brand{
 		content: url("../img/logo_flag.png");
-		height:15px;
-		width:15px;
+		/* height:15px; */
+		width:60px;
+		padding-left:0px;
 	}
-	.c3690{
-		display:flex;
-		padding-top:40px;
+	.L span, .M span, .H span{
+		display:none;
 	}
-	option{
-		width:10px;
+	
+	.L:after{
+		content:"L";
+	}
+	.M:after{
+		content:"M";
+	}
+	.H:after{
+		content:"H";
 	}
 }
 
 
 /* ******************************REGISTRATION****************************** */
 
-#tTitle{
-	width:300px;
+
+/* ******************************FORMS****************************** */
+
+form{
+	display:block;
+	/* padding:15px; comment*/ 
+	margin: 0 auto;
 }
-#tTitle option{
-	width:calc(90% - 100px);
+.form{
+    width:300px;
+    flex-direction:row;
+    justify-content:center;
+    position:static;
+    align-self:center;
+    align-items:flex-start;
+}
+.row > .cell > .form.gen , .form.discipline.gen  { /*genskl discskl forms*/
+	width:560px;
+	height:440px;
+	text-align:left;
+	word-wrap:break-word;
+}
+div > form.disc{	/* PROFILE CATEGORY DISCIPLINE */
+	width:600px;
+	display:block;
+	align-self:center;
+	margin:0 -5px 16px -5px;
+	padding:0px;
+}
+.row > .cell > .form.gen.discipline{
+	height:390px;
+}
+
+.form.gen.discipline > table > tbody{
+	height:330px;
+}
+.blank{
+	border:none;
+	padding:0px;
+	margin:0px;
+}
+.form-group{
+	width:300px;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 
@@ -206,6 +258,10 @@ button,  input[type=submit], input[type=reset], input[type=button]{ /*button sty
 	line-height:normal;
 	padding:0px;
 }
+input[type=radio]{
+	margin: 3px 20px;
+}
+
 
 form#addCat0.form > input[type=button], form#addSkillsForm.form.optional > tr > td > input[type=button]{ /* 50% width buttons*/
 	width:50%;
@@ -396,74 +452,7 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 .sn{
 	width:75%;
 }	
-/* ******************************FORMS****************************** */
 
-form{
-	/* background-color:rgba(122, 125, 127, 0.2); */
-	/* background-color:#e4e5e5; */
-	display:block;
-	/* padding:15px; comment*/ 
-	margin: 0 auto;
-	/* border: 2px inset black; */
-	/* border-radius:10px; */
-	/* border-color: #068; */
-}
-.form{
-    width:300px;
-    /* display:block; */
-    /* float:none; */
-    /* text-align:center; */
-    flex-direction:row;
-    justify-content:center;
-    position:static;
-    align-self:center;
-    align-items:flex-start;
-    /* margin:0 -5px 16px -5px; */
-}
-form#login { /* log-in form style */
-	border-color:#068;
-    width: 450px;
-	/* background-color:#e4e5e5; */
-	align-self:center;
-	align-items:flex-start;
-	position: static; 
-}
-form#reg { /* reg form style */
-	/* width:500px;  */
-}
-.row > .cell > .form.gen , .form.discipline.gen  {
-	width:600px;
-	/* height:490px; */
-	height:470px;
-	text-align:left;
-	/* overflow-x:auto; */
-	word-wrap:break-word;
-}
-div > form.disc{	/* CATEGORY DISCIPLINE */
-	/* background-color:rgba(122, 125, 127, 0.2); */
-	width:600px;
-	display:block;
-	align-self:center;
-	margin:0 -5px 16px -5px;
-	padding:0px;
-}
-div > .form.gen.discipline{
-	height:390px;
-}
-
-.form.gen.discipline > table > tbody{
-	height:330px;
-}
-.blank{
-	border:none;
-	padding:0px;
-	margin:0px;
-}
-.form-group{
-	width:300px;
-	margin-left:auto;
-	margin-right:auto;
-}
 
 /* ******************************HELP****************************** */
 
@@ -490,14 +479,20 @@ div > .form.gen.discipline{
 /* border: 1px solid yellowgreen; */
 /* border: 1px solid #80c6ff; */
 /* border-radius: 10px; */
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+
 }
 ::-webkit-scrollbar-thumb {
-	position:absolute;
-/* background: yellowgreen;   */
+	/* position:absolute; */
 	/* background:linear-gradient(  #80c6ff,#e0eef9); */
 	/* background: linear-gradient(#7c88da, #00126d ); light to dark */
-	background:var(--input-bg); /*dark to light*/
+	background:var(--input-bg); /*dark to light
 	/* border-radius: 2px; */
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
 }
 ::-webkit-scrollbar-thumb:hover {
 /* background: #88ba1c;  greenish */

@@ -47,13 +47,19 @@ require_once "PHP/default.php";
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
 							<form class="form">
-								<p style="font-size: 0.8em;"> Have you worked with Federation University before?
-								<input type = "radio" name ="workUni" id ="worked0"value="1"/> Yes
-								<input type = "radio" name ="workUni"id ="worked1" value="0"/> No
+								<p style="font-size: 0.8em;"> Have you worked with Federation University before?</p>
 								
-								<p style="font-size: 0.8em;"> Please select your availability
-								<input id= "avail0"type = "radio" name ="availUni" value="1"/> Full Time
-								<input id= "avail1"type = "radio" name ="availUni" value="0"/> Part Time
+								<input type = "radio" name ="workUni" id ="worked0"value="1"/>
+								<label for="worked0">Yes</label>
+								<input type = "radio" name ="workUni"id ="worked1" value="0"/>
+								<label for="worked1">No</label>
+								
+								<p style="font-size: 0.8em;"> Please select your availability</p>
+								
+								<input id= "avail0"type = "radio" name ="availUni" value="1"/>
+								<label for="availUni">Full Time</label>
+								<input id= "avail1"type = "radio" name ="availUni" value="0"/>
+								<label for="availUni"> Part Time</label>
 							</form>
 						</div>
 					</div>
@@ -113,7 +119,6 @@ require_once "PHP/default.php";
 				</div>
 				
 				<div id="employment-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657">Federation University Employment History</div>
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
@@ -173,9 +178,9 @@ require_once "PHP/default.php";
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
-											<td class="sheadr">Low</td>
-											<td class="sheadr">Medium</td>
-											<td class="sheadr">High</td>
+											<td class="sheadr L"><span>Low</span></td>
+											<td class="sheadr M"><span>Medium</span></td>
+											<td class="sheadr H"><span>High</span></td>
 										<tr>
 										
 									</thead>
