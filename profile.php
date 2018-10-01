@@ -183,7 +183,7 @@ require_once "PHP/default.php";
 									
 									</tbody>
 								</table>
-								<script src="JS/skills.js"></script> <!--take note. wrong js -->
+								<script src="JS/skills.js"></script> 
 								
 								<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
 								

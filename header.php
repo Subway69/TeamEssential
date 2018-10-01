@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="CSS/master.css">
     <link rel="stylesheet" href="CSS/style.css">
 	<link rel="stylesheet" href="CSS/class numbered.css">
-	<link rel="stylesheet" href="CSS/bootstrap.css">
+	<link rel="stylesheet" href="CSS/bootstrap.css"> 
 	<link rel="stylesheet" href="CSS/media.css">
 	<link rel="stylesheet" href="CSS/boo.css">
 	<script src="JS/passwordMatch.js"></script>

@@ -119,12 +119,20 @@ a.navbar-menu-link:hover{
 		display:flex;
 		padding-top:40px;
 	}
+	option{
+		width:10px;
+	}
 }
 
 
 /* ******************************REGISTRATION****************************** */
 
-
+#tTitle{
+	width:300px;
+}
+#tTitle option{
+	width:calc(90% - 100px);
+}
 
 
 /* ******************************BASE****************************** */
@@ -401,7 +409,7 @@ form{
 	/* border-color: #068; */
 }
 .form{
-    max-width:300px;
+    width:300px;
     /* display:block; */
     /* float:none; */
     /* text-align:center; */
@@ -423,7 +431,7 @@ form#login { /* log-in form style */
 form#reg { /* reg form style */
 	/* width:500px;  */
 }
-form.gen {
+.row > .cell > .form.gen , .form.discipline.gen  {
 	width:600px;
 	/* height:490px; */
 	height:470px;
@@ -442,6 +450,7 @@ div > form.disc{	/* CATEGORY DISCIPLINE */
 div > .form.gen.discipline{
 	height:390px;
 }
+
 .form.gen.discipline > table > tbody{
 	height:330px;
 }

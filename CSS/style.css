@@ -35,7 +35,7 @@
     margin:0 0 10px 0;
     background-color:var(--input-bg);
     text-align-last:center;
-    direction:rtl;
+    direction:ltr;
 }
 
 .navbar-items-c{
