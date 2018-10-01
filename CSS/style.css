@@ -24,37 +24,15 @@
 }
 .select{
     width:100%;
-    margin-bottom:10px;
-    padding-top:7px;
-    padding-right:10px;
-    padding-bottom:7px;
-    padding-left:10px;
-   
+	padding: 7px 10px;
     color:var(--tab-active);
-    border-top-width:initial;
-    border-right-width:initial;
-    border-bottom-width:initial;
-    border-left-width:initial;
-    border-top-style:none;
-    border-right-style:none;
-    border-bottom-style:none;
-    border-left-style:none;
-    border-top-color:initial;
-    border-right-color:initial;
-    border-bottom-color:initial;
-    border-left-color:initial;
-    border-image-source:initial;
-    border-image-slice:initial;
-    border-image-width:initial;
-    border-image-outset:initial;
-    border-image-repeat:initial;
-    height:30px;
+	border-width:initial;
+	border-style:none;
+	border-color:initial;
+    height:40px;
     text-align:center;
     float:none;
     margin:0 0 10px 0;
-    margin-top:0px;
-    margin-right:0px;
-    margin-left:0px;
     background-color:var(--input-bg);
     text-align-last:center;
     direction:rtl;

@@ -113,7 +113,6 @@ require_once "PHP/default.php";
 				</div>
 				
 				<div id="employment-tab" data-tab-content="1" class="tab-content">
-					<div id="tab-title" class="c15657">Federation University Employment History</div>
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">

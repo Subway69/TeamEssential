@@ -10,7 +10,8 @@
 	width: device-width;
 }
 :root{
-	--navbar: #263169;
+	--navbar: #1e284b;
+	/*263169*/
 	--body-bg: #afb4d2;
 	--white: #ffffff;
 	--tab-active: #4d557f; /*placeholder, select ph */
@@ -27,12 +28,13 @@
 	--tr-hover-bg: #adadff;
 	--tbl-border: #dee2e6;
 	--scroll: #000;
+	--p-text: #0f1428;
 	/* 00126d scroll */
 }
 html {
 	height: 100%;
 	box-sizing: border-box;
-	overflow-y:scroll;
+	/* overflow-y:scroll; */
 }
 body{
 	background-color:var(--body-bg);
@@ -46,14 +48,24 @@ footer{
 	right:0;
 	left: 0;
 	bottom: 0;
-	padding:0.5rem;
+	padding:0.3rem;
 	background-color: var(--navbar);
 	color: var(--white);
 	text-align: center;
-	font-size:0.5rem;
+	font-size:0.3rem;
 }
-
-
+p{
+	color: #0f1428;
+	font-size: 0.8em;
+	padding:10px 0;
+	margin:0;
+}
+input[type=checkbox]{
+	height: 15px;
+	margin:0;
+	vertical-align:top;
+	float:right;
+}
 
 
 
@@ -328,8 +340,7 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 }
 .specificTable  thread >.specificTable tr ,  tbody{
   display:block;
-  /* height:340px; */
-  height:375px;
+  height:410px;
   vertical-align:middle;
   overflow:auto;
 }
@@ -350,7 +361,7 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 	width:50%;
 	margin-left:auto;
 	margin-right:auto;
-	padding-left:0px;
+	padding:30px;
 }
 .sname{ /*skill name */
 	line-height:25px;
@@ -383,14 +394,14 @@ form{
 	/* background-color:rgba(122, 125, 127, 0.2); */
 	/* background-color:#e4e5e5; */
 	display:block;
-	padding:15px;
+	/* padding:15px; comment*/ 
 	margin: 0 auto;
 	/* border: 2px inset black; */
 	/* border-radius:10px; */
 	/* border-color: #068; */
 }
 .form{
-    width:500px;
+    max-width:300px;
     /* display:block; */
     /* float:none; */
     /* text-align:center; */
@@ -424,9 +435,6 @@ div > form.disc{	/* CATEGORY DISCIPLINE */
 	/* background-color:rgba(122, 125, 127, 0.2); */
 	width:600px;
 	display:block;
-	border: 2px inset black;
-	border-radius:10px;
-	border-color: #068;
 	align-self:center;
 	margin:0 -5px 16px -5px;
 	padding:0px;
@@ -435,7 +443,7 @@ div > .form.gen.discipline{
 	height:390px;
 }
 .form.gen.discipline > table > tbody{
-	height:300px;
+	height:330px;
 }
 .blank{
 	border:none;
@@ -479,12 +487,20 @@ div > .form.gen.discipline{
 /* background: yellowgreen;   */
 	/* background:linear-gradient(  #80c6ff,#e0eef9); */
 	/* background: linear-gradient(#7c88da, #00126d ); light to dark */
-	background:var(--scroll); /*dark to light*/
-	border-radius: 2px;
+	background:var(--input-bg); /*dark to light*/
+	/* border-radius: 2px; */
 }
 ::-webkit-scrollbar-thumb:hover {
 /* background: #88ba1c;  greenish */
 	/* background:red;	*/
 	/* background: linear-gradient(#9956c9,#c9a2e5); */
 }
-
+/* ::-webkit-scrollbar-button:start{ */
+	/* height:58px; */
+	/* background:var(--navbar); */
+/* } */
+	/* ::-webkit-scrollbar-button:end{ */
+		/* height:26px; */
+		/* background:red; */
+		/* background-blend-mode:luminosity; */
+	/* } */

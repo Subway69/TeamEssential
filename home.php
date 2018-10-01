@@ -41,7 +41,7 @@ require_once "PHP/default.php";
 							</nav>
 							<div id="users-tab" data-tab-content="1" class="tab-content">
 								<div id="tab-row" class="row">
-
+								
 									<?php
 										$query = "SELECT * FROM Users;";
 										$stmt= mysqli_prepare($conn,$query);
@@ -167,19 +167,7 @@ require_once "PHP/default.php";
 						
 					</div>
 				
-					<div id="specskl-tab" data-tab-content="1" class="tab-content">
-						<div id="tab-title" class="c15657"></div>
-						
-						<div id="tab-row" class="row">
-							<div id="form-cell" class="cell">					 
-								<form  class= "form" ></form>
-							
-							</div>
-						</div>
-						
-					</div>
-				
-					<div id="email-tab" data-tab-content="4">
+					<div id="email-tab" data-tab-content="4" class="tab-content">
 						
 						
 						<div class="row" id="mailing">
