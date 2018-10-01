@@ -37,7 +37,7 @@ loadEducation();
 function loadUni()
 {
     httd = new XMLHttpRequest();
-    httd.open("GET","PHP/getUniversity.php",true);
+    httd.open("GET","Education/getUniversity/",true);
     httd.onload= lists;
     httd.send();
 }
@@ -82,7 +82,7 @@ function addQual()
 		
 		//Sends the inputs to the backend to be added
     httEducation = new XMLHttpRequest();
-    httEducation.open("POST","PHP/addEducation.php",true);
+    httEducation.open("POST","Education/addEducation/",true);
     httEducation.onload=showEducation;
     var hID = {};
     hID.typeData= typeArr; 
@@ -134,7 +134,7 @@ function loadEducation()
 function loadQualification()
 {
     httLoadEducation = new XMLHttpRequest();
-    httLoadEducation.open("GET","PHP/getEducation.php",true);
+    httLoadEducation.open("GET","Education/getEducation/",true);
     httLoadEducation.onload= listEducation;
     httLoadEducation.send();
 }
@@ -199,11 +199,9 @@ function resetter()
 function deleteQualification(delID)
 {
     httDeleteEducation=new XMLHttpRequest();
-    httDeleteEducation.open("POST","PHP/deleteEducation.php",true);
+    httDeleteEducation.open("DELETE","Education/deleteEducation/"+delID,true);
     httDeleteEducation.onload=listDelete;
-    var delHID={};
-    delHID.delID=delID;
-    httDeleteEducation.send(JSON.stringify(delHID));
+    httDeleteEducation.send();
 }
 function listDelete(ev)
 {
@@ -269,7 +267,7 @@ function updateQualification(ids)
                                     
         //Sends the inputs to the backend to be added
         httUpdateEducation = new XMLHttpRequest();
-        httUpdateEducation.open("POST","PHP/updateEducation.php",true);
+        httUpdateEducation.open("PUT","Education/updateEducation/",true);
         httUpdateEducation.onload=showEducationUpdate;
         var hIDUpdate = {};
         

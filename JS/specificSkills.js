@@ -13,7 +13,7 @@ var aS=[];
 
 //This ajax requests gets all the categories
 httCat = new XMLHttpRequest();
-httCat.open("POST","PHP/getCategory.php",true);
+httCat.open("GET","Skills/getCategory/",true);
 httCat.onload=listCat;
 httCat.send();
 
@@ -49,6 +49,7 @@ sel.addEventListener('change',function(ev)
 //Resets the displayed skills so skills from categories can be displayed
 function clear()
 {
+    aS=[];
     for(var i = 0; i<sizes;i++)
     {
         var myNode = document.getElementById("form10");
@@ -65,12 +66,13 @@ function getList(d)
 {
     clear();
     htt = new XMLHttpRequest();
-    var temp = {};
-    temp.category = d;
+    console.log("Skills/getSpecificCategory/"+d);
     choice = d;
-    htt.open("POST","PHP/getSpecific.php",true);
+        var temp = {};
+    temp.category = d;
+    htt.open("POST","Skills/getSpecificCategory/",true);
     htt.onload= listy;
-    htt.send(JSON.stringify(temp));
+        htt.send(JSON.stringify(temp));
 } 
 
 //Lists the skills
@@ -139,13 +141,6 @@ function listy(ev)
         
     }
 	checks(choice);
-    // var specBut = document.createElement("input");
-    // specBut.setAttribute("type","button");
-    // specBut.setAttribute("class","button");
-    // specBut.setAttribute("onClick","addSpecificSkills()");
-    // specBut.setAttribute('value',"Add");
-    // skillForms.appendChild(specBut);
-    // 
 
 }
 
@@ -179,7 +174,7 @@ function addSpecificSkills()
 
     //Ajax request that  sends skill data to backend for processing
     htts = new XMLHttpRequest();
-    htts.open("POST","PHP/sign.php",true);
+    htts.open("POST","Skills/addSkills/",true);
     htts.onload = result;
     var hIDs = {};
     hIDs.checkData= checkArrays; 
@@ -201,7 +196,7 @@ function result(ev)
 function checks(hi)
 {
     httChecks = new XMLHttpRequest();
-    httChecks.open("POST","PHP/getUserSpecificSkills.php",true);
+    httChecks.open("POST","Skills/getUserSpecificSkills/",true);
     var tempor = {};
     tempor.category = hi;
     httChecks.onload= checkSkills;

@@ -23,10 +23,9 @@ partTime.addEventListener('click',function(ev)
 function updateAvail(val)
 {
     httAvail=new XMLHttpRequest();
-    httAvail.open("POST","PHP/updateAvail.php",true);
-    var available = {};
-    available.id =val;
-    httAvail.send(JSON.stringify(available));
+    httAvail.open("PUT","Account/updateAvailability/"+val,true);
+
+    httAvail.send();
 }
 
 
@@ -43,11 +42,10 @@ noFed.addEventListener('click',function(ev)
 function updateFed(value)
 {
     httFed=new XMLHttpRequest();
-    httFed.open("POST","PHP/updateWork.php",true);
+    httFed.open("PUT","Account/updateWork/"+value,true);
     httFed.onload=reload;
-    var work = {};
-    work.id =value;
-    httFed.send(JSON.stringify(work));
+
+    httFed.send();
 }
 
 function reload(ev)
@@ -59,7 +57,7 @@ function reload(ev)
 function loadPreferences()
 {
     httPref=new XMLHttpRequest();
-    httPref.open("POST","PHP/getPreferences.php",true);
+    httPref.open("GET","Account/Preferences/",true);
     httPref.onload=setRadios;
     httPref.send();
 
@@ -74,7 +72,7 @@ function setRadios(ev)
         }
         if(prefList.avail==0)
         {
-            fullTime.checked=true;
+            partTime.checked=true;
         }
 
         if(prefList.uniWork==1)

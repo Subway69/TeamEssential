@@ -29,26 +29,28 @@ require_once "PHP/default.php";
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form class="form" action = "PHP/updatePass.php" method="POST">
+								<form class="form"  method="POST">
 									<div class="form-group">
 										<input type = "hidden" id="passUser" name = "tUser"value = <?php echo $user_id;?>/>
 										<input placeholder="Current Password" required type="password"class="input"/>
 										
-										<input name = "tPassword" type="password" class="input val" id= "field_pwd1" 
+										<!--<input name = "currPass" type="password" class="input val" id= "field_pwd1" 
 											placeholder="New Password" required
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
 											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
-												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>			  
-										
-										<input name = "tConfirm" type="password" class="input val" id="field_pwd2" 
+												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>-->			  
+												<input type="password" class="input val" id= "field_pwd1" 
+											placeholder="New Password" required/>
+								<!--		<input id = "confirmPass" type="password" class="input val" id="field_pwd2" 
 											placeholder="Confirm New Password" required 
 											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
-										
-										<input type="submit" class="button" value="Update Password"/>
+											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>-->
+											<input type="password" class="input val" id="field_pwd2" 
+											placeholder="Confirm New Password" required />
+										<input type="button" onclick="updatePass()" class="button" value="Update Password"/>
 									</div>
 								</form>
-								<script src="JS/updates.js"></script>
+								
 							</div>
 						</div>
 						
@@ -58,10 +60,10 @@ require_once "PHP/default.php";
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form class="form" method="POST" action="PHP/delete.php">
+								<form class="form" id="formDelete"method="POST" action="index.html">
 								
 									<div class="form-group">
-										<button type="submit" value="<?PHP echo $user_id?>" class="button" name="tDelete">Delete Account</button>
+										<button type="button" id=<?PHP echo $user_id?> onClick="deleteAccount(this.id)" class="button" name="tDelete">Delete Account</button>
 									</div>
 								
 								</form>
@@ -92,6 +94,7 @@ require_once "PHP/default.php";
 				}.bind(items[i]))();
 			};
 		</script>
+		<script src="JS/updates.js"></script>
 		<!--
 		<footer>
 			foot

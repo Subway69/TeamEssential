@@ -9,7 +9,7 @@ var aG=[];
 
 //This Ajax request retrieves all the General and Research skills from the Database
 httad = new XMLHttpRequest();
-httad.open("POST","PHP/getSkills.php",true);
+httad.open("GET","Skills/getSkills/",true);
 httad.onload= listsSkill;
 httad.send(); 
 // var skillForm = document.getElementById("form0");
@@ -91,7 +91,7 @@ function listsSkill(ev)
 function check()
 {
     httCheck = new XMLHttpRequest();
-    httCheck.open("POST","PHP/getUserSkills.php",true);
+    httCheck.open("GET","Skills/getUserSkills/",true);
     httCheck.onload= checkSkill;
     httCheck.send(); 
 }
@@ -172,7 +172,7 @@ function addGeneralSkill()
 
     //Ajax request that  sends skill data to backend for processing
     htts = new XMLHttpRequest();
-    htts.open("POST","PHP/sign.php",true);
+    htts.open("POST","Skills/addSkills/",true);
     htts.onload=results;
     var hID = {};
     hID.checkData= array1; 

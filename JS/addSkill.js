@@ -11,6 +11,8 @@ var updSkillID=0;
 var updCatID=0;
 var catList;
 var oldCat;
+var delCatHtt;
+var delHtt;
 
 var selCats = document.getElementById("skillCat0");
 loadCategories();
@@ -19,7 +21,7 @@ loadCategories();
 function loadCategories()
 {
     httCats = new XMLHttpRequest();
-    httCats.open("POST","PHP/getCategory.php",true);
+    httCats.open("GET","Skills/getCategory/",true);
     httCats.onload=listCats;
     httCats.send();
 }
@@ -79,7 +81,7 @@ function addSkill()
         {
          
             skillHtts = new XMLHttpRequest();
-            skillHtts.open("POST","PHP/addNewSkill.php",true);
+            skillHtts.open("POST","Skills/addNewSkill/",true);
             var skillToAdd={};
             skillToAdd.cat=catToAdd;
             skillToAdd.name = nameToAdd;
@@ -115,7 +117,7 @@ function addCategory()
     {
         
             catHtts = new XMLHttpRequest();
-            catHtts.open("POST","PHP/addNewCategory.php",true);
+            catHtts.open("POST","Skills/addNewCategory/",true);
             var catToAdd={};
             catToAdd.cat=newCat;
             catToAdd.name = newSkill;
@@ -143,7 +145,8 @@ function clears(ev)
 function showSkills(cats)
 {
     httSkills = new XMLHttpRequest();
-    httSkills.open("POST","PHP/getSpecific.php",true);
+    var site="Skills/getSpecificCategory/";
+    httSkills.open("POST",site,true);
     var cates = {};
     cates.category=cats;
     httSkills.onload=listSkills;
@@ -156,6 +159,7 @@ function listSkills(ev)
 {
     clear();
     skillLists = JSON.parse(httSkills.responseText);
+;
     skillSize = skillLists.length;
     var formSkill = document.getElementById("addSkillsForm");
 
@@ -226,7 +230,7 @@ function canSkill()
 function updSkill()
 {
     httSkillUpdate = new XMLHttpRequest();
-    httSkillUpdate.open("POST","PHP/updateSkill.php");
+    httSkillUpdate.open("PUT","Skills/updateSkills/",true);
     httSkillUpdate.onload=showSkillUpdate;
     var skillHid={};
     skillHid.sID=updSkillID;
@@ -265,7 +269,7 @@ function canCategory()
 function updCategory()
 {
     httCatUpdate = new XMLHttpRequest();
-    httCatUpdate.open("POST","PHP/updateCategory.php");
+    httCatUpdate.open("PUT","Skills/updateCategory/",true);
     httCatUpdate.onload=showCatUpdate;
     var catHid={};
     catHid.sID=oldCat;
@@ -303,27 +307,37 @@ function clear()
 function deleteSkill(id)
 {
    
-    var delHtt = new XMLHttpRequest();
-    var delID={};
-    delID.id=id;
-    delHtt.open("POST","PHP/deleteSkill.php",true);
-    delHtt.send(JSON.stringify(delID));
-    showSkills(document.getElementById("skillCat0").value);
+    delHtt = new XMLHttpRequest();
+    delHtt.open("DELETE","Skills/deleteSkill/"+id,true);
+    delHtt.onload=skillDelete;
+    delHtt.send();
+    
 }
 
 //Deletes the Category
 function deleteCat(id)
 {
-    var delCatHtt = new XMLHttpRequest();
-    var delCatID={};
+    delCatHtt = new XMLHttpRequest();
+        var delCatID={};
     delCatID.id=id;
-    delCatHtt.open("POST","PHP/deleteCategory.php",true);
+    delCatHtt.open("POST","Skills/deleteCategory/",true);
+    delCatHtt.onload=categoryDelete;
     delCatHtt.send(JSON.stringify(delCatID));
+
+}
+
+function skillDelete(ev)
+{
+    alert(JSON.parse(delHtt.responseText));
+    showSkills(document.getElementById("skillCat0").value);
+}
+
+function categoryDelete(ev)
+{
+    alert(JSON.parse(delCatHtt.responseText));
     clearCategories();
     loadCategories();
 }
-
-
 //Clears the categories
 function clearCategories()
 {

@@ -10,6 +10,7 @@
 	return $_SESSION['username'];
 }
 
+
 	function loginName($name)
 	{
 		$_SESSION['name']=$name;

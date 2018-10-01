@@ -22,13 +22,11 @@ function addEmp()
     var startArr= document.getElementById("startDate1").value;
     var endArr=document.getElementById("endDate1").value;
     var taskArr = document.getElementById("tasks1").value;
-if(typeArr==''||titleArr==''||manNArr==''||manPArr==''||orgArr==''||startArr=='')
-{document.getElementById('msg1').innerHTML='Field is mandatory';
-}
-else{
+
+
     document.getElementById('msg1').innerHTML='';
     httEmploy = new XMLHttpRequest();
-    httEmploy.open("POST","PHP/addEmployment.php",true);
+    httEmploy.open("POST","Employment/addEmployment/",true);
     httEmploy.onload=showEmp;
     var hID = {};
     hID.typeData= typeArr; 
@@ -40,7 +38,7 @@ else{
     hID.endData=endArr;
     hID.taskData=taskArr;
     httEmploy.send(JSON.stringify(hID));
-}
+
     
     
 }
@@ -75,7 +73,7 @@ function reset()
 function loadEmloyment()
 {
     httLoadEmploy = new XMLHttpRequest()
-    httLoadEmploy.open("GET","PHP/getEmploy.php",true);
+    httLoadEmploy.open("GET","Employment/getEmployment/",true);
     httLoadEmploy.onload=listEmployment;
     httLoadEmploy.send();
 }
@@ -127,11 +125,9 @@ function resettter()
 function DeleteEmploy(delEmpID)
 {
     httDeleteEmploy=new XMLHttpRequest();
-    httDeleteEmploy.open("POST","PHP/deleteEmployment.php",true);
+    httDeleteEmploy.open("DELETE","Employment/deleteEmployment/"+delEmpID,true);
     httDeleteEmploy.onload=listEmployDelete;
-    var delEmpHID={};
-    delEmpHID.delID=delEmpID;
-    httDeleteEmploy.send(JSON.stringify(delEmpHID));
+    httDeleteEmploy.send();
 }
 
 function listEmployDelete(ev)
@@ -203,7 +199,7 @@ function updEmp()
 
     
     httUpdateEmploy = new XMLHttpRequest();
-    httUpdateEmploy.open("POST","PHP/updateEmployment.php",true);
+    httUpdateEmploy.open("PUT","Employment/updateEmployment/",true);
     httUpdateEmploy.onload=showUpdEmp;
     var hUpdID = {};
     hUpdID.empID = empIDValue;

@@ -64,7 +64,7 @@ function getMail(d)
     httMail = new XMLHttpRequest();
     var tempMail = {};
     tempMail.category = d;
-    httMail.open("POST","PHP/getMail.php",true);
+    httMail.open("POST","Account/mail/",true);
     httMail.onload = somethingElse;
     httMail.send(JSON.stringify(tempMail));
 } 

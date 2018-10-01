@@ -77,7 +77,7 @@ require_once "PHP/default.php";
 								
 								<div class="form-group">
 									<select placeholder="Educational Institution" id="uni0" required="" class="select">
-										<option>-- Select Education Institution --</option>
+										<option value =''>-- Select Education Institution --</option>
 									</select>
 								</div>
 								
@@ -113,6 +113,7 @@ require_once "PHP/default.php";
 				</div>
 				
 				<div id="employment-tab" data-tab-content="1" class="tab-content">
+					<div id="tab-title" class="c15657">Federation University Employment History</div>
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">

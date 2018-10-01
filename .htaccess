@@ -1,3 +1,7 @@
-Redirect /brandon/home.php /brandon/index.html
-php_value post_max_size 15M
-php_value upload_max_filesize 15M
+RewriteEngine On
+RewriteRule ^Education/(.*)$ PHP/EducationAPI.php/$1
+RewriteRule ^Employment/(.*)$ PHP/EmploymentAPI.php/$1
+RewriteRule ^Skills/(.*)$ PHP/SkillsAPI.php/$1
+RewriteRule ^Account/(.*)$ PHP/AccountAPI.php/$1
+php_value post_max_size 100M
+php_value upload_max_filesize 100M

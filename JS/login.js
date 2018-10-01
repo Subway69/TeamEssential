@@ -107,7 +107,7 @@ function register()
   if(bachelor.checked)
 {
     httRegister = new XMLHttpRequest();
-    httRegister.open("POST","PHP/register.php",true);
+    httRegister.open("POST","Account/register/",true);
     httRegister.onload = registerResponse;
     var reg = {};
 	
@@ -149,7 +149,7 @@ function login()
     var passWord=  document.getElementById("tPassword").value;
    
     httLogin=new XMLHttpRequest();
-    httLogin.open("POST","PHP/login.php",true);
+    httLogin.open("POST","Account/login/",true);
   
     httLogin.onload=loginResponse;
     var log={};
