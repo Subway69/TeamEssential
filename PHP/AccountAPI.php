@@ -231,6 +231,11 @@ $router->register("DELETE",'#^/deleteAccount/(\d+)#', function($params)
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"d",$id);
     $success = mysqli_stmt_execute($stmt);
+	
+    $query = "DELETE FROM User_Files WHERE user_id = ?;";
+    $stmt= mysqli_prepare($conn,$query);
+    mysqli_stmt_bind_param($stmt,"d",$id);
+    $success = mysqli_stmt_execute($stmt);
 
 
     $query = "DELETE FROM Users WHERE user_id = ?;";
