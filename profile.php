@@ -286,18 +286,26 @@ require_once "PHP/default.php";
 
 
 							echo "<h1>Files</h1>";
-							echo "<table cellspacing='10'><center>";
+							<table class="table table-striped table-dark table-bordered " id="fileTabel" >
+							<tbody>
+							<?php
 
 							while($row1 = mysqli_fetch_assoc($results))
 
 							{
 								$fname=$row1['file_name'];
-								$path=	$row1['file_location'];				
-								echo "<tr><td>".$row1['file_name']."</td><td>"."<button><a download='$fname' href='$path'>download</a></button></td></tr>";
+								$path=	$row1['file_location'];
+                                 $file_id=$row1['file_id'];								
+								echo 
+								"<tr><td>".$row1['file_name']."</td><td><button>
+								<a download='$fname' href='$path'>download</a></button></td><td>"?>
+								
+								<button><a href="deletefile.php?file_id=<?php echo $file_id?>">delete</a></button></td></tr>
 
-							}
-							echo "</center></table>";
-							?>
+							<?php }?>
+							
+							</tbody>
+							</table>
 
 								</div>
 						</div>
