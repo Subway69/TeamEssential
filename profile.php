@@ -138,7 +138,7 @@ require_once "PHP/default.php";
 								<input id="org1" placeholder="Department" required="" class="input" />
 								
 								<div class="form-group"><input id="manager1" placeholder="Manager's Name" required="" class="input" />
-									<input id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
+									<input type="number"id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
 								</div>
 								
 								<input id = "startDate1" type = "date" placeholder="Start Date" required="" class="input"/>

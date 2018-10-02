@@ -20,7 +20,8 @@ require_once "PHP/default.php";
 		?>
 		
 		<?php
-			if(getPermission() ==1 || getPermission()==2){
+			if(getPermission() ==1 || getPermission()==2)
+			{
 			
 				?> 
 <div>				
@@ -215,6 +216,9 @@ require_once "PHP/default.php";
 				</div> <!--added -->
 			
 					<?php
+				}
+				else{
+					header("Location: viewProfile.php");
 				}
 			?>
 </div>

@@ -10,7 +10,14 @@ require_once "PHP/default.php";
    <body>
       <title>View Profile</title>
       <?php
+      $user_id;
+      if(isset($_POST['tID']))
+      {
       $user_id = $_POST['tID'];
+      }
+      else{
+          $user_id=logged_in_user();
+      }
       $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
       ?>
     
@@ -37,6 +44,17 @@ require_once "PHP/default.php";
         echo "Full Name: ". $row['title']." ". $row['first_name']." ". $row['middle_name']." ". $row['last_name'];
         echo "</p>";
         echo "Email: ". $row['email']."</p>";
+        $av = $row['avail'];
+        $work=$row['uniWork'];
+       
+        if($av==1)
+        {
+            echo $row['first_name']." is available full time.";
+        }
+        if($av==0)
+        {
+            echo $row['first_name']." is available part time.";
+        }
         if (getPermission()==2)
         {
             ?>
@@ -109,7 +127,7 @@ require_once "PHP/default.php";
         $success = mysqli_stmt_execute($stmt);
         $results = mysqli_stmt_get_result($stmt);
         echo "<h1>Federation University Employment</h1>";
-        							if(getWork() == 1){
+        if($work== 1){
 								
         while($row1 = mysqli_fetch_assoc($results))
         {

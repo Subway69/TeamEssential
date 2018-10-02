@@ -112,7 +112,6 @@ if($taskID=="")
     $text= $text."Invalid/Empty Tasks\n";
 }
 	if(is_nan($manPID))
-	
 	{$text= $text."Invalid/Empty Manager Phone\n";
 	}
 else
