@@ -232,11 +232,30 @@ $router->register("DELETE",'#^/deleteAccount/(\d+)#', function($params)
     mysqli_stmt_bind_param($stmt,"d",$id);
     $success = mysqli_stmt_execute($stmt);
 	
+	
+$query = "SELECT file_id FROM User_Files where user_id=?;";
+		
+$stmt= mysqli_prepare($conn,$query);
+mysqli_stmt_bind_param($stmt,"d",$id);
+
+$success = mysqli_stmt_execute($stmt);
+$result1 = mysqli_stmt_get_result($stmt);
+
+			                                   
+	
     $query = "DELETE FROM User_Files WHERE user_id = ?;";
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"d",$id);
     $success = mysqli_stmt_execute($stmt);
-
+	
+	while($row1 = mysqli_fetch_assoc($result1))
+	{$file_id=$row1['file_id'];
+		$query = "DELETE FROM Files WHERE file_id = ?;";
+    $stmt= mysqli_prepare($conn,$query);
+    mysqli_stmt_bind_param($stmt,"d",$file_id);
+    $success = mysqli_stmt_execute($stmt);
+	}
+	
 
     $query = "DELETE FROM Users WHERE user_id = ?;";
     $stmt= mysqli_prepare($conn,$query);
