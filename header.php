@@ -39,7 +39,8 @@
 					<a href="profile.php"  class="navbar-menu-link ">Profile</a> 
 					<a href="account.php"  class="navbar-menu-link ">Account</a> 
 					<!-- add log out functionality to below -->
-					<a href="PHP/logout.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Log Out</a>
+					<a id = "logout" href="Account/logout/" data-highlightable="1" title="Account"  class="navbar-menu-link gjs-comp-selected">Log Out</a>
+					<script src= "JS/logout.js"></script>
 					
 				</nav>
             </div>

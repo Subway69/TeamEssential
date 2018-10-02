@@ -128,8 +128,7 @@ require_once "default.php" ?>
 $router->register("POST",'#^/register/#', function($params) 
 {
     session_start();
-    require_once "default.php" ?> 
-    <?php 
+    require_once "default.php" ;
         $req = file_get_contents('php://input');
         //Converts the contents into a PHP Object
         $req_obj = json_decode($req);
@@ -320,8 +319,13 @@ $router->register("GET",'#^/logout/#', function($params)
 {
     session_start();
     require_once "default.php";
+       $req = file_get_contents('php://input');
+           $req_obj = json_decode($req);
 	logout();
-    header('Location: ../index.html');
+    $text = "Success";
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
 });
 
 $router->register("PUT",'#^/updateAvailability/(\d+)#', function($params) 
