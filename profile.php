@@ -275,7 +275,8 @@ require_once "PHP/default.php";
 							</form>
 							
 							<?php
-							$query = "SELECT Files.file_name,Files.file_location FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
+							$query = "SELECT Files.file_name,Files.file_location ,Files.file_id
+							FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
 									WHERE User_Files.user_id = ?;";
 
 							$stmt= mysqli_prepare($conn,$query);
@@ -285,7 +286,7 @@ require_once "PHP/default.php";
 							$results = mysqli_stmt_get_result($stmt);
 
 
-							echo "<h1>Files</h1>";
+							echo "<h1>Files</h1>";?>
 							<table class="table table-striped table-dark table-bordered " id="fileTabel" >
 							<tbody>
 							<?php
