@@ -478,7 +478,7 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 
 ::-webkit-scrollbar {
 	width: 5px;
-	height: 12px;
+	height: 5px;
 }
 ::-webkit-scrollbar-track {
 /* border: 1px solid yellowgreen; */

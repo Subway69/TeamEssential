@@ -16,6 +16,19 @@
     .row{
         flex-wrap:wrap;
     }
+	.collapse:not(.show) { /*COLLAPSE MENU NOT SHOWING[working]*/
+		display: none;
+	}
+	.items-c{
+		position:absolute;
+		right:0;
+		top:50px;
+		background:var(--burger-collapse-bg);
+	}
+	.tab-container{
+		display: inline-flex;
+		overflow: auto;
+	}
 }
 @media (max-width: 480px){
     .c3690{
@@ -44,17 +57,22 @@
     }
     .tab-container{
         float:none;
-        align-self:center;
+		font-size:15px;
+		justify-content:normal;
     }
-	.collapse:not(.show) { /*COLLAPSE MENU NOT SHOWING[working]*/
-		display: none;
+	.table#user-table thead th{
+		font-size:13px;
+		vertical-align:inherit;
+		text-align:left;
 	}
-	.items-c{
-		position:absolute;
-		right:0;
-		top:50px;
-		background:var(--burger-collapse-bg);
+	table.table tbody {
+		font-size:12px;
 	}
+	.table-responsive{
+		width:100%;
+	}
+	
+/*====================*/
 	.navbar-burger:clicked{
 		content: url("../img/logo_r.png");
 	}
@@ -78,9 +96,14 @@
     }
     .tab-container{
         align-self:center;
-        justify-content:center;
+        /* justify-content:center; */
         flex-direction:row;
     }
+}
+@media (min-width: 481px){	/*SPECIFIC ELEMENT STYLES FOR SCREEN 481-992*/
+	.tab-container{
+		justify-content:center;
+	}
 }
 @keyframes fadeEffect{
     0%{
