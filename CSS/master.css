@@ -29,6 +29,7 @@
 	--tbl-border: #dee2e6;
 	--scroll: #000;
 	--p-text: #0f1428;
+	--burger-collapse-bg: #8474e4c2; /*chsnge*/
 	/* 00126d scroll */
 }
 html {
@@ -107,7 +108,9 @@ a.navbar-menu-link:hover{
     color:var(--white);
 }
 
-
+select,option {
+	width:200px;
+}
 
 /* ****************************** MEDIA ****************************** */
 
@@ -134,6 +137,8 @@ a.navbar-menu-link:hover{
 	.H:after{
 		content:"H";
 	}
+
+	
 }
 
 

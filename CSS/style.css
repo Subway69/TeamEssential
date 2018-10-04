@@ -32,8 +32,11 @@
     text-align-last:center;
     direction:ltr;
 }
-
-.navbar-items-c{
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.items-c{
     display:inline-block;
     float:right;
 }
@@ -77,6 +80,10 @@
     padding-bottom:20px;
     padding-left:15px;
     font-family:Helvetica, serif;
+}
+.navbar-menu .navbar-menu-link.active{ /*not working */
+	background:red;
+	color:white;
 }
 .navbar-burger{
     margin-top:10px;
