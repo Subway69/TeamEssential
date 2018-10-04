@@ -32,10 +32,6 @@
     text-align-last:center;
     direction:ltr;
 }
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
 .items-c{
     display:inline-block;
     float:right;

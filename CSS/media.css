@@ -9,8 +9,9 @@
     .navbar-menu{
         width:100%;
     }
-    .navbar-menu-link{
+    .navbar-menu-link{ /*BURGER MENU STYLE*/
         display:block;
+		color: var(--tab-text);
     } 
     .row{
         flex-wrap:wrap;
