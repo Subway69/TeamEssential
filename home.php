@@ -11,9 +11,7 @@ require_once "PHP/default.php";
 	<body>
 	
 		<title>Dashboard</title>
-    
 
-	
 		<?php
 			$user_id = logged_in_user(); 
 			$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
@@ -21,12 +19,13 @@ require_once "PHP/default.php";
 		
 		<?php
 		if(strcmp(getValid(),'approved')==0)
-			{
+		{
 			if(getPermission() ==1 || getPermission()==2)
 			{
 			
-				?> 
-<div>				
+			?> 
+			<!--
+			<div>	WHAT IS THIS -->			
 				<div id="ii4vcy" class="row c3690">
 					<div id="iuxvnm" class="cell">
 						<div class="c13731">Dashboard</div>
@@ -148,7 +147,6 @@ require_once "PHP/default.php";
 								
 							</div>
 						</div>
-						
 					</div>
 				
 					<div id="category-tab" data-tab-content="1" class="tab-content">
@@ -171,7 +169,6 @@ require_once "PHP/default.php";
 					</div>
 				
 					<div id="email-tab" data-tab-content="4" class="tab-content">
-						
 						
 						<div class="row" id="mailing">
 							<table id="user-table" class="table table-responsive">
@@ -230,7 +227,7 @@ require_once "PHP/default.php";
 				<?php
 			}
 			?>
-</div>
+<!--</div> -->
 
 		<script>var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {
@@ -274,4 +271,4 @@ require_once "PHP/default.php";
 		</footer> 
 	</body>
 
-<html>
+</html>
