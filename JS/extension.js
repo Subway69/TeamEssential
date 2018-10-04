@@ -13,10 +13,14 @@ function fileValidation()
     }
 	else
 	{if(document.getElementById('file').files[0].size>5000000)
-		alert('file size cannot exceed 50 mb');
-	return false;
+		{alert('file size cannot exceed 50 mb');
+	  return false;
+		}
+		else
+			document.getElementById('upload').disabled=false;
+		
 	}
-		document.getElementById('upload').disabled=false;
+		
 	}
     
     
