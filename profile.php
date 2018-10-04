@@ -14,6 +14,8 @@ require_once "PHP/default.php";
 	<?php
 		$user_id = logged_in_user(); 
 		$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+		if(strcmp(getValid(),'approved')==0)
+		{
 	?>
 		
 	<div id="ii4vcy" class="row c3690">
@@ -316,7 +318,14 @@ require_once "PHP/default.php";
 			</div> <!-- added this -->
 		</div> <!-- added this -->
 	</div> <!-- added this -->	
-		
+		<?php
+			}
+			else{
+			?>
+				<p>Email is not valid</p>
+			<?php
+			}
+			?>
 		<script src = "JS/preferences.js"></script>
 		<script src="JS/validation.js"></script>
 		<script>

@@ -76,7 +76,7 @@ require_once "default.php" ?>
 	{
 		$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 		//Gets all users
-		$query = "SELECT user_id,first_name,email,password,permission,uniWork FROM Users WHERE email=?;";
+		$query = "SELECT user_id,first_name,email,password,permission,uniWork,status FROM Users WHERE email=?;";
 		$stmt= mysqli_prepare($conn,$query);
 		mysqli_stmt_bind_param($stmt,"s",$email);
 		$success = mysqli_stmt_execute($stmt);
@@ -95,6 +95,7 @@ require_once "default.php" ?>
 				$dbID=$row['user_id'];
 				$perm = $row['permission'];
 				$work = $row['uniWork'];
+                $approve = $row['status'];
 				//Checks if the password matches
 				$hashed_password = crypt($password,$db_password);
 				if($db_password === $hashed_password)
@@ -105,6 +106,7 @@ require_once "default.php" ?>
 					login($dbID);
 					setPermission($perm);
 					setWork($work);
+                    setValid($approve);
 					$text="success";
 					//exit;
 				}
@@ -151,6 +153,7 @@ $router->register("POST",'#^/register/#', function($params)
         mysqli_stmt_bind_param($stmt3, "s",$email);
         $success1 = mysqli_stmt_execute($stmt3);
         $results1= mysqli_stmt_get_result($stmt3);
+        $approve = "approved";
         $i=0;
         $text="";
         while($row = mysqli_fetch_assoc($results1))
@@ -173,9 +176,9 @@ $router->register("POST",'#^/register/#', function($params)
                 if (strcmp($hashed_password, $hashed_conf_password) == 0) 
                 {
                     
-                    $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork) VALUES (?,?,?,?,?,?,?);";
+                    $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork,status) VALUES (?,?,?,?,?,?,?,?);";
                     $stmt = mysqli_prepare($conn, $query);
-                    mysqli_stmt_bind_param($stmt, "sssssdd", $title, $first, $last, $email, $hashed_password, $perm, $work);
+                    mysqli_stmt_bind_param($stmt, "sssssdds", $title, $first, $last, $email, $hashed_password, $perm, $work,$approve);
                     $success = mysqli_stmt_execute($stmt);
                     $results = mysqli_stmt_get_result($stmt);
                     $last_id = mysqli_insert_id($conn);
@@ -184,6 +187,7 @@ $router->register("POST",'#^/register/#', function($params)
                     loginEmail($email);
                     setPermission($perm);
                     setWork($work);
+                    setValid($approve);
                 
                     if ($success) 
                     {

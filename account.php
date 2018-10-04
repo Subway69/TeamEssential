@@ -12,7 +12,10 @@ require_once "PHP/default.php";
 		$user_id = logged_in_user(); 
 	?>
 	<title>Account Settings</title>
-		
+		<?php
+			if(strcmp(getValid(),'approved')==0)
+			{
+		?>
 		<div id="ii4vcy" class="row c3690">
 			<div id="iuxvnm" class="cell">
 				<div class="c13731">Account Settings</div>
@@ -74,7 +77,14 @@ require_once "PHP/default.php";
 				</div>
 			</div>
 		</div> <!--added this-->
-		
+		<?php
+			}
+			else{
+			?>
+				<p>Email is not valid</p>
+			<?php
+			}
+			?>
 		<script>var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {
 				(function(){

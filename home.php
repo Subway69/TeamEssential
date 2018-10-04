@@ -20,6 +20,8 @@ require_once "PHP/default.php";
 		?>
 		
 		<?php
+		if(strcmp(getValid(),'approved')==0)
+			{
 			if(getPermission() ==1 || getPermission()==2)
 			{
 			
@@ -220,6 +222,13 @@ require_once "PHP/default.php";
 				else{
 					header("Location: viewProfile.php");
 				}
+
+			}
+			else{
+				?>
+				<p>Email is not valid</p>
+				<?php
+			}
 			?>
 </div>
 

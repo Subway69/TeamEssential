@@ -1,4 +1,5 @@
 <?php
+define('SITE_URL', 'http://localhost/TeamEssential/');
     $DB_HOST= "localhost";
 	$DB_USER="raUser";
 	$DB_PASSWORD="T#aM3Ss3nt1al";
@@ -35,6 +36,7 @@
 		unset($_SESSION['name']);
 		unset($_SESSION['email']);
 		unset($_SESSION['perm']);
+		unset($_SESSION['work']);
 	}
 	function setPermission($perm)
 	{
@@ -51,5 +53,13 @@
 	function getWork()
 	{
 		return $_SESSION['work'];
+	}
+		function setValid($val)
+	{
+		$_SESSION['valid']=$val;
+	}
+	function getValid()
+	{
+		return $_SESSION['valid'];
 	}
 ?>

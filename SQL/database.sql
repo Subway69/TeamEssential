@@ -28,22 +28,23 @@ CREATE TABLE Users
    -- permisison can be (0) for standard (1) for admin (2) for super admin
     permission INT NOT NULL,
     uniWork INT NOT NULL,
-    avail INT
+    avail INT DEFAULT 0,
+    status  enum('approved','pending') NOT NULL DEFAULT 'pending'
 );
 
-INSERT INTO Users(title,first_name,middle_name,last_name,email,address,phone_number,password,day_dob,month_dob,year_dob,permission,uniWork,avail) VALUES 
-    ("Dr","Michael","Ernest","Munro","michael@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
-	("Dr","SuperAdmin","SuperAdmin","SuperAdmin","Super@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1),
-    ("Dr","Admin","Admin","Admin","Admin@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,1,0,0),
-    ("Mr","Bruce","Batman","Wayne","batman@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
-    ("Miss","Taylor","Alison","Swift","Taylor@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
-    ("Miss","Diana","Wonder-Woman","Prince","Diana@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1),
-    ("Mr","John","Quincey","Adams","John@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
-    ("Miss","Libby","","Pellow","Libby@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
-    ("Mr","Alec","","Baldwin","Alec@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
-    ("Miss","Christina","","Perri","Perri@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0),
-    ("Mr","Kevin","Crispy","Bacon","Bacon@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1),
-    ("Miss","Stacey","","Goodwin","Goodwin@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0);
+INSERT INTO Users(title,first_name,middle_name,last_name,email,address,phone_number,password,day_dob,month_dob,year_dob,permission,uniWork,avail,status) VALUES 
+    ("Dr","Michael","Ernest","Munro","michael@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
+	("Dr","SuperAdmin","SuperAdmin","SuperAdmin","Super@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1,'approved'),
+    ("Dr","Admin","Admin","Admin","Admin@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,1,0,0,'approved'),
+    ("Mr","Bruce","Batman","Wayne","batman@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
+    ("Miss","Taylor","Alison","Swift","Taylor@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved'),
+    ("Miss","Diana","Wonder-Woman","Prince","Diana@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1,'approved'),
+    ("Mr","John","Quincey","Adams","John@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
+    ("Miss","Libby","","Pellow","Libby@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved'),
+    ("Mr","Alec","","Baldwin","Alec@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
+    ("Miss","Christina","","Perri","Perri@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved'),
+    ("Mr","Kevin","Crispy","Bacon","Bacon@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
+    ("Miss","Stacey","","Goodwin","Goodwin@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved');
 
 CREATE TABLE Qualification
 (
