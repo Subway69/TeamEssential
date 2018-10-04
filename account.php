@@ -85,7 +85,8 @@ require_once "PHP/default.php";
 			<?php
 			}
 			?>
-		<script>var items = document.querySelectorAll('#iitw8i');
+		<script>
+			var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {
 				(function(){
 					var t,e=this,a="[data-tab]",n=document.body,r=n.matchesSelector||n.webkitMatchesSelector||n.mozMatchesSelector||
@@ -110,4 +111,4 @@ require_once "PHP/default.php";
 			foot
 		</footer> -->
 	</body>
-<html>
+</html>

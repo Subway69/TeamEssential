@@ -20,7 +20,7 @@
 	<nav class="navbar">
 		<div class="navbar-container">
 		
-				<a href="registration.html" class="navbar-brand"></a>
+				<a href="registration.php" class="navbar-brand"></a>
 
 				<div class="navbar-burger navbar-toggle" data-toggle="collapse" data-target="#navvy">
 					<div class="navbar-burger-line"></div>
