@@ -38,7 +38,7 @@
 					<a href="home.php" class="navbar-menu-link">Home</a>
 					<a href="help.php" class="navbar-menu-link">Help</a>
 					<a href="profile.php"  class="navbar-menu-link">Profile</a>
-					<a href="account.php"  class="navbar-menu-link">Account</a>
+					<a href="accounts.php"  class="navbar-menu-link">Account</a>
 					<a id = "logout" href="Account/logout/" title="Account"  class="navbar-menu-link">Log Out</a>
 				</ul>
 				<script src= "JS/logout.js"></script>
