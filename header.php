@@ -16,6 +16,8 @@
 	<script type="text/javascript" src="JS/bootstrap.js"></script>
 	<script type="text/javascript" src="JS/datatable.jquery.min.js"></script>
 	
+</head>
+
 
 	<nav class="navbar">
 		<div class="navbar-container">
@@ -44,4 +46,4 @@
 		</div>
 	</nav>
 	
-</head>
+
