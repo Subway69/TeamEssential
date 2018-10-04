@@ -299,11 +299,11 @@ $router->register("PUT",'#^/updateEducation/#', function($params)
     $text ="";
     if($success1)
     {
-        $text = "Education Successfully Added.";
+        $text = "Education updated succesfully.";
     }
     else
     {
-        $text = "Education was unsuccessful";
+        $text = "Education updation is unsuccessful";
 
     }
       
