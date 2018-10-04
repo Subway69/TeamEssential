@@ -269,11 +269,12 @@ require_once "PHP/default.php";
 							<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
 								<div class="form-group">
 								<input type="file" id="file" name="file" 
-									onChange="if(document.getElementById('file').files.length>0)document.getElementById('upload').disabled=false;" />
+									onChange="fileValidation()" />
 								
 								<div class="form-group">
 									<button type="submit" class="button" name="submit" id="upload" disabled>Upload</button>
 								</div>
+									<script src="JS/extension.js"></script>	
 							</form>
 							
 							<?php
