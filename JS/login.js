@@ -48,6 +48,8 @@ function validate()
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	
 	
+
+	
 	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a||!(emaila.match(mailformat)))
     {
         	//document.getElementById('msg').style.color='red';
@@ -122,7 +124,7 @@ function registerResponse(ev)
 
     if(regRes=="Registration Success")
     {
-        document.getElementById("reg").submit();
+        document.location.href="profile.php";
     }
     else
     {
