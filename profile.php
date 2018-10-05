@@ -243,19 +243,53 @@ require_once "PHP/default.php";
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
-							<?php $query = "SELECT * FROM Users WHERE user_id=?;";
-							$stmt= mysqli_prepare($conn,$query);
-							mysqli_stmt_bind_param($stmt,"d",$user_id);
-
-							$success = mysqli_stmt_execute($stmt);
-							$results = mysqli_stmt_get_result($stmt);
-							$row = mysqli_fetch_assoc($results);
-
-							echo "<h1>Contact Info</h1>";
-
-							echo "Full Name: ". $row['title']." ". $row['first_name']." ". $row['middle_name']." ". $row['last_name'];
-							echo "</p>";
-							echo "Email: ". $row['email']?>
+							<form class="form">
+								<table>
+									<tr>
+										<td>Title </td>
+										<td><input id ="titleUpd" class = "input"type="text" style = "display:none;"/><p id= "titleP" style = "display:block;">Title </p></td>
+										<td><input id ="titleUpdBut"type="button" value ="Update"style = "display:block;"onclick="a()"/>
+										<input id ="titleSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveTitle()"/>
+										<input id ="titleCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canTitle()"/></td>
+									</tr>
+									<tr>
+										<td>First Name </td>
+										<td><input id ="fNameUpd" class = "input" type="text"style = "display:none;"/><p id= "fNameP"style = "display:block;">First Name </p></td>
+										<td><input id ="fNameUpdBut"type="button" value = "Update"style = "display:block;" onclick="updFName()"/>
+										<input id ="fNameSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveFName()"/>
+										<input id ="fNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canFName()"/></td>
+									</tr>
+										<tr>
+										<td>Middle Name </td>
+										<td><input id ="mNameUpd" class = "input" type="text"style = "display:none;"/><p id= "mNameP"style = "display:block;">Middle Name </p> </td>
+										<td><input id ="mNameUpdBut"type="button" value = "Update"style = "display:block;"onclick="updMName()"/>
+										<input id ="mNameSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveMName()"/>
+										<input id ="mNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canMName()"/></td>
+									</tr>
+									<tr>
+										<td>Last Name</td>
+										<td><input id ="lNameUpd" class = "input" type="text"style = "display:none;"/><p id= "lNameP"style = "display:block;">Last Name </td>
+										<td><input id ="lNameUpdBut" type="button" value ="Update"style = "display:block;"onclick="updLName()"/>
+										<input id ="lNameSaveBut"type="button" value ="Save"style = "display:none;" onclick="saveLName()"/>
+										<input id ="lNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canLName()"/></td>
+									</tr>
+									<tr>
+										<td>Phone Number </td>
+										<td><input id ="phoneUpd" class = "input" type="text"style = "display:none;"/><p id= "phoneP"style = "display:block;">Phone Number </p></td>
+										<td><input id ="phoneUpdBut" type="button" value = "Update"style = "display:block;"onclick="updPhone()"/> 
+										<input id ="phoneSaveBut"type="button" value ="Save"style = "display:none;"onclick="savePhone()"/>
+										<input id ="phoneCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canPhone()"/></td>
+									</tr>
+										<tr>
+										<td>Date of Birth </td>
+										<td><input  id ="dobUpd" class = "input"type="text"style = "display:none;"/><p id= "dobP"style = "display:block;"> Date of Birth </p></td>
+										<td><input  id ="dobUpdBut"type="button" value = "Update" style = "display:block;"onclick="updDOB()"/>
+										<input id ="dobSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveDOB()"/>
+										<input id ="dobCancelBut"type="button" value ="Cancel"style = "display:none;" onclick="canDOB()"/></td>
+									</tr>
+								</table>
+							</form>
+					
 
 						</div>
 					</div> 
@@ -329,6 +363,7 @@ require_once "PHP/default.php";
 			?>
 		<script src = "JS/preferences.js"></script>
 		<script src="JS/validation.js"></script>
+				<script src ="JS/contact.js"></script>
 		<script>
 			var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {
