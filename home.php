@@ -163,7 +163,7 @@ require_once "PHP/default.php";
 									
 								</form>
 								
-								<form class="form" id = "addCat0"></form> 
+								<form class="form optional" id = "addCat0"></form> 
 								
 							</div>
 						</div>

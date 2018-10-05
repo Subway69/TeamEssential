@@ -190,7 +190,14 @@ div > form.disc{	/* PROFILE CATEGORY DISCIPLINE */
 	margin-left:auto;
 	margin-right:auto;
 }
-
+.optional{	/*HOME.MANAGEMENT INVI/LIST FORMS*/
+	border:1px inset;
+	padding:5px;
+	margin-top:20px;
+}
+form#addSkillsForm.form.optional{
+	display:none;
+}
 
 /* ******************************BASE****************************** */
 
@@ -268,10 +275,13 @@ input[type=radio]{
 }
 
 
-form#addCat0.form > input[type=button], form#addSkillsForm.form.optional > tr > td > input[type=button]{ /* 50% width buttons*/
+form#addSkillsForm.form.optional > tr > td > input[type=button]{ /* 50% width buttons*/
 	width:50%;
 	float:right;	
 	margin:0px;
+}
+form#addCat0.form > input[type=button]{	/*CATMAN OTHER FORM BUTTONS*/
+	width:20%;
 }
 form.blank > input[type=submit]{ /*profile>users>go buttons */
 	margin:5px 0 5px 0; 
@@ -288,9 +298,7 @@ form.blank > input[type=submit]{ /*profile>users>go buttons */
 	background: var(--button-disabled);
 	color:graytext;
 }
-.optional{
-	display:none;
-}
+
 input {
 	height:40px;
 	padding:5px 0 5px 0;
