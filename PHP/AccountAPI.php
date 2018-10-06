@@ -469,6 +469,258 @@ header("Content-Type: application/json");
 //Encodes and sends it back
 echo json_encode($text);
 });
+$router->register("GET",'#^/getContact/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "SELECT title, first_name,middle_name, last_name,address,phone_number,day_dob,month_dob,year_dob FROM Users WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"d",$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+
+    $row=mysqli_fetch_assoc($results);
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+
+$router->register("PUT",'#^/updateTitle/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $fname = $req_obj->value;
+
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "UPDATE Users SET title =? WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $row="";
+        if($success)
+        {
+            $query1= "SELECT title FROM Users WHERE user_id=?;";
+            $stmt1 = mysqli_prepare($conn, $query1);
+            mysqli_stmt_bind_param($stmt1,"d",$user_id);
+            $success1 = mysqli_stmt_execute($stmt1);
+            $results1 = mysqli_stmt_get_result($stmt1);
+
+            $row=mysqli_fetch_assoc($results1);
+        }
+            
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+
+$router->register("PUT",'#^/updateFirstName/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $fname = $req_obj->value;
+
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "UPDATE Users SET first_name =? WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $row="";
+        if($success)
+        {
+            $query1= "SELECT first_name FROM Users WHERE user_id=?;";
+            $stmt1 = mysqli_prepare($conn, $query1);
+            mysqli_stmt_bind_param($stmt1,"d",$user_id);
+            $success1 = mysqli_stmt_execute($stmt1);
+            $results1 = mysqli_stmt_get_result($stmt1);
+
+            $row=mysqli_fetch_assoc($results1);
+        }
+            
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+$router->register("PUT",'#^/updateMiddleName/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $fname = $req_obj->value;
+
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "UPDATE Users SET middle_name =? WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $row="";
+        if($success)
+        {
+            $query1= "SELECT middle_name FROM Users WHERE user_id=?;";
+            $stmt1 = mysqli_prepare($conn, $query1);
+            mysqli_stmt_bind_param($stmt1,"d",$user_id);
+            $success1 = mysqli_stmt_execute($stmt1);
+            $results1 = mysqli_stmt_get_result($stmt1);
+
+            $row=mysqli_fetch_assoc($results1);
+        }
+            
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+$router->register("PUT",'#^/updateLastName/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $fname = $req_obj->value;
+
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "UPDATE Users SET last_name =? WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $row="";
+        if($success)
+        {
+            $query1= "SELECT last_name FROM Users WHERE user_id=?;";
+            $stmt1 = mysqli_prepare($conn, $query1);
+            mysqli_stmt_bind_param($stmt1,"d",$user_id);
+            $success1 = mysqli_stmt_execute($stmt1);
+            $results1 = mysqli_stmt_get_result($stmt1);
+
+            $row=mysqli_fetch_assoc($results1);
+        }
+            
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+$router->register("PUT",'#^/updatePhone/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $fname = $req_obj->value;
+
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "UPDATE Users SET phone_number =? WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $row="";
+        if($success)
+        {
+            $query1= "SELECT phone_number FROM Users WHERE user_id=?;";
+            $stmt1 = mysqli_prepare($conn, $query1);
+            mysqli_stmt_bind_param($stmt1,"d",$user_id);
+            $success1 = mysqli_stmt_execute($stmt1);
+            $results1 = mysqli_stmt_get_result($stmt1);
+
+            $row=mysqli_fetch_assoc($results1);
+        }
+            
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+
+$router->register("PUT",'#^/updateAddress/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $fname = $req_obj->value;
+
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "UPDATE Users SET address =? WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $row="";
+        if($success)
+        {
+            $query1= "SELECT address FROM Users WHERE user_id=?;";
+            $stmt1 = mysqli_prepare($conn, $query1);
+            mysqli_stmt_bind_param($stmt1,"d",$user_id);
+            $success1 = mysqli_stmt_execute($stmt1);
+            $results1 = mysqli_stmt_get_result($stmt1);
+
+            $row=mysqli_fetch_assoc($results1);
+        }
+            
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+
 
 $router->route($_SERVER['PATH_INFO']);
 ?>

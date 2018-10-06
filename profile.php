@@ -247,44 +247,58 @@ require_once "PHP/default.php";
 								<table>
 									<tr>
 										<td>Title </td>
-										<td><input id ="titleUpd" class = "input"type="text" style = "display:none;"/><p id= "titleP" style = "display:block;">Title </p></td>
+										<td>                                <select name ="tTitle" id = "titleUpd" required class="select"style = "display:none;">
+                                    <option value="">- Title -</option>
+                                    <option value="Mr">Mr</option>
+                                    <option value="Mrs">Mrs</option>
+                                    <option value="Ms">Ms</option>
+                                    <option value="Miss">Miss</option>
+                                    <option value="Dr">Dr</option>
+                                </select><p id= "titleP" style = "display:block;">Title </p></td>
 										<td><input id ="titleUpdBut"type="button" value ="Update"style = "display:block;"onclick="a()"/>
-										<input id ="titleSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveTitle()"/>
+										<input id ="titleSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveTitles()"/>
 										<input id ="titleCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canTitle()"/></td>
 									</tr>
 									<tr>
 										<td>First Name </td>
 										<td><input id ="fNameUpd" class = "input" type="text"style = "display:none;"/><p id= "fNameP"style = "display:block;">First Name </p></td>
 										<td><input id ="fNameUpdBut"type="button" value = "Update"style = "display:block;" onclick="updFName()"/>
-										<input id ="fNameSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveFName()"/>
+										<input id ="fNameSaveBut"type="button" value ="Save"style = "display:none;" onclick= "saveFNames()"/>
 										<input id ="fNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canFName()"/></td>
 									</tr>
 										<tr>
 										<td>Middle Name </td>
 										<td><input id ="mNameUpd" class = "input" type="text"style = "display:none;"/><p id= "mNameP"style = "display:block;">Middle Name </p> </td>
 										<td><input id ="mNameUpdBut"type="button" value = "Update"style = "display:block;"onclick="updMName()"/>
-										<input id ="mNameSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveMName()"/>
+										<input id ="mNameSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveMNames()"/>
 										<input id ="mNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canMName()"/></td>
 									</tr>
 									<tr>
 										<td>Last Name</td>
 										<td><input id ="lNameUpd" class = "input" type="text"style = "display:none;"/><p id= "lNameP"style = "display:block;">Last Name </td>
 										<td><input id ="lNameUpdBut" type="button" value ="Update"style = "display:block;"onclick="updLName()"/>
-										<input id ="lNameSaveBut"type="button" value ="Save"style = "display:none;" onclick="saveLName()"/>
+										<input id ="lNameSaveBut"type="button" value ="Save"style = "display:none;" onclick="saveLNames()"/>
 										<input id ="lNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canLName()"/></td>
 									</tr>
 									<tr>
 										<td>Phone Number </td>
 										<td><input id ="phoneUpd" class = "input" type="text"style = "display:none;"/><p id= "phoneP"style = "display:block;">Phone Number </p></td>
 										<td><input id ="phoneUpdBut" type="button" value = "Update"style = "display:block;"onclick="updPhone()"/> 
-										<input id ="phoneSaveBut"type="button" value ="Save"style = "display:none;"onclick="savePhone()"/>
+										<input id ="phoneSaveBut"type="button" value ="Save"style = "display:none;"onclick="savePhones()"/>
 										<input id ="phoneCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canPhone()"/></td>
+									</tr>
+									<tr>
+										<td>Address </td>
+										<td><input id ="addressUpd" class = "input" type="text"style = "display:none;"/><p id= "addressP"style = "display:block;">Address </p></td>
+										<td><input id ="addressUpdBut" type="button" value = "Update"style = "display:block;"onclick="updAddress()"/> 
+										<input id ="addressSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveAddresss()"/>
+										<input id ="addressCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canAddress()"/></td>
 									</tr>
 										<tr>
 										<td>Date of Birth </td>
 										<td><input  id ="dobUpd" class = "input"type="text"style = "display:none;"/><p id= "dobP"style = "display:block;"> Date of Birth </p></td>
 										<td><input  id ="dobUpdBut"type="button" value = "Update" style = "display:block;"onclick="updDOB()"/>
-										<input id ="dobSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveDOB()"/>
+										<input id ="dobSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveDOBs()"/>
 										<input id ="dobCancelBut"type="button" value ="Cancel"style = "display:none;" onclick="canDOB()"/></td>
 									</tr>
 								</table>
