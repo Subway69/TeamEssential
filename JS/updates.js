@@ -28,9 +28,9 @@ function updatePass()
     httPass = new XMLHttpRequest();
     httPass.open("PUT","Account/updatePassword/",true);
     var pass ={};
-	pass.cID=curPass;
+	
     pass.pID = newPass;
-	pass.cpID=confirmPass;
+	
     pass.uID=userID;
     httPass.onload = passUpdate;
 
