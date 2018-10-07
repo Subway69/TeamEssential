@@ -16,17 +16,26 @@ function updatePerm()
 //Sends the users new password to the backend to be updated
 function updatePass()
 {
+   var curPass=document.getElementById("field_pwd").value;
     var newPass = document.getElementById("field_pwd1").value;
- 
+	var confirmPass=document.getElementById("field_pwd2").value;
+ if(curPass==""||newPass==""||confirmPass=="")
+ {
+	 alert("enter value in all fields");
+ }
+ else{
     var userID= document.getElementById("passUser").value;
     httPass = new XMLHttpRequest();
     httPass.open("PUT","Account/updatePassword/",true);
     var pass ={};
+	pass.cID=curPass;
     pass.pID = newPass;
+	pass.cpID=confirmPass;
     pass.uID=userID;
     httPass.onload = passUpdate;
 
     httPass.send(JSON.stringify(pass));
+ }
 }
 
 function deleteAccount(delAccID)
