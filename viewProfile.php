@@ -46,6 +46,9 @@ require_once "PHP/default.php";
         echo "Full Name: ". $row['title']." ". $row['first_name']." ". $row['middle_name']." ". $row['last_name'];
         echo "</p>";
         echo "Email: ". $row['email']."</p>";
+        echo "Address: ". $row['address']."</p>";
+        echo "Phone: ". $row['phone_number']."</p>";
+        echo "Date of Birth: ". $row['day_dob']."/".$row['month_dob']."/".$row['year_dob']."</p>";
         $av = $row['avail'];
         $work=$row['uniWork'];
        

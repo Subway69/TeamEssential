@@ -3,7 +3,9 @@ var updFNames=document.getElementById('fNameUpd');
 var updMNames=document.getElementById('mNameUpd');
 var updLNames=document.getElementById('lNameUpd');
 var updPhones=document.getElementById('phoneUpd');
-var updDOBs=document.getElementById('dobUpd');
+var updDays=document.getElementById('dayUpd');
+var updMonths=document.getElementById('monthUpd');
+var updYearss=document.getElementById('yearUpd');
 var updAddresss=document.getElementById('addressUpd');
 
 var PTitle=document.getElementById('titleP');
@@ -51,6 +53,29 @@ var httTitle;
 var contactList;
 
 loadContact();
+loadDates();
+
+function loadDates()
+{
+    var date = new Date();
+    var year = date.getFullYear();
+    for(var i =1;i<32;i++)
+        {
+            var dayOpt = document.createElement("option");
+            dayOpt.setAttribute("value",i);
+            dayOpt.innerHTML=i;
+
+            updDays.appendChild(dayOpt);
+        }
+        for(var i =year;i>1920;i--)
+        {
+            var yearOpt = document.createElement("option");
+            yearOpt.setAttribute("value",i);
+            yearOpt.innerHTML=i;
+
+            updYearss.appendChild(yearOpt);
+        }
+}
 
 function loadContact()
 {
@@ -309,25 +334,50 @@ function canPhone()
 
 function updDOB()
 {
-    updDOBs.style.display="block";
+    updDays.style.display="block";
+    updMonths.style.display="block";
+    updYearss.style.display="block";
     PDOB.style.display="none";
     butDOB.style.display="none";
     saveDOB.style.display="block";
     cancelDOB.style.display="block";
+
+    updDays.value=contactList.day_dob;
+    updMonths.value=contactList.month_dob;
+    updYearss.value=contactList.year_dob;
+
 }
 
 function saveDOBs()
 {
-    
+    httDOB = new XMLHttpRequest()
+    httDOB.open("PUT","Account/updateDateOfBirth/",true);
+    httDOB.onload= canDOB;
+    console.log(updYearss.value);
+    var fn = {};
+    fn.day = updDays.value;
+    fn.month = updMonths.value;
+    fn.year = updYearss.value;
+    httDOB.send(JSON.stringify(fn));
 }
 
 function canDOB()
 {
-    updDOBs.style.display="none";
+    updDays.style.display="none";
+    updMonths.style.display="none";
+    updYearss.style.display="none";
     PDOB.style.display="block";
     butDOB.style.display="block";
     saveDOB.style.display="none";
     cancelDOB.style.display="none";
+
+    if(httDOB!=null)
+    {
+        PDOB.innerHTML=JSON.parse(httDOB.responseText).day_dob + "/" +JSON.parse(httDOB.responseText).month_dob+"/"+JSON.parse(httDOB.responseText).year_dob;
+        contactList.day_dob=JSON.parse(httDOB.responseText).day_dob;
+        contactList.month_dob=JSON.parse(httDOB.responseText).month_dob;
+        contactList.year_dob=JSON.parse(httDOB.responseText).year_dob;
+    }
 }
 
 function updAddress()

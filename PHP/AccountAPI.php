@@ -721,6 +721,46 @@ $router->register("PUT",'#^/updateAddress/#', function($params)
     echo json_encode($row);
 });
 
+$router->register("PUT",'#^/updateDateOfBirth/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $day = $req_obj->day;
+     $month = $req_obj->month;
+        $year = $req_obj->year;
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $user_id = logged_in_user();
+        $query= "UPDATE Users SET day_dob =?,month_dob=?,year_dob=? WHERE user_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"dsdd",$day,$month,$year,$user_id);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $row="";
+        if($success)
+        {
+            $query1= "SELECT day_dob,month_dob,year_dob FROM Users WHERE user_id=?;";
+            $stmt1 = mysqli_prepare($conn, $query1);
+            mysqli_stmt_bind_param($stmt1,"d",$user_id);
+            $success1 = mysqli_stmt_execute($stmt1);
+            $results1 = mysqli_stmt_get_result($stmt1);
+
+            $row=mysqli_fetch_assoc($results1);
+        }
+            
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($row);
+});
+
+
 
 $router->route($_SERVER['PATH_INFO']);
 ?>

@@ -296,7 +296,28 @@ require_once "PHP/default.php";
 									</tr>
 										<tr>
 										<td>Date of Birth </td>
-										<td><input  id ="dobUpd" class = "input"type="text"style = "display:none;"/><p id= "dobP"style = "display:block;"> Date of Birth </p></td>
+										<td><select  id ="dayUpd" class = "select"type="select"style = "display:none;">
+											<option value ="">--Day--</option>
+										</select>
+										<select  id ="monthUpd" class = "select"type="select"style = "display:none;">
+											<option value = "">--Month--</option>
+											<option value = "January">January</option>
+											<option value = "February">February</option>
+											<option value = "March">March</option>
+											<option value = "April">April</option>
+											<option value = "May">May</option>
+											<option value = "June">June</option>
+											<option value = "July">July</option>
+											<option value = "August">August</option>
+											<option value = "September">September</option>
+											<option value = "October">October</option>
+											<option value = "November">November</option>
+											<option value = "December">December</option>
+										</select>
+										<select  id ="yearUpd" class = "select"type="select"style = "display:none;">
+										<option value ="">--Year--</option>
+										</select>
+										<p id= "dobP"style = "display:block;"> Date of Birth </p></td>
 										<td><input  id ="dobUpdBut"type="button" value = "Update" style = "display:block;"onclick="updDOB()"/>
 										<input id ="dobSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveDOBs()"/>
 										<input id ="dobCancelBut"type="button" value ="Cancel"style = "display:none;" onclick="canDOB()"/></td>
