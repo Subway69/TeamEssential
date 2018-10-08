@@ -21,15 +21,20 @@ function updatePass()
 	var confirmPass=document.getElementById("field_pwd2").value;
  if(curPass==""||newPass==""||confirmPass=="")
  {
-	 alert("enter value in all fields");
+	 alert("Please enter a value in all fields.");
+ }
+ if(newPass!=confirmPass)
+ {
+     alert("New passwords don't match");
  }
  else{
     var userID= document.getElementById("passUser").value;
     httPass = new XMLHttpRequest();
     httPass.open("PUT","Account/updatePassword/",true);
     var pass ={};
-	
+	pass.cPass = curPass;
     pass.pID = newPass;
+    pass.confPass= confirmPass;
 	
     pass.uID=userID;
     httPass.onload = passUpdate;

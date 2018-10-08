@@ -391,30 +391,60 @@ $router->register("PUT",'#^/updatePassword/#', function($params)
     $req_obj = json_decode($req);
     $password = $req_obj->pID;
     $user = $req_obj->uID;
+    $currPass=$req_obj->cPass;
+    $confimPass=$req_obj->confPass;
+
+
     $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
     $hashed_password = crypt($password, $salt);
+    $hashed_current_pass=crypt($currPass,$salt);
+    $hashed_confirmed_pass= crypt($confimPass,$salt);
+    $text="";
+    if(strcmp($hashed_confirmed_pass,$hashed_password)==0)
+    {
     $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+
+    $query2= "SELECT * FROM Users WHERE user_id =?;";
+    $stmt2 = mysqli_prepare($conn,$query2);
+    mysqli_stmt_bind_param($stmt2,"d",$user);
+    $success2= mysqli_stmt_execute($stmt2);
+    $result2=mysqli_stmt_get_result($stmt2);
+    $row2 = mysqli_fetch_array($result2);
+    $db_pass=$row2['password'];
+    $hpass= crypt($currPass,$db_pass);
+    if($db_pass===$hpass)
+    {
     //Updates the password
     $query = "UPDATE Users SET password = ? WHERE user_id = ?;";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "sd",$hashed_password, $user);
     $success = mysqli_stmt_execute($stmt);
     $results = mysqli_stmt_get_result($stmt);
-    $text="";
-
+    
     if ($success) 
     {
-        $text="Password Successfully Changed";
+        
     } 
     else 
     {
         $text = "Password Unsuccessful Changed";
     }
+}
+else
+{
+
+    $text="New:".$password. " current".$currPass." confirm:".$confimPass;;
+}
+}
+else{
+    $text= "Passwords don't match";
+}
     
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
     //Encodes and sends it back
     echo json_encode($text);
+
 });
 
 $router->register("PUT",'#^/updatePermission/#', function($params) 

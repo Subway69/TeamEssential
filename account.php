@@ -35,7 +35,7 @@ require_once "PHP/default.php";
 								<form class="form"  method="POST">
 									<div class="form-group">
 										<input type = "hidden" id="passUser" name = "tUser"value = <?php echo $user_id;?>/>
-										<input placeholder="Current Password" required type="password"class="input"/>
+										<input placeholder="Current Password" id = "field_pwd" required type="password"class="input"/>
 										
 										<!--<input name = "currPass" type="password" class="input val" id= "field_pwd1" 
 											placeholder="New Password" required
