@@ -29,8 +29,9 @@
 	--tbl-border: #dee2e6;
 	--scroll: #000;
 	--p-text: #0f1428;
-	--burger-collapse-bg: #8474e4c2; /*chsnge*/
+	--burger-collapse-bg: #8474e4; /*change c2 opacity*/
 	/* 00126d scroll */
+	--btn-fill: #6d77a7;
 }
 html {
 	height: 100%;
@@ -43,6 +44,7 @@ body{
 	position:relative;
 	padding-bottom:2rem;
 	min-height:100%;
+
 }
 footer{
 	position: absolute;
@@ -108,10 +110,6 @@ a.navbar-menu-link:hover{
     color:var(--white);
 }
 
-select,option {
-	width:200px;
-}
-
 /* ****************************** MEDIA ****************************** */
 
 @media (max-width:480px){
@@ -142,8 +140,11 @@ select,option {
 }
 
 
-/* ******************************REGISTRATION****************************** */
+/* ******************************SOMETHING****************************** */
 
+select,option {
+	width:200px;
+}
 
 /* ******************************FORMS****************************** */
 
@@ -185,7 +186,7 @@ div > form.disc{	/* PROFILE CATEGORY DISCIPLINE */
 	padding:0px;
 	margin:0px;
 }
-.form-group{
+.form-group{ /*?*/
 	width:300px;
 	margin-left:auto;
 	margin-right:auto;
@@ -195,7 +196,11 @@ div > form.disc{	/* PROFILE CATEGORY DISCIPLINE */
 	padding:5px;
 	margin-top:20px;
 }
-form#addSkillsForm.form.optional{
+form#addSkillsForm.form.optional , .button.optional{
+	display:none;
+}
+form.form > .input.optional{ /*PROFILE EDUCATION COMPLETION DATE*/
+	margin: 0 0 10px 0;
 	display:none;
 }
 
@@ -263,11 +268,12 @@ body{
 button,  input[type=submit], input[type=reset], input[type=button]{ /*button styles*/
 	width: 100%;
 	height: 25px;
-	background: var(--button);
+	background: var(--btn-fill);
+		box-shadow: 0 5px var(--tab-active);
 	margin:10px 0 5px 0;
 	text-align:center;
-	border:2px inset #068; /*going to change */
-	line-height:normal;
+	/* border:2px inset #068; /*going to change */ 
+	/* line-height:normal; */
 	padding:0px;
 }
 input[type=radio]{
@@ -486,7 +492,7 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 
 ::-webkit-scrollbar {
 	width: 5px;
-	height: 5px;
+	height: 3px;
 }
 ::-webkit-scrollbar-track {
 /* border: 1px solid yellowgreen; */

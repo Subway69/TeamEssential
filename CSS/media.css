@@ -1,4 +1,11 @@
 @media (max-width: 768px){
+	.c3690{
+        flex-direction:column;
+        justify-content:center;
+        align-items:stretch;
+		display:flex;
+		padding-top:60px;
+    }
     .navbar-burger{
         display:block;
     }
@@ -12,10 +19,6 @@
     .navbar-menu-link{ /*BURGER MENU STYLE*/
         display:block;
 		color: var(--tab-text);
-    } 
-    .row{
-        flex-wrap:wrap;
-		padding:0;
     }
 	.collapse:not(.show) { /*COLLAPSE MENU NOT SHOWING[working]*/
 		display: none;
@@ -32,13 +35,7 @@
 	}
 }
 @media (max-width: 480px){
-    .c3690{
-        flex-direction:column;
-        justify-content:center;
-        align-items:stretch;
-		display:flex;
-		padding-top:60px;
-    }
+
 	.c13731{
 		font-size:20px;
 	}
@@ -50,6 +47,17 @@
         /* display:block; */
         bottom:0px;
     }
+	div > form.disc{ /*PROFILE DISC FORMS*/
+		width:100%;
+		margin: 0 0 15px 0;
+	}
+	form.form.discipline.gen{
+		width:340px;
+		
+	}
+	.row > .cell > .form.gen{
+		width:100%; 
+	}
 	.optional{ /*FIX RELATED FORMS*/
 		font-size:12px;
 		min-height:265px;
@@ -67,17 +75,24 @@
 		font-size:15px;
 		justify-content:normal;
     }
+	.tab-container-reg{
+		justify-content:center;
+	}
 	.table#user-table thead th{
 		font-size:13px;
 		vertical-align:inherit;
 		text-align:left;
 	}
-	table.table tbody {	/*BODY TABLES*/
+	tbody {	/*BODY TABLES*/
 		font-size:12px;
 	}
 	.table-responsive{
 		width:100%;
 	}
+	/* .row{ */
+		/* padding-left:5px; */
+		/* padding-right:5px; */
+	/* } */
 	.row#mailing{
 		padding:0;
 		margin:0;
@@ -88,6 +103,11 @@
 	}
 	.sn{ /*SKILL NAME*/
 		width:60%;
+	}
+	select{
+		width:auto;
+		padding: 5px;
+		height: auto;
 	}
 	
 /*====================*/

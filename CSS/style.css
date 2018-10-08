@@ -91,6 +91,11 @@
     float:right;
     cursor:pointer;
 }
+div[aria-expanded="true"]{
+	content: url("../img/1925.gif"); 
+	margin:0;
+	padding: 0 5px;
+}
 .navbar-burger-line{
 	background-color:var(--white);
     padding-top:1px;
@@ -151,7 +156,7 @@
     animation-fill-mode:none;
     animation-play-state:running;
     animation-name:fadeEffect;
-	margin-top:25px;
+	margin-top:15px;
 }
 .tab-container{
     text-align:center;
@@ -160,7 +165,7 @@
     color:var(--tab-text);
 	margin: 0 auto;
 	width:100%;
-	/* padding-bottom:20px; */
+	padding-bottom:5px;
 }
 #form-cell{
     justify-content:center;

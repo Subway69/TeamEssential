@@ -127,7 +127,7 @@ include_once('header.php');
             <div class="c13731">Research Assistant Database</div>
 			
             <div data-tabs="1" id="iitw8i">
-                <nav data-tab-container="1" class="tab-container">
+                <nav data-tab-container="1" class="tab-container tab-container-reg">
 					<a href="#login-tab" data-tab="1" class="tab">Login</a>
 					<a href="#register-tab" data-tab="1" class="tab">Register</a>
 				</nav>
@@ -145,7 +145,7 @@ include_once('header.php');
                                 
                                 <div class="form-group">
                                     <!--<input type="submit" id = "subButton"style="display:none;" class="button"/>-->
-                                    <input type="button" onClick="login()" class="button" value ="Login"/>
+                                    <input type="button" onClick="login()" class="btn btn-7 btn-7h" value ="Login"/>
                                 </div>
                             </form>
                         

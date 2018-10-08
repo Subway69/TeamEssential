@@ -185,7 +185,7 @@ function listEducation()
         div.appendChild(eduHidden);
         div.appendChild(updUniBut);
         div.appendChild(delUniBut);
-        div.appendChild(document.createElement("P"));
+        // div.appendChild(document.createElement("P"));
     }
 }
 function resetter()

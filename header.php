@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="CSS/class numbered.css">
 	<link rel="stylesheet" href="CSS/media.css">
 	<link rel="stylesheet" href="CSS/boo.css">
+	<link rel="stylesheet" href="CB/css/component.css">	
 	<script src="JS/passwordMatch.js"></script>
 	<link rel="icon" href="img/favicon_feduni.ico">
 	<link rel="stylesheet" href="CSS/datatable.min.css" media="screen">
@@ -33,7 +34,7 @@
                
 				</div> 
 			
-			<div class="collapse navbar-collapse items-c" id="navvy">
+			<div class="collapse navbar-collapse items-c animate-right" id="navvy">
 				<ul class="nav navbar-menu">
 					<a href="home.php" class="navbar-menu-link">Home</a>
 					<a href="help.php" class="navbar-menu-link">Help</a>
