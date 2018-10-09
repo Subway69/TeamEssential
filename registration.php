@@ -52,7 +52,6 @@ include_once('header.php');
             if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
             {
                 $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
-              echo"Hello1";
             } 
             else 
             {
@@ -120,7 +119,91 @@ include_once('header.php');
         }
     }
 ?>
+    <?php
+    if(isset($_POST['sub2']))
+    {   
+            
+        $title = $_POST["tTitle"];
+        $last = $_POST["tLastName"];
+        $first = $_POST["tFirstName"];
 
+        $email = $_POST['tEmail'];
+        $message ="";
+
+        $password = $_POST['regPassword'];
+        $cPassword=$_POST['tConfirm'];
+        $work =0;
+        $perm = 0;
+        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+        $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
+        $hashed_password = crypt($password, $salt);
+        $hashed_conf_password = crypt($cPassword, $salt);
+        $q_e="SELECT * FROM Users WHERE email=?";
+        $stmt3 = mysqli_prepare($conn, $q_e);
+        mysqli_stmt_bind_param($stmt3, "s",$email);
+        $success1 = mysqli_stmt_execute($stmt3);
+        $results1= mysqli_stmt_get_result($stmt3);
+
+        $i=0;
+        $text="";
+        while($row = mysqli_fetch_assoc($results1))
+        {
+            $i++;
+        }
+        if($i>0)
+        {
+            $text="email already exists";
+             }
+        else
+        {
+            if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
+            {
+                $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
+            } 
+            else 
+            {
+                if (strcmp($hashed_password, $hashed_conf_password) == 0) 
+                {
+                    echo"Hello";
+                    $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork) VALUES (?,?,?,?,?,?,?);";
+                    $stmt = mysqli_prepare($conn, $query);
+                    mysqli_stmt_bind_param($stmt, "sssssdd", $title, $first, $last, $email, $hashed_password, $perm, $work);
+                    $success = mysqli_stmt_execute($stmt);
+                    $results = mysqli_stmt_get_result($stmt);
+                    $last_id = mysqli_insert_id($conn);
+                    login($last_id);
+                    loginName($first);
+                    loginEmail($email);
+                    setPermission($perm);
+                    setWork($work);
+                
+                    if ($success) 
+                    {
+                                $message = '<html><head>
+                                        <title>Email Verification</title>
+                                        </head>
+                                        <body>';
+                                $message .= '<h1>Hi ' . $first ." ".$last . '!</h1>';
+                                $message .= '<p>Welcome to the Federation University Research Register.\n Please click the below link to verify your email address <a href="'.SITE_URL.'activate.php?id=' . base64_encode($last_id) . '">CLICK TO ACTIVATE YOUR ACCOUNT</a>';
+                                $message .= "</body></html>";
+
+                                mail($email,"Welcome to the Federation University Research Register",$msg);
+
+
+                    }
+                    else{
+                        $text="Registration Failed";
+                    }				
+                }
+                else 
+                {
+                    $text= "password don't match";
+                    ?>  <?php
+                } ?> <?php
+            }
+        }
+    }
+?>
 	
     <div id="ii4vcy" class="row c3690">
         <div id="iuxvnm" class="cell">
@@ -204,7 +287,8 @@ include_once('header.php');
 								
                                 <div class="form-group"> <!-- why do we need to div this? -->
                                     <input type="button" class="button" id="sub" onclick="register()" value="Register without email" disabled  />
-                                    <input type="submit" class="button" name="sub1" value="Register with email"  />
+                                    <input type="submit" class="button" name="sub1" value="Register with email(PHPMailer())"  />
+                                    <input type="submit" class="button" name="sub2" value="Register with email(mail())"  />
                                 </div>
                             </form>
 							<script src = "JS/login.js"></script>

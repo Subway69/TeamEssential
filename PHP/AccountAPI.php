@@ -423,7 +423,7 @@ $router->register("PUT",'#^/updatePassword/#', function($params)
     
     if ($success) 
     {
-        
+        $text = "Password Succesfully Changed";
     } 
     else 
     {
@@ -433,7 +433,7 @@ $router->register("PUT",'#^/updatePassword/#', function($params)
 else
 {
 
-    $text="New:".$password. " current".$currPass." confirm:".$confimPass;;
+    $text="Incorrent Current Password Entered";
 }
 }
 else{
