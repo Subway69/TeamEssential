@@ -1,5 +1,5 @@
 <?php
-define('SITE_URL', 'http://localhost/TeamEssential/');
+define('SITE_URL', 'http://localhost/gitkraken/teamessential/');
     $DB_HOST= "localhost";
 	$DB_USER="raUser";
 	$DB_PASSWORD="T#aM3Ss3nt1al";

@@ -186,8 +186,10 @@ include_once('header.php');
                                 $message .= '<h1>Hi ' . $first ." ".$last . '!</h1>';
                                 $message .= '<p>Welcome to the Federation University Research Register.\n Please click the below link to verify your email address <a href="'.SITE_URL.'activate.php?id=' . base64_encode($last_id) . '">CLICK TO ACTIVATE YOUR ACCOUNT</a>';
                                 $message .= "</body></html>";
+                                $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-                                mail($email,"Welcome to the Federation University Research Register",$msg);
+                                mail($email,"Welcome to the Federation University Research Register sent via php mail",$message,$headers);
 
 
                     }
