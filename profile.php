@@ -83,11 +83,11 @@ require_once "PHP/default.php";
 								
 								<input id="degree0" placeholder="Program Name" required="" class="input" />
 								
-								<div class="form-group">
+								<!--<div class="form-group">-->
 									<select placeholder="Educational Institution" id="uni0" required="" class="select">
 										<option value =''>-- Select Education Institution --</option>
 									</select>
-								</div>
+								<!--</div>-->
 								
 								<select id="study0" required="" name="Status" class="select">
 									<option value="">- Completion Status -</option>
@@ -113,7 +113,7 @@ require_once "PHP/default.php";
 								<script src="JS/addEducation1.js"></script>
 							</form>
 							
-							<div id = "showEducation">
+							<div id = "showEducation" class="form optional"> <!--ADDED CLASSES. FORMAT CONTROL-->
 					 
 							</div>
 						</div>
@@ -172,11 +172,11 @@ require_once "PHP/default.php";
 				<div id="genskl-tab" data-tab-content="1" class="tab-content">
 					
 					<div id="tab-row" class="row">
-						<div id="form-cell" class="cell">
+						<div id="form-cell" class="cell"><!---->
 						
 							<form class="form gen">
 							
-								<table class="table-striped gstable">
+								<table class=" table-striped gstable" id="genskl">
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
@@ -195,7 +195,7 @@ require_once "PHP/default.php";
 								<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
 								
 							</form>
-						</div>
+						</div><!---->
 					</div>
 				</div>
 				
@@ -218,9 +218,9 @@ require_once "PHP/default.php";
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
-											<td class="sheadr">Low</td>
-											<td class="sheadr">Medium</td>
-											<td class="sheadr">High</td>
+											<td class="sheadr L"><span>Low</span></td>
+											<td class="sheadr M"><span>Medium</span></td>
+											<td class="sheadr H"><span>High</span></td>
 										<tr>
 									</thead>
 									<tbody id="form10">

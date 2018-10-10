@@ -29,8 +29,9 @@
 	--tbl-border: #dee2e6;
 	--scroll: #000;
 	--p-text: #0f1428;
-	--burger-collapse-bg: #8474e4c2; /*chsnge*/
+	/* --burger-collapse-bg: #8474e4; /*change c2 opacity*/ 
 	/* 00126d scroll */
+	--btn-fill: #6d77a7;
 }
 html {
 	height: 100%;
@@ -43,6 +44,7 @@ body{
 	position:relative;
 	padding-bottom:2rem;
 	min-height:100%;
+
 }
 footer{
 	position: absolute;
@@ -108,10 +110,6 @@ a.navbar-menu-link:hover{
     color:var(--white);
 }
 
-select,option {
-	width:200px;
-}
-
 /* ****************************** MEDIA ****************************** */
 
 @media (max-width:480px){
@@ -142,8 +140,11 @@ select,option {
 }
 
 
-/* ******************************REGISTRATION****************************** */
+/* ******************************SOMETHING****************************** */
 
+select,option {
+	width:200px;
+}
 
 /* ******************************FORMS****************************** */
 
@@ -185,112 +186,97 @@ div > form.disc{	/* PROFILE CATEGORY DISCIPLINE */
 	padding:0px;
 	margin:0px;
 }
-.form-group{
+.form-group{ /*?*/
 	width:300px;
 	margin-left:auto;
 	margin-right:auto;
 }
-
+.optional{	/*HOME.MANAGEMENT INVI/LIST FORMS*/
+	border:1px inset;
+	padding:5px;
+	margin-top:20px;
+}
+form#addSkillsForm.form.optional , .button.optional{
+	display:none;
+}
+form.form > .input.optional{ /*PROFILE EDUCATION COMPLETION DATE*/
+	margin: 0 0 10px 0;
+	display:none;
+}
 
 /* ******************************BASE****************************** */
-
-
-/* body { body styles. //mainly base format and background  */
-  /* margin: 0px; */
-  /* padding: 10px; */
-  /* font-family: Georgia, "Times New Roman", Times, serif; */
-  /* background: linear-gradient(to left, #e0eef9, #80c6ff); */
-/* } *//*
-body{
-	/* overflow:hidden; */
-/*} 
-#ii4vcy{		/*check this */
-	/* height:640px; */
-	/* overflow:auto; */
-/*}*/ 
-/* footer{ */
-	/* height:50px; overflow doesn't show  */
-	/* background-color:gray; */
-/* } */
-
-/* footer { */
-  /* position: fixed; */
-  /* left: 0; */
-  /* bottom: 0; */
-  /* width: 100%; */
-  /* background-color: red; */
-  /* color: white; */
-  /* text-align: center; */
-/* } */
-#log-in-container {
-  position: absolute;
-  margin:0px;
-  width: 450px;
-  height: 180px;
-  border: 2px solid black;
-  z-index: 1;
-  padding: 10px;
-  /* top: 50%; */
-  /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
-  left: 33.5%;
-}
-/* .container#reg { /* registration form container */ /*
-    border-radius: 5px;
-	background: linear-gradient(#dbdbdb, #f7f7f7);
-    padding: 10px;
-	width: 750px;
-	height:100%;
-	display:block;
-	position:absolute;
-	overflow:visible;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-} */
 
 
 
 /* ******************************ELEMENTS****************************** */
 
-button,  input[type=submit], input[type=reset], input[type=button]{ /*button styles*/
+button, .btn,  input[type=submit], input[type=reset], input[type=button]{ /*button styles*/
 	width: 100%;
-	height: 25px;
-	background: var(--button);
+	height: 35px;
+	background: var(--btn-fill);
+	box-shadow: 0 2px var(--tab-active);
 	margin:10px 0 5px 0;
 	text-align:center;
-	border:2px inset #068; /*going to change */
-	line-height:normal;
 	padding:0px;
+	border:none;
+	border-radius:2px;
+	display:inline-block;
+	/* text-transform: uppercase; */
+	/* font-weight: 700; */
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	font-weight:bold;
+	color: var(--a-hover-bg);
 }
+input#sub.button{
+	width:49%;
+}
+.btn:after{ /*something*/
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.btn-7{ /*?*/
+	/* background: var(--btn-fill); */
+	/* box-shadow: 0 5px var(--tab-active); */
+}
+.btn-7h:before { /*?*/
+	
+}
+
 input[type=radio]{
 	margin: 3px 20px;
 }
 
 
-form#addCat0.form > input[type=button], form#addSkillsForm.form.optional > tr > td > input[type=button]{ /* 50% width buttons*/
+form#addSkillsForm.form.optional > tr > td > input[type=button]{ /* 50% width buttons*/
 	width:50%;
 	float:right;	
 	margin:0px;
 }
+form#addCat0.form > input[type=button]{	/*CATMAN OTHER FORM BUTTONS*/
+	width:20%;
+}
 form.blank > input[type=submit]{ /*profile>users>go buttons */
 	margin:5px 0 5px 0; 
 }
-.button:hover{
-	background: var(--button-hover);	
-}
+/* .button:hover{ */
+	/* background: var(--button-hover);	 */
+/* } */
 .button:disabled{
 	/* background:green; */
 	cursor: not-allowed;
 	opacity:0.65;
 }
-.button:disabled:hover{
-	background: var(--button-disabled);
-	color:graytext;
-}
-.optional{
-	display:none;
-}
+/* .button:disabled:hover{ */
+	/* background: var(--button-disabled); */
+	/* color:graytext; */
+/* } */
+
 input {
 	height:40px;
 	padding:5px 0 5px 0;
@@ -478,7 +464,7 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 
 ::-webkit-scrollbar {
 	width: 5px;
-	height: 5px;
+	height: 3px;
 }
 ::-webkit-scrollbar-track {
 /* border: 1px solid yellowgreen; */

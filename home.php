@@ -161,7 +161,7 @@ require_once "PHP/default.php";
 									
 								</form>
 								
-								<form class="form" id = "addCat0"></form> 
+								<form class="form optional" id = "addCat0"></form> 
 								
 							</div>
 						</div>
@@ -256,7 +256,7 @@ require_once "PHP/default.php";
 		</script>
 
 		<script>var datatable = new DataTable(document.querySelector('table'), {
-			pageSize: 10,
+			pageSize: 5,
 			sort: [ true,true,false],
 			filters: [ true,true, 'select'],
 			filterText: 'Type to filter... ',

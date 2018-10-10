@@ -19,11 +19,8 @@ require_once "PHP/default.php";
 
 <body>
     <title>Research Assistant Database</title>
-    
-	
-		
-    <nav class="navbar"> 
-			
+  	
+	<nav class="navbar">
 		<div class="navbar-container">
 		
             <a href="registration.php" class="navbar-brand"></a>
@@ -35,22 +32,20 @@ require_once "PHP/default.php";
                 
                 <div class="navbar-burger-line"></div>
                
-            </div> 
+				</div> 
 			
-            <div data-gjs="navbar-items" class="navbar-items-c " id="navvy">
-                <nav data-gjs="navbar-menu" class=" navbar-menu">
-				
-					<a href="home.php" class=" navbar-menu-link">Home</a>
-					<a href="help.php" class=" navbar-menu-link">Help</a>
-					<a href="profile.php"  class="navbar-menu-link ">Profile</a> <!-- data-highlightable="1" title="Profile"-->
-					<a href="account.php"  class="navbar-menu-link ">Account</a> <!--data-highlightable="1" title="Account" -->
-					<!-- add log out functionality to below -->
-					<a href="PHP/logout.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Log Out</a>
-					
-				</nav>
-            </div>
-        </div>
-    </nav>
+			<div class="collapse navbar-collapse items-c " id="navvy">
+				<ul class="nav navbar-menu">
+					<a href="home.php" class="navbar-menu-link">Home</a>
+					<a href="help.php" class="navbar-menu-link">Help</a>
+					<a href="profile.php"  class="navbar-menu-link">Profile</a>
+					<a href="account.php"  class="navbar-menu-link">Account</a>
+					<a id = "logout" href="Account/logout/" title="Account"  class="navbar-menu-link">Log Out</a>
+					<script src= "JS/logout.js"></script>
+				</ul>
+			</div>
+		</div>
+	</nav>
     
     <script>
 	

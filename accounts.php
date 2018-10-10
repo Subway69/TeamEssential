@@ -21,7 +21,7 @@ require_once "PHP/default.php";
 				<div class="c13731">Account Settings</div>
 				
 				<div data-tabs="1" id="iitw8i">
-					<nav data-tab-container="1" class="tab-container">
+					<nav data-tab-container="1" class="tab-container tab-container-reg">
 						<a href="#password-tab" data-tab="1" class="tab">Password</a>
 						
 						<a href="#removal-tab" data-tab="1" class="tab">Delete</a>
@@ -85,7 +85,8 @@ require_once "PHP/default.php";
 			<?php
 			}
 			?>
-		<script>var items = document.querySelectorAll('#iitw8i');
+		<script>
+			var items = document.querySelectorAll('#iitw8i');
 			for (var i = 0, len = items.length; i < len; i++) {
 				(function(){
 					var t,e=this,a="[data-tab]",n=document.body,r=n.matchesSelector||n.webkitMatchesSelector||n.mozMatchesSelector||
@@ -110,4 +111,4 @@ require_once "PHP/default.php";
 			foot
 		</footer> -->
 	</body>
-<html>
+</html>

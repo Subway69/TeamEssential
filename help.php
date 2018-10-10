@@ -23,12 +23,12 @@ require_once "PHP/default.php";
 				<div class="c13731">Help</div>
 			
 				<p> For system administrators, please refer to the user & technical documentation *here*. </p>	
-				<p id="helptext"> Test text for testing </p>
+		
 								
 			</div>
 		</div>
 	
-		<div class="c13731">Help!</div>
+	
 		
 
 		<script>var items = document.querySelectorAll('#iitw8i');
@@ -51,7 +51,7 @@ require_once "PHP/default.php";
 		</script>
 		
 		<footer>
-			
+			foo
 		</footer>
 	</body>
 <html>

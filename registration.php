@@ -212,7 +212,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
             <div class="c13731">Research Assistant Database</div>
 			
             <div data-tabs="1" id="iitw8i">
-                <nav data-tab-container="1" class="tab-container">
+                <nav data-tab-container="1" class="tab-container tab-container-reg">
 					<a href="#login-tab" data-tab="1" class="tab">Login</a>
 					<a href="#register-tab" data-tab="1" class="tab">Register</a>
 				</nav>
@@ -230,7 +230,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
                                 
                                 <div class="form-group">
                                     <!--<input type="submit" id = "subButton"style="display:none;" class="button"/>-->
-                                    <input type="button" onClick="login()" class="button" value ="Login"/>
+                                    <input type="button" onClick="login()" class="btn" value ="Login"/>
                                 </div>
                             </form>
                         
@@ -288,9 +288,8 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 								<input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck"/> 
 								
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <input type="button" class="button" id="sub" onclick="register()" value="Register without email" disabled  />
-                                    <input type="submit" class="button" name="sub1" value="Register with email(PHPMailer())"  />
-                                    <input type="submit" class="button" name="sub2" value="Register with email(mail())"  />
+                                    <input type="button" class="button" id="sub" onclick="register()" value="Register w/o email" disabled  />
+                                    <input type="submit" class="button" id="sub" name="sub1" value="Register w/ email"  />
                                 </div>
                             </form>
 							<script src = "JS/login.js"></script>
@@ -338,7 +337,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 	
 	<footer>
-		
+		foo
 	</footer>
 </body>
 <html>
