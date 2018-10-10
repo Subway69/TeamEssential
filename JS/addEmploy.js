@@ -9,6 +9,27 @@ var updEmpButton=document.getElementById("updEmpBut");
 var canEmpUpd=document.getElementById("canEmpBut");
 var empID;
 
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("startDate1").setAttribute("max", today);
+document.getElementById("endDate1").setAttribute("max", today);
+
+document.getElementById("startDate1").addEventListener('change',function(ev)
+{
+    document.getElementById("endDate1").setAttribute("min", document.getElementById("startDate1").value);
+},false)
+
+
 
 loadEmloyment();
 //This functions sends all the data from the inputs into the backend to be added to the database

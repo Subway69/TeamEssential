@@ -143,8 +143,8 @@ require_once "PHP/default.php";
 									<input type="number"id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
 								</div>
 								
-								<input id = "startDate1" type = "date" placeholder="Start Date" required="" class="input"/>
-								<input id = "endDate1" type = "date" placeholder="End Date (Optional)" class="input"/>
+								<input id = "startDate1" type = "date" placeholder="Start Date" required="" max="2000-13-13"class="input"/>
+								<input id = "endDate1" type = "date" placeholder="End Date (Optional)" min = "1900-02-03"max="2000-13-13"class="input"/>
 
 								<input id="tasks1" placeholder="Tasks Completed" class="input" />
 								
