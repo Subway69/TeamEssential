@@ -164,12 +164,19 @@ function a()
 
 function saveTitles()
 {
+   if(updTitles.value=="")
+	{
+		alert("select suitable title");
+	}
+	else
+	{
     httTitle = new XMLHttpRequest()
     httTitle.open("PUT","Account/updateTitle/",true);
     httTitle.onload= canTitle;
     var fn = {};
     fn.value = updTitles.value;
     httTitle.send(JSON.stringify(fn));
+	}
 
 }
 
@@ -201,12 +208,19 @@ function updFName()
 function saveFNames()
 {
    
+   if(updFNames.value=="")
+	{
+		alert("Please enter the first name");
+	}
+	else
+	{
     httFName = new XMLHttpRequest()
     httFName.open("PUT","Account/updateFirstName/",true);
     httFName.onload= canFName;
     var fn = {};
     fn.value = updFNames.value;
     httFName.send(JSON.stringify(fn));
+	}
 
     
 }
@@ -273,12 +287,18 @@ function updLName()
 
 function saveLNames()
 {
-    httLName = new XMLHttpRequest()
+   if(updLNames.value=="")
+   {
+	   alert("please enter last name");
+   }
+   else{
+   httLName = new XMLHttpRequest()
     httLName.open("PUT","Account/updateLastName/",true);
     httLName.onload= canLName;
     var fn = {};
     fn.value = updLNames.value;
     httLName.send(JSON.stringify(fn));
+   }
 }
 
 function canLName()
