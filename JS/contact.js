@@ -54,9 +54,7 @@ var contactList;
 
 loadContact();
 loadDates();
-function htmlEntities(str) {
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
+
 function loadDates()
 {
     var date = new Date();
@@ -184,7 +182,7 @@ function canTitle(ev)
     cancelTitle.style.display="none";
     if(httTitle!=null)
     {
-        PTitle.innerHTML=htmlEntities(JSON.parse(httTitle.responseText).title);
+        PTitle.innerHTML=JSON.parse(httTitle.responseText).title;
         contactList.title=JSON.parse(httTitle.responseText).title;
     }
 }
@@ -197,7 +195,7 @@ function updFName()
     saveFName.style.display="block";
     cancelFName.style.display="block";
 
-    updFNames.value=htmlEntities(contactList.first_name);
+    updFNames.value=contactList.first_name;
 }
 
 function saveFNames()
@@ -222,7 +220,7 @@ function canFName(ev)
     cancelFName.style.display="none";
     if(httFName!=null)
     {
-        PFName.innerHTML=htmlEntities(JSON.parse(httFName.responseText).first_name);
+        PFName.innerHTML=JSON.parse(httFName.responseText).first_name;
         contactList.first_name=JSON.parse(httFName.responseText).first_name;
     }
 
