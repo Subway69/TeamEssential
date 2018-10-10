@@ -303,7 +303,7 @@ $router->register("PUT",'#^/updateEducation/#', function($params)
     }
     else
     {
-        $text = "Education updation is unsuccessful";
+        $text = "Education update was unsuccessful";
 
     }
       

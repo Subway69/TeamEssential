@@ -36,7 +36,7 @@ pass2s.addEventListener('change',function(ev)
 
 function validate()
 {
-    console.log("Hello there");
+
     var titlea= document.getElementById("tTitle").value;
     var fNamea= document.getElementById("tFirstName").value;
     var lNamea = document.getElementById("tLastName").value;

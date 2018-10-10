@@ -105,7 +105,7 @@ CREATE TABLE User_Employment
 
 
 );
-CREATE TABLE files
+CREATE TABLE Files
 (
     file_id INT PRIMARY KEY AUTO_INCREMENT,
     file_name VARCHAR(100) NOT NULL,

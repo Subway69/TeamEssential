@@ -23,35 +23,7 @@ require_once "PHP/default.php";
 <body>
     <title>Research Assistant Database</title>	
 		
-    <nav class="navbar"> 
-			
-		<div class="navbar-container">
-		
-            <a href="registration.html" class="navbar-brand"></a>
-			
-            <div id="i1pfjb" class="navbar-burger" >
-                <div class="navbar-burger-line"></div>
-                
-                <div class="navbar-burger-line"></div>
-                
-                <div class="navbar-burger-line"></div>
-               
-            </div> 
-			
-            <div data-gjs="navbar-items" class="navbar-items-c " >
-                <nav data-gjs="navbar-menu" class=" navbar-menu">
-				
-					<a href="home.php" class=" navbar-menu-link">Home</a>
-					<a href="help.php" class=" navbar-menu-link">Help</a>
-					<a href="profile.php"  class="navbar-menu-link ">Profile</a> <!-- data-highlightable="1" title="Profile"-->
-					<a href="account.php"  class="navbar-menu-link ">Account</a> <!--data-highlightable="1" title="Account" -->
-					<!-- add log out functionality to below -->
-					<a href="PHP/logout.php" data-highlightable="1" title="Account" class="navbar-menu-link gjs-comp-selected">Log Out</a>
-					
-				</nav>
-            </div>
-        </div>
-    </nav>
+<?php include_once('header.php') ?>
 
     <?php
     require_once "PHP/default.php";
@@ -70,7 +42,7 @@ require_once "PHP/default.php";
             if($success)
             {
 ?>
-<p>Hello</p>
+
 <?php
                 $query = "SELECT user_id,first_name,email,password,permission,uniWork,status FROM Users WHERE user_id=?;";
                 $stmt= mysqli_prepare($conn,$query);

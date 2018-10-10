@@ -70,7 +70,7 @@ dateArrs.addEventListener('change',function(ev)
 
 function qualValidate()
 {
-    console.log(typeArrs.value+degArrs.value+uniArrs.value+studyArrs.value);
+    
     if(typeArrs.value==''||degArrs.value==''||uniArrs.value==''||studyArrs.value==''||(studyArrs.value==1&&dateArrs.value==''))
     {
      document.getElementById('addQualBut').disabled=true;   

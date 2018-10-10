@@ -66,7 +66,7 @@ function getList(d)
 {
     clear();
     htt = new XMLHttpRequest();
-    console.log("Skills/getSpecificCategory/"+d);
+
     choice = d;
         var temp = {};
     temp.category = d;

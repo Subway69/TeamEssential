@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
                 $file_location = 'Files/' . $file_new_name;
                 move_uploaded_file($file_tmp_name, $file_location);
                 
-                $query = "INSERT INTO files(file_name,file_location,file_size) VALUES(?,?,?);";
+                $query = "INSERT INTO Files(file_name,file_location,file_size) VALUES(?,?,?);";
                 $stmt  = mysqli_prepare($conn, $query);
                 mysqli_stmt_bind_param($stmt, "ssd", $file_name, $file_location, $file_size);
                 $success = mysqli_stmt_execute($stmt);

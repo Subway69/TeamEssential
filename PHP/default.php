@@ -1,5 +1,5 @@
 <?php
-define('SITE_URL', 'http://localhost/gitkraken/teamessential/');
+define('SITE_URL', '/var/ww/html/ResearchAssistantDB/');
     $DB_HOST= "localhost";
 	$DB_USER="raUser";
 	$DB_PASSWORD="T#aM3Ss3nt1al";

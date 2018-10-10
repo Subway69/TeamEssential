@@ -176,7 +176,7 @@ $stmt= mysqli_prepare($conn,$query);
 				                                   
 							
 echo "<h1>Files</h1>";
-echo "<h1>Files</h1>";?>
+?>
 							<table class="table table-striped table-dark table-bordered " id="fileTabel" >
 							<tbody>
 							<?php

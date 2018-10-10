@@ -353,7 +353,7 @@ function saveDOBs()
     httDOB = new XMLHttpRequest()
     httDOB.open("PUT","Account/updateDateOfBirth/",true);
     httDOB.onload= canDOB;
-    console.log(updYearss.value);
+    
     var fn = {};
     fn.day = updDays.value;
     fn.month = updMonths.value;

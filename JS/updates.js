@@ -46,7 +46,7 @@ function updatePass()
 function deleteAccount(delAccID)
 {
     httDel = new XMLHttpRequest();
-    console.log(delAccID);
+  
     httDel.open("DELETE","Account/deleteAccount/"+delAccID,true);
     httDel.onload=deleteResult;
     httDel.send();
