@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="CSS/class numbered.css">
 	<link rel="stylesheet" href="CSS/media.css">
 	<link rel="stylesheet" href="CSS/boo.css">
-	<link rel="stylesheet" href="CB/css/component.css">	
+	<!--// <link rel="stylesheet" href="CB/css/component.css">	-->
 	<script src="JS/passwordMatch.js"></script>
 	<link rel="icon" href="img/favicon_feduni.ico">
 	<link rel="stylesheet" href="CSS/datatable.min.css" media="screen">

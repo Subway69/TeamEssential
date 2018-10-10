@@ -27,7 +27,7 @@
 		position:absolute;
 		right:0;
 		top:50px;
-		background:var(--burger-collapse-bg);
+		background:var(--a-hover-bg);
 	}
 	.tab-container{
 		display: inline-flex;
@@ -55,8 +55,11 @@
 		width:340px;
 		
 	}
-	.row > .cell > .form.gen{
+	.row > .cell > .form.gen{ /*general skills */
 		width:100%; 
+	}
+	.form.gen.discipline > table > tbody { /*discipline skills body*/
+		height:auto;
 	}
 	.optional{ /*FIX RELATED FORMS*/
 		font-size:12px;
@@ -69,6 +72,9 @@
         padding-right:0px;
         padding-bottom:0px;
         padding-left:0px;
+		
+		height:100%;
+		max-height: -webkit-fill-available;
     }
     .tab-container{
         float:none;
@@ -104,15 +110,32 @@
 	.sn{ /*SKILL NAME*/
 		width:60%;
 	}
+	#tab-row.row{
+		padding-left:0px;
+		padding-right: 0px;
+	}
 	select{
 		width:auto;
 		padding: 5px;
 		height: auto;
 	}
-	
+	input{
+		/* height:15px; */
+	}
+	.cpadding{
+		width:24px;
+		height:14px;
+		margin-right:-1px;
+		margin-left:13px;
+	}
 /*====================*/
 	.navbar-burger:clicked{
-		content: url("../img/logo_r.png");
+		/* content: url("../img/logo_r.png"); */
+	}
+}
+@media (max-height: 1000px){
+	body{
+		/* background:red; */
 	}
 }
 @media (max-width: 992px){
@@ -146,6 +169,62 @@
 		justify-content:center;
 	}
 }
+/* iPhone 5 ----------- */
+@media (max-device-height: 568px){
+	#genskl{
+		/* height: calc(100% - 130px); */
+	}
+	tbody#gensklstable.specificTable{
+		height: ;
+	}
+}
+
+/* iPhone 6, 7, 8 ----------- */
+@media (max-device-height: 667px){
+/* Styles */
+	#genskl{
+		/* height: calc(100% - 130px); */
+	}
+}
+
+/* iPhone 6+, 7+, 8+ ----------- */
+@media (max-device-height: 736px) {
+/* Styles */
+	#genskl{
+		/* height: calc(100% - 130px); */
+	}
+}
+
+/* iPhone X ----------- */
+@media (max-device-height: 812px){
+/* Styles */
+	#genskl{
+		/* height: calc(100% - 130px); */
+	}
+		tbody#gensklstable.specificTable{
+		height:525px;
+	}
+}
+
+/* iPhone XS Max, XR ----------- */
+@media (max-device-height: 896px) {
+/* Styles */
+	#genskl{
+		/* height: calc(100% - 130px); */
+	}
+}
+
+/* Samsung Galaxy S5 ----------- */
+@media (max-device-height: 640px) {
+/* Styles */
+	#genskl{
+		/* height: calc(100% - 130px); */
+	}
+	tbody#gensklstable.specificTable{
+		height:355px ;
+	}
+}
+
 @keyframes fadeEffect{
     0%{
         opacity:0;

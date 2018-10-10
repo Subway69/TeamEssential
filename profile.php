@@ -176,7 +176,7 @@ require_once "PHP/default.php";
 						
 							<form class="form gen">
 							
-								<table class=" table-striped gstable">
+								<table class=" table-striped gstable" id="genskl">
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
@@ -218,9 +218,9 @@ require_once "PHP/default.php";
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
-											<td class="sheadr">Low</td>
-											<td class="sheadr">Medium</td>
-											<td class="sheadr">High</td>
+											<td class="sheadr L"><span>Low</span></td>
+											<td class="sheadr M"><span>Medium</span></td>
+											<td class="sheadr H"><span>High</span></td>
 										<tr>
 									</thead>
 									<tbody id="form10">

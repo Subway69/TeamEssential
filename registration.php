@@ -145,7 +145,7 @@ include_once('header.php');
                                 
                                 <div class="form-group">
                                     <!--<input type="submit" id = "subButton"style="display:none;" class="button"/>-->
-                                    <input type="button" onClick="login()" class="btn btn-7 btn-7h" value ="Login"/>
+                                    <input type="button" onClick="login()" class="btn" value ="Login"/>
                                 </div>
                             </form>
                         
@@ -203,8 +203,8 @@ include_once('header.php');
 								<input type = "checkbox" name ="bachelor" value="1" id="bachelorCheck"/> 
 								
                                 <div class="form-group"> <!-- why do we need to div this? -->
-                                    <input type="button" class="button" id="sub" onclick="register()" value="Register without email" disabled  />
-                                    <input type="submit" class="button" name="sub1" value="Register with email"  />
+                                    <input type="button" class="button" id="sub" onclick="register()" value="Register w/o email" disabled  />
+                                    <input type="submit" class="button" id="sub" name="sub1" value="Register w/ email"  />
                                 </div>
                             </form>
 							<script src = "JS/login.js"></script>
@@ -252,7 +252,7 @@ include_once('header.php');
 
 	
 	<footer>
-		
+		foo
 	</footer>
 </body>
 <html>

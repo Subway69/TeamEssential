@@ -91,11 +91,11 @@
     float:right;
     cursor:pointer;
 }
-div[aria-expanded="true"]{
-	content: url("../img/1925.gif"); 
-	margin:0;
-	padding: 0 5px;
-}
+/* div[aria-expanded="true"]{ */
+	/* content: url("../img/1925.gif");  */
+	/* margin:0; */
+	/* padding: 0 5px; */
+/* } */
 .navbar-burger-line{
 	background-color:var(--white);
     padding-top:1px;

@@ -21,7 +21,7 @@ require_once "PHP/default.php";
 				<div class="c13731">Account Settings</div>
 				
 				<div data-tabs="1" id="iitw8i">
-					<nav data-tab-container="1" class="tab-container">
+					<nav data-tab-container="1" class="tab-container tab-container-reg">
 						<a href="#password-tab" data-tab="1" class="tab">Password</a>
 						
 						<a href="#removal-tab" data-tab="1" class="tab">Delete</a>
