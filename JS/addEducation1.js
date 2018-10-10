@@ -266,6 +266,12 @@ function updateQualification(ids)
         var studyUpdate=document.getElementById("study0").value;
                                     
         //Sends the inputs to the backend to be added
+       //Sends the inputs to the backend to be added
+		if(typeUpdate==""||degUpdate==""||uniUpdate==""||studyUpdate=="")
+		{
+			alert("you cannot leave fields blank");
+		}
+		else{
         httUpdateEducation = new XMLHttpRequest();
         httUpdateEducation.open("PUT","Education/updateEducation/",true);
         httUpdateEducation.onload=showEducationUpdate;
@@ -278,6 +284,7 @@ function updateQualification(ids)
         hIDUpdate.dateData=dateUpdate;
         hIDUpdate.studyData=studyUpdate;
         httUpdateEducation.send(JSON.stringify(hIDUpdate)); 
+		} 
     }
 
     function showEducationUpdate(ev)
