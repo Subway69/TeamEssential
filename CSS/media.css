@@ -196,12 +196,10 @@
 }
 
 /* iPhone X ----------- */
-@media (max-device-height: 812px){
+@media (max-device-height: 812px) and (max-width:375px){ 
 /* Styles */
-	#genskl{
-		/* height: calc(100% - 130px); */
-	}
-		tbody#gensklstable.specificTable{
+
+	tbody#gensklstable.specificTable{
 		height:525px;
 	}
 }
