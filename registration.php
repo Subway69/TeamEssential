@@ -11,10 +11,12 @@ include_once('header.php');
 <body>
     <title>Research Assistant Database</title>	
 		
-    <?php
+
+	
+    <div id="ii4vcy" class="row c3690">
+            <?php
     if(isset($_POST['sub2']))
     {   
-            
         $title = $_POST["tTitle"];
         $last = $_POST["tLastName"];
         $first = $_POST["tFirstName"];
@@ -82,7 +84,7 @@ include_once('header.php');
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
                                 mail($email,"Welcome to the Federation University Research Register sent via php mail",$message,$headers);
-
+                                $text="Email been sent to email address";
 
                     }
                     else{
@@ -96,10 +98,9 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
                 } ?> <?php
             }
         }
+        echo $text;
     }
 ?>
-	
-    <div id="ii4vcy" class="row c3690">
         <div id="iuxvnm" class="cell">
             <div class="c13731">Research Assistant Database</div>
 			

@@ -279,8 +279,14 @@ $router->register("POST",'#^/addSkills/#', function($params)
 		}
 		$counterx++;
 	}
-	
-    $text = $count . " out of ". $x . " skills successfully added"; //update this
+
+    if($count>0)
+    {
+	    $text = $count . " skills successfully added";
+    }
+    else{
+        $text = "No Skills Added";
+    }
 
         //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");

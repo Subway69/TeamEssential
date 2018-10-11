@@ -129,7 +129,7 @@ require_once "PHP/default.php";
 							<div id="form-cell" class="cell">
 								<form class="form" >
 									<select required="" name="Skill Category" id = "skillCat0" class="select">
-										<option value="">- Select Category -</option>
+										
 									
 									</select>
 									
@@ -154,7 +154,7 @@ require_once "PHP/default.php";
 							<div id="form-cell" class="cell">
 								<form class="form">
 									<input type="text" id="catName0" placeholder = "Enter Category Name" class="input" />
-									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"/>
+									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"style = "display:none;"/>
 									<input type = "button" class="button" id = "catBut" onClick= "addCategory()" value = "Add Category"/>
 									<input type = "button" class = "button" id = "updCatBut" onClick= "updCategory()" value = "Update Category"style = "display:none;"/>
 									<input type = "button" class = "button" id = "canCatBut" onClick= "canCategory()" value = "Cancel Update"style = "display:none;"/>

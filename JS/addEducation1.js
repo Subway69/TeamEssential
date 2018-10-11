@@ -269,7 +269,7 @@ function updateQualification(ids)
        //Sends the inputs to the backend to be added
 		if(typeUpdate==""||degUpdate==""||uniUpdate==""||studyUpdate=="")
 		{
-			alert("you cannot leave fields blank");
+			alert("Please ensure you complete all fields.");
 		}
 		else{
         httUpdateEducation = new XMLHttpRequest();

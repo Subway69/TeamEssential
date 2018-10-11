@@ -109,6 +109,7 @@ function listy(ev)
 		lowRads.setAttribute("class","radio cpadding");
         lowRads.setAttribute("name","tRadios"+i);
         lowRads.setAttribute("value","Low");
+        lowRads.setAttribute("onClick","disableSkills(this.id)");
         
 		cell2.appendChild(lowRads);
         
@@ -118,6 +119,7 @@ function listy(ev)
 		medRads.setAttribute("class","radio cpadding");
         medRads.setAttribute("name","tRadios"+i);
         medRads.setAttribute("value","Medium");
+        medRads.setAttribute("onClick","disableSkills(this.id)");
         
 		cell3.appendChild(medRads);
 
@@ -127,7 +129,8 @@ function listy(ev)
 		highRads.setAttribute("class","radio cpadding");
         highRads.setAttribute("name","tRadios"+i);
         highRads.setAttribute("value","High");
-        
+        highRads.setAttribute("onClick","disableSkills(this.id)");
+
 		cell4.appendChild(highRads);
 		
 		row.appendChild(cell1);
@@ -255,4 +258,42 @@ function checkSkills(ev)
         
         countss++;
     }
+}
+function disableSkills(g)
+{
+    
+    var chks= document.getElementById(g);
+
+    if(g.substring(0,3)=="low")
+        {
+         
+            var lens = g.length;
+            var idss = g.substring(3,lens);
+            if(chks.checked)
+                {
+                    document.getElementById("med"+idss).checked=false;
+                    document.getElementById("high"+idss).checked=false;            
+                }
+        }
+        if(g.substring(0,3)=="med")
+        {
+  
+            var lens = g.length;
+            var idss = g.substring(3,lens);
+            if(chks.checked)
+                {
+                    document.getElementById("low"+idss).checked=false;
+                    document.getElementById("high"+idss).checked=false;
+                }
+        }
+        if(g.substring(0,4)=="high")
+        {
+            var lens = g.length;
+            var idss = g.substring(4,lens);
+            if(chks.checked)
+                {
+                    document.getElementById("med"+idss).checked=false;
+                    document.getElementById("low"+idss).checked=false;   
+                }
+        }
 }

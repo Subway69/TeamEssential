@@ -50,6 +50,7 @@ function listsSkill(ev)
         lowRad.setAttribute("class","radio cpadding");
         lowRad.setAttribute("name","tChck"+i);
         lowRad.setAttribute("value","Low");
+        lowRad.setAttribute("onClick","disableSkill(this.id)");
 		
       	cell2.appendChild(lowRad);
      
@@ -60,6 +61,7 @@ function listsSkill(ev)
         medRad.setAttribute("class","radio cpadding");
         medRad.setAttribute("name","tChck"+i);
         medRad.setAttribute("value","Medium");
+        medRad.setAttribute("onClick","disableSkill(this.id)");
 		
         cell3.appendChild(medRad);
 		
@@ -70,6 +72,7 @@ function listsSkill(ev)
         highRad.setAttribute("class","radio cpadding");
         highRad.setAttribute("name","tChck"+i);
         highRad.setAttribute("value","High");
+        highRad.setAttribute("onClick","disableSkill(this.id)");
 		
 		cell4.appendChild(highRad);
        
@@ -190,5 +193,44 @@ function results(ev)
 {
     alert(JSON.parse(htts.responseText));
     check();
+}
+
+function disableSkill(y)
+{
+    console.log(y);
+    var chk= document.getElementById(y);
+
+    if(y.substring(0,3)=="low")
+        {
+            console.log("A low skill");
+            var len = y.length;
+            var ids = y.substring(3,len);
+            if(chk.checked)
+                {
+                    document.getElementById("med"+ids).checked=false;
+                    document.getElementById("high"+ids).checked=false;            
+                }
+        }
+        if(y.substring(0,3)=="med")
+        {
+            console.log("A med skill");
+            var len = y.length;
+            var ids = y.substring(3,len);
+            if(chk.checked)
+                {
+                    document.getElementById("low"+ids).checked=false;
+                    document.getElementById("high"+ids).checked=false;
+                }
+        }
+        if(y.substring(0,4)=="high")
+        {
+            var len = y.length;
+            var ids = y.substring(4,len);
+            if(chk.checked)
+                {
+                    document.getElementById("med"+ids).checked=false;
+                    document.getElementById("low"+ids).checked=false;   
+                }
+        }
 }
 

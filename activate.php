@@ -27,6 +27,7 @@ require_once "PHP/default.php";
 
     <?php
     require_once "PHP/default.php";
+    
         if(isset($_GET['id']))
         {
             echo $_GET['id'];

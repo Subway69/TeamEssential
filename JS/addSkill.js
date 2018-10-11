@@ -35,8 +35,12 @@ selCats.addEventListener('change',function(ev)
 //Lists all the categories and adds a delete button to each
 function listCats(ev)
 {
+    resetSelect();
     var selCates= document.getElementById("addCat0");
-    
+    var opt1 = document.createElement("option");
+    opt1.setAttribute("value","");
+    opt1.innerHTML="-Select Category-";
+    selCats.appendChild(opt1);
     catList = JSON.parse(httCats.responseText);
     catSizes = catList.length;
     for(var i=0;i<catSizes;i++)
@@ -163,6 +167,7 @@ function listSkills(ev)
     skillSize = skillLists.length;
     var formSkill = document.getElementById("addSkillsForm");
 
+
 	if(selCats.value==""){
 		formSkill.style.display="none";
 	}
@@ -285,6 +290,7 @@ function showCatUpdate(ev)
     document.getElementById("canCatBut").style.display="none";
     document.getElementById("catBut").style.display="block";
     document.getElementById("catName0").value="";
+
     clearCategories();
     loadCategories();
 }
@@ -335,6 +341,7 @@ function skillDelete(ev)
 function categoryDelete(ev)
 {
     alert(JSON.parse(delCatHtt.responseText));
+  
     clearCategories();
     loadCategories();
 }
@@ -351,5 +358,21 @@ function clearCategories()
         }
 
     }
+}
+
+function resetSelect()
+{
+    
+        for(var i = 0; i<catSizes;i++)
+    {
+
+        var myNodeSelect = document.getElementById("skillCat0");
+        while (myNodeSelect.firstChild) 
+        {
+            myNodeSelect.removeChild(myNodeSelect.firstChild);
+        }
+
+    }
+
 }
             
