@@ -90,25 +90,23 @@ require_once "PHP/default.php";
 															echo '
 															<tr>
 
-															<td> ' .$row['first_name']." </td>
-															<td> " .$row['last_name']. "</td>
-															<td> " .$uType.'</td>
-															<td>' 
-
-														?> 
-
-														<?php
-															$person =$row['user_id']; 
+																<td> ' .$row['first_name']." </td>
+																<td> " .$row['last_name']. "</td>
+																<td> " .$uType.'</td>
+																<td>' 
 														?>
-														<form class="blank" action = "viewProfile.php" method = "POST">
+																	<?php
+																		$person =$row['user_id']; 
+																	?>
+																	<form class="blank" action = "viewProfile.php" method = "POST">
 
-															<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
+																		<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
 
-															<input type = "submit" class="ubutton button" name = "tSub" value = "Go" />
-														</form>
+																		<input type = "submit" class="ubutton button" name = "tSub" value = "Go" />
+																	</form>
 
-														</td> 
-														</tr>
+																</td> 
+															</tr>
 														
 														<?php 
 														
@@ -118,13 +116,9 @@ require_once "PHP/default.php";
 										</table>
 										<div id="user-datatable" class="pagination-datatables">
 										</div>
-										
-
 										<?php
 									}?>					
-
 								</div>
-								
 							</div>
 						 <!--</div>ADDED THIS-->
 					 <!--</div>ADDED THIS-->
@@ -148,7 +142,7 @@ require_once "PHP/default.php";
 									</table>
 								</form>
 								
-								<form class="form optional" id="addSkillsForm" /></form>
+								<form class="form optional table-striped" id="addSkillsForm" /></form> 
 								
 							</div>
 						</div>
@@ -166,7 +160,7 @@ require_once "PHP/default.php";
 									
 								</form>
 								
-								<form class="form optional" id = "addCat0"></form> 
+								<form class="form optional table-striped" id = "addCat0"></form> <!--table-striped not working-->
 								
 							</div>
 						</div>

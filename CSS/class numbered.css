@@ -1,6 +1,3 @@
-
-
-
 .c3690{		/*body*/
 	padding-top:60px;
     font-family:Helvetica, serif;
@@ -13,7 +10,7 @@
     padding:10px;
     align-self:center;
     text-align:center;
-    font-size:25px;
+    font-size:1.5625rem; /*25px;*/
     font-weight:600;
     display:block;
 }
@@ -27,7 +24,7 @@
 }
 .c14791{
     text-align:center;
-    font-size:10px;
+    font-size:0.625rem; /*10px;*/
     height:auto;
     display:flex;
     flex-direction:row;

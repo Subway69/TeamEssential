@@ -180,7 +180,7 @@ require_once "PHP/default.php";
 						
 							<form class="form gen">
 							
-								<table class=" table-striped gstable" id="genskl">
+								<table class="gstable" id="genskl">
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
@@ -190,7 +190,7 @@ require_once "PHP/default.php";
 										<tr>
 										
 									</thead>
-									<tbody id="gensklstable" class="specificTable">
+									<tbody id="gensklstable" class="specificTable table-striped">
 									
 									</tbody>
 								</table>
@@ -209,16 +209,16 @@ require_once "PHP/default.php";
 						
 						
 							<form id="forms" class="disc"> 
-								<p style="text-align:center">Discipline: 
+								<label>Discipline: </label>
 								
 									<select id="category" name="tCategory">
 									</select>
-								</p>
+							
 							</form>
 
 							<form class="form discipline gen">
 							
-								<table class="table-striped gstable">
+								<table class="gstable">
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
@@ -227,7 +227,7 @@ require_once "PHP/default.php";
 											<td class="sheadr H"><span>High</span></td>
 										<tr>
 									</thead>
-									<tbody id="form10">
+									<tbody id="form10" class="table-striped">
 									
 									</tbody>
 								
@@ -341,18 +341,20 @@ require_once "PHP/default.php";
 						<div id="form-cell" class="cell">
 							<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
 								<div class="form-group">
-								<input type="file" id="file" name="file" 
-									onChange="fileValidation()" />
-								
-								<div class="form-group">
-									<button type="submit" class="button" name="submit" id="upload" disabled>Upload</button>
-								</div>
+									<input type="file" id="file" name="file" onChange="fileValidation()" />
+									
+									<div class="form-group">
+										<button type="submit" class="button" name="submit" id="upload" disabled>Upload</button>
+									</div>
 									<script src="JS/extension.js"></script>	
+								
+								</div> <!--added this -->
+								
 							</form>
 							
 							<?php
 							$query = "SELECT Files.file_name,Files.file_location ,Files.file_id
-							FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
+									FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
 									WHERE User_Files.user_id = ?;";
 
 							$stmt= mysqli_prepare($conn,$query);
@@ -363,28 +365,42 @@ require_once "PHP/default.php";
 
 
 							echo "<h1>Files</h1>";?>
-							<table class="table table-striped table-dark table-bordered " id="fileTabel" >
-							<tbody>
-							<?php
+							<table class="table table-bordered tblfiles" id="fileTabel" > <!--fileTable-->
+								<tbody>
+									<?php
 
-							while($row1 = mysqli_fetch_assoc($results))
+									while($row1 = mysqli_fetch_assoc($results))
 
-							{
-								$fname=$row1['file_name'];
-								$path=	$row1['file_location'];
-                                 $file_id=$row1['file_id'];								
-								echo 
-								"<tr><td>".$row1['file_name']."</td><td><button>
-								<a download='$fname' href='$path'>download</a></button></td><td>"?>
+									{
+										$fname=$row1['file_name'];
+										$path=	$row1['file_location'];
+										$file_id=$row1['file_id'];								
+										
+										echo 
+										"<tr>
+											<td class='tdfilename'>".$row1['file_name']."</td>
+											<td class='tdbuttons'>
+												<button class='btnfile'>
+													<a class='download' download='$fname' href='$path'></a>
+												</button>
+											</td>"?>
+											<!--
+										
+											-->
+											<td class='tdbuttons'>										
+												<button class="btnfile">
+													<a class="delete" href="deletefile.php?file_id=<?php echo $file_id?>"></a>
+												</button>
+											</td>
+											
+										</tr>
+
+									<?php }?>
 								
-								<button><a href="deletefile.php?file_id=<?php echo $file_id?>">delete</a></button></td></tr>
-
-							<?php }?>
-							
-							</tbody>
+								</tbody>
 							</table>
 
-								</div>
+								<!--</div> removed this-->
 						</div>
 
 					</div>
