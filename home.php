@@ -57,7 +57,11 @@ require_once "PHP/default.php";
 										
 									while($row = mysqli_fetch_assoc($results)){
 										?>
-										
+										<select required="" name="Datatable number" id="datatable0" class="select">
+											<option value=5>5</option>
+											<option value=10>10</option>
+											<option value=15>15</option>
+										</select>
 										<table  class="table table-responsive table-striped" id="user-table">
 											<tHead>
 												<tr>
@@ -90,23 +94,25 @@ require_once "PHP/default.php";
 															echo '
 															<tr>
 
-																<td> ' .$row['first_name']." </td>
-																<td> " .$row['last_name']. "</td>
-																<td> " .$uType.'</td>
-																<td>' 
+															<td> ' .$row['first_name']." </td>
+															<td> " .$row['last_name']. "</td>
+															<td> " .$uType.'</td>
+															<td>' 
+
+														?> 
+
+														<?php
+															$person =$row['user_id']; 
 														?>
-																	<?php
-																		$person =$row['user_id']; 
-																	?>
-																	<form class="blank" action = "viewProfile.php" method = "POST">
+														<form class="blank" action = "viewProfile.php" method = "POST">
 
-																		<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
+															<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
 
-																		<input type = "submit" class="ubutton button" name = "tSub" value = "Go" />
-																	</form>
+															<input type = "submit" class="ubutton button" name = "tSub" value = "Go" />
+														</form>
 
-																</td> 
-															</tr>
+														</td> 
+														</tr>
 														
 														<?php 
 														
@@ -116,9 +122,13 @@ require_once "PHP/default.php";
 										</table>
 										<div id="user-datatable" class="pagination-datatables">
 										</div>
+										
+
 										<?php
 									}?>					
+
 								</div>
+								
 							</div>
 						 <!--</div>ADDED THIS-->
 					 <!--</div>ADDED THIS-->
@@ -142,7 +152,7 @@ require_once "PHP/default.php";
 									</table>
 								</form>
 								
-								<form class="form optional table-striped" id="addSkillsForm" /></form> 
+								<form class="form optional" id="addSkillsForm" /></form>
 								
 							</div>
 						</div>
@@ -160,7 +170,7 @@ require_once "PHP/default.php";
 									
 								</form>
 								
-								<form class="form optional table-striped" id = "addCat0"></form> <!--table-striped not working-->
+								<form class="form optional" id = "addCat0"></form> 
 								
 							</div>
 						</div>
@@ -255,14 +265,31 @@ require_once "PHP/default.php";
 			}
 		</script>
 
-		<script>var datatable = new DataTable(document.querySelector('table'), {
-			pageSize: 5,
+		<script>
+			var datatable;
+		makeDatatable(5);
+		var amountSel = document.getElementById("datatable0");
+		amountSel.addEventListener('change',function(ev)
+{
+	var amount=amountSel.value;
+	datatable.resetFilters();
+	datatable.destroy();
+	
+	makeDatatable(amount);
+   
+},false)
+function makeDatatable(ds)
+{
+			datatable = new DataTable(document.querySelector('table'), {
+			pageSize: ds,
 			sort: [ true,true,false],
 			filters: [ true,true, 'select'],
 			filterText: 'Type to filter... ',
 			pagingDivSelector: "#user-datatable"
 			}
+			
 											 );
+											}
 		</script>
 		<script src="JS/mailList.js"></script>
 

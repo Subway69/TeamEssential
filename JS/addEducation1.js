@@ -170,7 +170,11 @@ function listEducation()
         }
         if(qualList[i].finished==1)
         {
-            str = "Completed: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name+" finished at " + qualList[i].end_date +".";
+            var uniYear = qualList[i].end_date.substring(0,4);
+            var uniMonth = qualList[i].end_date.substring(5,7);
+            var uniDay = qualList[i].end_date.substring(8,10);
+
+            str = "Completed: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name+" finished at " + uniDay +"/"+uniMonth+"/"+uniYear +".";
         }
         var text = document.createTextNode(str);
         var eduHidden = document.createElement("input");

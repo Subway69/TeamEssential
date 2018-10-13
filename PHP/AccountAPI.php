@@ -67,7 +67,7 @@ require_once "default.php" ?>
  $req = file_get_contents('php://input');
         //Converts the contents into a PHP Object
         $req_obj = json_decode($req);
-	$email= $req_obj->user;
+	$email= htmlentities($req_obj->user);
 	$password=$req_obj->pass;
 	$text="Account doesn't exist.";
 
@@ -135,9 +135,9 @@ $router->register("POST",'#^/register/#', function($params)
         //Converts the contents into a PHP Object
         $req_obj = json_decode($req);
         $title = $req_obj->title;
-        $last = $req_obj->lName;
-        $first =$req_obj->fName;
-        $email = $req_obj->email;
+        $last = htmlentites($req_obj->lName);
+        $first =htmlentities($req_obj->fName);
+        $email = htmlentities($req_obj->email);
         $errPass = "";
         $password = $req_obj->pass1;
         $cPassword = $req_obj->pass2;
@@ -571,7 +571,7 @@ $router->register("PUT",'#^/updateFirstName/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-    $fname = $req_obj->value;
+    $fname = htmlentities($req_obj->value);
 
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $user_id = logged_in_user();
@@ -608,7 +608,7 @@ $router->register("PUT",'#^/updateMiddleName/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-    $fname = $req_obj->value;
+    $fname = htmlentities($req_obj->value);
 
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $user_id = logged_in_user();
@@ -625,7 +625,6 @@ $router->register("PUT",'#^/updateMiddleName/#', function($params)
             mysqli_stmt_bind_param($stmt1,"d",$user_id);
             $success1 = mysqli_stmt_execute($stmt1);
             $results1 = mysqli_stmt_get_result($stmt1);
-
             $row=mysqli_fetch_assoc($results1);
         }
             
@@ -645,7 +644,7 @@ $router->register("PUT",'#^/updateLastName/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-    $fname = $req_obj->value;
+    $fname = htmlentities($req_obj->value);
 
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $user_id = logged_in_user();
@@ -682,7 +681,7 @@ $router->register("PUT",'#^/updatePhone/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-    $fname = $req_obj->value;
+    $fname = htmlentites($req_obj->value);
 
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $user_id = logged_in_user();
@@ -720,7 +719,7 @@ $router->register("PUT",'#^/updateAddress/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-    $fname = $req_obj->value;
+    $fname = htmlentities($req_obj->value);
 
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $user_id = logged_in_user();

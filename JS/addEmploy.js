@@ -110,7 +110,16 @@ function listEmployment(ev)
         empHidden.setAttribute("id", "emp"+i);
         empHidden.setAttribute("value",employList[i].employment_id);
 
-        var strEmploy= employList[i].work_rate+ " "+employList[i].position_title+" at "+employList[i].organisation+ ".Manager Name: "+employList[i].manager+", Phone: "+employList[i].manager_phone+". Started "+employList[i].startDate+" ended: "+employList[i].endDate+ ". Performed:"+ employList[i].tasks;
+        var empStartYear = employList[i].startDate.substring(0,4);
+        var empStartMonth = employList[i].startDate.substring(5,7);
+        var empStartDay = employList[i].startDate.substring(8,10);
+
+        
+        var empEndYear = employList[i].endDate.substring(0,4);
+        var empEndMonth = employList[i].endDate.substring(5,7);
+        var empEndDay = employList[i].endDate.substring(8,10);
+
+        var strEmploy= employList[i].work_rate+ " "+employList[i].position_title+" at "+employList[i].organisation+ ".Manager Name: "+employList[i].manager+", Phone: "+employList[i].manager_phone+". Started "+  empStartDay +"/"+empStartMonth+"/"+empStartYear +" ended: "+empEndDay +"/"+empEndMonth+"/"+empEndYear+ ". Performed:"+ employList[i].tasks;
         var textEmploy = document.createTextNode(strEmploy);
 
         var updEmpBut = document.createElement("input");

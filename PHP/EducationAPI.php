@@ -259,7 +259,7 @@ $router->register("PUT",'#^/updateEducation/#', function($params)
     //Collects the data from the Json object
     $qualID = $req_obj->qualId;
     $typeID = $req_obj->typeData;
-    $degID = $req_obj->degData;
+    $degID = htmlentities($req_obj->degData);
     $uniID = $req_obj->uniData;
     $dateID = $req_obj->dateData;
     $studyID = $req_obj->studyData;

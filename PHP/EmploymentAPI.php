@@ -69,16 +69,13 @@ $req_obj = json_decode($req);
 
 //Grabs the data from the AJAX
 $typeID = $req_obj->typeData;
-$titleID = $req_obj->titleData;
-$manID = $req_obj->manData;
-$manPID = $req_obj->manPData;
-$orgID = $req_obj->orgData;
-$manID = $req_obj->manData;
-$manPID = $req_obj->manPData;
-$orgID = $req_obj->orgData;
+$titleID = htmlentities($req_obj->titleData);
+$manID = htmlentities($req_obj->manData);
+$manPID = htmlentities($req_obj->manPData);
+$orgID = htmlentities($req_obj->orgData);
 $startID = $req_obj->startData;
 $endID = $req_obj->endData;
-$taskID = $req_obj->taskData;
+$taskID = htmlentities($req_obj->taskData);
 $text="";
 //Gets the id of the user logged in
 $userid = logged_in_user();
@@ -231,16 +228,13 @@ $router->register("PUT",'#^/updateEmployment/#', function($params)
     //Grabs the data from the AJAX
     $empid = $req_obj->empID;
     $typeID = $req_obj->typeData;
-    $titleID = $req_obj->titleData;
-    $manID = $req_obj->manData;
-    $manPID = $req_obj->manPData;
-    $orgID = $req_obj->orgData;
-    $manID = $req_obj->manData;
-    $manPID = $req_obj->manPData;
-    $orgID = $req_obj->orgData;
+    $titleID = htmlentities($req_obj->titleData);
+    $manID = htmlentities($req_obj->manData);
+    $manPID = htmlentities($req_obj->manPData);
+    $orgID = htmlentities($req_obj->orgData);
     $startID = $req_obj->startData;
     $endID = $req_obj->endData;
-    $taskID = $req_obj->taskData;
+    $taskID = htmlentities($req_obj->taskData);
 
     //Gets the id of the user logged in
     $userid = logged_in_user();

@@ -302,7 +302,7 @@ $router->register("POST",'#^/addNewSkill/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
 
-    $name = $req_obj->name;
+    $name = htmlentities($req_obj->name);
     $cat = $req_obj->cat;
 
     //Checks if the skillname is empty
@@ -374,7 +374,7 @@ $router->register("POST",'#^/addNewCategory/#', function($params)
 
     $text="";
     $name = $req_obj->name;
-    $cat = $req_obj->cat;
+    $cat = htmlentities($req_obj->cat);
 
     //Checks if the skill name is emp
     //Check if the category is empty
@@ -439,7 +439,7 @@ $router->register("PUT",'#^/updateSkills/#', function($params)
  
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $text="";
-        $value = $req_obj->value;
+        $value = htmlentities($req_obj->value);
         $sID=$req_obj->sID;
             //Inserts the new skill
             $query= "UPDATE Skills SET skill_name =? WHERE skill_id=?;";
@@ -469,7 +469,7 @@ $router->register("PUT",'#^/updateCategory/#', function($params)
  
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $text="";
-        $value = $req_obj->value;
+        $value = htmlentities($req_obj->value);
        $sID=$req_obj->sID;
             //Inserts the new skill
             $query= "UPDATE Skills SET skill_type =? WHERE skill_type=?;";
