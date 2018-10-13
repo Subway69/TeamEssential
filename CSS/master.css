@@ -10,6 +10,7 @@
 	width: device-width;
 }
 :root{
+	font-size:16px;
 	--navbar: #1e284b;
 	/*263169*/
 	--body-bg: #afb4d2;
@@ -20,7 +21,7 @@
 	--filter: #495057;
 	--filter-border: #ced4da;
 	--a-hover-bg: #dcd5ff; /*change */
-	--a-hover-txt: #000000; /*change*/
+	--a-hover-txt: #000; /*change*/
 	--button: linear-gradient(#eeeeee, #80c6ff);
 	--button-hover:linear-gradient(180deg,#80c6ff 0,#66a5ff 50%,#4b95ff 51%,#80c6ff 100%);
 	--button-disabled:linear-gradient(#eeeeee, #80c6ff);
@@ -32,6 +33,7 @@
 	/* --burger-collapse-bg: #8474e4; /*change c2 opacity*/ 
 	/* 00126d scroll */
 	--btn-fill: #6d77a7;
+
 }
 html {
 	height: 100%;
@@ -42,7 +44,7 @@ body{
 	background-color:var(--body-bg);
 	margin:0px;
 	position:relative;
-	padding-bottom:2rem;
+	/* padding-bottom:2rem; */
 	min-height:100%;
 
 }
@@ -51,11 +53,23 @@ footer{
 	right:0;
 	left: 0;
 	bottom: 0;
-	padding:0.3rem;
+	padding:0.3rem; /*4.8px*/
 	background-color: var(--navbar);
 	color: var(--white);
 	text-align: center;
 	font-size:0.3rem;
+}
+h1{
+	font-size:1.25rem;
+	font-weight:700;
+	margin:1px;
+}
+label{
+	margin:0px;
+}
+a{
+	text-decoration:none;
+	color: var(--tbl-border);
 }
 p{
 	color: #0f1428;
@@ -64,7 +78,7 @@ p{
 	margin:0;
 }
 
-p > input[type=checkbox]{
+p > input[type=checkbox]{ /*registration*/
 	height: 15px;
 	margin:0;
 	vertical-align:top;
@@ -110,35 +124,6 @@ a.navbar-menu-link:hover{
     color:var(--white);
 }
 
-/* ****************************** MEDIA ****************************** */
-
-@media (max-width:480px){
-	.navbar{
-		position:fixed;
-	}
-	.navbar-brand{
-		content: url("../img/logo_flag.png");
-		/* height:15px; */
-		width:60px;
-		padding-left:0px;
-	}
-	.L span, .M span, .H span{
-		display:none;
-	}
-	
-	.L:after{
-		content:"L";
-	}
-	.M:after{
-		content:"M";
-	}
-	.H:after{
-		content:"H";
-	}
-
-	
-}
-
 
 /* ******************************SOMETHING****************************** */
 
@@ -161,7 +146,7 @@ form{
     align-self:center;
     align-items:flex-start;
 }
-.row > .cell > .form.gen , .form.discipline.gen  { /*genskl discskl forms*/
+form.form.discipline.gen, form.form.gen  { /*genskl discskl forms*/
 	width:560px;
 	height:440px;
 	text-align:left;
@@ -169,16 +154,13 @@ form{
 }
 div > form.disc{	/* PROFILE CATEGORY DISCIPLINE */
 	width:600px;
-	display:block;
+	/* display:block; */
 	align-self:center;
-	margin:0 -5px 16px -5px;
+	margin:0 0px 16px 0px;
 	padding:0px;
+	text-align:center;
 }
-.row > .cell > .form.gen.discipline{
-	height:390px;
-}
-
-.form.gen.discipline > table > tbody{
+tbody#form10{	/*DISCIPLINE SKILLS TABLE BODY*/
 	height:330px;
 }
 .blank{
@@ -192,7 +174,6 @@ div > form.disc{	/* PROFILE CATEGORY DISCIPLINE */
 	margin-right:auto;
 }
 .optional{	/*HOME.MANAGEMENT INVI/LIST FORMS*/
-	border:1px inset;
 	padding:5px;
 	margin-top:20px;
 }
@@ -229,8 +210,22 @@ button, .btn,  input[type=submit], input[type=reset], input[type=button]{ /*butt
 	font-weight:bold;
 	color: var(--a-hover-bg);
 }
-input#sub.button{
+buttin:active{ /*press effect*/
+	box-shadow:none;
+}
+input.button.regbtn{
 	width:49%;
+}
+.btnfile{ /*FILE BUTTONS*/
+	margin: 0px;
+	width: 100%;
+	vertical-align:middle;
+}
+.btnfile > a.download::before{
+	content: "Download";
+}
+.btnfile > a.delete::before{
+	content: "Delete";
 }
 .btn:after{ /*something*/
 	content: '';
@@ -286,7 +281,7 @@ input {
 	border-radius:2px;
 	box-sizing: border-box;
 	border: 0px inset black;
-	color: #4d557f; !important;
+	color: var(--tab-active); 
 	/* background-color: #000000; */
 }
 
@@ -325,22 +320,19 @@ select {
 
 
 /* ******************************LINKS****************************** */
-a{
-	text-decoration:none;
-}
-/* a:link { */
-	/* color: #cc0000; /*red*/ 
-/* } */
-/* a:visited { */
-	/* color: #339933; /*green*/ 
-/* } */
+
 a:hover {
 	color: var(--a-hover-txt); /*black*/
 	background-color: var(--a-hover-bg);
 }
-/* a:active { */
-	/* color: #99cc33; /*greenish*/ 
-/* } */
+a.download, a.delete{
+	padding:10px;
+	width:100%;
+	display:inline-block;
+}
+a.delete{
+	padding:10px;
+}
 
 
 /* ****************************** ****************************** */
@@ -354,20 +346,11 @@ table{
 .table {
     display:table;
     text-align:center;
-	/* position: absolute;  */
-	width: 450px;
-	/* height: 180px; */
-	/* z-index: 1; */
-	/* top: 50%; */
-	/* left: 50%; */
-	/* transform: translate(-50%, -50%); */
-	/* border-collapse:collapse; */
 	align-self:center;
 	align-items:flex-start;
 	position: static;
-}
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: var(--striped);
+	margin-bottom: 0.5rem;
+	background-color: transparent;
 }
 tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 	background-color: var(--tr-hover-bg);
@@ -382,28 +365,41 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 }
 .table thead th {
 	vertical-align: bottom;
-	/* border-bottom: 2px solid #dee2e6; */
 	border-bottom: 1px solid var(--tbl-border);
 }
-.table tbody{
+.table tbody{ /*?files - user*/
+	/* display:table-row-group; */
+}
+table#user-table > tbody, .tblfiles>tbody{
 	display:table-row-group;
 }
-
-
+.tblfiles{ /*FILES TABLE*/
+	width:100%;
+	margin:0px;
+}
+.tdfilename{
+	width:59%;
+	word-break:break-all;
+}
+.tdbuttons{
+	width:20%;
+}
 .gstable{
 	display:block;
 }
-.specificTable  thread >.specificTable tr ,  tbody{
-  display:block;
-  height:410px;
-  vertical-align:middle;
-  overflow:auto;
+
+tbody#gensklstable.specificTable{
+	display:block;
+	height:410px;
+	vertical-align:middle;
+	overflow:auto;
 }
+
 
 .table-responsive {
 	display: block;
 	width: calc(85%); /*to .table in boo */
-	margin: 0 auto;
+	margin: 0 auto 0.5rem auto;
 	/* overflow-x: auto; */
 	-webkit-overflow-scrolling: touch;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
@@ -447,9 +443,9 @@ tbody#gensklstable > tr:hover, tbody#form10 > tr:hover{
 
 /* ******************************HELP****************************** */
 
-#help {
-	font-size: 7em;
-}
+/* #help { */
+	/* font-size: 7em; */
+/* } */
 
 /* ******************************CHKBX****************************** */
 

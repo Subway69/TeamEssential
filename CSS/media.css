@@ -1,3 +1,29 @@
+@media (max-width: 992px){
+    .form{
+        left:0px;
+        bottom:329px;
+        flex-direction:column;
+        align-self:center;
+        flex-grow:0;
+        flex-shrink:1;
+        flex-basis:0px;
+        position:relative;
+        /* width:400px; */
+        float:none;
+        /* display:block; */
+        align-items:center;
+        justify-content:center;
+        top:0px;
+    }
+    .tab-container{
+        align-self:center;
+        /* justify-content:center; */
+        flex-direction:row;
+    }
+	form#addSkillsForm.form.optional{
+		display:none;
+	}
+}
 @media (max-width: 768px){
 	.c3690{
         flex-direction:column;
@@ -33,11 +59,19 @@
 		display: inline-flex;
 		overflow: auto;
 	}
+	div > form.disc{ /*PROFILE DISCIPLINE SELECTION*/
+		width:100%;
+	}	
+	
+	@media(max-height:1024px){
+		tbody#gensklstable.specificTable{
+			height:720px ;
+		}	
+	}
 }
 @media (max-width: 480px){
-
 	.c13731{
-		font-size:20px;
+		font-size:1.25rem; /*20px*/
 	}
     .form{
         left:0px;
@@ -47,22 +81,26 @@
         /* display:block; */
         bottom:0px;
     }
-	div > form.disc{ /*PROFILE DISC FORMS*/
-		width:100%;
-		margin: 0 0 15px 0;
+	.navbar{
+		position:fixed;
 	}
-	form.form.discipline.gen{
-		width:340px;
-		
+	.navbar-brand{
+		content: url("../img/logo_flag.png");
+		/* height:15px; */
+		width:60px;
+		padding-left:0px;
 	}
-	.row > .cell > .form.gen{ /*general skills */
+	tbody {	/*BODY TABLES*/
+		font-size:0.75rem; /*12px*/
+	}
+	.row > .cell > .form.gen{ /*general & discipline skills */
 		width:100%; 
 	}
-	.form.gen.discipline > table > tbody { /*discipline skills body*/
+	tbody#form10 { /*discipline skills body*/
 		height:auto;
 	}
 	.optional{ /*FIX RELATED FORMS*/
-		font-size:12px;
+		font-size:0.75rem; /*12px*/
 		min-height:265px;
 		overflow:auto;
 		vertical-align:middle;
@@ -78,27 +116,20 @@
     }
     .tab-container{
         float:none;
-		font-size:15px;
+		font-size:0.9375rem; /*15px;*/
 		justify-content:normal;
     }
 	.tab-container-reg{
 		justify-content:center;
 	}
 	.table#user-table thead th{
-		font-size:13px;
+		font-size:0.8125rem; /*13px;*/
 		vertical-align:inherit;
 		text-align:left;
-	}
-	tbody {	/*BODY TABLES*/
-		font-size:12px;
 	}
 	.table-responsive{
 		width:100%;
 	}
-	/* .row{ */
-		/* padding-left:5px; */
-		/* padding-right:5px; */
-	/* } */
 	.row#mailing{
 		padding:0;
 		margin:0;
@@ -119,109 +150,100 @@
 		padding: 5px;
 		height: auto;
 	}
-	input{
-		/* height:15px; */
-	}
 	.cpadding{
 		width:24px;
 		height:14px;
 		margin-right:-1px;
 		margin-left:13px;
 	}
-/*====================*/
-	.navbar-burger:clicked{
-		/* content: url("../img/logo_r.png"); */
+	.tblfiles{
+		display:contents;
 	}
-}
-@media (max-height: 1000px){
-	body{
-		/* background:red; */
+	.tblfiles > tbody{
+		overflow:overlay;
+		height:250px; /*to be changed*/
 	}
-}
-@media (max-width: 992px){
-    .form{
-        left:0px;
-        bottom:329px;
-        flex-direction:column;
-        align-self:center;
-        flex-grow:0;
-        flex-shrink:1;
-        flex-basis:0px;
-        position:relative;
-        /* width:400px; */
-        float:none;
-        /* display:block; */
-        align-items:center;
-        justify-content:center;
-        top:0px;
-    }
-    .tab-container{
-        align-self:center;
-        /* justify-content:center; */
-        flex-direction:row;
-    }
-		form#addSkillsForm.form.optional{
+	.tdfilename{
+		padding:0px;
+	}
+	button.btnfile{ /*make the button disappear*/
+		background:transparent;
+		box-shadow:none;
+	}
+	.btnfile > a.download::before{ /*download icon*/
+		/* content: url("../img/1925.gif"); */
+		content: url("../img/Cat.ico");
+
+	}
+	.btnfile > a.delete::before{ /*delete icon*/
+		content: url("../img/Zombie.ico");
+	}
+	.download{ /*not working*/
+		min-width:10px;
+		min-height:10px;
+		height:20px;
+		width:20px;
+	}
+	.L span, .M span, .H span{
 		display:none;
 	}
+	
+	.L:after{
+		content:"L";
+	}
+	.M:after{
+		content:"M";
+	}
+	.H:after{
+		content:"H";
+	}
+	
+/* ***** ***** ***** ***** ***** PHONES ***** ***** ***** ***** ***** */
+
+	/* iPhone XS Max, XR ----------- */
+	@media (max-device-height: 896px){
+		tbody#gensklstable.specificTable{
+			height:615px;
+		}
+	}
+	/* iPhone X ----------- */
+	@media (max-device-height: 812px){ 
+		tbody#gensklstable.specificTable{
+			height:535px;
+		}
+	}
+	/* iPhone 6+, 7+, 8+ , Nexus 6P, Google Pixel 2, Galaxy S8++ ----------- */
+	@media (max-height:740px){
+		tbody#gensklstable.specificTable{
+			height:455px ;
+		}
+	}
+	/* iPhone 6, 7, 8 ----------- */
+	@media (max-device-height: 667px){
+		tbody#gensklstable.specificTable{
+			height:395px ;
+		}
+	}
+	/* Samsung Galaxy S5 ----------- */
+	@media (max-height:640px){
+		tbody#gensklstable.specificTable{
+			height:355px ;
+		}
+	}
+	/* iPhone 5 ----------- */
+	@media (max-height: 568px){
+		tbody#gensklstable.specificTable{
+			height:295px ;
+		}
+	}
 }
+
 @media (min-width: 481px){	/*SPECIFIC ELEMENT STYLES FOR SCREEN 481-992*/
 	.tab-container{
 		justify-content:center;
 	}
 }
-/* iPhone 5 ----------- */
-@media (max-device-height: 568px){
-	#genskl{
-		/* height: calc(100% - 130px); */
-	}
-	tbody#gensklstable.specificTable{
-		height: ;
-	}
-}
 
-/* iPhone 6, 7, 8 ----------- */
-@media (max-device-height: 667px){
-/* Styles */
-	#genskl{
-		/* height: calc(100% - 130px); */
-	}
-}
-
-/* iPhone 6+, 7+, 8+ ----------- */
-@media (max-device-height: 736px) {
-/* Styles */
-	#genskl{
-		/* height: calc(100% - 130px); */
-	}
-}
-
-/* iPhone X ----------- */
-@media (max-device-height: 812px) and (max-width:375px){ 
-/* Styles */
-
-	tbody#gensklstable.specificTable{
-		height:525px;
-	}
-}
-
-/* iPhone XS Max, XR ----------- */
-@media (max-device-height: 896px) {
-/* Styles */
-	#genskl{
-		/* height: calc(100% - 130px); */
-	}
-}
-
-/* Samsung Galaxy S5 ----------- */
-@media (max-device-height: 640px) {
-/* Styles */
-	#genskl{
-		/* height: calc(100% - 130px); */
-	}
-	tbody#gensklstable.specificTable{
-		height:355px ;
-	}
-}
 
 @keyframes fadeEffect{
     0%{
