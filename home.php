@@ -13,6 +13,11 @@ require_once "PHP/default.php";
 		<title>Dashboard</title>
 
 		<?php
+			if(!is_logged_in())
+			{
+				header("location: registration.php");
+			}
+			else{
 			$user_id = logged_in_user(); 
 			$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 		?>
@@ -226,6 +231,7 @@ require_once "PHP/default.php";
 				<p>Email is not valid</p>
 				<?php
 			}
+		}
 			?>
 <!--</div> -->
 

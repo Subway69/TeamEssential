@@ -19,6 +19,21 @@ var addQualBut=document.getElementById("addQualBut");
 var updQualButton=document.getElementById("updQualBut");
 var canQualUpd=document.getElementById("canQualBut");
 
+
+var todays = new Date(); 
+var dds = todays.getDate(); 
+var mms = todays.getMonth()+1; //January is 0! 
+var yyyys = todays.getFullYear(); 
+ if(dds<10){ 
+        dd='0'+dd 
+    }  
+    if(mms<10){ 
+        mms='0'+mms 
+    }  
+ 
+todays = yyyys+'-'+mms+'-'+dds; 
+document.getElementById("date0").setAttribute("max", todays);
+
 var selection = document.getElementById("study0");
 selection.addEventListener('change',function(ev)
 {

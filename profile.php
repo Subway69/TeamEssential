@@ -12,6 +12,11 @@ require_once "PHP/default.php";
 	<title>Profile</title>
 	
 	<?php
+	if(!is_logged_in())
+	{
+		header("location: registration.php");
+	}
+	else{
 		$user_id = logged_in_user(); 
 		$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 		if(strcmp(getValid(),'approved')==0)
@@ -95,7 +100,7 @@ require_once "PHP/default.php";
 									<option value="1">Completed</option>
 								</select>
 								
-								<input id = "date0"type = "date" placeholder="Completion Date (Optional)" class="input optional"/>
+								<input id = "date0"type = "text" max="2000-13-13 " onfocus="(this.type='date')"placeholder="Completion Date (Optional)" class="input optional"/>
 											
 											
 								<div class="form-group">
@@ -143,8 +148,8 @@ require_once "PHP/default.php";
 									<input type="number"id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
 								</div>
 								
-								<input id = "startDate1" type = "date" placeholder="Start Date" required="" max="2000-13-13"class="input"/>
-								<input id = "endDate1" type = "date" placeholder="End Date (Optional)" min = "1900-02-03"max="2000-13-13"class="input"/>
+								<input id = "startDate1" type = "text"onfocus="(this.type='date')" placeholder="Start Date" required="" max="2000-13-13"class="input"/>
+								<input id = "endDate1" type = "text" onfocus="(this.type='date')"placeholder="End Date (Optional)" min = "1900-02-03"max="2000-13-13"class="input"/>
 								<input id="tasks1" placeholder="Tasks Completed" class="input" />
 								
 								<div class="form-group">
@@ -394,6 +399,7 @@ require_once "PHP/default.php";
 				<p>Email is not valid</p>
 			<?php
 			}
+		}
 			?>
 		<script src = "JS/preferences.js"></script>
 		<script src="JS/validation.js"></script>

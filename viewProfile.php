@@ -10,6 +10,11 @@ require_once "PHP/default.php";
    <body>
       <title>View Profile</title>
       <?php
+      	if(!is_logged_in())
+          {
+              header("location: registration.php");
+          }
+          else{
       		if(strcmp(getValid(),'approved')==0)
 		{
       $user_id;
@@ -60,33 +65,7 @@ require_once "PHP/default.php";
         {
             echo $row['first_name']." is available part time.";
         }
-        if (getPermission()==2)
-        {
-            ?>
-            <form>
-                <select id = "perm0" required="" name="Permission" class="select">
-                <option value="0" <?php if($row['permission']==0){echo 'selected="selected"';} ?>>Research Assistant</option>
-                <option value="1"<?php if($row['permission']==1){echo 'selected="selected"';} ?>>Researcher(Admin)</option>
-                <option value="2"<?php if($row['permission']==2){echo 'selected="selected"';} ?>>Super Admin</option>
-                </selecT>
-                <input type = "hidden" id = "hiddenPerm" value = <?php echo $row['user_id'];?>/>
-                <input type = "button" onClick="updatePerm()" value = "Update Permission"/>
-            </form>
-            <script src="JS/updates.js"></script>
-            <?php
-            if($row['permission']==0)
-            {
-                echo  "Current Access Level is:  Research Assistant";
-            }
-            if($row['permission']==1)
-            {
-                echo  "Current Access Level is:  Researcher(Admin)";
-            }
-            if($row['permission']==2)
-            {
-                echo  "Current Access Level is:  Super Admin";
-            }
-        }
+
 
         $query = "SELECT Qualification.qualification_id,Qualification.qualification_name,Qualification.qualification_type,Qualification.end_date, Qualification.finished  FROM Qualification INNER JOIN Study ON Qualification.qualification_id=Study.qualification_id WHERE Study.user_id = ? ;";
         $stmt= mysqli_prepare($conn,$query);
@@ -158,7 +137,33 @@ require_once "PHP/default.php";
         {
             echo $row1['skill_name']. " at ".$row1['skill_level']."</p>";
         }
-
+        if (getPermission()==2)
+        {
+            ?>
+            <form>
+                <select id = "perm0" required="" name="Permission" class="select">
+                <option value="0" <?php if($row['permission']==0){echo 'selected="selected"';} ?>>Research Assistant</option>
+                <option value="1"<?php if($row['permission']==1){echo 'selected="selected"';} ?>>Researcher(Admin)</option>
+                <option value="2"<?php if($row['permission']==2){echo 'selected="selected"';} ?>>Super Admin</option>
+                </selecT>
+                <input type = "hidden" id = "hiddenPerm" value = <?php echo $row['user_id'];?>/>
+                <input type = "button" onClick="updatePerm()" value = "Update Permission"/>
+            </form>
+            <script src="JS/updates.js"></script>
+            <?php
+            if($row['permission']==0)
+            {
+                echo  "Current Access Level is:  Research Assistant";
+            }
+            if($row['permission']==1)
+            {
+                echo  "Current Access Level is:  Researcher(Admin)";
+            }
+            if($row['permission']==2)
+            {
+                echo  "Current Access Level is:  Super Admin";
+            }
+        }
 
         
 
@@ -209,7 +214,8 @@ echo "<h1>Files</h1>";
 			?>
 				<p>Email is not valid</p>
 			<?php
-			}
+            }
+        }
 			?>
       <script>var items = document.querySelectorAll('#iitw8i');
          for (var i = 0, len = items.length; i < len; i++) {

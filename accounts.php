@@ -9,6 +9,11 @@ require_once "PHP/default.php";
 	
 <body>
 	<?php
+		if(!is_logged_in())
+		{
+			header("location: registration.php");
+		}
+		else{
 		$user_id = logged_in_user(); 
 	?>
 	<title>Account Settings</title>
@@ -84,6 +89,7 @@ require_once "PHP/default.php";
 				<p>Email is not valid</p>
 			<?php
 			}
+		}
 			?>
 		<script>
 			var items = document.querySelectorAll('#iitw8i');
