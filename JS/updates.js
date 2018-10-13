@@ -45,11 +45,15 @@ function updatePass()
 
 function deleteAccount(delAccID)
 {
+    var r = confirm("Please confirm if you like to delete your account");
+    if(r==true)
+        {
     httDel = new XMLHttpRequest();
   
     httDel.open("DELETE","Account/deleteAccount/"+delAccID,true);
     httDel.onload=deleteResult;
     httDel.send();
+        }
 }
 
 function deleteResult(ev)

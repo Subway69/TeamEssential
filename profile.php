@@ -157,7 +157,7 @@ require_once "PHP/default.php";
 								</div>
 								
 								<div class="form-group">
-									<button id="updEmpBut" type="button" class="button optional" onClick="updEmp()">Update</button>
+									<button id="updEmpBut" type="button" class="button optional" onClick="updEmp()" disabled>Update</button>
 								</div>
 								<div class="form-group">
 									<button id="canEmpBut" type="button" class="button optional"onClick="resettter()"

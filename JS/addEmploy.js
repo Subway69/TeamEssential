@@ -20,15 +20,34 @@ var yyyy = today.getFullYear();
     }  
  
 today = yyyy+'-'+mm+'-'+dd; 
-document.getElementById("startDate1").setAttribute("max", today); 
-document.getElementById("endDate1").setAttribute("max", today); 
- 
-document.getElementById("startDate1").addEventListener('change',function(ev) 
-{ 
-    document.getElementById("endDate1").setAttribute("min", document.getElementById("startDate1").value); 
-},false) 
- 
+var starting=document.getElementById("startDate1");
+var ending=document.getElementById("endDate1");
+starting.setAttribute("max", today); 
+ending.setAttribute("max", today); 
 
+ 
+starting.addEventListener('change',function(ev) 
+{ 
+    ending.setAttribute("min", starting.value); 
+},false) 
+ ending.addEventListener('change',function(ev) 
+{ 
+    if(ending.value<starting.value)
+        {
+            alert("End Date can't be before start date");
+        }
+},false) 
+
+document.getElementById('managerPhone1').addEventListener('keydown', function(e) {
+    var key   = e.keyCode ? e.keyCode : e.which;
+
+    if (!( [8, 9, 13, 27, 46, 110, 190].indexOf(key) !== -1 ||
+         (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
+         (key >= 35 && key <= 40) ||
+         (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
+         (key >= 96 && key <= 105)
+       )) e.preventDefault();
+});
 loadEmloyment();
 //This functions sends all the data from the inputs into the backend to be added to the database
 function addEmp()

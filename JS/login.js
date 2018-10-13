@@ -133,11 +133,20 @@ function registerResponse(ev)
 }
 function login()
 {
-   
+   console.log("loo");
     var userName= document.getElementById("tUsername").value;
     
     var passWord=  document.getElementById("tPassword").value;
-   
+        if(userName=='')
+        {
+            alert("PLease enter an email address");
+        }
+    if(passWord=='')
+        {
+            alert("PLease enter a password");
+        }
+   if(passWord!=''&&userName!=''){
+       console.log("IN");
     httLogin=new XMLHttpRequest();
     httLogin.open("POST","Account/login/",true);
   
@@ -146,6 +155,7 @@ function login()
     log.user=userName;
     log.pass=passWord;
     httLogin.send(JSON.stringify(log));
+   }
 
 }
 

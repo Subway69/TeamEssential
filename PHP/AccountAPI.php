@@ -72,6 +72,14 @@ require_once "default.php" ?>
 	$text="Account doesn't exist.";
 
 	//Email and Password must be entered
+    if($email=='')
+    {
+        $text = "Please enter an email address";
+    }
+    if($password=="")
+    {
+        $text ="Please enter a password";
+    }
 	if($email and $password)
 	{
 		$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
@@ -192,6 +200,7 @@ $router->register("POST",'#^/register/#', function($params)
                     if ($success) 
                     {
                         $text="Registration Success";
+                       // $text=$hashed_password;
                     }
                     else{
                         $text="Registration Failed";
