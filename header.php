@@ -59,6 +59,7 @@
 					<?php
 					}
 					?>
+
 				</ul>
 				<script src= "JS/logout.js"></script>
 			</div>
