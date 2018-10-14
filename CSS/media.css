@@ -4,9 +4,9 @@
         bottom:329px;
         flex-direction:column;
         align-self:center;
-        flex-grow:0;
-        flex-shrink:1;
-        flex-basis:0px;
+        /* flex-grow:0; */
+        /* flex-shrink:1; */
+        /* flex-basis:0px; */
         position:relative;
         /* width:400px; */
         float:none;
@@ -19,6 +19,8 @@
         align-self:center;
         /* justify-content:center; */
         flex-direction:row;
+		display: inline-flex;
+		overflow: auto;
     }
 	form#addSkillsForm.form.optional{
 		display:none;
@@ -55,10 +57,10 @@
 		top:50px;
 		background:var(--a-hover-bg);
 	}
-	.tab-container{
-		display: inline-flex;
-		overflow: auto;
-	}
+	/* .tab-container{ */
+		/* display: inline-flex; */
+		/* overflow: auto; */
+	/* } */
 	div > form.disc{ /*PROFILE DISCIPLINE SELECTION*/
 		width:100%;
 	}	
@@ -81,6 +83,12 @@
         /* display:block; */
         bottom:0px;
     }
+	.form-group{ /*form-group experiment*/
+		width:unset;
+	}
+	#form-cell.form-cell-spec{ /*EDUCATION*/
+		flex-direction:column;
+	}
 	.navbar{
 		position:fixed;
 	}
@@ -104,6 +112,9 @@
 		min-height:265px;
 		overflow:auto;
 		vertical-align:middle;
+	}
+	#showEducation.optional{
+		background:blue;
 	}
     .tab-content{
         padding-top:0px;
@@ -172,17 +183,14 @@
 	}
 	.btnfile > a.download::before{ /*download icon*/
 		/* content: url("../img/1925.gif"); */
-		content: url("../img/Cat.ico");
+		/* content: url("../img/icon/download.svg"); */
 
 	}
 	.btnfile > a.delete::before{ /*delete icon*/
-		content: url("../img/Zombie.ico");
+		/* content: url("../img/Zombie.ico"); */
 	}
-	.download{ /*not working*/
-		min-width:10px;
-		min-height:10px;
-		height:20px;
-		width:20px;
+	a.download, a.delete{
+		padding:0px;
 	}
 	.L span, .M span, .H span{
 		display:none;

@@ -76,9 +76,9 @@ require_once "PHP/default.php";
 				<div id="education-tab" data-tab-content="1" class="tab-content">
 					
 					<div id="tab-row" class="row">
-						<div id="form-cell" class="cell">
+						<div id="form-cell" class="cell form-cell-spec">
 							<form class="form">
-							<span id="msg" style="color:red;font-size:0.8em;"></span>
+								<span id="msg" style="color:red;font-size:0.8em;"></span>
 								<select required="" name="Education Level" id="type0" class="select">
 									<option value="">- Education Level -</option>
 									<option value="Higher Ed">Higher Ed</option>
@@ -365,7 +365,7 @@ require_once "PHP/default.php";
 
 
 							echo "<h1>Files</h1>";?>
-							<table class="table table-bordered tblfiles" id="fileTabel" > <!--fileTable-->
+							<table class="table table-striped tblfiles" id="fileTabel" > <!--fileTable-->
 								<tbody>
 									<?php
 
