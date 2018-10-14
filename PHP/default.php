@@ -1,8 +1,8 @@
 <?php
-define('SITE_URL', '/var/ww/html/ResearchAssistantDB/');
+define('SITE_URL', 'https://asterius.ballarat.edu.au/ResearchAssistantDB');
     $DB_HOST= "localhost";
 	$DB_USER="raUser";
-	$DB_PASSWORD="T#aM3Ss3nt1al";
+	$DB_PASSWORD="67qUfDFLA72Kujkz";
 	$DB_NAME= "FedUni_RA_Register";
 	function login($username) {
 	$_SESSION['username'] = $username;

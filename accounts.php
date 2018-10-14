@@ -68,7 +68,7 @@ require_once "PHP/default.php";
 						
 						<div id="tab-row" class="row">
 							<div id="form-cell" class="cell">
-								<form class="form" id="formDelete"method="POST" action="index.html">
+								<form class="form" id="formDelete"method="POST" action="index.php">
 								
 									<div class="form-group">
 										<button type="button" id=<?PHP echo $user_id?> onClick="deleteAccount(this.id)" class="button" name="tDelete">Delete Account</button>

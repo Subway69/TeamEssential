@@ -212,6 +212,7 @@ function resetter()
     addQualBut.style.display="block";
     updQualButton.style.display="none";
      canQualUpd.style.display="none";
+     document.getElementById("date0").style.display="none";
      resetEducation();
 }
 

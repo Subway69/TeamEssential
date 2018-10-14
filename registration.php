@@ -182,7 +182,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 								
                                 <div class="form-group"> <!-- why do we need to div this? -->
                                     <input type="button" class="button regbtn" id="sub" onclick="register()" value="Register w/o email" disabled  />
-                                    <input type="submit" class="button regbtn" id="sub1" name="sub2" value="Register w/ email"  />
+                                    <input type="submit" class="button regbtn" id="sub" name="sub2" value="Register w/ email"  />
                                 </div>
                             </form>
 							<script src = "JS/login.js"></script>

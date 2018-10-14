@@ -25,7 +25,7 @@ require_once "PHP/default.php";
 		<?php
 		if(strcmp(getValid(),'approved')==0)
 		{
-			if(getPermission() ==1 || getPermission()==2)
+			if(getPermission() ==1 || getPermission()==2 || getPermission()==3)
 			{
 			
 			?> 
@@ -42,7 +42,7 @@ require_once "PHP/default.php";
 								<a href="#skill-tab" data-tab="1" class="tab">Skills Management</a>
 								
 								<a href="#category-tab" data-tab="1" class="tab">Category Management</a>
-								
+								<a href="#University-tab" data-tab="1" class="tab">University Management</a>
 								<a href="#email-tab" data-tab="1" class="tab">Mailing List</a>
 								
 							</nav>
@@ -171,6 +171,26 @@ require_once "PHP/default.php";
 								</form>
 								
 								<form class="form optional" id = "addCat0"></form> 
+								
+							</div>
+						</div>
+						
+					</div>
+						<div id="University-tab" data-tab-content="1" class="tab-content">
+						<div id="tab-row" class="row">
+							<div id="form-cell" class="cell">
+								<form class="form">
+									<input type="text" id="uniName0" placeholder = "Enter University Name" class="input" />
+									
+									<input type = "button" class="button" id = "uniBut" onClick= "addUniversity()" value = "Add University"/>
+									<input type = "button" class = "button" id = "updUniBut" onClick= "updUniversity()" value = "Update Univeristy"style = "display:none;"/>
+									<input type = "button" class = "button" id = "canUniBut" onClick= "canUniversity()" value = "Cancel University"style = "display:none;"/>
+									
+								</form>
+								
+								<form class="form optional" id = "addUni0">
+								<table id="uniTable">
+								</table></form> 
 								
 							</div>
 						</div>

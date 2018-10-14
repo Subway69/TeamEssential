@@ -5,6 +5,7 @@ var skillHtts;
 var catSizes;
 var catHtts;
 var skillLists;
+var uniList;
 var httSkillUpdate;
 var httCatUpdate;
 var updSkillID=0;
@@ -13,10 +14,14 @@ var catList;
 var oldCat;
 var delCatHtt;
 var delHtt;
-
+var uniHtt;
+var httUni;
+var updUniID;
+var httUniUpdate;
+var httUniDelete;
 var selCats = document.getElementById("skillCat0");
 loadCategories();
-
+loadUniversity();
 //Loads all the categories
 function loadCategories()
 {
@@ -25,6 +30,15 @@ function loadCategories()
     httCats.onload=listCats;
     httCats.send();
 }
+//Loads all the categories
+function loadUniversity()
+{
+    httUni = new XMLHttpRequest();
+    httUni.open("GET","Education/getUniversity/",true);
+    httUni.onload=listUni;
+    httUni.send();
+}
+
 
 //Adds a listener to the select category option so that when the category changes it displays the correct skills
 selCats.addEventListener('change',function(ev)
@@ -32,6 +46,43 @@ selCats.addEventListener('change',function(ev)
     showSkills(selCats.options[selCats.selectedIndex].text);
 },false);
 
+function listUni(ev)
+{
+    uniList = JSON.parse(httUni.responseText);
+    var uniForm =document.getElementById("addUni0");
+    var uniTab = document.getElementById("uniTable");
+    for(var i = 0;i<uniList.length;i++)
+        {
+            var uniRow= document.createElement("tr");
+            var uniColOne= document.createElement("td");
+             var uniColTwo= document.createElement("td");
+              var uniColThree= document.createElement("td");
+            var uniName= document.createTextNode(uniList[i].University_name);
+            
+            uniColOne.appendChild(uniName);
+            var delUniButs = document.createElement("input");
+            delUniButs.setAttribute("type","button");
+			delUniButs.setAttribute("class", "button");
+            delUniButs.setAttribute("id",uniList[i].University_id);
+           delUniButs.setAttribute("onClick","deleteUni(this.id)");
+            delUniButs.setAttribute("value","Delete");
+
+            var updUniButs = document.createElement("input");
+            updUniButs.setAttribute("type","button");
+			updUniButs.setAttribute("class", "button");
+            updUniButs.setAttribute("id",i);
+            updUniButs.setAttribute("onClick","updateUni(this.id)");
+            updUniButs.setAttribute("value","Update");
+
+            uniColThree.appendChild(delUniButs);
+            uniColTwo.appendChild(updUniButs);
+            uniRow.appendChild(uniColOne);
+            uniRow.appendChild(uniColTwo);
+             uniRow.appendChild(uniColThree);
+          
+            uniTab.appendChild(uniRow);
+        }
+}
 //Lists all the categories and adds a delete button to each
 function listCats(ev)
 {
@@ -375,4 +426,103 @@ function resetSelect()
     }
 
 }
+//Sends the  category data to the backend to be added
+function addUniversity()
+{
+    var newUni= document.getElementById("uniName0").value;
+
+    if (newUni !="")
+    {
+        
+            uniHtt = new XMLHttpRequest();
+            uniHtt.open("POST","Education/addNewUniversity/",true);
+            var uniToAdd={};
+            uniToAdd.uni=newUni;
             
+            uniHtt.onload=uniClears;
+            uniHtt.send(JSON.stringify(uniToAdd));
+
+    }
+    else
+    {
+        alert("Please enter an University");
+    }
+}
+
+      
+function uniClears(ev)
+{
+    alert(JSON.parse(uniHtt.responseText));
+    resetUni();
+
+    document.getElementById("uniName0").value="";
+    loadUniversity();
+   
+}
+function resetUni()
+{
+
+
+        var myNodeSelects = document.getElementById("uniTable");
+        while (myNodeSelects.firstChild) 
+        {
+            myNodeSelects.removeChild(myNodeSelects.firstChild);
+        }
+
+    
+}
+
+function updateUni(j)
+{
+    document.getElementById("updUniBut").style.display="block";
+    document.getElementById("canUniBut").style.display="block";
+    document.getElementById("uniBut").style.display="none";
+    document.getElementById("uniName0").value=uniList[j].University_name;
+    updUniID=uniList[j].University_id;
+}
+
+function updUniversity()
+{
+    httUniUpdate = new XMLHttpRequest();
+    httUniUpdate.open("PUT","Education/updateUniversity/",true);
+    httUniUpdate.onload=showUniUpdate;
+    var uniHid={};
+    uniHid.uID=updUniID;
+    uniHid.value=document.getElementById("uniName0").value;
+    httUniUpdate.send(JSON.stringify(uniHid));
+}
+
+function showUniUpdate(ev)
+{
+    alert(JSON.parse(httUniUpdate.responseText));
+    document.getElementById("updUniBut").style.display="none";
+    document.getElementById("canUniBut").style.display="none";
+    document.getElementById("uniBut").style.display="block";
+    document.getElementById("uniName0").value="";
+
+    resetUni();
+    loadUniversity();
+}
+function canUniversity()
+{
+        document.getElementById("updUniBut").style.display="none";
+    document.getElementById("canUniBut").style.display="none";
+    document.getElementById("uniBut").style.display="block";
+    document.getElementById("uniName0").value="";
+
+}
+function deleteUni(j)
+{
+    delUniHtt = new XMLHttpRequest();
+        var delUniID={};
+    delUniID.id=j;
+    delUniHtt.open("DELETE","Education/deleteUniversity/",true);
+    delUniHtt.onload=uniDelete;
+    delUniHtt.send(JSON.stringify(delUniID));
+}
+function uniDelete(ev)
+{
+    alert(JSON.parse(delUniHtt.responseText));
+    resetUni();
+    loadUniversity();
+}

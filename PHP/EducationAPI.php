@@ -314,5 +314,138 @@ $router->register("PUT",'#^/updateEducation/#', function($params)
 
 });
 
+//Register a post method that will add a review
+$router->register("POST",'#^/addNewUniversity/#', function($params) 
+{      
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+
+    //Collects the data from the Json object
+    $uniName = $req_obj->uni;
+
+    $text="";
+    if($uniName=="")
+    {
+        $text = "Please enter an University Name";
+    }
+    else
+    {
+            //Grabs the user of the user currently logged in
+
+    
+        //Connects to the database	
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+
+        //Inserts the degree information into the database
+        $query = "INSERT INTO University(University_name) VALUES(?);"; 
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"s",$uniName);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        //Checks if it was successful
+        
+        if($success)
+        {
+            $text = "University Successfully Added.";
+        }
+        else
+        {
+            $text = "University was unsuccessfully added";
+
+        }
+    }
+        
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+});
+
+$router->register("PUT",'#^/updateUniversity/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+ 
+        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+        $text="";
+        $value = htmlentities($req_obj->value);
+       $sID=$req_obj->uID;
+       if($value=="")
+       {
+           $text="Please enter a value for University";
+       }
+       else
+       {
+            //Inserts the new skill
+            $query= "UPDATE University SET University_name =? WHERE University_id=?;";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt,"sd",$value,$sID);
+            $success = mysqli_stmt_execute($stmt);
+            if($success)
+            {
+                $text="University Successfully Updated.";
+            }
+            else{
+                $text = "University Unsuccessfully Updated";
+            }
+            
+       }
+
+        //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+});
+$router->register("DELETE",'#^/deleteUniversity/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+
+    $id =$req_obj->id;
+    $user= logged_in_user();
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+
+    $text="";
+    //Before we delete the skill we msut delete all its connections with the users
+    $query1= "DELETE FROM Study WHERE University_id=?;";
+    $stmt1= mysqli_prepare($conn,$query1);
+    mysqli_stmt_bind_param($stmt1,"d",$id);
+    $success1 = mysqli_stmt_execute($stmt1);
+    $result1 = mysqli_stmt_get_result($stmt1);
+
+    
+
+    //Deletes the skill
+
+    $query = "DELETE FROM University WHERE University_id = ?;";
+    $stmt= mysqli_prepare($conn,$query);
+    mysqli_stmt_bind_param($stmt,"d",$id);
+    $success = mysqli_stmt_execute($stmt);
+
+    if($success&&$success1)
+    {
+        $text="University successfully deleted";
+    }
+    else{
+        $text="University was unsuccessfully deleted";
+    }
+
+
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+
+});
+
 $router->route($_SERVER['PATH_INFO']);
 ?>

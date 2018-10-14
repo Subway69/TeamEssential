@@ -7,7 +7,7 @@ USE FedUni_RA_Register;
 GRANT SELECT, INSERT, UPDATE, DELETE
 	ON FedUni_RA_Register.*
 	TO 'raUser'@'localhost'
-	IDENTIFIED BY 'T#aM3Ss3nt1al';
+	IDENTIFIED BY '67qUfDFLA72Kujkz';
 
 
 
@@ -33,18 +33,19 @@ CREATE TABLE Users
 );
 
 INSERT INTO Users(title,first_name,middle_name,last_name,email,address,phone_number,password,day_dob,month_dob,year_dob,permission,uniWork,avail,status) VALUES 
-    ("Dr","Michael","Ernest","Munro","michael@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
-	("Dr","SuperAdmin","SuperAdmin","SuperAdmin","Super@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1,'approved'),
-    ("Dr","Admin","Admin","Admin","Admin@test","Admin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,1,0,0,'approved'),
-    ("Mr","Bruce","Batman","Wayne","batman@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
-    ("Miss","Taylor","Alison","Swift","Taylor@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved'),
-    ("Miss","Diana","Wonder-Woman","Prince","Diana@test","SuperAdmin",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,2,0,1,'approved'),
-    ("Mr","John","Quincey","Adams","John@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
-    ("Miss","Libby","","Pellow","Libby@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved'),
-    ("Mr","Alec","","Baldwin","Alec@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
-    ("Miss","Christina","","Perri","Perri@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved'),
-    ("Mr","Kevin","Crispy","Bacon","Bacon@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,1,'approved'),
-    ("Miss","Stacey","","Goodwin","Goodwin@test","User",0123441,"$2y$12$0SM7zfbupHNhD8Vu6iBCVeunUIdzdXL.6HmTsT7ZSvh3qrK/zVhsK",12,"October",1990,0,0,0,'approved');
+    ("Dr","Michael","Ernest","Munro","michael@RARegister","Admin",0123441,"$2y$12$SYkXvxJhz0VlV30u2VdTuesIPYUp7vBXsar0Rg1hzF71RUZW.oaoK",12,"October",1990,0,0,1,'approved'),/*5246qTSuDYKuvaNb*/
+	("Dr","SuperAdmin","SuperAdmin","SuperAdmin","Super@RARegister","SuperAdmin",0123441,"$2y$12$hiH3hkhLZCo2HEYuti594eZFVMiOLLmAXqypJGdQF8gM1E3De2pXS",12,"October",1990,2,0,1,'approved'), /* Q4wsSrGTUf7fUKuR */
+    ("Dr","Admin","Admin","Admin","Admin@RARegister","Admin",0123441,"$2y$12$wuBVuvfpZC2y92QHyqMpD..typwiAbP0EBgRLuCT9l1L.IMOhhGly",12,"October",1990,1,0,0,'approved'),/*NprRN6E977rjRpXy */
+    ("Mr","Bruce","Batman","Wayne","batman@RARegister","User",0123441,"$2y$12$fY16XWo59gPZP3VmQlp6o.r0bo3y52ZEnYbjxgDY6OwgHxFNIh1Fe",12,"October",1990,0,0,1,'approved'),/*4ZQAZwHbr5fqV3XF*/
+    ("Miss","Taylor","Alison","Swift","Taylor@RARegister","User",0123441,"$2y$12$vpOrzLFu/Ao0ANViJDXcIOUyt3XoCGX2TYoCaOuDYmfEexXZHTx7e",12,"October",1990,0,0,0,'approved'),/*eUBTsV37mShLrhfh*/
+    ("Miss","Diana","Wonder-Woman","Prince","Diana@RARegister","SuperAdmin",0123441,"$2y$12$lqjL3bDpocywatWoDpuH5eSsaqon3ah5c5MvR6vODphuskXF08MZ.",12,"October",1990,2,0,1,'approved'),/*VdrsMq2fjZJwnBbZ*/
+    ("Mr","John","Quincey","Adams","John@RARegister","User",0123441,"$2y$12$ajccqYfuLWEYaXRqJSlK0eVisc4No1OLBXyMSp8wer9Xpws0YKXiu",12,"October",1990,0,0,1,'approved'),/*RZu66ZEEFaL3Lukx*/
+    ("Miss","Libby","","Pellow","Libby@RARegister","User",0123441,"$2y$12$yq8X0FIod9DsSC6fvk9WHew9By8/Z2gtOmylqr6b8wYFXilrCS1Uu",12,"October",1990,0,0,0,'approved'),/*F368Rf4Nk4w7BnGD*/
+    ("Mr","Alec","","Baldwin","Alec@RARegister","User",0123441,"$2y$12$GP2hm3I7dQvnlhZk4uz0eOQulT1S09XcaESjEa2Jb4yVTwNegFTOi",12,"October",1990,0,0,1,'approved'),/*jbPE5ZTzUF2DhguK*/
+    ("Miss","Christina","","Perri","Perri@RARegister","User",0123441,"$2y$12$WuE6VeLLHfkYYkYRSdokP.pLP1Al.aoSmd5qoiuG.N1y/QjRkA/BC",12,"October",1990,0,0,0,'approved'),/*gzCM4E25XZ5JTx9c*/
+    ("Mr","Kevin","Crispy","Bacon","Bacon@RARegister","User",0123441,"$2y$12$gNVi4xbE2DkfYW1gGVvq6eXVyYiXEttf2m5d/qq0nHKR.0U.wJbry",12,"October",1990,0,0,1,'approved'),/*QXpmmu2Gj7Y5aa9h*/
+    ("Dr","Root","Root","Root","Root@RARegister","Root",0123441,"$2y$12$TGUAGlTX/T0fFwF2XvPHde70pmNAfmoSNz87r70gpHmOTYlrXAAZG",12,"October",1990,3,0,1,'approved'),/*qTm2e7uvt9QRCCfs*/
+    ("Miss","Stacey","","Goodwin","Goodwin@RARegister","User",0123441,"$2y$12$bNbTaLfs9iyau9ZUZaGlau5rAya/FTuDV4deQbOOpm63G9TxD20re",12,"October",1990,0,0,0,'approved');/*ZBguFhLvw94vxxZM*/
 
 CREATE TABLE Qualification
 (

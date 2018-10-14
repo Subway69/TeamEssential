@@ -143,7 +143,7 @@ $router->register("POST",'#^/register/#', function($params)
         //Converts the contents into a PHP Object
         $req_obj = json_decode($req);
         $title = $req_obj->title;
-        $last = htmlentites($req_obj->lName);
+        $last = htmlentities($req_obj->lName);
         $first =htmlentities($req_obj->fName);
         $email = htmlentities($req_obj->email);
         $errPass = "";
@@ -199,8 +199,8 @@ $router->register("POST",'#^/register/#', function($params)
                 
                     if ($success) 
                     {
-                        $text="Registration Success";
-                       // $text=$hashed_password;
+                        //$text="Registration Success";
+                        $text=$hashed_password;
                     }
                     else{
                         $text="Registration Failed";
@@ -228,63 +228,76 @@ $router->register("DELETE",'#^/deleteAccount/(\d+)#', function($params)
     
 
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-
-    //Following queries delete all the users information
-    $query = "DELETE FROM User_Skills WHERE user_id = ?;";
+    $query = "SELECT permission FROM Users WHERE user_id =?; ";
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"d",$id);
     $success = mysqli_stmt_execute($stmt);
-
-    $query = "DELETE FROM User_Employment WHERE user_id = ?;";
-    $stmt= mysqli_prepare($conn,$query);
-    mysqli_stmt_bind_param($stmt,"d",$id);
-    $success = mysqli_stmt_execute($stmt);
-
-    $query = "DELETE FROM Study WHERE user_id = ?;";
-    $stmt= mysqli_prepare($conn,$query);
-    mysqli_stmt_bind_param($stmt,"d",$id);
-    $success = mysqli_stmt_execute($stmt);
-	
-	
-$query = "SELECT file_id FROM User_Files where user_id=?;";
-		
-$stmt= mysqli_prepare($conn,$query);
-mysqli_stmt_bind_param($stmt,"d",$id);
-
-$success = mysqli_stmt_execute($stmt);
-$result1 = mysqli_stmt_get_result($stmt);
-
-			                                   
-	
-    $query = "DELETE FROM User_Files WHERE user_id = ?;";
-    $stmt= mysqli_prepare($conn,$query);
-    mysqli_stmt_bind_param($stmt,"d",$id);
-    $success = mysqli_stmt_execute($stmt);
-	
-	while($row1 = mysqli_fetch_assoc($result1))
-	{$file_id=$row1['file_id'];
-		$query = "DELETE FROM Files WHERE file_id = ?;";
-    $stmt= mysqli_prepare($conn,$query);
-    mysqli_stmt_bind_param($stmt,"d",$file_id);
-    $success = mysqli_stmt_execute($stmt);
-	}
-	
-
-    $query = "DELETE FROM Users WHERE user_id = ?;";
-    $stmt= mysqli_prepare($conn,$query);
-    mysqli_stmt_bind_param($stmt,"d",$id);
-    $success = mysqli_stmt_execute($stmt);
-
-
+     $results = mysqli_stmt_get_result($stmt);
+     $row = mysqli_fetch_array($results);
     $text="";
-    if($success)
-    {
-        logout();
-        $text="Account Successfully Deleted";
-    }
-    else
-    {
-        $text="Account Deletion Unsuccessful";
+     if($row['permission']==3)
+     {
+        $text = "Can't delete the root account";
+     }
+    else{
+        //Following queries delete all the users information
+        $query = "DELETE FROM User_Skills WHERE user_id = ?;";
+        $stmt= mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"d",$id);
+        $success = mysqli_stmt_execute($stmt);
+
+        $query = "DELETE FROM User_Employment WHERE user_id = ?;";
+        $stmt= mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"d",$id);
+        $success = mysqli_stmt_execute($stmt);
+
+        $query = "DELETE FROM Study WHERE user_id = ?;";
+        $stmt= mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"d",$id);
+        $success = mysqli_stmt_execute($stmt);
+        
+        
+        $query = "SELECT file_id FROM User_Files where user_id=?;";
+                
+        $stmt= mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"d",$id);
+
+        $success = mysqli_stmt_execute($stmt);
+        $result1 = mysqli_stmt_get_result($stmt);
+
+                                                
+        
+        $query = "DELETE FROM User_Files WHERE user_id = ?;";
+        $stmt= mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"d",$id);
+        $success = mysqli_stmt_execute($stmt);
+        
+        while($row1 = mysqli_fetch_assoc($result1))
+        {
+            $file_id=$row1['file_id'];
+            $query = "DELETE FROM Files WHERE file_id = ?;";
+            $stmt= mysqli_prepare($conn,$query);
+            mysqli_stmt_bind_param($stmt,"d",$file_id);
+            $success = mysqli_stmt_execute($stmt);
+        }
+        
+
+        $query = "DELETE FROM Users WHERE user_id = ?;";
+        $stmt= mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"d",$id);
+        $success = mysqli_stmt_execute($stmt);
+
+
+        
+        if($success)
+        {
+            logout();
+            $text="Account Successfully Deleted";
+        }
+        else
+        {
+            $text="Account Deletion Unsuccessful";
+        }
     }
 
     header("Content-Type: application/json");
@@ -356,10 +369,16 @@ $router->register("GET",'#^/logout/#', function($params)
 {
     session_start();
     require_once "default.php";
+    if(is_logged_in())
+    {
        $req = file_get_contents('php://input');
            $req_obj = json_decode($req);
 	logout();
-    $text = "Success";
+    $text = "You have successfully logged out.";
+    }
+    else{
+        $text = "You are not currently logged in.";
+    }
     header("Content-Type: application/json");
     //Encodes and sends it back
     echo json_encode($text);
