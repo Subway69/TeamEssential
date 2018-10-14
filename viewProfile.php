@@ -137,7 +137,7 @@ require_once "PHP/default.php";
 		{
 		echo $row1['skill_name']. " at ".$row1['skill_level']."</p>";
 		}
-		if (getPermission()==2)
+		if (getPermission()==2||getPermission()==3)
 		{
 		?>
 		<form>

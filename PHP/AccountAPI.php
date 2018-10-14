@@ -199,8 +199,8 @@ $router->register("POST",'#^/register/#', function($params)
                 
                     if ($success) 
                     {
-                        //$text="Registration Success";
-                        $text=$hashed_password;
+                        $text="Registration Success";
+                        
                     }
                     else{
                         $text="Registration Failed";
