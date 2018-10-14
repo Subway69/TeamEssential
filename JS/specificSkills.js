@@ -13,7 +13,7 @@ var aS=[];
 
 //This ajax requests gets all the categories
 httCat = new XMLHttpRequest();
-httCat.open("GET","Skills/getCategory/",true);
+httCat.open("GET","Skills/getDisciplines/",true);
 httCat.onload=listCat;
 httCat.send();
 
@@ -27,16 +27,16 @@ function listCat(ev)
     for(var i=0;i<catSize;i++)
     {
         var catText=catLists[i].skill_type;
-        if(!(catText =="General" || catText == "Research"))
-        {
+
             var catOption = document.createElement("option");
             catOption.setAttribute("value",catText);
 			catOption.setAttribute("class","select");
             catOption.innerHTML=catText;
             selCat.appendChild(catOption);
-        }                      
+                             
     }
-    getList(catLists[2].skill_type);
+        getList(catLists[0].skill_type)
+   
 }
 
 

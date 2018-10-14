@@ -127,6 +127,36 @@ $router->register("GET",'#^/getCategory/#', function($params)
 
             
 });
+$router->register("GET",'#^/getDisciplines/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $json_result= array();
+    
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $gen = "General";
+    $res = "Research";
+    $stmt;
+    //Gets all the categories
+    $query="SELECT DISTINCT skill_type FROM Skills WHERE NOT skill_type=? AND NOT skill_type=?;";
+    $stmt= mysqli_prepare($conn,$query);
+    mysqli_stmt_bind_param($stmt,"ss",$gen,$res);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    
+    //Store the results
+    while($row = mysqli_fetch_assoc($results))
+    { 
+        $json_result[]=$row;
+    }
+
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($json_result);
+
+            
+});
 $router->register("POST",'#^/getSpecificCategory/#', function($params) 
 {
  session_start();
