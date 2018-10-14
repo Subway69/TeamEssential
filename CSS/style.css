@@ -180,6 +180,12 @@
 #form-cell.form-cell-spec{ /*EDUCATION*/
 	flex-direction:row;
 }
+#form-cell.form-cell-spec > form.form{ /*EDUCATION FORM*/
+	margin:0 2%;
+	flex-basis:auto;
+	align-self:auto;
+	width:25%;
+}
 #bootstable-row{
     padding-top:0px;
     padding-right:0px;

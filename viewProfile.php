@@ -249,4 +249,3 @@ require_once "PHP/default.php";
 		</script>
 	</body>
 </html>
->>>>>>> Stashed changes

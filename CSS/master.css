@@ -44,7 +44,7 @@ body{
 	background-color:var(--body-bg);
 	margin:0px;
 	position:relative;
-	/* padding-bottom:2rem; */
+	padding-bottom:1.5rem;
 	min-height:100%;
 
 }
@@ -175,10 +175,14 @@ tbody#form10{	/*DISCIPLINE SKILLS TABLE BODY*/
 	margin-right:auto;
 }
 .optional{	/*HOME.MANAGEMENT INVI/LIST FORMS*/
-	padding:5px;
-	margin-top:20px;
+	padding:0px;
+	margin-top:0px;
+	
+	width:35%;
+	overflow:overlay;
+	align-self:auto;
 }
-form#addSkillsForm.form.optional , .button.optional{
+form#addSkillsForm.form.optional , .button.btnoptional{ /*hidden buttons, hidden forms*/
 	display:none;
 }
 form.form > .input.optional{ /*PROFILE EDUCATION COMPLETION DATE*/

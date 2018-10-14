@@ -40,26 +40,26 @@
 			<div class="collapse navbar-collapse items-c animate-right" id="navvy">
 				<ul class="nav navbar-menu">
 					<?php
-					if(is_logged_in())
-					{
+						if(is_logged_in())
+						{
+							?>
+								<a href="home.php" class="navbar-menu-link">Home</a>
+							<?php
+						}
 					?>
-					<a href="home.php" class="navbar-menu-link">Home</a>
-					<?php
-					}
-					?>
+					
 					<a href="help.php" class="navbar-menu-link">Help</a>
+					
 					<?php
-					if(is_logged_in())
-					{
+						if(is_logged_in())
+						{
+							?>
+								<a href="profile.php"  class="navbar-menu-link">Profile</a>
+								<a href="accounts.php"  class="navbar-menu-link">Account</a>
+								<a id = "logout" href="Account/logout/" title="Account"  class="navbar-menu-link"></a>
+							<?php
+						}
 					?>
-					<a href="profile.php"  class="navbar-menu-link">Profile</a>
-					<a href="accounts.php"  class="navbar-menu-link">Account</a>
-					<a id = "logout" href="Account/logout/" title="Account"  class="navbar-menu-link"></a>
-
-					<?php
-					}
-					?>
-
 				</ul>
 				<script src= "JS/logout.js"></script>
 			</div>

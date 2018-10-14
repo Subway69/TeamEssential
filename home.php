@@ -152,7 +152,7 @@ require_once "PHP/default.php";
 									</table>
 								</form>
 								
-								<form class="form optional" id="addSkillsForm" /></form>
+								<form class="form optional table-striped" id="addSkillsForm" /></form>
 								
 							</div>
 						</div>
