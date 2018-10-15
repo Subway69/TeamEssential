@@ -121,14 +121,14 @@
     /* padding-bottom:10px; */
     padding-left:10px;
 }
-/* .cell{ */
-    /* min-height:75px; */
-    /* flex-grow:1; */
-    /* flex-basis:100%; */
-/* } */
-/* .button:active{ */
-    /* box-shadow:rgb(0, 255, 247) 0px 0px 10px 0px inset; */
-/* } */
+#users-tab > #tab-row.row {
+	flex-direction:column;
+	align-items:center;
+}
+#tab-row.row > select#datatable0 {
+	width:50%;
+}
+
 .tab{
     text-decoration-line:none;
     text-decoration-style:initial;
@@ -177,14 +177,61 @@
     display:flex;
 	width:100%; /*added this experiment*/
 }
-#form-cell.form-cell-spec{ /*EDUCATION*/
+#form-cell.form-cell-spec{ /*EDUCATION || EMPLOYMENT || MAILING || MANAGEMENT*/
 	flex-direction:row;
 }
-#form-cell.form-cell-spec > form.form{ /*EDUCATION FORM*/
+#form-cell.form-cell-spec > form.form{ /*FLEX FORMS*/
 	margin:0 2%;
 	flex-basis:auto;
 	align-self:auto;
 	/* width:25%; */ /*something wrong when option form is empty*/
+}
+#form-cell > div#showEducation{
+	width:335px;
+	align-self:auto;
+}
+#form-cell > div#showEducation > tr{ /*EDUCATION*/
+	vertical-align:middle;
+}
+#form-cell > div#showEducation > tr > :first-child{
+	width:80%;
+	word-break: break-word;
+}
+#form-cell > div#showEducation > tr > :nth-child(2),
+#form-cell > div#showEducation > tr > :last-child{
+	width:10%;
+}
+#form-cell > div#showEducation > tr > :nth-child(2) > input[type=button],
+#form-cell > div#showEducation > tr > :last-child > input[type=button]{
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position:center;
+	box-shadow:none;
+	margin:0;
+	padding:0;
+}
+#form-cell > div#showEmployment{
+	width:335px;
+	align-self:auto;
+}
+#form-cell > div#showEmployment > tr{
+	vertical-align:middle;
+}
+#form-cell > div#showEmployment > tr > :first-child{
+	width:80%;
+}
+#form-cell > div#showEmployment > tr > :nth-child(2),
+#form-cell > div#showEmployment > tr > :last-child{
+	width:10%;
+}
+#form-cell > div#showEmployment > tr > :nth-child(2) > input[type=button],
+#form-cell > div#showEmployment > tr > :last-child > input[type=button]{
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position:center;
+	box-shadow:none;
+	margin:0;
+	padding:0;
 }
 #form-cell > form#contact{ /*CONTACT DETAILS*/
 	width:50%;
@@ -278,8 +325,6 @@
 	background-color:transparent;
 	background-position:center;
 	box-shadow:none;
-	
-	/* width:50%; */
 	margin:0;
 	padding:0;
 }
@@ -304,10 +349,10 @@
 	box-shadow:none;
 	margin:0;
 }
-#form-cell > table#fileTabel > tbody > tr > :nth-child(2) > button > a:hover {
+#form-cell > table#fileTabel > tr > :nth-child(2) > button > a:hover {
 	background-color:transparent;
 }
-#form-cell > table#fileTabel > tbody > tr > :last-child > button > a:hover {
+#form-cell > table#fileTabel > tr > :last-child > button > a:hover {
 	background-color:transparent;
 }
 

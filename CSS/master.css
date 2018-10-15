@@ -182,7 +182,10 @@ tbody#form10{	/*DISCIPLINE SKILLS TABLE BODY*/
 	overflow:overlay;
 	align-self:auto;
 }
-form#addSkillsForm.form.optional , .button.btnoptional{ /*hidden buttons, hidden forms*/
+form#addSkillsForm.form.optional , 
+div#showEducation.form.optional,
+div#showEmployment.form.optional,
+.button.btnoptional{ /*hidden buttons, hidden forms*/
 	display:none;
 }
 form#addSkillsForm.form.optional{
@@ -370,21 +373,15 @@ a:hover {
 .btnfile > a.delete::before{
 	content: url("../img/icon/trash-2.svg");
 }
-
-/* a.download, a.delete{ */
-	/* width:100%; */
-	/* display:inline-block; */
-/* } */
-a.delete{
-	/* padding:10px; */
-}
 a#logout{
-		padding:0px;
+	padding:0px;
 }
 a#logout::before{
 	content: url("../img/icon/log-out.svg");
 }
-
+a#logout:hover{
+	background:transparent;
+}
 
 /* ******************************PREFERENCE ****************************** */
 
@@ -397,6 +394,7 @@ a#logout::before{
 #pref > label{
 	font-size: 0.8rem;
 	vertical-align:middle;
+	margin-bottom:15px;
 }
 /* ******************************TABLES****************************** */
 

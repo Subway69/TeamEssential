@@ -160,52 +160,80 @@ function listEducation()
 {
     qualList=JSON.parse(httLoadEducation.responseText);
     var listSize=qualList.length;
-    for(var i=0;i<listSize;i++)
-    {
-        var div = document.getElementById("showEducation");
-        var str;
-        if(qualList[i].finished==0)
-        {
-            str = "Still Studying: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name;
-        }
-        if(qualList[i].finished==1)
-        {
-            var uniYear = qualList[i].end_date.substring(0,4);
-            var uniMonth = qualList[i].end_date.substring(5,7);
-            var uniDay = qualList[i].end_date.substring(8,10);
+	
+	var div = document.getElementById("showEducation");
+	
+	if(listSize==0){
+		div.style.display="none";
+	}
+	else{
+	
+		for(var i=0;i<listSize;i++)
+		{
+			var row = document.createElement("tr");
+			var cell1 = document.createElement("td");
+			var cell2 = document.createElement("td");
+			var cell3 = document.createElement("td");
+			
+			div.style.display="block";
+			var str;
+			
+			if(qualList[i].finished==0)
+			{
+				str = "Still Studying: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name;
+			}
+			if(qualList[i].finished==1)
+			{
+				var uniYear = qualList[i].end_date.substring(0,4);
+				var uniMonth = qualList[i].end_date.substring(5,7);
+				var uniDay = qualList[i].end_date.substring(8,10);
 
-            str = "Completed: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name+" finished at " + uniDay +"/"+uniMonth+"/"+uniYear +".";
-        }
-        var text = document.createTextNode(str);
-        var eduHidden = document.createElement("input");
-        eduHidden.setAttribute("type","hidden");
-        eduHidden.setAttribute("id", "edu"+i);
-        eduHidden.setAttribute("value",qualList[i].qualification_id);
+				str = "Completed: " + qualList[i].qualification_name + "(" + qualList[i].qualification_type+") at "+ qualList[i].University_name+" finished at " + uniDay +"/"+uniMonth+"/"+uniYear +".";
+			}
+			
+			
+			var text = document.createTextNode(str);
+			var eduHidden = document.createElement("input");
+			eduHidden.setAttribute("type","hidden");
+			eduHidden.setAttribute("id", "edu"+i);
+			eduHidden.setAttribute("value",qualList[i].qualification_id);
 
-        var uniHidden = document.createElement("input");
-        uniHidden.setAttribute("type","hidden");
-        uniHidden.setAttribute("id", "univ"+i);
-        uniHidden.setAttribute("value",qualList[i].University_id);
+			cell1.appendChild(text);
+			
+			var uniHidden = document.createElement("input");
+			uniHidden.setAttribute("type","hidden");
+			uniHidden.setAttribute("id", "univ"+i);
+			uniHidden.setAttribute("value",qualList[i].University_id);
 
-        var updUniBut = document.createElement("input");
-        updUniBut.setAttribute("type","button");
-        updUniBut.setAttribute("id",i);
-        updUniBut.setAttribute("value","Update");
-        updUniBut.setAttribute("onClick","updateQualification(this.id)");
+			
+			
+			var updUniBut = document.createElement("input");
+			updUniBut.setAttribute("type","button");
+			updUniBut.setAttribute("class","button btnupdate");
+			updUniBut.setAttribute("id",i);
+			//updUniBut.setAttribute("value","Update");
+			updUniBut.setAttribute("onClick","updateQualification(this.id)");
 
-        var delUniBut = document.createElement("input");
-        delUniBut.setAttribute("type","button");
-        delUniBut.setAttribute("id",qualList[i].qualification_id);
-        delUniBut.setAttribute("value","Delete");
-        delUniBut.setAttribute("onClick","deleteQualification(this.id)");
+			cell2.appendChild(updUniBut);
+			
+			var delUniBut = document.createElement("input");
+			delUniBut.setAttribute("type","button");
+			delUniBut.setAttribute("class","button btndelete");
+			delUniBut.setAttribute("id",qualList[i].qualification_id);
+			delUniBut.setAttribute("onClick","deleteQualification(this.id)");
 
-        div.appendChild(text);
-        div.appendChild(eduHidden);
-        div.appendChild(eduHidden);
-        div.appendChild(updUniBut);
-        div.appendChild(delUniBut);
-        // div.appendChild(document.createElement("P"));
-    }
+			cell3.appendChild(delUniBut);
+			
+			row.appendChild(cell1);
+			row.appendChild(cell2);
+			row.appendChild(cell3);
+			
+			//div.appendChild(text);
+			div.appendChild(eduHidden);
+			div.appendChild(eduHidden);
+			div.appendChild(row);
+		}
+	}
 }
 function resetter()
 {

@@ -109,9 +109,7 @@ require_once "PHP/default.php";
 								<script src="JS/addEducation1.js"></script>
 							</form>
 							
-							<div id = "showEducation" class="form optional table-striped"></div> <!--ADDED CLASSES. FORMAT CONTROL-->
-					 
-							
+							<div id = "showEducation" class="form optional table-striped"></div> <!--ADDED CLASSES. FORMAT CONTROL-->	
 						</div>
 					</div>
 				</div>

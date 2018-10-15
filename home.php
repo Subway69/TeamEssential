@@ -204,10 +204,8 @@ require_once "PHP/default.php";
 									<table id="user-table" class="table table-responsive">
 										<tHead>
 											<tr>
-												<th>User Permission Level</th>										
-												
+												<th>User Permission Level</th>	
 												<th>Include?</th>
-												
 											</tr>
 										</tHead>
 										<tbody>

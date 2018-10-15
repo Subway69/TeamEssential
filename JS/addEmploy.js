@@ -119,46 +119,66 @@ function listEmployment(ev)
 {
     employList = JSON.parse(httLoadEmploy.responseText);
     var employSize = employList.length;
-    for(var i=0;i<employSize;i++)
-    {
-        
-        var divEmp = document.getElementById("showEmployment");
-        
-        var empHidden = document.createElement("input");
-        empHidden.setAttribute("type","hidden");
-        empHidden.setAttribute("id", "emp"+i);
-        empHidden.setAttribute("value",employList[i].employment_id);
+	var divEmp = document.getElementById("showEmployment");
+	
+	if(employSize==0){
+		divEmp.style.display="none";
+	}
+	else{
+		divEmp.style.display="block";
+	
+		for(var i=0;i<employSize;i++)
+		{
+			var row = document.createElement("tr");
+			var cell1 = document.createElement("td");
+			var cell2 = document.createElement("td");
+			var cell3 = document.createElement("td");
+			
+			var empHidden = document.createElement("input");
+			empHidden.setAttribute("type","hidden");
+			empHidden.setAttribute("id", "emp"+i);
+			empHidden.setAttribute("value",employList[i].employment_id);
+			
+			
+			
+			var empStartYear = employList[i].startDate.substring(0,4);
+			var empStartMonth = employList[i].startDate.substring(5,7);
+			var empStartDay = employList[i].startDate.substring(8,10);
 
-        var empStartYear = employList[i].startDate.substring(0,4);
-        var empStartMonth = employList[i].startDate.substring(5,7);
-        var empStartDay = employList[i].startDate.substring(8,10);
+			var empEndYear = employList[i].endDate.substring(0,4);
+			var empEndMonth = employList[i].endDate.substring(5,7);
+			var empEndDay = employList[i].endDate.substring(8,10);
 
-        
-        var empEndYear = employList[i].endDate.substring(0,4);
-        var empEndMonth = employList[i].endDate.substring(5,7);
-        var empEndDay = employList[i].endDate.substring(8,10);
+			var strEmploy= employList[i].work_rate+ " "+employList[i].position_title+" at "+employList[i].organisation+ ".Manager Name: "+employList[i].manager+", Phone: "+employList[i].manager_phone+". Started "+  empStartDay +"/"+empStartMonth+"/"+empStartYear +" ended: "+empEndDay +"/"+empEndMonth+"/"+empEndYear+ ". Performed:"+ employList[i].tasks;
+			var textEmploy = document.createTextNode(strEmploy);
 
-        var strEmploy= employList[i].work_rate+ " "+employList[i].position_title+" at "+employList[i].organisation+ ".Manager Name: "+employList[i].manager+", Phone: "+employList[i].manager_phone+". Started "+  empStartDay +"/"+empStartMonth+"/"+empStartYear +" ended: "+empEndDay +"/"+empEndMonth+"/"+empEndYear+ ". Performed:"+ employList[i].tasks;
-        var textEmploy = document.createTextNode(strEmploy);
+			cell1.appendChild(textEmploy);
+			
+			var updEmpBut = document.createElement("input");
+			updEmpBut.setAttribute("type","button");
+			updEmpBut.setAttribute("class","button btnupdate");
+			updEmpBut.setAttribute("id",i);
+			// updEmpBut.setAttribute("value","Update");
+			updEmpBut.setAttribute("onClick","updateEmploy(this.id)");
+			
+			cell2.appendChild(updEmpBut);
+			
+			var delEmpBut = document.createElement("input");
+			delEmpBut.setAttribute("type","button");
+			delEmpBut.setAttribute("id",employList[i].employment_id);
+			delEmpBut.setAttribute("class","btndelete");
+			delEmpBut.setAttribute("onClick","DeleteEmploy(this.id)");
 
-        var updEmpBut = document.createElement("input");
-        updEmpBut.setAttribute("type","button");
-        updEmpBut.setAttribute("id",i);
-        updEmpBut.setAttribute("value","Update");
-        updEmpBut.setAttribute("onClick","updateEmploy(this.id)");
-        
-        var delEmpBut = document.createElement("input");
-        delEmpBut.setAttribute("type","button");
-        delEmpBut.setAttribute("id",employList[i].employment_id);
-        delEmpBut.setAttribute("value","Delete");
-        delEmpBut.setAttribute("onClick","DeleteEmploy(this.id)");
-
-        divEmp.appendChild(textEmploy);
-        divEmp.appendChild(updEmpBut);
-        divEmp.appendChild(delEmpBut);
-        divEmp.appendChild(empHidden);
-        divEmp.appendChild(document.createElement("P"));
-    }
+			cell3.appendChild(delEmpBut);
+			
+			row.appendChild(cell1);
+			row.appendChild(cell2);
+			row.appendChild(empHidden);
+			row.appendChild(cell3);
+			
+			divEmp.appendChild(row);
+		}
+	}	
 }
 
 function resettter()
