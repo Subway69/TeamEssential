@@ -74,7 +74,7 @@ a{
 }
 p{
 	color: #0f1428;
-	font-size: 0.8em;
+	/* font-size: 0.8em; */
 	padding:10px 0;
 	margin:0;
 }
@@ -185,18 +185,24 @@ tbody#form10{	/*DISCIPLINE SKILLS TABLE BODY*/
 form#addSkillsForm.form.optional , .button.btnoptional{ /*hidden buttons, hidden forms*/
 	display:none;
 }
+form#addSkillsForm.form.optional{
+	/* width:45%; */
+	width:385px;
+	overflow:overlay;
+	height:495px; /*maybe?*/
+}
 form.form > .input.optional{ /*PROFILE EDUCATION COMPLETION DATE*/
 	margin: 0 0 10px 0;
 	display:none;
 }
 
-/* ******************************BASE****************************** */
+/* ******************************SKILLS MANAGEMENT****************************** */
 
 
 
 /* ******************************ELEMENTS****************************** */
 
-button, .btn,  input[type=submit], input[type=reset], input[type=button]{ /*button styles*/
+button, .btn,  input[type=submit], input[type=reset],input[type=button] { /*button styles*/
 	width: 100%;
 	height: 35px;
 	background: var(--btn-fill);
@@ -215,6 +221,16 @@ button, .btn,  input[type=submit], input[type=reset], input[type=button]{ /*butt
 	font-weight:bold;
 	color: var(--a-hover-bg);
 }
+/* input[type=button]{ */
+	/* background-repeat: no-repeat; */
+	/* background-color:transparent; */
+	/* background-position:center; */
+	/* box-shadow:none; */
+	
+	/* width:50%; */
+	/* margin:0; */
+	/* padding:0; */
+/* } */
 buttin:active{ /*press effect*/
 	box-shadow:none;
 }
@@ -225,8 +241,8 @@ input.button.regbtn{
 	margin: 0px;
 	width: 100%;
 	vertical-align:middle;
-			background:transparent;
-		box-shadow:none;
+	background:transparent;
+	box-shadow:none;
 }
 
 .btn:after{ /*something*/
@@ -237,24 +253,45 @@ input.button.regbtn{
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
-.btn-7{ /*?*/
-	/* background: var(--btn-fill); */
-	/* box-shadow: 0 5px var(--tab-active); */
+button.btnupdate::before{ /*UPDATE BUTTON [CONTACT]*/
+	content: url("../img/icon/edit.svg");		
 }
-.btn-7h:before { /*?*/
+button.btnsave::before{ /*SAVE BUTTON [CONTACT]*/
+	content: url("../img/icon/plus-circle.svg");
+}
+button.btncancel::before{ /*CANCEL BUTTON [CONTACT]*/
+	content: url("../img/icon/trash-2.svg");
+}
 	
-}
-
-input[type=radio]{
-	margin: 3px 20px;
-}
-
-
-form#addSkillsForm.form.optional > tr > td > input[type=button]{ /* 50% width buttons*/
+input.btnuser{
 	width:50%;
-	float:right;	
-	margin:0px;
+	background-repeat: no-repeat;
+	background-image: url("../img/icon/user.svg");
+	background-color: transparent;
+	color: transparent;
+	background-position: center;
+	box-shadow:none;
 }
+input.btnupload{
+	background-image:url("../img/icon/share.svg");
+}
+input.btnsave{
+	background-image:url("../img/icon/check-circle.svg");	
+}
+input.btnupdate{
+	background-image:url("../img/icon/edit.svg");
+}
+input.btncancel{
+	background-image:url("../img/icon/x-circle.svg");	
+}
+input.btndelete{
+	background-image:url("../img/icon/trash-2.svg");	
+}
+/* input[type=radio]{ */
+	/* margin: 3px 20px; */
+/* } */
+
+
 form#addCat0.form > input[type=button]{	/*CATMAN OTHER FORM BUTTONS*/
 	width:20%;
 }
@@ -321,20 +358,19 @@ select {
 }
 
 
-/* ******************************LINKS****************************** */
+/* ******************************LINKS****************************** AND BUTTON SVG*/
 
 a:hover {
 	color: var(--a-hover-txt); /*black*/
 	background-color: var(--a-hover-bg);
 }
 .btnfile > a.download::before{
-	/* content: "Download"; */
 	content: url("../img/icon/download.svg");
 }
 .btnfile > a.delete::before{
-	/* content: "Delete"; */
 	content: url("../img/icon/trash-2.svg");
 }
+
 /* a.download, a.delete{ */
 	/* width:100%; */
 	/* display:inline-block; */
@@ -350,9 +386,18 @@ a#logout::before{
 }
 
 
-/* ****************************** ****************************** */
+/* ******************************PREFERENCE ****************************** */
 
-
+#preferences-tab > .row > .cell > form.form{
+	width:auto;
+}
+#pref > input[type=radio]{
+	height:unset;
+}
+#pref > label{
+	font-size: 0.8rem;
+	vertical-align:middle;
+}
 /* ******************************TABLES****************************** */
 
 table{
@@ -389,8 +434,9 @@ table#user-table > tbody, .tblfiles>tbody{
 	display:table-row-group;
 }
 .tblfiles{ /*FILES TABLE*/
-	width:100%;
+	width:570px;
 	margin:0px;
+	margin-top:20px;
 }
 .tdfilename{
 	width:79%;

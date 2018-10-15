@@ -90,6 +90,16 @@
 		margin:0;
 		width:inherit;
 	}
+	#form-cell > form#contact { /*CONTACT*/
+		width:100%;
+	}
+	#form-cell > form#contact > table > tbody > tr > :first-child { 
+		font-size:12px;
+		font-weight:bold;
+	}
+	#form-cell > form#contact > table > tbody > tr > :nth-child(2) > p{
+		font-size:12px;
+	}	
 	.navbar{
 		position:fixed;
 	}

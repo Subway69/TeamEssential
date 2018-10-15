@@ -55,30 +55,30 @@ function listUni(ev)
         {
             var uniRow= document.createElement("tr");
             var uniColOne= document.createElement("td");
-             var uniColTwo= document.createElement("td");
-              var uniColThree= document.createElement("td");
+            var uniColTwo= document.createElement("td");
+            var uniColThree= document.createElement("td");
             var uniName= document.createTextNode(uniList[i].University_name);
             
             uniColOne.appendChild(uniName);
             var delUniButs = document.createElement("input");
             delUniButs.setAttribute("type","button");
-			delUniButs.setAttribute("class", "button");
+			delUniButs.setAttribute("class", "button btndelete");
             delUniButs.setAttribute("id",uniList[i].University_id);
-           delUniButs.setAttribute("onClick","deleteUni(this.id)");
-            delUniButs.setAttribute("value","Delete");
+			delUniButs.setAttribute("onClick","deleteUni(this.id)");
+            // delUniButs.setAttribute("value","Delete");
 
             var updUniButs = document.createElement("input");
             updUniButs.setAttribute("type","button");
-			updUniButs.setAttribute("class", "button");
+			updUniButs.setAttribute("class", "button btnupdate");
             updUniButs.setAttribute("id",i);
             updUniButs.setAttribute("onClick","updateUni(this.id)");
-            updUniButs.setAttribute("value","Update");
+            // updUniButs.setAttribute("value","Update");
 
             uniColThree.appendChild(delUniButs);
             uniColTwo.appendChild(updUniButs);
             uniRow.appendChild(uniColOne);
             uniRow.appendChild(uniColTwo);
-             uniRow.appendChild(uniColThree);
+            uniRow.appendChild(uniColThree);
           
             uniTab.appendChild(uniRow);
         }
@@ -87,40 +87,61 @@ function listUni(ev)
 function listCats(ev)
 {
     resetSelect();
-    var selCates= document.getElementById("addCat0");
+
     var opt1 = document.createElement("option");
     opt1.setAttribute("value","");
     opt1.innerHTML="-Select Category-";
     selCats.appendChild(opt1);
     catList = JSON.parse(httCats.responseText);
     catSizes = catList.length;
+    var selCates= document.getElementById("addCat0");	
+	
     for(var i=0;i<catSizes;i++)
         {
+			var row = document.createElement("tr");
+			var cell1 = document.createElement("td");
+			var cell2 = document.createElement("td");
+			var cell3 = document.createElement("td");
+			
             var catOptions = document.createElement("option");
             catOptions.setAttribute("value",catList[i].skill_type);
             catOptions.innerHTML=catList[i].skill_type;
             selCats.appendChild(catOptions);
+			
             var catSkill = document.createTextNode(catList[i].skill_type);
             
-            selCates.appendChild(catSkill);
-            var delButs = document.createElement("input");
-            delButs.setAttribute("type","button");
-			delButs.setAttribute("class", "button");
-            delButs.setAttribute("id",catList[i].skill_type);
-            delButs.setAttribute("onClick","deleteCat(this.id)");
-            delButs.setAttribute("value","Delete");
+			cell1.appendChild(catSkill);
+            //selCates.appendChild(catSkill);
+            
 
-            var updButs = document.createElement("input");
+			
+			var updButs = document.createElement("input");
             updButs.setAttribute("type","button");
-			updButs.setAttribute("class", "button");
+			updButs.setAttribute("class", "button btnupdate");
             updButs.setAttribute("id",i);
             updButs.setAttribute("onClick","updateCategory(this.id)");
-            updButs.setAttribute("value","Update");
+            // updButs.setAttribute("value","Update");
 
-            selCates.appendChild(delButs);
-            selCates.appendChild(updButs);
-            selCates.appendChild(document.createElement("P"));
-                       
+			cell2.appendChild(updButs);
+			// cell2.appendChild(delButs);
+
+			var delButs = document.createElement("input");
+            delButs.setAttribute("type","button");
+			delButs.setAttribute("class", "button btndelete");
+            delButs.setAttribute("id",catList[i].skill_type);
+            delButs.setAttribute("onClick","deleteCat(this.id)");
+            // delButs.setAttribute("value","Delete");
+			
+			cell3.appendChild(delButs);
+			
+			row.appendChild(cell1);
+			row.appendChild(cell2);
+			row.appendChild(cell3);
+            // selCates.appendChild(delButs);
+            // selCates.appendChild(updButs);
+			
+            // selCates.appendChild(document.createElement("P"));
+            selCates.appendChild(row);           
         }
     
 }
@@ -235,26 +256,26 @@ function listSkills(ev)
 			
             // formSkill.appendChild(nameSkill);
             cell1.appendChild(nameSkill);
-			cell1.setAttribute("class","sn");
-			
-			var delBut = document.createElement("input");
-            delBut.setAttribute("type","button");
-			delBut.setAttribute("class","button");
-            delBut.setAttribute("id",skillLists[i].skill_id);
-            delBut.setAttribute("onClick","deleteSkill(this.id)");
-            delBut.setAttribute("value","Delete");
+			// cell1.setAttribute("class","sn");
 
             var updBut = document.createElement("input");
             updBut.setAttribute("type","button");
-			updBut.setAttribute("class","button");
+			updBut.setAttribute("class","button btnupdate");
             updBut.setAttribute("id",i);
             updBut.setAttribute("onClick","updateSkill(this.id)");
-            updBut.setAttribute("value","Update");
+            // updBut.setAttribute("value","Update");
+			
+			var delBut = document.createElement("input");
+            delBut.setAttribute("type","button");
+			delBut.setAttribute("class","button btndelete");
+            delBut.setAttribute("id",skillLists[i].skill_id);
+            delBut.setAttribute("onClick","deleteSkill(this.id)");
+            // delBut.setAttribute("value","Delete");
 
             /* formSkill.appendChild(delBut);
             formSkill.appendChild(document.createElement("P")); */
-			cell2.appendChild(delBut);            
             cell2.appendChild(updBut);
+			cell2.appendChild(delBut);            
 
 			
 			row.appendChild(cell1);
@@ -426,7 +447,7 @@ function resetSelect()
     }
 
 }
-//Sends the  category data to the backend to be added
+//Sends the  university data to the backend to be added
 function addUniversity()
 {
     var newUni= document.getElementById("uniName0").value;
@@ -505,7 +526,7 @@ function showUniUpdate(ev)
 }
 function canUniversity()
 {
-        document.getElementById("updUniBut").style.display="none";
+    document.getElementById("updUniBut").style.display="none";
     document.getElementById("canUniBut").style.display="none";
     document.getElementById("uniBut").style.display="block";
     document.getElementById("uniName0").value="";

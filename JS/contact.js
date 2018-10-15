@@ -354,9 +354,9 @@ function canPhone()
 
 function updDOB()
 {
-    updDays.style.display="block";
-    updMonths.style.display="block";
-    updYearss.style.display="block";
+    updDays.style.display="inline-block";
+    updMonths.style.display="inline-block";
+    updYearss.style.display="inline-block";
     PDOB.style.display="none";
     butDOB.style.display="none";
     saveDOB.style.display="block";

@@ -108,7 +108,7 @@ require_once "PHP/default.php";
 
 															<input type = "hidden" name ="tID" value = <?php echo $person; ?> />
 
-															<input type = "submit" class="ubutton button" name = "tSub" value = "Go" />
+															<input type = "submit" class="btnuser button" name = "tSub" value = "Go" />
 														</form>
 
 														</td> 
@@ -135,7 +135,7 @@ require_once "PHP/default.php";
 							
 					<div id="skill-tab" data-tab-content="1" class="tab-content">
 						<div id="tab-row" class="row">
-							<div id="form-cell" class="cell">
+							<div id="form-cell" class="cell form-cell-spec">
 								<form class="form" >
 									<select required="" name="Skill Category" id = "skillCat0" class="select">
 										
@@ -153,14 +153,14 @@ require_once "PHP/default.php";
 								</form>
 								
 								<form class="form optional table-striped" id="addSkillsForm" /></form>
-								
+								<!-- <div class="form optional table-striped" id="addSkillsForm" ></div> experiment-->
 							</div>
 						</div>
 					</div>
 				
 					<div id="category-tab" data-tab-content="1" class="tab-content">
 						<div id="tab-row" class="row">
-							<div id="form-cell" class="cell">
+							<div id="form-cell" class="cell form-cell-spec">
 								<form class="form">
 									<input type="text" id="catName0" placeholder = "Enter Category Name" class="input" />
 									<input type="text" placeholder = "Enter Skill Name" class="input" id ="skillName1"style = "display:none;"/>
@@ -170,7 +170,7 @@ require_once "PHP/default.php";
 									
 								</form>
 								
-								<form class="form optional" id = "addCat0"></form> 
+								<form class="form optional table-striped" id = "addCat0"></form> 
 								
 							</div>
 						</div>
@@ -178,7 +178,7 @@ require_once "PHP/default.php";
 					</div>
 						<div id="University-tab" data-tab-content="1" class="tab-content">
 						<div id="tab-row" class="row">
-							<div id="form-cell" class="cell">
+							<div id="form-cell" class="cell form-cell-spec">
 								<form class="form">
 									<input type="text" id="uniName0" placeholder = "Enter University Name" class="input" />
 									
@@ -188,9 +188,9 @@ require_once "PHP/default.php";
 									
 								</form>
 								
-								<form class="form optional" id = "addUni0">
-								<table id="uniTable">
-								</table></form> 
+								<form class="form optional table-striped" id = "addUni0">
+									<table id="uniTable"></table>
+								</form> 
 								
 							</div>
 						</div>
@@ -198,46 +198,51 @@ require_once "PHP/default.php";
 					</div>
 				
 					<div id="email-tab" data-tab-content="4" class="tab-content">
-						
-						<div class="row" id="mailing">
-							<table id="user-table" class="table table-responsive">
-								<tHead>
-									<tr>
-										<th>User Permission Level</th>										
-										
-										<th>Include?</th>
-										
-									</tr>
-								</tHead>
-								<tbody>
-									<tr>
-										<td> User </td>
-										
-										<td> 	
-											<input type = "checkbox" id= "userCheck" name = "tCheck" value = 0 /> 
-										</td>
-									</tr>
-									<tr>
-										<td> Admin </td>
-										
-										<td> 	
-											<input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /> 
-										</td>
-									</tr>
-									<tr>
-										<td> Super Admin </td>
-										
-										<td> 	
-											<input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /> 
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
 						<div id="tab-row" class="row">
-							<div id="mailBox" class="cell" ></div>
-							
-						</div>
+							<div id="form-cell" class="cell form-cell-spec">
+								<div class="row" id="mailing">
+									<table id="user-table" class="table table-responsive">
+										<tHead>
+											<tr>
+												<th>User Permission Level</th>										
+												
+												<th>Include?</th>
+												
+											</tr>
+										</tHead>
+										<tbody>
+											<tr>
+												<td> User </td>
+												<td> 	
+													<input type = "checkbox" id= "userCheck" name = "tCheck" value = 0 /> 
+												</td>
+											</tr>
+											<tr>
+												<td> Admin </td>
+												<td> 	
+													<input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /> 
+												</td>
+											</tr>
+											<tr>
+												<td> Super Admin </td>
+												<td> 	
+													<input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /> 
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- <div id="tab-row" class="row"> -->
+								<input type="button" onClick="copyFunction('mailBox')" ></input>
+									<div id="mailBox" class="cell" >
+									
+									
+
+									</div>
+									
+								<!-- </div> -->
+							</div>
+						</div>	
 					</div>
 						</div> <!--added -->
 					</div> <!--added -->

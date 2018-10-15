@@ -117,12 +117,9 @@ function groupMail()
 	{
 		groupMailBox.appendChild(document.createTextNode(sAdminArray[something]+", "));
 	}
-	groupMailBox.appendChild(document.createElement("p"));
-	var copyButton = document.createElement("input");
-	copyButton.setAttribute("onClick","copyFunction('mailBox')");
-	copyButton.setAttribute("value","Copy to clipboard");
-	copyButton.setAttribute("type","button");
-	groupMailBox.appendChild(copyButton);
+	// groupMailBox.appendChild(document.createElement("p"));
+	
+
 }
 function copyFunction(containerid) {
 if (document.selection) { 
@@ -134,7 +131,7 @@ if (document.selection) {
 } else if (window.getSelection) {
     var range = document.createRange();
      range.selectNode(document.getElementById(containerid));
-     window.getSelection().addRange(range);
+    window.getSelection().addRange(range);
      document.execCommand("copy");
      alert("text copied") 
 }}

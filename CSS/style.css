@@ -184,8 +184,133 @@
 	margin:0 2%;
 	flex-basis:auto;
 	align-self:auto;
+	/* width:25%; */ /*something wrong when option form is empty*/
+}
+#form-cell > form#contact{ /*CONTACT DETAILS*/
+	width:50%;
+}
+#form-cell > form#contact > table{ 
+	width:100%;
+}
+#form-cell > form#contact > table > tbody > tr{ 
+	height:50px;
+	color:var(--p-text);
+}
+#form-cell > form#contact > table > tbody > tr > :first-child{ /*column 1*/
+	width:30%;
+	font-weight:bold;
+}
+#form-cell > form#contact > table > tbody > tr > :nth-child(2){ /*column 2*/
+	width:50%;
+}
+#form-cell > form#contact > table > tbody > tr > :nth-child(2) > select{ 
+	margin:0;
+	height:35px;
+	width:60%;
+}
+#form-cell > form#contact > table > tbody > tr > :nth-child(2) > input{ 
+	margin:0;
+	height:35px;
+	width:100%;
+}
+#form-cell > form#contact > table > tbody > tr > :nth-child(2) > select#dayUpd{ 
+	width:27%;
+}
+#form-cell > form#contact > table > tbody > tr > :nth-child(2) > select#monthUpd{ 
+	width:31%;
+}
+#form-cell > form#contact > table > tbody > tr > :nth-child(2) > select#yearUpd{ 
+	width:35%;
+}
+#form-cell > form#contact > table > tbody > tr > :last-child{ /*column 3*/
+	display:flex;
+}
+#form-cell > form#contact > table > tbody > tr > :last-child > input[type=button]{ /*column 3*/
+	margin:5px;
+	color:black; /*remove*/
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position:center;
+	box-shadow:none
+}
+#form-cell > form.form > #uploadsform > input[type=submit]{
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position:center;
+	box-shadow:none;
+	color:transparent;
+}
+	
+#form-cell > form#addSkillsForm > tr{
+	display:table;
+	width:100%;
+}
+#form-cell > form#addSkillsForm > tr > :first-child{
+	width:75%;
+	vertical-align:middle;
+}
+#form-cell > form#addSkillsForm > tr > :last-child{
+	/* background:red; */
 	width:25%;
 }
+#form-cell > form#addSkillsForm  > tr > :last-child > input[type=button]{
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position:center;
+	box-shadow:none;
+	
+	width:50%;
+	margin:0;
+	padding:0;
+}
+#form-cell > form#addCat0 > tr{
+	width:100%;
+}
+#form-cell > form#addCat0 > tr > :first-child{
+	vertical-align:middle;
+	width:30%;
+}
+#form-cell > form#addCat0 > tr > :nth-child(2), #form-cell > form#addCat0 > tr > :last-child{
+	width:5%
+}
+#form-cell > form#addCat0 > tr > :nth-child(2) > input[type=button], #form-cell > form#addCat0 > tr > :last-child > input[type=button]{
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position:center;
+	box-shadow:none;
+	
+	/* width:50%; */
+	margin:0;
+	padding:0;
+}
+#form-cell > form#addUni0{
+	width:45%;
+}
+#form-cell > form#addUni0 > table#uniTable > tr{
+	width:100%;
+}
+#form-cell > form#addUni0 > table#uniTable > tr > :first-child{
+	width:70%;
+}
+#form-cell > form#addUni0 > table#uniTable > tr > :nth-child(2),
+#form-cell > form#addUni0 > table#uniTable > tr > :last-child{
+	width:15%;
+}
+#form-cell > form#addUni0 > table#uniTable > tr > :nth-child(2) > input[type=button],
+#form-cell > form#addUni0 > table#uniTable > tr > :last-child > input[type=button]{
+	background-repeat: no-repeat;
+	background-color:transparent;
+	background-position:center;
+	box-shadow:none;
+	margin:0;
+}
+#form-cell > table#fileTabel > tbody > tr > :nth-child(2) > button > a:hover {
+	background-color:transparent;
+}
+#form-cell > table#fileTabel > tbody > tr > :last-child > button > a:hover {
+	background-color:transparent;
+}
+
 #bootstable-row{
     padding-top:0px;
     padding-right:0px;

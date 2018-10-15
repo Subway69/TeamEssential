@@ -54,19 +54,22 @@ require_once "PHP/default.php";
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
 							<form class="form">
-								<p style="font-size: 0.8em;"> Have you worked with Federation University before?</p>
-								
-								<input type = "radio" name ="workUni" id ="worked0"value="1"/>
+								<p> Have you worked with Federation University before?</p>
+								<div id="pref">
+									<input type = "radio" name ="workUni" id ="worked0"value="1"/>
 								<label for="worked0">Yes</label>
 								<input type = "radio" name ="workUni"id ="worked1" value="0"/>
 								<label for="worked1">No</label>
+								</div>
 								
-								<p style="font-size: 0.8em;"> Please select your availability</p>
 								
+								<p> Please select your availability</p>
+								<div id="pref">
 								<input id= "avail0"type = "radio" name ="availUni" value="1"/>
 								<label for="availUni">Full Time</label>
 								<input id= "avail1"type = "radio" name ="availUni" value="0"/>
 								<label for="availUni"> Part Time</label>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -232,8 +235,8 @@ require_once "PHP/default.php";
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
-							<form class="form">
-								<table>
+							<form class="form" id="contact">
+								<table class="table-striped">
 									<tr>
 										<td>Title </td>
 										<td>                                
@@ -248,12 +251,14 @@ require_once "PHP/default.php";
 											<p id= "titleP" style = "display:block;">Title </p>
 										</td>
 	
-										<td>
-											<input id ="titleUpdBut"type="button" value ="Update"style = "display:block;"onclick="a()"/>
-											<input id ="titleSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveTitles()"/>
-											<input id ="titleCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canTitle()"/>
+										<td> <!--value ="Update"-->
+										
+											<input id ="titleUpdBut" type="button" class="btnupdate" value="" style = "display:block;" onclick="a()"/>
+											<input id ="titleSaveBut" type="button" class="btnsave" value =""style = "display:none;"onclick="saveTitles()"/>
+											<input id ="titleCancelBut" type="button" class="btncancel" value =""style = "display:none;"onclick="canTitle()"/>
 										</td>
 									</tr>
+									
 									<tr>
 										<td>First Name </td>
 										<td>
@@ -262,9 +267,9 @@ require_once "PHP/default.php";
 										</td>
 										
 										<td>
-											<input id ="fNameUpdBut"type="button" value = "Update"style = "display:block;" onclick="updFName()"/>
-											<input id ="fNameSaveBut"type="button" value ="Save"style = "display:none;" onclick= "saveFNames()"/>
-											<input id ="fNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canFName()"/>
+											<input id ="fNameUpdBut"type="button" class="btnupdate" style = "display:block;" onclick="updFName()"/>
+											<input id ="fNameSaveBut"type="button" class="btnsave"style = "display:none;" onclick= "saveFNames()"/>
+											<input id ="fNameCancelBut"type="button" class="btncancel"style = "display:none;"onclick="canFName()"/>
 										</td>
 									</tr>
 									
@@ -276,9 +281,9 @@ require_once "PHP/default.php";
 										</td>
 										
 										<td>
-											<input id ="mNameUpdBut"type="button" value = "Update"style = "display:block;"onclick="updMName()"/>
-											<input id ="mNameSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveMNames()"/>
-											<input id ="mNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canMName()"/>
+											<input id ="mNameUpdBut"type="button" class="btnupdate"style = "display:block;"onclick="updMName()"/>
+											<input id ="mNameSaveBut"type="button" class="btnsave"style = "display:none;"onclick="saveMNames()"/>
+											<input id ="mNameCancelBut"type="button" class="btncancel"style = "display:none;"onclick="canMName()"/>
 										</td>
 									</tr>
 									
@@ -289,9 +294,9 @@ require_once "PHP/default.php";
 											<p id= "lNameP"style = "display:block;">Last Name 
 										</td>
 										<td>
-											<input id ="lNameUpdBut" type="button" value ="Update"style = "display:block;"onclick="updLName()"/>
-											<input id ="lNameSaveBut"type="button" value ="Save"style = "display:none;" onclick="saveLNames()"/>
-											<input id ="lNameCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canLName()"/>
+											<input id ="lNameUpdBut" type="button" class="btnupdate" style = "display:block;"onclick="updLName()"/>
+											<input id ="lNameSaveBut"type="button" class="btnsave"style = "display:none;" onclick="saveLNames()"/>
+											<input id ="lNameCancelBut"type="button" class="btncancel"style = "display:none;"onclick="canLName()"/>
 										</td>
 									</tr>
 
@@ -302,9 +307,9 @@ require_once "PHP/default.php";
 											<p id= "phoneP"style = "display:block;">Phone Number </p>
 										</td>
 										<td>
-											<input id ="phoneUpdBut" type="button" value = "Update"style = "display:block;"onclick="updPhone()"/> 
-											<input id ="phoneSaveBut"type="button" value ="Save"style = "display:none;"onclick="savePhones()"/>
-											<input id ="phoneCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canPhone()"/>
+											<input id ="phoneUpdBut" type="button" class="btnupdate"style = "display:block;"onclick="updPhone()"/> 
+											<input id ="phoneSaveBut"type="button" class="btnsave"style = "display:none;"onclick="savePhones()"/>
+											<input id ="phoneCancelBut"type="button" class="btncancel"style = "display:none;"onclick="canPhone()"/>
 										</td>
 									</tr>
 									<tr>
@@ -314,9 +319,9 @@ require_once "PHP/default.php";
 											<p id= "addressP"style = "display:block;">Address </p>
 										</td>
 										<td>
-											<input id ="addressUpdBut" type="button" value = "Update"style = "display:block;"onclick="updAddress()"/> 
-											<input id ="addressSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveAddresss()"/>
-											<input id ="addressCancelBut"type="button" value ="Cancel"style = "display:none;"onclick="canAddress()"/>
+											<input id ="addressUpdBut" type="button" class="btnupdate"style = "display:block;"onclick="updAddress()"/> 
+											<input id ="addressSaveBut"type="button" class="btnsave"style = "display:none;"onclick="saveAddresss()"/>
+											<input id ="addressCancelBut"type="button" class="btncancel"style = "display:none;"onclick="canAddress()"/>
 										</td>
 									</tr>
 									
@@ -328,18 +333,18 @@ require_once "PHP/default.php";
 											</select>
 											<select  id ="monthUpd" class = "select"type="select"style = "display:none;">
 												<option value = "">--Month--</option>
-												<option value = "January">January</option>
-												<option value = "February">February</option>
-												<option value = "March">March</option>
-												<option value = "April">April</option>
+												<option value = "January">Jan</option>
+												<option value = "February">Feb</option>
+												<option value = "March">Mar</option>
+												<option value = "April">Apr</option>
 												<option value = "May">May</option>
-												<option value = "June">June</option>
-												<option value = "July">July</option>
-												<option value = "August">August</option>
-												<option value = "September">September</option>
-												<option value = "October">October</option>
-												<option value = "November">November</option>
-												<option value = "December">December</option>
+												<option value = "June">Jun</option>
+												<option value = "July">Jul</option>
+												<option value = "August">Aug</option>
+												<option value = "September">Sep</option>
+												<option value = "October">Oct</option>
+												<option value = "November">Nov</option>
+												<option value = "December">Dec</option>
 											</select>
 											
 											<select  id ="yearUpd" class = "select"type="select"style = "display:none;">
@@ -348,9 +353,9 @@ require_once "PHP/default.php";
 											<p id= "dobP"style = "display:block;"> Date of Birth </p>
 										</td>
 										<td>
-											<input  id ="dobUpdBut"type="button" value = "Update" style = "display:block;"onclick="updDOB()"/>
-											<input id ="dobSaveBut"type="button" value ="Save"style = "display:none;"onclick="saveDOBs()"/>
-											<input id ="dobCancelBut"type="button" value ="Cancel"style = "display:none;" onclick="canDOB()"/>
+											<input  id ="dobUpdBut"type="button" class="btnupdate" style = "display:block;"onclick="updDOB()"/>
+											<input id ="dobSaveBut"type="button" class="btnsave"style = "display:none;"onclick="saveDOBs()"/>
+											<input id ="dobCancelBut"type="button" class="btncancel"style = "display:none;" onclick="canDOB()"/>
 										</td>
 									</tr>
 								</table>
@@ -365,15 +370,15 @@ require_once "PHP/default.php";
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
 							<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
-								<div class="form-group">
+								<div id="uploadsform">
 									<input type="file" id="file" name="file" onChange="fileValidation()" />
 									
-									<div class="form-group">
-										<button type="submit" class="button" name="submit" id="upload" disabled>Upload</button>
-									</div>
+									 <!-- <div class="form-group"> -->
+									<input type="submit" class="button btnupload" name="submit" id="upload" disabled></input>
+									 <!-- </div> -->
 									<script src="JS/extension.js"></script>	
 								
-								</div> <!--added this -->
+								</div> <!--added this --> 
 								
 							</form>
 							
@@ -389,7 +394,7 @@ require_once "PHP/default.php";
 							$results = mysqli_stmt_get_result($stmt);
 
 
-							echo "<h1>Files</h1>";?>
+							// echo "<h1>Files</h1>";?>
 							<table class="table table-striped tblfiles" id="fileTabel" > <!--fileTable-->
 								<tbody>
 									<?php
