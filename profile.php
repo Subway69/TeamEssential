@@ -369,9 +369,9 @@ require_once "PHP/default.php";
 					
 					<div id="tab-row" class="row">
 						<div id="form-cell" class="cell">
-							<form class="form" action = "upload.php" method = "POST" enctype="multipart/form-data">
+							<form class="form" id ="file-form"action = "upload.php" method = "POST" enctype="multipart/form-data">
 								<div id="uploadsform">
-									<input type="file" id="file" name="file" onChange="fileValidation()" />
+									<input type="file" id="file" name="filetest"  onChange="fileValidation()" />
 									
 									 <!-- <div class="form-group"> -->
 									<input type="submit" class="button btnupload" name="submit" id="upload" disabled></input>
@@ -383,49 +383,14 @@ require_once "PHP/default.php";
 							</form>
 							
 							<?php
-							$query = "SELECT Files.file_name,Files.file_location ,Files.file_id
-									FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
-									WHERE User_Files.user_id = ?;";
 
-							$stmt= mysqli_prepare($conn,$query);
-							mysqli_stmt_bind_param($stmt,"d",$user_id);
-
-							$success = mysqli_stmt_execute($stmt);
-							$results = mysqli_stmt_get_result($stmt);
 
 
 							// echo "<h1>Files</h1>";?>
 							<table class="table table-striped tblfiles" id="fileTabel" > <!--fileTable-->
 								<tbody>
-									<?php
 
-									while($row1 = mysqli_fetch_assoc($results))
 
-									{
-										$fname=$row1['file_name'];
-										$path=	$row1['file_location'];
-										$file_id=$row1['file_id'];								
-										
-										echo 
-										"<tr>
-											<td class='tdfilename'>".$row1['file_name']."</td>
-											<td class='tdbuttons'>
-												<button class='btnfile'>
-													<a class='download' download='$fname' href='$path'></a>
-												</button>
-											</td>"?>
-											<!--
-										
-											-->
-											<td class='tdbuttons'>										
-												<button class="btnfile">
-													<a class="delete" href="deletefile.php?file_id=<?php echo $file_id?>"></a>
-												</button>
-											</td>
-											
-										</tr>
-
-									<?php }?>
 								
 								</tbody>
 							</table>

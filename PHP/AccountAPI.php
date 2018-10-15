@@ -817,7 +817,161 @@ $router->register("PUT",'#^/updateDateOfBirth/#', function($params)
     echo json_encode($row);
 });
 
+$router->register("POST",'#^/uploadFile/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $user_id = logged_in_user();
+    $req = file_get_contents('php://input');
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+   // $file = $req_obj->filetest;
+    $file = $_FILES['filetest'];
+    
+    $file_name      = $_FILES['filetest']['name'];
+    $file_type      = $_FILES['filetest']['type'];
+    $file_tmp_name  = $_FILES['filetest']['tmp_name'];
+    $file_size      = $_FILES['filetest']['size'];
+    $file_error     = $_FILES['filetest']['error'];
+    $file_extension = explode('.', $file_name);
+    $file_real_ext  = strtolower(end($file_extension));
+    $allowed        = array(
+        'jpg',
+        'jpeg',
+        'png',
+        'doc',
+        'mp3',
+        'gif',
+        '3gp',
+        'mkv',
+        'mov',
+        'mp4',
+        'xlsx',
+        'ppt',
+        'pptx',
+        'pdf',
+        'docx'
+    ); 
+    $text="";
+    if (in_array($file_real_ext, $allowed)) {
+        if ($file_error == 0) {
+            if ($file_size < 5000000) {
+                $file_new_name = uniqid(' ', true) . "." . $file_real_ext;
+                $file_location = '../Files/' . $file_new_name;
+                move_uploaded_file($file_tmp_name, $file_location);
+                $file_location2='Files/' . $file_new_name;
+                
+                $query = "INSERT INTO Files(file_name,file_location,file_size) VALUES(?,?,?);";
+                $stmt  = mysqli_prepare($conn, $query);
+                mysqli_stmt_bind_param($stmt, "ssd", $file_name, $file_location2, $file_size);
+                $success = mysqli_stmt_execute($stmt);
+                $last_id = mysqli_insert_id($conn);
+                
+                $query1 = "INSERT INTO User_Files(file_id,user_id) VALUES(?,?);";
+                $stmt1  = mysqli_prepare($conn, $query1);
+                mysqli_stmt_bind_param($stmt1, "dd", $last_id, $user_id);
+                $success1 = mysqli_stmt_execute($stmt1);
+                if ($success1) {
+                    //header('Location:profile.php');
+                    $text="File Uploaded Successfully";
+                }
+            } 
+			if   ($file_size>5000000){  
+				echo "file more than 5000000";
+            }
+            
+        }
+    }
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+});
+$router->register("GET",'#^/UserFiles/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $user_id = logged_in_user();
+    $req = file_get_contents('php://input');
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+     $json_result= array();
+
+            $query = "SELECT Files.file_name,Files.file_location ,Files.file_id
+                FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
+                WHERE User_Files.user_id = ?;";
+
+        $stmt= mysqli_prepare($conn,$query);
+        mysqli_stmt_bind_param($stmt,"d",$user_id);
+
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+
+        while($row1 = mysqli_fetch_assoc($results))
+        {
+            $json_result[]=$row1;
+        }
 
 
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($json_result);
+});
+
+$router->register("GET",'#^/deleteFiles/(\d+)#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $user_id = logged_in_user();
+    $req = file_get_contents('php://input');
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+$file_id=$params[1];
+ 
+  $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+  $query = "SELECT file_location FROM Files WHERE file_id = ?;";
+
+$stmt= mysqli_prepare($conn,$query);
+mysqli_stmt_bind_param($stmt,"d",$file_id);
+
+$success = mysqli_stmt_execute($stmt);
+$results = mysqli_stmt_get_result($stmt);
+while($row1 = mysqli_fetch_assoc($results))
+{
+	$path=$row1['file_location'];
+	unlink('../'.$path);
+
+}
+
+
+	
+	$text ="";
+   $query2 = "DELETE FROM User_Files WHERE file_id = ?;";
+    $stmt2= mysqli_prepare($conn,$query2);
+    mysqli_stmt_bind_param($stmt2,"d",$file_id);
+    $success1 = mysqli_stmt_execute($stmt2);
+	
+	$query1 = "DELETE FROM Files WHERE file_id = ?;";
+    $stmt1= mysqli_prepare($conn,$query1);
+    mysqli_stmt_bind_param($stmt1,"d",$file_id);
+    $success = mysqli_stmt_execute($stmt1);
+    if($success && $success1)
+    {
+        $text ="File Successfully Deleted.";
+    }
+    else{
+        $text="File wasn't deleted";
+    }
+
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+});
 $router->route($_SERVER['PATH_INFO']);
 ?>
