@@ -349,6 +349,68 @@
 	box-shadow:none;
 	margin:0;
 }
+#form-cell > div#mailing{
+	display:block;
+	width:65%;
+	margin: 0 auto;
+}
+#form-cell > div#mailing > table{
+	display:table;
+	margin:0;
+	width:100%;
+}
+#form-cell > div#mailing > table > tbody{ /*remove*/
+	color: var(--p-text);
+}
+#form-cell > #container-border{ 
+	width:550px;
+	display:flex;
+	flex-direction:column;
+	align-self:center;
+	
+	height:200px;
+	margin-top:20px;
+	
+	border-top: 3px solid black;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000), to(transparent));
+	background-image: -webkit-linear-gradient(#000, transparent);
+	background-image:
+		-moz-linear-gradient(#000, transparent),
+		-moz-linear-gradient(#000, transparent);
+	background-image:
+		-o-linear-gradient(#000, transparent),
+		-o-linear-gradient(#000, transparent);
+	background-image: 
+		linear-gradient(#000, transparent),
+		linear-gradient(#000, transparent);
+	-moz-background-size: 3px 100%;
+	background-size: 3px 100%;
+	background-position: 0 0, 100% 0;
+	background-repeat: no-repeat; 
+  
+	
+}
+#form-cell > #container-border > input#clipboard{
+	width:30px;
+	align-self:center;
+	
+	background-repeat: no-repeat;
+	background-color:var(--body-bg);
+	background-position:center;
+	box-shadow:none;
+	margin:-20px 0 0 0;
+}
+#form-cell > #container-border > div#mailBox{
+	align-self:center;
+	width:90%;
+	margin: 10px 0;
+	padding:5px;
+	text-align:justify;
+	
+	border-style:double double none double;
+	height:75px;
+}
+
 #form-cell > table#fileTabel > tr > :nth-child(2) > button > a:hover {
 	background-color:transparent;
 }

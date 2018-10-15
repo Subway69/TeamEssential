@@ -6,6 +6,9 @@
 *, *:before, *:after {
 	box-sizing: inherit;
 }
+*:focus{
+	outline:none;
+}
 @-ms-viewport {
 	width: device-width;
 }
@@ -46,7 +49,7 @@ body{
 	position:relative;
 	padding-bottom:1.5rem;
 	min-height:100%;
-
+	color:var(--p-text);
 }
 footer{
 	position: absolute;
@@ -278,6 +281,9 @@ input.btnuser{
 input.btnupload{
 	background-image:url("../img/icon/share.svg");
 }
+input.btnclipboard{
+	background-image:url("../img/icon/clipboard.svg");	
+}
 input.btnsave{
 	background-image:url("../img/icon/check-circle.svg");	
 }
@@ -350,7 +356,7 @@ input:hover{
 	/* background-color: #e0eef9; */
 }
 input:focus {
-    border: 2px solid #555;
+    /* border: 2px solid #555; */
 }
 select {
 	border-radius: 2px;
@@ -466,12 +472,6 @@ tbody#gensklstable.specificTable{
 .cell {
     display:table-cell;
     vertical-align:middle;
-}
-.row#mailing{
-	width:50%;
-	margin-left:auto;
-	margin-right:auto;
-	padding:30px;
 }
 .sname{ /*skill name */
 	line-height:25px;

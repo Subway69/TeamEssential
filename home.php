@@ -199,9 +199,23 @@ require_once "PHP/default.php";
 				
 					<div id="email-tab" data-tab-content="4" class="tab-content">
 						<div id="tab-row" class="row">
-							<div id="form-cell" class="cell form-cell-spec">
+							<div id="form-cell" class="cell "> <!--form-cell-spec-->
 								<div class="row" id="mailing">
-									<table id="user-table" class="table table-responsive">
+									<table id="user-mail" class="table table-responsive">
+										<tr>
+											<td>User Permission Level</td>
+											<td>User</td>
+											<td>Admin</td>
+											<td>Super Admin</td>
+										</tr>
+										
+										<tr>
+											<td>Include?</td>
+											<td><input type = "checkbox" id= "userCheck" name = "tCheck" value = 0 /></td>
+											<td><input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /></td>
+											<td><input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /></td>
+										</tr>
+									<!--
 										<tHead>
 											<tr>
 												<th>User Permission Level</th>	
@@ -228,17 +242,15 @@ require_once "PHP/default.php";
 												</td>
 											</tr>
 										</tbody>
+									-->
 									</table>
 								</div>
-								<!-- <div id="tab-row" class="row"> -->
-								<input type="button" onClick="copyFunction('mailBox')" ></input>
-									<div id="mailBox" class="cell" >
+								
+								<div id="container-border">
+									<input type="button" id="clipboard" class="btnclipboard" onClick="copyFunction('mailBox')"></input>
 									
-									
-
-									</div>
-									
-								<!-- </div> -->
+									<div id="mailBox" class="cell"></div>
+								</div>
 							</div>
 						</div>	
 					</div>
