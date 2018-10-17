@@ -280,14 +280,34 @@
 	background-position:center;
 	box-shadow:none
 }
-#form-cell > form.form > #uploadsform > input[type=submit]{
+#form-cell > form#file-form{
+	width:auto;
+}
+#form-cell > form#file-form > div#uploadsform{
+	display:flex;
+}
+#form-cell > form#file-form > div#uploadsform > input[type=submit]{
 	background-repeat: no-repeat;
 	background-color:transparent;
 	background-position:center;
 	box-shadow:none;
 	color:transparent;
+	margin:0;
+	width:auto;
+	height:33px;
 }
-	
+#form-cell > form#file-form > div#uploadsform > input#file{
+	align-self:center;
+	height:21px;
+	padding:0;
+	margin:0;
+}
+#form-cell > table#fileTabel > tr > :nth-child(2) > button > a:hover {
+	background-color:transparent;
+}
+#form-cell > table#fileTabel > tr > :last-child > button > a:hover {
+	background-color:transparent;
+}	
 #form-cell > form#addSkillsForm > tr{
 	display:table;
 	width:100%;
@@ -411,12 +431,7 @@
 	height:75px;
 }
 
-#form-cell > table#fileTabel > tr > :nth-child(2) > button > a:hover {
-	background-color:transparent;
-}
-#form-cell > table#fileTabel > tr > :last-child > button > a:hover {
-	background-color:transparent;
-}
+
 
 #bootstable-row{
     padding-top:0px;

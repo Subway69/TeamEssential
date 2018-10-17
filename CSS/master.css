@@ -135,6 +135,29 @@ select,option {
 	width:200px;
 }
 
+.test {
+  width: 24px;
+  height: 24px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2px;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.test:hover{
+  fill:red;
+  stroke:black;
+}
+.test-red{
+  stroke:red;
+}
+.test-c{
+  --c1: black;
+  --c2: red;
+}
+
+
+
 /* ******************************FORMS****************************** */
 
 form{
@@ -227,6 +250,18 @@ button, .btn,  input[type=submit], input[type=reset],input[type=button] { /*butt
 	font-weight:bold;
 	color: var(--a-hover-bg);
 }
+input {
+	height:40px;
+	padding:5px 0 5px 0;
+	/* margin: 0 0 10px 0; */
+	/* font-size:1em; */
+    /* margin-bottom:15px; */
+	border-radius:2px;
+	box-sizing: border-box;
+	border: 0px inset black;
+	color: var(--tab-active); 
+	/* background-color: #000000; */
+}
 /* input[type=button]{ */
 	/* background-repeat: no-repeat; */
 	/* background-color:transparent; */
@@ -259,15 +294,6 @@ input.button.regbtn{
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
-button.btnupdate::before{ /*UPDATE BUTTON [CONTACT]*/
-	content: url("../img/icon/edit.svg");		
-}
-button.btnsave::before{ /*SAVE BUTTON [CONTACT]*/
-	content: url("../img/icon/plus-circle.svg");
-}
-button.btncancel::before{ /*CANCEL BUTTON [CONTACT]*/
-	content: url("../img/icon/trash-2.svg");
-}
 	
 input.btnuser{
 	width:50%;
@@ -281,14 +307,20 @@ input.btnuser{
 input.btnupload{
 	background-image:url("../img/icon/share.svg");
 }
+/* input.btnupload{ */
+	/* background-image:url("../img/icon/share.svg"); */
+/* } */
 input.btnclipboard{
 	background-image:url("../img/icon/clipboard.svg");	
 }
 input.btnsave{
 	background-image:url("../img/icon/check-circle.svg");	
 }
+/* input.btnupdate{ */
+	/* background-image:url("../img/icon/edit.svg"); */
+/* } */
 input.btnupdate{
-	background-image:url("../img/icon/edit.svg");
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-edit'%3e%3cpath d='M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34'%3e%3c/path%3e%3cpolygon points='18 2 22 6 12 16 8 16 8 12 18 2'%3e%3c/polygon%3e%3c/svg%3e");
 }
 input.btncancel{
 	background-image:url("../img/icon/x-circle.svg");	
@@ -299,8 +331,52 @@ input.btndelete{
 /* input[type=radio]{ */
 	/* margin: 3px 20px; */
 /* } */
-
-
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+    font-weight: 700;
+	color: var(--p-text);
+    /* border: 2px solid currentColor;	 */
+    max-width: 90%;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+	overflow: hidden;
+    padding: 5px;
+	align-self:center;
+}
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+label#cfile{
+	border-bottom: 2px solid black;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#000));
+	background-image: -webkit-linear-gradient(transparent, #000);
+	background-image:
+		-moz-linear-gradient(transparent, #000),
+		-moz-linear-gradient(transparent, #000);
+	background-image:
+		-o-linear-gradient(transparent, #000),
+		-o-linear-gradient(transparent, #000);
+	background-image: 
+		linear-gradient(transparent, #000),
+		linear-gradient(transparent, #000); 
+	-moz-background-size: 3px 100%;
+	background-size: 2px 100%;
+	background-position: 0 0, 100% 0;
+	background-repeat: no-repeat;
+}
 form#addCat0.form > input[type=button]{	/*CATMAN OTHER FORM BUTTONS*/
 	width:20%;
 }
@@ -313,25 +389,14 @@ form.blank > input[type=submit]{ /*profile>users>go buttons */
 .button:disabled{
 	/* background:green; */
 	cursor: not-allowed;
-	opacity:0.65;
+	opacity:0.45;
 }
 /* .button:disabled:hover{ */
 	/* background: var(--button-disabled); */
 	/* color:graytext; */
 /* } */
 
-input {
-	height:40px;
-	padding:5px 0 5px 0;
-	/* margin: 0 0 10px 0; */
-	/* font-size:1em; */
-    /* margin-bottom:15px; */
-	border-radius:2px;
-	box-sizing: border-box;
-	border: 0px inset black;
-	color: var(--tab-active); 
-	/* background-color: #000000; */
-}
+
 
 .val:valid{ /*valid input class */
 	/* background-color: #93d0ad; */

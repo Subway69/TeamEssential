@@ -369,27 +369,21 @@ require_once "PHP/default.php";
 						<div id="form-cell" class="cell">
 							<form class="form" id ="file-form"action = "upload.php" method = "POST" enctype="multipart/form-data">
 								<div id="uploadsform">
-									<input type="file" id="file" name="filetest"  onChange="fileValidation()" />
-									
-									 <!-- <div class="form-group"> -->
 									<input type="submit" class="button btnupload" name="submit" id="upload" disabled></input>
+									<input type="file" id="file" class="inputfile" name="filetest"  onChange="fileValidation()" />
+									<label for="file" id="cfile"><span>Choose a file</span></label>
+									 <!-- <div class="form-group"> -->
+									
 									 <!-- </div> -->
 									<script src="JS/extension.js"></script>	
 								
 								</div> <!--added this --> 
 								
 							</form>
-							
-							<?php
-
-
-
-							// echo "<h1>Files</h1>";?>
+						
 							<table class="table table-striped tblfiles" id="fileTabel" > <!--fileTable-->
 								<tbody>
 
-
-								
 								</tbody>
 							</table>
 
@@ -445,7 +439,10 @@ require_once "PHP/default.php";
 			}.bind(items[i]))();
 			}
 
-	</script>
+		</script>
+	
+		<script src="Js/custom-file-input.js"></script>
+		
 		<footer>
 			foo
 		</footer>

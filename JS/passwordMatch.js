@@ -4,4 +4,3 @@ if(!RegExp.escape) {
 		return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 	};
 }
-
