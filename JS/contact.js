@@ -41,6 +41,64 @@ var cancelPhone=document.getElementById('phoneCancelBut');
 var cancelDOB=document.getElementById('dobCancelBut');
 var cancelAddress=document.getElementById('addressCancelBut');
 
+updFNames.addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (updFNames.value.length>20)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 20 charatcers");
+            }
+        }
+
+},false)
+
+updLNames.addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (updLNames.value.length>40)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 40 charatcers");
+            }
+        }
+
+},false)
+
+updMNames.addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (updMNames.value.length>40)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 40 charatcers");
+            }
+        }
+
+},false)
+    updAddresss.addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (updAddresss.value.length>150)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 100 charatcers");
+            }
+        }
+
+},false)
 var httContacts;
 var httFName;
 var httMName;

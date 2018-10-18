@@ -66,7 +66,7 @@ $router->register("POST",'#^/addEmployment/#', function($params)
     $req = file_get_contents('php://input');
 //Converts the contents into a PHP Object
 $req_obj = json_decode($req);
-
+$text ="";
 //Grabs the data from the AJAX
 $typeID = $req_obj->typeData;
 $titleID = htmlentities($req_obj->titleData);
@@ -88,9 +88,25 @@ if($titleID=="")
 {
     $text= $text."Invalid/Empty Title\n";
 }
+if(strlen($titleID)>50)
+{
+    $text= $text."Posiiton title can't be more than 50 characters\n";
+}
 if($manID=='')
 {
     $text= $text."Invalid/Empty Manager Name\n";
+}
+if(strlen($manID)>50)
+{
+    $text= $text."Manager's Name can't be more than 50 characters\n";
+}
+if($orgID=='')
+{
+    $text= $text."Invalid/Empty Department Name\n";
+}
+if(strlen($orgID)>50)
+{
+    $text= $text."Department Name can't be more than 50 characters\n";
 }
 if($manPID=='')
 {
@@ -107,6 +123,10 @@ if($endID!=''&&strtotime($endID)<strtotime($startID))
 if($taskID=="")
 {
     $text= $text."Invalid/Empty Tasks\n";
+}
+if(strlen($taskID)>250)
+{
+    $text= $text."Tasks can't be more than 250 characters\n";
 }
 	if(is_nan($manPID))
 	{$text= $text."Invalid/Empty Manager Phone\n";
@@ -128,7 +148,7 @@ else
     $success1 = mysqli_stmt_execute($stmt1);
     $results1 = mysqli_stmt_get_result($stmt1);
 
-    $text ="";
+    
     if($success1)
     {
         $text = "Employment Successfully Added.";
@@ -235,11 +255,63 @@ $router->register("PUT",'#^/updateEmployment/#', function($params)
     $startID = $req_obj->startData;
     $endID = $req_obj->endData;
     $taskID = htmlentities($req_obj->taskData);
-
+   $text ="";
     //Gets the id of the user logged in
     $userid = logged_in_user();
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-
+if($typeID=="")
+{
+    $text= $text."Invalid/Empty Type \n";
+}
+if($titleID=="")
+{
+    $text= $text."Invalid/Empty Title\n";
+}
+if(strlen($titleID)>50)
+{
+    $text= $text."Posiiton title can't be more than 50 characters\n";
+}
+if($manID=='')
+{
+    $text= $text."Invalid/Empty Manager Name\n";
+}
+if(strlen($manID)>50)
+{
+    $text= $text."Manager's Name can't be more than 50 characters\n";
+}
+if($orgID=='')
+{
+    $text= $text."Invalid/Empty Department Name\n";
+}
+if(strlen($orgID)>50)
+{
+    $text= $text."Department Name can't be more than 50 characters\n";
+}
+if($manPID=='')
+{
+    $text= $text."Invalid/Empty Manager Phone\n";
+}
+if($startID=='')
+{
+    $text= $text."Invalid/Empty Start Date\n";
+}
+if($endID!=''&&strtotime($endID)<strtotime($startID))
+{
+    $text= $text."End Date is before Start Date\n";
+}
+if($taskID=="")
+{
+    $text= $text."Invalid/Empty Tasks\n";
+}
+if(strlen($taskID)>250)
+{
+    $text= $text."Tasks can't be more than 250 characters\n";
+}
+	if(is_nan($manPID))
+	{$text= $text."Invalid/Empty Manager Phone\n";
+	}
+else
+{
     //Inserts the Job into the database
     $query = "UPDATE Employment SET work_rate=?,position_title =?,manager =?, manager_phone=?,organisation=?,startDate=?,endDate=?,tasks=? WHERE employment_id=?;";   
     $stmt = mysqli_prepare($conn, $query);
@@ -248,7 +320,7 @@ $router->register("PUT",'#^/updateEmployment/#', function($params)
     $results = mysqli_stmt_get_result($stmt);
     $last_id = mysqli_insert_id($conn);
 
-    $text ="";
+ 
     if($success)
     {
         $text = "Employment Successfully Updated.";
@@ -258,6 +330,7 @@ $router->register("PUT",'#^/updateEmployment/#', function($params)
         $text = "Employment was unsuccessfully Updated";
 
     }
+}
        
 		
     //Inform the client that we are sending back JSON    

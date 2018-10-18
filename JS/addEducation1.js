@@ -19,6 +19,23 @@ var addQualBut=document.getElementById("addQualBut");
 var updQualButton=document.getElementById("updQualBut");
 var canQualUpd=document.getElementById("canQualBut");
 
+var degName = document.getElementById("degree0");
+
+degName.addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (degName.value.length>100)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 100 charatcers");
+            }
+        }
+
+},false)
+
 
 var todays = new Date(); 
 var dds = todays.getDate(); 

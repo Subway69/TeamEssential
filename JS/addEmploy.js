@@ -38,15 +38,72 @@ starting.addEventListener('change',function(ev)
         }
 },false) 
 
-document.getElementById('managerPhone1').addEventListener('keydown', function(e) {
-    var key   = e.keyCode ? e.keyCode : e.which;
+document.getElementById('title1').addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
 
-    if (!( [8, 9, 13, 27, 46, 110, 190].indexOf(key) !== -1 ||
-         (key == 65 && ( e.ctrlKey || e.metaKey  ) ) || 
-         (key >= 35 && key <= 40) ||
-         (key >= 48 && key <= 57 && !(e.shiftKey || e.altKey)) ||
-         (key >= 96 && key <= 105)
-       )) e.preventDefault();
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (document.getElementById('title1').value.length>50)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 50 charatcers");
+            }
+        }
+
+},false)
+
+document.getElementById('manager1').addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (document.getElementById('manager1').value.length>50)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 50 charatcers");
+            }
+        }
+
+},false)
+
+document.getElementById('org1').addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (document.getElementById('org1').value.length>50)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 50 charatcers");
+            }
+        }
+
+},false)
+
+document.getElementById('tasks1').addEventListener('keydown',function(ev)
+{
+    var key = ev.keyCode;
+
+    if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
+        {
+        if (document.getElementById('tasks1').value.length>250)
+            {
+                ev.preventDefault();
+                alert("Can't enter more than 50 charatcers");
+            }
+        }
+
+},false)
+
+document.getElementById('managerPhone1').addEventListener('keydown', function(ev) {
+    var key   = ev.keyCode;
+    if(!(key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+        {
+            ev.preventDefault();
+        }
 });
 loadEmloyment();
 //This functions sends all the data from the inputs into the backend to be added to the database
