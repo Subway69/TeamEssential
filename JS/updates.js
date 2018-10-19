@@ -1,18 +1,24 @@
 var httPass;
 var httDel;
+var httPerm
 //Sends to the backend what user and what permission that will be updated
 function updatePerm()
 {
     var permLvl = document.getElementById("perm0").value;
     var uID= document.getElementById("hiddenPerm").value;
-    var httPerm = new XMLHttpRequest();
+    httPerm = new XMLHttpRequest();
     httPerm.open("PUT","Account/updatePermission/",true);
+    httPerm.onload=showPerm;
     var perm ={};
     perm.pID = permLvl;
     perm.uID=uID;
     httPerm.send(JSON.stringify(perm));
 }
 
+function showPerm(ev)
+{
+    alert(JSON.parse(httPerm.responseText));
+}
 //Sends the users new password to the backend to be updated
 function updatePass()
 {

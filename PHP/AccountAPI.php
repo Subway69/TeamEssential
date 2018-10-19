@@ -489,16 +489,22 @@ $router->register("PUT",'#^/updatePermission/#', function($params)
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     $query= "UPDATE Users SET permission = ? WHERE user_id = ?;";
 
-
+$text ="";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt,"dd",$perm,$user);
     $success = mysqli_stmt_execute($stmt);
     $results = mysqli_stmt_get_result($stmt);
-
+    if($success)
+    {
+        $text="User's Permission updated successfully";
+    }
+    else{
+        $text="Unable to update User Permission";
+    }
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
     //Encodes and sends it back
-    echo json_encode($req_obj);
+    echo json_encode($text);
 });
 $router->register("PUT",'#^/updateWork/(\d+)#', function($params) 
 {
@@ -518,6 +524,7 @@ $req_obj = json_decode($req);
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt,"dd",$work,$user_id);
     $success = mysqli_stmt_execute($stmt);
+
     $results = mysqli_stmt_get_result($stmt);
     setWork($work);
 

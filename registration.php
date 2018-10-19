@@ -152,7 +152,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 								
 								
 								<input name = "tEmail" id = "tEmail" type="email" placeholder="Email Address" required class="input val" 
-											pattern="(^\w+@[a-zA-Z_]+?\.[a-zA-Z]{3}$)";
+											
 								/> 
 					
 								<!-- <label id="msg"></label> -->

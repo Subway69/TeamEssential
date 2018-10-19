@@ -112,6 +112,10 @@ if($manPID=='')
 {
     $text= $text."Invalid/Empty Manager Phone\n";
 }
+if($manPID<=0)
+{
+    $text= $text."Invalid/Empty Manager Phone\n";
+}
 if($startID=='')
 {
     $text= $text."Invalid/Empty Start Date\n";

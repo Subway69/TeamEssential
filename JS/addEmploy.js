@@ -104,7 +104,9 @@ document.getElementById('managerPhone1').addEventListener('keydown', function(ev
         {
             ev.preventDefault();
         }
+
 });
+
 loadEmloyment();
 //This functions sends all the data from the inputs into the backend to be added to the database
 function addEmp()

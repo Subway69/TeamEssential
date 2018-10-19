@@ -50,7 +50,7 @@ function validate()
 	
 
 	
-	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a||!(emaila.match(mailformat)))
+	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a)
     {
         	//document.getElementById('msg').style.color='red';
 	//document.getElementById('msg').innerHTML='invalid email';
@@ -94,6 +94,11 @@ function register()
     {
         unis=0;
     }
+    var mailformats = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(email.match(mailformats))
+{
+    alert("Invalid Email");
+}
   if(bachelor.checked)
 {
     httRegister = new XMLHttpRequest();
