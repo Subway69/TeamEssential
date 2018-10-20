@@ -215,39 +215,12 @@ require_once "PHP/default.php";
 											<td><input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /></td>
 											<td><input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /></td>
 										</tr>
-									<!--
-										<tHead>
-											<tr>
-												<th>User Permission Level</th>	
-												<th>Include?</th>
-											</tr>
-										</tHead>
-										<tbody>
-											<tr>
-												<td> User </td>
-												<td> 	
-													<input type = "checkbox" id= "userCheck" name = "tCheck" value = 0 /> 
-												</td>
-											</tr>
-											<tr>
-												<td> Admin </td>
-												<td> 	
-													<input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /> 
-												</td>
-											</tr>
-											<tr>
-												<td> Super Admin </td>
-												<td> 	
-													<input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /> 
-												</td>
-											</tr>
-										</tbody>
-									-->
+									
 									</table>
 								</div>
 								
 								<div id="container-border">
-									<input type="button" id="clipboard" class="btnclipboard" onClick="copyFunction('mailBox')"></input>
+									<input type="button" id="clipboard" class="btnclipboard" onclick="copyToClipboard('mailBox')"></input>
 									
 									<div id="mailBox" class="cell"></div>
 								</div>

@@ -6,7 +6,11 @@ var lNames = document.getElementById("tLastName");
 var emails = document.getElementById("tEmail");
 var pass1s = document.getElementById("regPassword");
 var pass2s = document.getElementById("tConfirm");
+var emailString=[];
 
+var at=0;
+var atcount=0;
+var atfound=false;
 
 
 titles.addEventListener('change',function(ev)
@@ -25,6 +29,26 @@ emails.addEventListener('change',function(ev)
 {
     validate();
 },false);
+
+/*emails.addEventListener("keydown",function(ev)
+{
+    var eKey=ev.keyCode;
+    console.log(eKey);
+    if(!atfound||eKey==50)
+    {
+    if(eKey==50)
+    {
+        atcount=at;
+        atfound = true;
+    }
+    else{
+        at++;
+    }
+}
+else{
+    ev.preventDefault();
+}
+},false);*/
 pass1s.addEventListener('change',function(ev)
 {
     validate();
@@ -45,12 +69,12 @@ function validate()
     var pass2a = document.getElementById("tConfirm").value;
 	
 
-	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	var mailformat = "^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 	
 	
 
 	
-	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a)
+	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a||!(emaila.match(mailformat)))
     {
         	//document.getElementById('msg').style.color='red';
 	//document.getElementById('msg').innerHTML='invalid email';
@@ -76,7 +100,7 @@ function register()
     var uniWork=document.getElementById("uniCheck");
     var bach=0;
     var unis;
-
+    //alert(email.substring(atcount,email.length));
     if(bachelor.checked)
     {
         bach = 1;
@@ -94,11 +118,6 @@ function register()
     {
         unis=0;
     }
-    var mailformats = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-if(email.match(mailformats))
-{
-    alert("Invalid Email");
-}
   if(bachelor.checked)
 {
     httRegister = new XMLHttpRequest();
