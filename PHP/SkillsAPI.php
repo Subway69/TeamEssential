@@ -505,6 +505,12 @@ $router->register("PUT",'#^/updateCategory/#', function($params)
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $text="";
         $value = htmlentities($req_obj->value);
+	if($value=="")
+	{
+		 $text="Please enter name of category";
+	}
+	else
+	{
        $sID=$req_obj->sID;
             //Inserts the new skill
             $query= "UPDATE Skills SET skill_type =? WHERE skill_type=?;";
@@ -516,7 +522,7 @@ $router->register("PUT",'#^/updateCategory/#', function($params)
                 $text="Category Successfully Updated.";
             }
             
-    
+	}
 
         //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
