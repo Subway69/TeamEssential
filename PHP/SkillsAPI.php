@@ -472,6 +472,11 @@ $router->register("PUT",'#^/updateSkills/#', function($params)
         $value = htmlentities($req_obj->value);
         $sID=$req_obj->sID;
             //Inserts the new skill
+	if($value=="")
+	{$text="Please enter a suitable skill name";
+	}
+	else
+	{
             $query= "UPDATE Skills SET skill_name =? WHERE skill_id=?;";
             $stmt = mysqli_prepare($conn, $query);
             mysqli_stmt_bind_param($stmt,"sd",$value,$sID);
@@ -480,7 +485,7 @@ $router->register("PUT",'#^/updateSkills/#', function($params)
             {
                 $text="Skill Successfully Updated.";
             }
-            
+	}        
     
 
         //Inform the client that we are sending back JSON    
