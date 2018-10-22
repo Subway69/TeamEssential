@@ -102,6 +102,8 @@ function somethingElse(ev)
 
 function groupMail()
 {
+	
+	
 	mailClear();
 	var groupMailBox = document.getElementById("mailBox");
       

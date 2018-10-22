@@ -369,9 +369,10 @@ require_once "PHP/default.php";
 						<div id="form-cell" class="cell">
 							<form class="form" id ="file-form"action = "upload.php" method = "POST" enctype="multipart/form-data">
 								<div id="uploadsform">
-									<input type="submit" class="button btnupload" name="submit" id="upload" disabled></input>
+									
 									<input type="file" id="file" class="inputfile" name="filetest"  onChange="fileValidation()" />
 									<label for="file" id="cfile"><span>Choose a file</span></label>
+									<input type="submit" class="button btnupload" name="submit" id="upload" disabled></input>
 									 <!-- <div class="form-group"> -->
 									
 									 <!-- </div> -->

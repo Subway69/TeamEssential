@@ -57,11 +57,7 @@ require_once "PHP/default.php";
 										
 									while($row = mysqli_fetch_assoc($results)){
 										?>
-										<select required="" name="Datatable number" id="datatable0" class="select">
-											<option value=5>5</option>
-											<option value=10>10</option>
-											<option value=15>15</option>
-										</select>
+										
 										<table  class="table table-responsive table-striped" id="user-table">
 											<tHead>
 												<tr>
@@ -122,7 +118,11 @@ require_once "PHP/default.php";
 										</table>
 										<div id="user-datatable" class="pagination-datatables">
 										</div>
-										
+										<select required="" name="Datatable number" id="datatable0" class="select">
+											<option value=5>5</option>
+											<option value=10>10</option>
+											<option value=15>15</option>
+										</select>
 
 										<?php
 									}?>					
@@ -215,7 +215,7 @@ require_once "PHP/default.php";
 											<td><input type = "checkbox" id= "adminCheck" name = "tCheck" value = 1 /></td>
 											<td><input type = "checkbox" id= "sAdminCheck" name = "tCheck" value = 2 /></td>
 										</tr>
-									
+								
 									</table>
 								</div>
 								
