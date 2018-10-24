@@ -31,14 +31,6 @@ starting.addEventListener('change',function(ev)
     ending.setAttribute("min", starting.value); 
 },false) 
 
-ending.addEventListener('change',function(ev) 
-{ 
-    if(ending.value<starting.value)
-        {
-            alert("End Date can't be before start date");
-        }
-},false) 
-
 document.getElementById('title1').addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
@@ -120,8 +112,11 @@ function addEmp()
     var startArr= document.getElementById("startDate1").value;
     var endArr=document.getElementById("endDate1").value;
     var taskArr = document.getElementById("tasks1").value;
-
-
+    if(endArr<startArr)
+        {
+            alert("Start Date can't be before")
+        }
+        else{
     document.getElementById('msg1').innerHTML='';
     httEmploy = new XMLHttpRequest();
     httEmploy.open("POST","Employment/addEmployment/",true);
@@ -136,6 +131,7 @@ function addEmp()
     hID.endData=endArr;
     hID.taskData=taskArr;
     httEmploy.send(JSON.stringify(hID));
+        }
 
     
     
@@ -218,7 +214,6 @@ function listEmployment(ev)
 			updEmpBut.setAttribute("type","button");
 			updEmpBut.setAttribute("class","button btnupdate");
 			updEmpBut.setAttribute("id",i);
-			// updEmpBut.setAttribute("value","Update");
 			updEmpBut.setAttribute("onClick","updateEmploy(this.id)");
 			
 			cell2.appendChild(updEmpBut);

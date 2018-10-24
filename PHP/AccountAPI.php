@@ -716,7 +716,7 @@ $router->register("PUT",'#^/updatePhone/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-    $fname = htmlentites($req_obj->value);
+    $fname = htmlentities($req_obj->value);
 
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
         $user_id = logged_in_user();

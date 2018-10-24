@@ -1,5 +1,5 @@
 <?php
-define('SITE_URL', 'https://asterius.ballarat.edu.au/ResearchAssistantDB/');
+define('SITE_URL', 'http://localhost/gitkraken/teamessential/');
     $DB_HOST= "localhost";
 	$DB_USER="raUser";
 	$DB_PASSWORD="67qUfDFLA72Kujkz";

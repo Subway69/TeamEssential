@@ -72,7 +72,6 @@ function deleteResult(ev)
     }
     else
     {
-
     }
 }
 

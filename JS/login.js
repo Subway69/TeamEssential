@@ -74,10 +74,9 @@ function validate()
 	
 
 	
-	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a||!(emaila.match(mailformat)))
+	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a)
     {
-        	//document.getElementById('msg').style.color='red';
-	//document.getElementById('msg').innerHTML='invalid email';
+
         document.getElementById("sub").disabled=true;
     }
 	else{  
@@ -100,7 +99,6 @@ function register()
     var uniWork=document.getElementById("uniCheck");
     var bach=0;
     var unis;
-    //alert(email.substring(atcount,email.length));
     if(bachelor.checked)
     {
         bach = 1;
@@ -118,6 +116,7 @@ function register()
     {
         unis=0;
     }
+
   if(bachelor.checked)
 {
     httRegister = new XMLHttpRequest();
@@ -157,7 +156,6 @@ function registerResponse(ev)
 }
 function login()
 {
-   console.log("loo");
     var userName= document.getElementById("tUsername").value;
     
     var passWord=  document.getElementById("tPassword").value;
@@ -167,10 +165,9 @@ function login()
         }
     if(passWord=='')
         {
-            alert("PLease enter a password");
+            alert("Please enter a password");
         }
    if(passWord!=''&&userName!=''){
-       console.log("IN");
     httLogin=new XMLHttpRequest();
     httLogin.open("POST","Account/login/",true);
   
