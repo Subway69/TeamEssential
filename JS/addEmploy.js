@@ -30,7 +30,8 @@ starting.addEventListener('change',function(ev)
 { 
     ending.setAttribute("min", starting.value); 
 },false) 
- ending.addEventListener('change',function(ev) 
+
+ending.addEventListener('change',function(ev) 
 { 
     if(ending.value<starting.value)
         {
@@ -47,7 +48,7 @@ document.getElementById('title1').addEventListener('keydown',function(ev)
         if (document.getElementById('title1').value.length>50)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 50 charatcers");
+                alert("Can't enter more than 50 characters");
             }
         }
 
@@ -62,7 +63,7 @@ document.getElementById('manager1').addEventListener('keydown',function(ev)
         if (document.getElementById('manager1').value.length>50)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 50 charatcers");
+                alert("Can't enter more than 50 characters");
             }
         }
 
@@ -77,7 +78,7 @@ document.getElementById('org1').addEventListener('keydown',function(ev)
         if (document.getElementById('org1').value.length>50)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 50 charatcers");
+                alert("Can't enter more than 50 characters");
             }
         }
 
@@ -92,7 +93,7 @@ document.getElementById('tasks1').addEventListener('keydown',function(ev)
         if (document.getElementById('tasks1').value.length>250)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 50 charatcers");
+                alert("Can't enter more than 50 characters");
             }
         }
 

@@ -185,7 +185,7 @@ require_once "PHP/default.php";
 									<input type = "button" class="button" id = "uniBut" onClick= "addUniversity()" value = "Add University"/>
 									<input type = "button" class = "button" id = "updUniBut" onClick= "updUniversity()" value = "Update Univeristy"style = "display:none;"/>
 									<input type = "button" class = "button" id = "canUniBut" onClick= "canUniversity()" value = "Cancel University"style = "display:none;"/>
-									
+										
 								</form>
 								
 								<form class="form optional table-striped" id = "addUni0">
