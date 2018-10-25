@@ -21,6 +21,14 @@
  //session_start();
  //require_once "default.php";
  ?>
+ 
+ 		<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+			<symbol id="out" viewBox="0 0 24 24"> 
+					<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+					<polyline points="16 17 21 12 16 7"></polyline>
+					<line x1="21" y1="12" x2="9" y2="12"></line>
+			</symbol>
+		</svg>
 	<nav class="navbar">
 		<div class="navbar-container">
 		
@@ -54,14 +62,16 @@
 							?>
 								<a href="profile.php"  class="navbar-menu-link">Profile</a>
 								<a href="accounts.php"  class="navbar-menu-link">Account</a>
-								<a id = "logout" href="Account/logout/"   class="navbar-menu-link"></a>
+								<a id = "logout" href="Account/logout/" class="navbar-menu-link"></a>
 							<?php
 						}
 					?>
 				</ul>
+				
 				<script src= "JS/logout.js"></script>
 			</div>
 		</div>
+
 	</nav>
 	
 

@@ -301,10 +301,8 @@
 	padding:0;
 	margin:0;
 }
-#form-cell > table#fileTabel > tr > :nth-child(2) > button > a:hover {
-	background-color:transparent;
-}
-#form-cell > table#fileTabel > tr > :last-child > button > a:hover {
+#form-cell > table#fileTabel > tr > :nth-child(2) > button > a.download:hover,
+#form-cell > table#fileTabel > tr > :last-child > button > a.delete:hover{
 	background-color:transparent;
 }	
 #form-cell > form#addSkillsForm > tr{
