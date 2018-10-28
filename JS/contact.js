@@ -50,7 +50,7 @@ updFNames.addEventListener('keydown',function(ev)
         if (updFNames.value.length>20)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 20 charatcers");
+                alert("Can't enter more than 20 characters");
             }
         }
 
@@ -65,7 +65,7 @@ updLNames.addEventListener('keydown',function(ev)
         if (updLNames.value.length>40)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 40 charatcers");
+                alert("Can't enter more than 40 characters");
             }
         }
 
@@ -80,7 +80,7 @@ updMNames.addEventListener('keydown',function(ev)
         if (updMNames.value.length>40)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 40 charatcers");
+                alert("Can't enter more than 40 characters");
             }
         }
 
@@ -94,7 +94,7 @@ updMNames.addEventListener('keydown',function(ev)
         if (updAddresss.value.length>150)
             {
                 ev.preventDefault();
-                alert("Can't enter more than 100 charatcers");
+                alert("Can't enter more than 100 characters");
             }
         }
 
@@ -201,13 +201,8 @@ function showContact(ev)
     }
     else
     {
-        PDOB.innerHTML=contactList.day_dob +"/"+contactList.month_dob+"/"+contactList.year_dob;
+        PDOB.innerHTML=contactList.day_dob +" of "+contactList.month_dob+" "+contactList.year_dob;
     }
-
-
-
-
-
 }
 function a()
 {
@@ -254,6 +249,7 @@ function canTitle(ev)
 
 function updFName()
 {
+    
     updFNames.style.display="block";
     PFName.style.display="none";
     butFName.style.display="none";
@@ -268,7 +264,7 @@ function saveFNames()
    
    if(updFNames.value=="")
 	{
-		alert("Please enter the first name");
+		alert("Please enter your first name");
 	}
 	else
 	{
@@ -279,8 +275,6 @@ function saveFNames()
     fn.value = updFNames.value;
     httFName.send(JSON.stringify(fn));
 	}
-
-    
 }
 
 function canFName(ev)
@@ -310,12 +304,19 @@ function updMName()
 
 function saveMNames()
 {
-    httMName = new XMLHttpRequest()
-    httMName.open("PUT","Account/updateMiddleName/",true);
-    httMName.onload= canMName;
-    var fn = {};
-    fn.value = updMNames.value;
-    httMName.send(JSON.stringify(fn));
+    if(updMNames.value=="")
+    {
+        alert("Please enter your Middle Name");
+    }
+    else
+    {
+        httMName = new XMLHttpRequest()
+        httMName.open("PUT","Account/updateMiddleName/",true);
+        httMName.onload= canMName;
+        var fn = {};
+        fn.value = updMNames.value;
+        httMName.send(JSON.stringify(fn));
+    }
 }
 
 function canMName(ev)
@@ -347,7 +348,7 @@ function saveLNames()
 {
    if(updLNames.value=="")
    {
-	   alert("please enter last name");
+	   alert("Please enter your Last Name");
    }
    else{
    httLName = new XMLHttpRequest()
@@ -428,15 +429,29 @@ function updDOB()
 
 function saveDOBs()
 {
-    httDOB = new XMLHttpRequest()
-    httDOB.open("PUT","Account/updateDateOfBirth/",true);
-    httDOB.onload= canDOB;
-    
-    var fn = {};
-    fn.day = updDays.value;
-    fn.month = updMonths.value;
-    fn.year = updYearss.value;
-    httDOB.send(JSON.stringify(fn));
+    if(updDays.value =="")
+    {
+        alert("Please enter a day")
+    }
+    if(updMonths.value=="")
+    {
+        alert("Please enter a month")
+    }
+    if(updYearss.value=="")
+    {
+        alert("Please enter a year")
+    }
+    else
+    {
+        httDOB = new XMLHttpRequest()
+        httDOB.open("PUT","Account/updateDateOfBirth/",true);
+        httDOB.onload= canDOB;
+        var fn = {};
+        fn.day = updDays.value;
+        fn.month = updMonths.value;
+        fn.year = updYearss.value;
+        httDOB.send(JSON.stringify(fn));
+    }
 }
 
 function canDOB()
@@ -451,7 +466,7 @@ function canDOB()
 
     if(httDOB!=null)
     {
-        PDOB.innerHTML=JSON.parse(httDOB.responseText).day_dob + "/" +JSON.parse(httDOB.responseText).month_dob+"/"+JSON.parse(httDOB.responseText).year_dob;
+        PDOB.innerHTML=JSON.parse(httDOB.responseText).day_dob + " of " +JSON.parse(httDOB.responseText).month_dob+" "+JSON.parse(httDOB.responseText).year_dob;
         contactList.day_dob=JSON.parse(httDOB.responseText).day_dob;
         contactList.month_dob=JSON.parse(httDOB.responseText).month_dob;
         contactList.year_dob=JSON.parse(httDOB.responseText).year_dob;
@@ -465,18 +480,23 @@ function updAddress()
     butAddress.style.display="none";
     saveAddress.style.display="block";
     cancelAddress.style.display="block";
-
     updAddresss.value=contactList.address;
 }
 
 function saveAddresss()
 {
+    if(updAddresss.value=="")
+    {
+        alert("Please enter an address")
+    }
+    else{
     httAddress = new XMLHttpRequest()
     httAddress.open("PUT","Account/updateAddress/",true);
     httAddress.onload= canAddress;
     var fn = {};
     fn.value = updAddresss.value;
     httAddress.send(JSON.stringify(fn));
+    }
 }
 
 function canAddress()
