@@ -301,7 +301,7 @@ require_once "PHP/default.php";
 									<tr>
 										<td>Phone Number </td>
 										<td>
-											<input id ="phoneUpd" class = "input" type="text"style = "display:none;"/>
+											<input id ="phoneUpd" class = "input" type="number"style = "display:none;"/>
 											<p id= "phoneP"style = "display:block;">Phone Number </p>
 										</td>
 										<td>

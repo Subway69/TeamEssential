@@ -53,6 +53,10 @@ updFNames.addEventListener('keydown',function(ev)
                 alert("Can't enter more than 20 characters");
             }
         }
+        if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+        {
+            ev.preventDefault();
+        }
 
 },false)
 
@@ -68,7 +72,10 @@ updLNames.addEventListener('keydown',function(ev)
                 alert("Can't enter more than 40 characters");
             }
         }
-
+    if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+        {
+            ev.preventDefault();
+        }
 },false)
 
 updMNames.addEventListener('keydown',function(ev)
@@ -82,6 +89,10 @@ updMNames.addEventListener('keydown',function(ev)
                 ev.preventDefault();
                 alert("Can't enter more than 40 characters");
             }
+        }
+                if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+        {
+            ev.preventDefault();
         }
 
 },false)
@@ -201,9 +212,42 @@ function showContact(ev)
     }
     else
     {
-        PDOB.innerHTML=contactList.day_dob +" of "+contactList.month_dob+" "+contactList.year_dob;
+        var prefix;
+        //contactList.day_dob==1 
+        if(contactList.day_dob==1 ||contactList.day_dob==21 ||contactList.day_dob==31 )
+            {
+                prefix = "st"
+            }
+        else if(contactList.day_dob==2 ||contactList.day_dob==22)
+            {
+                prefix = "nd"
+            }
+        else if(contactList.day_dob==3 ||contactList.day_dob==23)
+            {
+                prefix = "rd"
+            }
+       else{
+                prefix = "th";
+            }
+        PDOB.innerHTML=contactList.day_dob + prefix+" of "+contactList.month_dob+" "+contactList.year_dob;
     }
 }
+
+updPhones.addEventListener('keydown', function(ev) {
+    var key   = ev.keyCode;
+    if(!(key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+        {
+            ev.preventDefault();
+        }
+    if(updPhones.value.length>13)
+        {
+            if(key!=8&&key!=46)
+                {
+            ev.preventDefault();
+                }
+        }
+
+});
 function a()
 {
     updTitles.style.display="block";
@@ -246,6 +290,8 @@ function canTitle(ev)
         contactList.title=JSON.parse(httTitle.responseText).title;
     }
 }
+
+
 
 function updFName()
 {
@@ -470,6 +516,23 @@ function canDOB()
         contactList.day_dob=JSON.parse(httDOB.responseText).day_dob;
         contactList.month_dob=JSON.parse(httDOB.responseText).month_dob;
         contactList.year_dob=JSON.parse(httDOB.responseText).year_dob;
+        var prefix;
+        if(contactList.day_dob==1 ||contactList.day_dob==21 ||contactList.day_dob==31 )
+            {
+                prefix = "st"
+            }
+        else if(contactList.day_dob==2 ||contactList.day_dob==22)
+            {
+                prefix = "nd"
+            }
+       else  if(contactList.day_dob==3 ||contactList.day_dob==23)
+            {
+                prefix = "rd"
+            }
+        else{
+                prefix = "th";
+            }
+        PDOB.innerHTML=contactList.day_dob + prefix+" of "+contactList.month_dob+" "+contactList.year_dob;
     }
 }
 
