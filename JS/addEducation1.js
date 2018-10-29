@@ -51,6 +51,15 @@ var yyyys = todays.getFullYear();
 todays = yyyys+'-'+mms+'-'+dds; 
 document.getElementById("date0").setAttribute("max", todays);
 
+
+document.getElementById("date0").addEventListener('change',function(ev)
+{
+    if (document.getElementById("date0").value>document.getElementById("date0").max)
+    {
+        ev.preventDefault();
+        alert("End Date can't be a future data")
+    }
+})
 var selection = document.getElementById("study0");
 selection.addEventListener('change',function(ev)
 {
@@ -62,6 +71,8 @@ selection.addEventListener('change',function(ev)
     {
         document.getElementById("date0").style.display="none";
     }
+
+    
 },false)
 loadUni();
 loadEducation();
@@ -109,7 +120,12 @@ function addQual()
     var studyArr=document.getElementById("study0").value;
 
 
-	
+    
+    if(dateArr>document.getElementById("date0").max)
+    {
+        alert("Cant enter a future data")
+    }
+    else{
 		document.getElementById('msg').innerHTML='';
 		
 		//Sends the inputs to the backend to be added
@@ -123,7 +139,7 @@ function addQual()
     hID.dateData=dateArr;
     hID.studyData=studyArr;
     httEducation.send(JSON.stringify(hID));  
-	
+    }
 	
 				 
                    

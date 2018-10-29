@@ -71,7 +71,7 @@ dateArrs.addEventListener('change',function(ev)
 function qualValidate()
 {
     
-    if(typeArrs.value==''||degArrs.value==''||uniArrs.value==''||studyArrs.value==''||(studyArrs.value==1&&dateArrs.value==''))
+    if(typeArrs.value==''||degArrs.value==''||uniArrs.value==''||studyArrs.value==''||(studyArrs.value==1&&dateArrs.value=='')||dateArrs.value>dateArrs.max)
     {
      document.getElementById('addQualBut').disabled=true;   
     }
