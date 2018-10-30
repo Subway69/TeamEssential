@@ -41,6 +41,9 @@ var cancelPhone=document.getElementById('phoneCancelBut');
 var cancelDOB=document.getElementById('dobCancelBut');
 var cancelAddress=document.getElementById('addressCancelBut');
 
+
+
+//The following listeners provide validation for the fields
 updFNames.addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
@@ -120,32 +123,39 @@ var httDOB;
 var httTitle;
 
 var contactList;
+var selMonth;
+var selYear;
 
+//loads the initial data
 loadContact();
-loadDates();
 
-function loadDates()
-{
-    var date = new Date();
-    var year = date.getFullYear();
-    for(var i =1;i<32;i++)
-        {
-            var dayOpt = document.createElement("option");
-            dayOpt.setAttribute("value",i);
-            dayOpt.innerHTML=i;
 
-            updDays.appendChild(dayOpt);
+    
+document.getElementById("monthUpd").addEventListener("change",function(ev){
+            var myNoder = document.getElementById("dayUpd");
+        while (myNoder.firstChild) 
+        {   
+            console.log("hey");
+            myNoder.removeChild(myNoder.firstChild);
         }
-        for(var i =year;i>1920;i--)
-        {
-            var yearOpt = document.createElement("option");
-            yearOpt.setAttribute("value",i);
-            yearOpt.innerHTML=i;
+        selMonth=updMonths.value;
+        selYear=updYearss.value;
+    loadDays();
+},false)
 
-            updYearss.appendChild(yearOpt);
+document.getElementById("yearUpd").addEventListener("change",function(ev){
+            var myNoder = document.getElementById("dayUpd");
+        while (myNoder.firstChild) 
+        {   
+            console.log("hey");
+            myNoder.removeChild(myNoder.firstChild);
         }
-}
+        selMonth=updMonths.value;
+        selYear=updYearss.value;
+    loadDays();
+},false)
 
+//Retrieves all the contact information
 function loadContact()
 {
     httContacts = new XMLHttpRequest();
@@ -154,6 +164,7 @@ function loadContact()
     httContacts.send();
 }
 
+//Lists all the contact data
 function showContact(ev)
 {
     contactList = JSON.parse(httContacts.responseText);
@@ -231,7 +242,58 @@ function showContact(ev)
             }
         PDOB.innerHTML=contactList.day_dob + prefix+" of "+contactList.month_dob+" "+contactList.year_dob;
     }
+    selMonth=contactList.month_dob;
+    selYear=contactList.year_dob;
+    loadDates();
+
 }
+
+//Loads the dates for the dob
+function loadDates()
+{
+    var date = new Date();
+    var year = date.getFullYear();
+    loadDays();
+
+        for(var i =year;i>1920;i--)
+        {
+            var yearOpt = document.createElement("option");
+            yearOpt.setAttribute("value",i);
+            yearOpt.innerHTML=i;
+
+            updYearss.appendChild(yearOpt);
+        }
+}
+    function loadDays()
+    {
+
+    var maxDays = 32
+    alert(contactList.month_dob)
+    if(selMonth=="February")
+        {
+            
+            maxDays = 29
+        }
+    else if(selMonth=="February"&& selYear%4==0&&selYear%100==0&&selYear%400==0)
+        {
+            
+            maxDays = 30
+        }
+    else if(selMonth=="April" ||selMonth=="June"||selMonth=="September"|| selMonth=="November" )
+        {
+        
+            maxDays = 31
+        }
+    for(var i =1;i<maxDays;i++)
+        {
+           // alert(i);
+            var dayOpt = document.createElement("option");
+            dayOpt.setAttribute("value",i);
+            dayOpt.innerHTML=i;
+
+            updDays.appendChild(dayOpt);
+        }
+    }
 
 updPhones.addEventListener('keydown', function(ev) {
     var key   = ev.keyCode;
@@ -248,7 +310,9 @@ updPhones.addEventListener('keydown', function(ev) {
         }
 
 });
-function a()
+
+//displays the input field and buttons
+function updTitle()
 {
     updTitles.style.display="block";
     PTitle.style.display="none";
@@ -259,6 +323,8 @@ function a()
     updTitles.value=contactList.title;
 }
 
+
+//Saves the titles
 function saveTitles()
 {
    if(updTitles.value=="")
@@ -277,6 +343,8 @@ function saveTitles()
 
 }
 
+
+//Cancels the update
 function canTitle(ev)
 {
     updTitles.style.display="none";
@@ -292,7 +360,7 @@ function canTitle(ev)
 }
 
 
-
+//displays the input fields and buttons
 function updFName()
 {
     
@@ -305,6 +373,8 @@ function updFName()
     updFNames.value=contactList.first_name;
 }
 
+
+//Saves the first name
 function saveFNames()
 {
    
@@ -323,6 +393,7 @@ function saveFNames()
 	}
 }
 
+//Cancels the first name
 function canFName(ev)
 {
     updFNames.style.display="none";
@@ -338,6 +409,7 @@ function canFName(ev)
 
 }
 
+//Shows the input fields and buttons 
 function updMName()
 {
     updMNames.style.display="block";
@@ -348,6 +420,7 @@ function updMName()
     updMNames.value=contactList.middle_name;
 }
 
+//Saves the middle name
 function saveMNames()
 {
     if(updMNames.value=="")
@@ -364,7 +437,7 @@ function saveMNames()
         httMName.send(JSON.stringify(fn));
     }
 }
-
+//Cancels the update
 function canMName(ev)
 {
     updMNames.style.display="none";
@@ -380,6 +453,7 @@ function canMName(ev)
     }
 }
 
+//Shows the input fields and buttons 
 function updLName()
 {
     updLNames.style.display="block";
@@ -390,6 +464,8 @@ function updLName()
     updLNames.value=contactList.last_name;
 }
 
+
+//Saves the last name
 function saveLNames()
 {
    if(updLNames.value=="")
@@ -406,6 +482,7 @@ function saveLNames()
    }
 }
 
+//cancels the update
 function canLName()
 {
     updLNames.style.display="none";
@@ -420,6 +497,8 @@ function canLName()
     }
 }
 
+
+//Shows the input fields and buttons 
 function updPhone()
 {
     updPhones.style.display="block";
@@ -431,6 +510,7 @@ function updPhone()
     updPhones.value=contactList.phone_number;
 }
 
+//Saves the number
 function savePhones()
 {
     httPhone = new XMLHttpRequest()
@@ -441,6 +521,8 @@ function savePhones()
     httPhone.send(JSON.stringify(fn));
 }
 
+
+//Cancel the update
 function canPhone()
 {    
     updPhones.style.display="none";
@@ -456,7 +538,7 @@ function canPhone()
 }
     
 
-
+//Shows the input fields and buttons 
 function updDOB()
 {
     updDays.style.display="inline-block";
@@ -473,6 +555,8 @@ function updDOB()
 
 }
 
+
+//Saves the dob
 function saveDOBs()
 {
     if(updDays.value =="")
@@ -500,6 +584,7 @@ function saveDOBs()
     }
 }
 
+//Cancels the update
 function canDOB()
 {
     updDays.style.display="none";
@@ -536,6 +621,7 @@ function canDOB()
     }
 }
 
+//Shows the input fields and buttons 
 function updAddress()
 {
     updAddresss.style.display="block";
@@ -546,6 +632,7 @@ function updAddress()
     updAddresss.value=contactList.address;
 }
 
+//Saves the address
 function saveAddresss()
 {
     if(updAddresss.value=="")
@@ -562,6 +649,7 @@ function saveAddresss()
     }
 }
 
+//Cancels the update
 function canAddress()
 {
     updAddresss.style.display="none";

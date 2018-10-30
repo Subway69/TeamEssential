@@ -21,6 +21,7 @@ var canQualUpd=document.getElementById("canQualBut");
 
 var degName = document.getElementById("degree0");
 
+//Adds a listener that checks the length of the degree field and restricts input
 degName.addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
@@ -36,7 +37,7 @@ degName.addEventListener('keydown',function(ev)
 
 },false)
 
-
+//Set the max to be the current date
 var todays = new Date(); 
 var dds = todays.getDate(); 
 var mms = todays.getMonth()+1; //January is 0! 
@@ -52,14 +53,7 @@ todays = yyyys+'-'+mms+'-'+dds;
 document.getElementById("date0").setAttribute("max", todays);
 
 
-document.getElementById("date0").addEventListener('change',function(ev)
-{
-    if (document.getElementById("date0").value>document.getElementById("date0").max)
-    {
-        ev.preventDefault();
-        alert("End Date can't be a future data")
-    }
-})
+//This listener checks in the degree is completed or not, if it is display the date field
 var selection = document.getElementById("study0");
 selection.addEventListener('change',function(ev)
 {
@@ -74,6 +68,8 @@ selection.addEventListener('change',function(ev)
 
     
 },false)
+
+//Loads up the Unis and education
 loadUni();
 loadEducation();
 //Loads all the Universities using Ajax
@@ -85,7 +81,7 @@ function loadUni()
     httd.send();
 }
 
-//Lists all of the University in a section
+//Lists all of the University in a drop down
 function lists(ev)
 {
     list = JSON.parse(httd.responseText);
@@ -120,7 +116,7 @@ function addQual()
     var studyArr=document.getElementById("study0").value;
 
 
-    
+    //Date validation
     if(dateArr>document.getElementById("date0").max)
     {
         alert("Cant enter a future data")
@@ -173,12 +169,15 @@ function resetEducation()
     
 }
 
+//Loads the User's Education
 function loadEducation()
 {
     x=0;
     loadQualification();
    
 }
+
+//Iniates and sends the AJAX request to get the education
 function loadQualification()
 {
     httLoadEducation = new XMLHttpRequest();
@@ -189,6 +188,8 @@ function loadQualification()
 
 
 
+
+//Lists all the education for the user
 function listEducation()
 {
     qualList=JSON.parse(httLoadEducation.responseText);
@@ -268,6 +269,8 @@ function listEducation()
 		}
 	}
 }
+
+//Clears the fields and resets it to default
 function resetter()
 {
     addQualBut.style.display="block";
@@ -277,6 +280,8 @@ function resetter()
      resetEducation();
 }
 
+
+//Initiates the ajax that will delete the education
 function deleteQualification(delID)
 {
     httDeleteEducation=new XMLHttpRequest();
@@ -284,12 +289,16 @@ function deleteQualification(delID)
     httDeleteEducation.onload=listDelete;
     httDeleteEducation.send();
 }
+
+//Shows if the delete was successful and resets fields
 function listDelete(ev)
 {
     alert(JSON.parse(httDeleteEducation.responseText));
     resetter();
 
 }
+
+//This method puts the details of the educaiton you want to update into the fields and shows the updates button
 function updateQualification(ids)
 {
     addQualBut.style.display="none";
@@ -333,11 +342,12 @@ function updateQualification(ids)
      uniUpd.value=qualList[ids].University_name;
     qualId=document.getElementById("edu"+ids).value;
     
-     //Make sure you store old id of uni and new id so when you do the where when update the study tbale you only update the ne where the study id and uni id matches  
+    
 
      
     }
 
+    //This funciton retrieves the new vlaues form the fields and sends an ajax request to the backend
     function updEdu()
     {
         var typeUpdate = document.getElementById("type0").value;
@@ -368,6 +378,8 @@ function updateQualification(ids)
 		} 
     }
 
+
+    //Lets the user know if update was successful or not
     function showEducationUpdate(ev)
     {
         alert(JSON.parse(httUpdateEducation.responseText));

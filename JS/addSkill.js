@@ -404,12 +404,16 @@ function deleteCat(id)
 
 }
 
+
+//shows the user if the skill was successfully or not and refresh skill list
 function skillDelete(ev)
 {
     alert(JSON.parse(delHtt.responseText));
     showSkills(document.getElementById("skillCat0").value);
 }
 
+
+//shows the user if the category was successfully or not and refresh category list
 function categoryDelete(ev)
 {
     alert(JSON.parse(delCatHtt.responseText));
@@ -432,6 +436,8 @@ function clearCategories()
     }
 }
 
+
+//Resets the select
 function resetSelect()
 {
     
@@ -470,7 +476,7 @@ function addUniversity()
     }
 }
 
-      
+  //refreshes the uni list after a new uni is added    
 function uniClears(ev)
 {
     alert(JSON.parse(uniHtt.responseText));
@@ -480,6 +486,8 @@ function uniClears(ev)
     loadUniversity();
    
 }
+
+//Deletes all the uni's from the table
 function resetUni()
 {
 
@@ -493,6 +501,7 @@ function resetUni()
     
 }
 
+//Shows the button and inputs the uni data in the field to be updated
 function updateUni(j)
 {
     document.getElementById("updUniBut").style.display="block";
@@ -502,6 +511,8 @@ function updateUni(j)
     updUniID=uniList[j].University_id;
 }
 
+
+//Iniiates the ajax request that updates the uni
 function updUniversity()
 {
     httUniUpdate = new XMLHttpRequest();
@@ -513,6 +524,8 @@ function updUniversity()
     httUniUpdate.send(JSON.stringify(uniHid));
 }
 
+
+//Resets the fields and button and showsd the results if adding the uni was successful
 function showUniUpdate(ev)
 {
     alert(JSON.parse(httUniUpdate.responseText));
@@ -524,6 +537,8 @@ function showUniUpdate(ev)
     resetUni();
     loadUniversity();
 }
+
+//Resets the buttons
 function canUniversity()
 {
     document.getElementById("updUniBut").style.display="none";
@@ -532,6 +547,8 @@ function canUniversity()
     document.getElementById("uniName0").value="";
 
 }
+
+//Iniates the ajax request that will delete the uni
 function deleteUni(j)
 {
     delUniHtt = new XMLHttpRequest();
@@ -541,6 +558,8 @@ function deleteUni(j)
     delUniHtt.onload=uniDelete;
     delUniHtt.send(JSON.stringify(delUniID));
 }
+
+//Shows the response
 function uniDelete(ev)
 {
     alert(JSON.parse(delUniHtt.responseText));

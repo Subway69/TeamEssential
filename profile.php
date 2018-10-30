@@ -251,7 +251,7 @@ require_once "PHP/default.php";
 	
 										<td> <!--value ="Update"-->
 										
-											<input id ="titleUpdBut" type="button" class="btnupdate" value="" style = "display:block;" onclick="a()"/>
+											<input id ="titleUpdBut" type="button" class="btnupdate" value="" style = "display:block;" onclick="updateTitle()"/>
 											<input id ="titleSaveBut" type="button" class="btnsave" value =""style = "display:none;"onclick="saveTitles()"/>
 											<input id ="titleCancelBut" type="button" class="btncancel" value =""style = "display:none;"onclick="canTitle()"/>
 										</td>

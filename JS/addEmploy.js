@@ -8,6 +8,8 @@ var addEmpBut=document.getElementById("addEmpBut");
 var updEmpButton=document.getElementById("updEmpBut");
 var canEmpUpd=document.getElementById("canEmpBut");
 var empID;
+
+//Sets the max dates of the date fields to be today
 var today = new Date(); 
 var dd = today.getDate(); 
 var mm = today.getMonth()+1; //January is 0! 
@@ -25,12 +27,14 @@ var ending=document.getElementById("endDate1");
 starting.setAttribute("max", today); 
 ending.setAttribute("max", today); 
 
- 
+//This listener updates the min value of the ending date to be the starting date
 starting.addEventListener('change',function(ev) 
 { 
     ending.setAttribute("min", starting.value); 
 },false) 
 
+
+//Restricts the length of this field
 document.getElementById('title1').addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
@@ -45,7 +49,7 @@ document.getElementById('title1').addEventListener('keydown',function(ev)
         }
 
 },false)
-
+//Restricts the length of this field
 document.getElementById('manager1').addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
@@ -64,7 +68,7 @@ document.getElementById('manager1').addEventListener('keydown',function(ev)
         }
 
 },false)
-
+//Restricts the length of this field
 document.getElementById('org1').addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
@@ -79,7 +83,7 @@ document.getElementById('org1').addEventListener('keydown',function(ev)
         }
 
 },false)
-
+//Restricts the length of this field
 document.getElementById('tasks1').addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
@@ -94,7 +98,7 @@ document.getElementById('tasks1').addEventListener('keydown',function(ev)
         }
 
 },false)
-
+//Restricts the length of this field and limits it to only numbers
 document.getElementById('managerPhone1').addEventListener('keydown', function(ev) {
     var key   = ev.keyCode;
     if(!(key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
@@ -175,6 +179,8 @@ function reset()
 
 }
 
+
+//Initiates the AJAX Request that will retrieve the users employment histroy
 function loadEmloyment()
 {
     httLoadEmploy = new XMLHttpRequest()
@@ -182,6 +188,9 @@ function loadEmloyment()
     httLoadEmploy.onload=listEmployment;
     httLoadEmploy.send();
 }
+
+
+//Lists the users employment history
 function listEmployment(ev)
 {
     employList = JSON.parse(httLoadEmploy.responseText);
@@ -247,6 +256,8 @@ function listEmployment(ev)
 	}	
 }
 
+
+//Resets the fields
 function resettter()
 {
     addEmpBut.style.display="block";
@@ -255,6 +266,8 @@ function resettter()
      reset();
 }
 
+
+//Initiates the ajax request that deletes the employment
 function DeleteEmploy(delEmpID)
 {
     httDeleteEmploy=new XMLHttpRequest();
@@ -263,6 +276,8 @@ function DeleteEmploy(delEmpID)
     httDeleteEmploy.send();
 }
 
+
+//Shows whether the employment was successfully deleted
 function listEmployDelete(ev)
 {
     alert(JSON.parse(httDeleteEmploy.responseText));
@@ -270,6 +285,7 @@ function listEmployDelete(ev)
 
 }
 
+//Puts the employment data in the data fields and showing the buttons to allow users to update
 function updateEmploy(id)
 {
     addEmpBut.style.display="none";
@@ -318,6 +334,8 @@ function updateEmploy(id)
 
 }
 
+
+//Grabs the new values and update the employment
 function updEmp()
 {
     var empIDValue = empID;
@@ -347,6 +365,8 @@ function updEmp()
     httUpdateEmploy.send(JSON.stringify(hUpdID));
 
 }
+
+//Show results
 
 function showUpdEmp(ev)
 {
