@@ -62,10 +62,7 @@ document.getElementById('manager1').addEventListener('keydown',function(ev)
                 alert("Can't enter more than 50 characters");
             }
         }
-       /* if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
-        {
-            ev.preventDefault();
-        }*/
+
 
 },false)
 //Restricts the length of this field
@@ -106,7 +103,8 @@ document.getElementById('managerPhone1').addEventListener('keydown', function(ev
             ev.preventDefault();
         }
     if(document.getElementById('managerPhone1').value.length>13)
-        {
+        {  
+            alert("Whatup");
             if(key!=8&&key!=46)
                 {
             ev.preventDefault();
@@ -129,8 +127,12 @@ function addEmp()
     var taskArr = document.getElementById("tasks1").value;
     if(endArr<startArr)
         {
-            alert("Start Date can't be before")
+            alert("Start Date can't be after end date")
         }
+    if(endArr<document.getElementById("endDate1").max)
+    {
+        alert("Cant be a future date")
+    }
         else{
     document.getElementById('msg1').innerHTML='';
     httEmploy = new XMLHttpRequest();

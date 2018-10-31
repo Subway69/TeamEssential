@@ -7,6 +7,7 @@ var updDays=document.getElementById('dayUpd');
 var updMonths=document.getElementById('monthUpd');
 var updYearss=document.getElementById('yearUpd');
 var updAddresss=document.getElementById('addressUpd');
+var updEmails=document.getElementById('emailUpd');
 
 var PTitle=document.getElementById('titleP');
 var PFName=document.getElementById('fNameP');
@@ -15,6 +16,7 @@ var PLName=document.getElementById('lNameP');
 var PPhone=document.getElementById('phoneP');
 var PDOB=document.getElementById('dobP');
 var PAddress=document.getElementById('addressP');
+var PEmail=document.getElementById('emailP');
 
 var butTitle=document.getElementById('titleUpdBut');
 var butFName=document.getElementById('fNameUpdBut');
@@ -23,6 +25,7 @@ var butLName=document.getElementById('lNameUpdBut');
 var butPhone=document.getElementById('phoneUpdBut');
 var butDOB=document.getElementById('dobUpdBut');
 var butAddress=document.getElementById('addressUpdBut');
+var butEmail=document.getElementById('emailUpdBut');
 
 
 var saveTitle=document.getElementById('titleSaveBut');
@@ -32,6 +35,7 @@ var saveLName=document.getElementById('lNameSaveBut');
 var savePhone=document.getElementById('phoneSaveBut');
 var saveDOB=document.getElementById('dobSaveBut');
 var saveAddress=document.getElementById('addressSaveBut');
+var saveEmail=document.getElementById('emailSaveBut');
 
 var cancelTitle=document.getElementById('titleCancelBut');
 var cancelFName=document.getElementById('fNameCancelBut');
@@ -40,6 +44,7 @@ var cancelLName=document.getElementById('lNameCancelBut');
 var cancelPhone=document.getElementById('phoneCancelBut');
 var cancelDOB=document.getElementById('dobCancelBut');
 var cancelAddress=document.getElementById('addressCancelBut');
+var cancelEmail=document.getElementById('emailCancelBut');
 
 
 
@@ -121,6 +126,7 @@ var httPhone;
 var httAddress;
 var httDOB;
 var httTitle;
+
 
 var contactList;
 var selMonth;
