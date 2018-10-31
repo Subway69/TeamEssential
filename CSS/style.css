@@ -390,8 +390,8 @@
 	margin-top:20px;
 	
 	border-top: 3px solid black;
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000), to(transparent));
-	background-image: -webkit-linear-gradient(#000, transparent);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(##1e284b), to(transparent));
+	background-image: -webkit-linear-gradient(##1e284b, transparent);
 	background-image:
 		-moz-linear-gradient(#000, transparent),
 		-moz-linear-gradient(#000, transparent);

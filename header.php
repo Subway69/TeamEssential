@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="CSS/bootstrap.css"> 
+	<!--<link rel="stylesheet" href="CSS/bootstrap.css"> -->
 	<link rel="stylesheet" href="CSS/master.css">
     <link rel="stylesheet" href="CSS/style.css">
 	<link rel="stylesheet" href="CSS/class numbered.css">
@@ -21,14 +21,6 @@
  //session_start();
  //require_once "default.php";
  ?>
- 
- 		<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-			<symbol id="out" viewBox="0 0 24 24"> 
-					<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-					<polyline points="16 17 21 12 16 7"></polyline>
-					<line x1="21" y1="12" x2="9" y2="12"></line>
-			</symbol>
-		</svg>
 	<nav class="navbar">
 		<div class="navbar-container">
 		
