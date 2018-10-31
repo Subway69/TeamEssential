@@ -62,10 +62,10 @@ document.getElementById('manager1').addEventListener('keydown',function(ev)
                 alert("Can't enter more than 50 characters");
             }
         }
-        if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+       /* if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
         {
             ev.preventDefault();
-        }
+        }*/
 
 },false)
 //Restricts the length of this field

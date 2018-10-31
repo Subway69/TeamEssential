@@ -135,7 +135,7 @@ function register()
     httRegister.send(JSON.stringify(reg));
 }
 if(!bachelor.checked){
-alert("Please ensure you have a minimum of  a bachelor degree")
+alert("A minimum of a Bachelor's Degree is required to progress")
 }
 	
 

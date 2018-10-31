@@ -170,7 +170,7 @@ $router->register("POST",'#^/register/#', function($params)
         }
         if($i>0)
         {
-            $text="email already exists";
+            $text="Email already Exists";
              }
         else
         {
