@@ -133,10 +133,10 @@ require_once "PHP/default.php";
 								<input id="title1" placeholder="Position Title" required="" class="input" />
 								<input id="org1" placeholder="Department" required="" class="input" />
 								
-								<!--<div class="form-group">-->
 								<input id="manager1" placeholder="Manager's Name" required="" class="input" />
-								<input type="number" min="0" max="12" id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
-								<!--</div>-->
+								<input type="number" min="0" max="10" id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input"
+										pattern="[0-9]*" inputmode="numeric"/>
+										 
 								
 								<input id = "startDate1" type = "text"onfocus="(this.type='date')" placeholder="Start Date" required="" max="2000-13-13"class="input"/>
 								<input id = "endDate1" type = "text" onfocus="(this.type='date')"placeholder="End Date (Optional)" min = "1900-02-03"max="2000-13-13"class="input"/>
