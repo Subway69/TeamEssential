@@ -30,7 +30,7 @@ define('SITE_URL', 'http://localhost/gitkraken/teamessential/');
 	{
 		return isset($_SESSION['username']);
 	}
-		function logout() 
+	function logout() 
 	{
 		unset($_SESSION['username']);
 		unset($_SESSION['name']);

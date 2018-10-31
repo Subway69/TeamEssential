@@ -300,12 +300,12 @@ require_once "PHP/default.php";
 									<tr>
 										<td>Email </td>
 										<td>
-											<input id ="emailUpd" class = "input" type="number"style = "display:none;"/>
-											<p id= "emailP"style = "display:block;">Phone Number </p>
+											<input id ="emailUpd" class = "input" type="text"style = "display:none;"/>
+											<p id= "emailP"style = "display:block;">Email </p>
 										</td>
 										<td>
 											<input id ="emailUpdBut" type="button" class="btnupdate"style = "display:block;"onclick="updEmail()"/> 
-											<input id ="emailSaveBut"type="button" class="btnsave"style = "display:none;"onclick="saveEmail()"/>
+											<input id ="emailSaveBut"type="button" class="btnsave"style = "display:none;"onclick="saveEmails()"/>
 											<input id ="emailCancelBut"type="button" class="btncancel"style = "display:none;"onclick="canEmail()"/>
 										</td>
 									</tr>

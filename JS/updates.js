@@ -33,20 +33,21 @@ function updatePass()
  {
      alert("New passwords don't match");
  }
- else{
-    var userID= document.getElementById("passUser").value;
-    httPass = new XMLHttpRequest();
-    httPass.open("PUT","Account/updatePassword/",true);
-    var pass ={};
-	pass.cPass = curPass;
-    pass.pID = newPass;
-    pass.confPass= confirmPass;
-	
-    pass.uID=userID;
-    httPass.onload = passUpdate;
+ else
+    {
+        var userID= document.getElementById("passUser").value;
+        httPass = new XMLHttpRequest();
+        httPass.open("PUT","Account/updatePassword/",true);
+        var pass ={};
+        pass.cPass = curPass;
+        pass.pID = newPass;
+        pass.confPass= confirmPass;
+        
+        pass.uID=userID;
+        httPass.onload = passUpdate;
 
-    httPass.send(JSON.stringify(pass));
- }
+        httPass.send(JSON.stringify(pass));
+    }
 }
 
 function deleteAccount(delAccID)

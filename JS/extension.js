@@ -17,46 +17,46 @@ function listFiles()
 	userFileList = JSON.parse(httLoadFiles.responseText);
 	var fileTable =document.getElementById("fileTabel"); 
 	for(var i = 0;i<userFileList.length;i++)
-		{
-			var fileRow = document.createElement("tr");
-			var nameCol =document.createElement("td");
-			var downCol =document.createElement("td");
-			var delCol =document.createElement("td");
-			nameCol.innerHTML=userFileList[i].file_name;
+	{
+		var fileRow = document.createElement("tr");
+		var nameCol =document.createElement("td");
+		var downCol =document.createElement("td");
+		var delCol =document.createElement("td");
+		nameCol.innerHTML=userFileList[i].file_name;
 
-			nameCol.setAttribute("class",'tdfilename');
-			downCol.setAttribute("class",'tdbuttons');
-			delCol.setAttribute("class",'tdbuttons');
+		nameCol.setAttribute("class",'tdfilename');
+		downCol.setAttribute("class",'tdbuttons');
+		delCol.setAttribute("class",'tdbuttons');
 
-			var downBut = document.createElement('button');
-			downBut.setAttribute("class","btnfile");
-			var aDown = document.createElement("a");
-			aDown.setAttribute("class","download");
-			aDown.setAttribute("download",userFileList[i].file_name);
-			aDown.setAttribute("href",userFileList[i].file_location);
+		var downBut = document.createElement('button');
+		downBut.setAttribute("class","btnfile");
+		var aDown = document.createElement("a");
+		aDown.setAttribute("class","download");
+		aDown.setAttribute("download",userFileList[i].file_name);
+		aDown.setAttribute("href",userFileList[i].file_location);
 
-			downBut.appendChild(aDown);
-			
-			var delBut = document.createElement('button');
-			delBut.setAttribute("id",userFileList[i].file_id);
-			delBut.setAttribute("onClick","deleteFile(this.id)");
-			var aDel = document.createElement("a");
-			aDel.setAttribute("class","delete");
-			delBut.setAttribute("class","btnfile");
-			delBut.appendChild(aDel);
+		downBut.appendChild(aDown);
 		
-			
-			downCol.appendChild(downBut);
-			delCol.appendChild(delBut);
+		var delBut = document.createElement('button');
+		delBut.setAttribute("id",userFileList[i].file_id);
+		delBut.setAttribute("onClick","deleteFile(this.id)");
+		var aDel = document.createElement("a");
+		aDel.setAttribute("class","delete");
+		delBut.setAttribute("class","btnfile");
+		delBut.appendChild(aDel);
+	
+		
+		downCol.appendChild(downBut);
+		delCol.appendChild(delBut);
 
-			fileRow.appendChild(nameCol);
-			fileRow.appendChild(downCol);
-			fileRow.appendChild(delCol);
+		fileRow.appendChild(nameCol);
+		fileRow.appendChild(downCol);
+		fileRow.appendChild(delCol);
 
-			fileTable.appendChild(fileRow);
+		fileTable.appendChild(fileRow);
 
 
-		}
+	}
 }
 function deleteFile(gg)
 {
@@ -72,34 +72,36 @@ function showDelete(ev)
 }
 function resetTable()
 {
-        var myNodeSelectss = document.getElementById("fileTabel");
-        while (myNodeSelectss.firstChild) 
-        {
-            myNodeSelectss.removeChild(myNodeSelectss.firstChild);
-		}
+	var myNodeSelectss = document.getElementById("fileTabel");
+	while (myNodeSelectss.firstChild) 
+	{
+		myNodeSelectss.removeChild(myNodeSelectss.firstChild);
+	}
 }
 function fileValidation()
 {
 	if(document.getElementById('file').files.length>0)
 	{
 		var fileInput = document.getElementById('file');
-    var filePath = fileInput.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf|\.mp3|\.doc|\.docx|\.3gp|\.mkv|\.mov|\.mp4|\.xlsx|\.ppt|\.pptx)$/i;
-    if(!allowedExtensions.exec(filePath))
-	{
-        alert('This file format is not supported');
-        fileInput.value = '';
-        return false;
-    }
-	else
-	{if(document.getElementById('file').files[0].size>5000000)
-		{alert('file size cannot exceed 50 mb');
-	  return false;
+		var filePath = fileInput.value;
+		var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf|\.mp3|\.doc|\.docx|\.3gp|\.mkv|\.mov|\.mp4|\.xlsx|\.ppt|\.pptx)$/i;
+		if(!allowedExtensions.exec(filePath))
+		{
+			alert('This file format is not supported');
+			fileInput.value = '';
+			return false;
 		}
 		else
-			document.getElementById('upload').disabled=false;
-		
-	}
+		{
+			if(document.getElementById('file').files[0].size>5000000)
+			{
+				alert('file size cannot exceed 50 mb');
+				return false;
+			}
+			else
+				document.getElementById('upload').disabled=false;
+			
+		}
 		
 	}
     
@@ -109,21 +111,15 @@ var httFile;
 var form = document.getElementById('file-form');
 var fileSelect = document.getElementById('file');
 var uploadButton = document.getElementById('upload');
-form.onsubmit = function(event) {
+form.onsubmit = function(event) 
+{
 	uploadButton.innerHTML = 'Uploading...';
 	event.preventDefault();
 	var formData = new FormData();
 
 	var files = fileSelect.files;
-	// Loop through each of the selected files.
-for (var i = 0; i < files.length; i++) {
- // var file = files[i];
 
-
-  // Add the file to the request.
- // formData.append('filetest', file, file.name);
-}
-formData.append('filetest',files[0],files[0].name);
+	formData.append('filetest',files[0],files[0].name);
 	httFile=new XMLHttpRequest();
 	httFile.open('POST','Account/uploadFile/',true);
 	httFile.onload = fileCheck;

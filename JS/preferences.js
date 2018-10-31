@@ -67,22 +67,22 @@ function setRadios(ev)
 {
     var prefList= JSON.parse(httPref.responseText);
     if(prefList.avail==1)
-        {
-            fullTime.checked=true;
-        }
-        if(prefList.avail==0)
-        {
-            partTime.checked=true;
-        }
+    {
+        fullTime.checked=true;
+    }
+    if(prefList.avail==0)
+    {
+        partTime.checked=true;
+    }
 
-        if(prefList.uniWork==1)
-        {
-            yesFed.checked=true;
-        }
-        if(prefList.uniWork==0)
-        {
-            noFed.checked=true;
-        }
+    if(prefList.uniWork==1)
+    {
+        yesFed.checked=true;
+    }
+    if(prefList.uniWork==0)
+    {
+        noFed.checked=true;
+    }
 
 }
 

@@ -27,13 +27,13 @@ degName.addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (degName.value.length>100)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 100 charatcers");
-            }
+        {
+            ev.preventDefault();
+            alert("Can't enter more than 100 charatcers");
         }
+    }
 
 },false)
 
@@ -42,12 +42,14 @@ var todays = new Date();
 var dds = todays.getDate(); 
 var mms = todays.getMonth()+1; //January is 0! 
 var yyyys = todays.getFullYear(); 
- if(dds<10){ 
-        dd='0'+dd 
-    }  
-    if(mms<10){ 
-        mms='0'+mms 
-    }  
+if(dds<10)
+{ 
+dd='0'+dd 
+}  
+if(mms<10)
+{ 
+    mms='0'+mms 
+}  
  
 todays = yyyys+'-'+mms+'-'+dds; 
 document.getElementById("date0").setAttribute("max", todays);
@@ -121,20 +123,20 @@ function addQual()
     {
         alert("Cant enter a future data")
     }
-    else{
+    else
+    {
 		document.getElementById('msg').innerHTML='';
-		
-		//Sends the inputs to the backend to be added
-    httEducation = new XMLHttpRequest();
-    httEducation.open("POST","Education/addEducation/",true);
-    httEducation.onload=showEducation;
-    var hID = {};
-    hID.typeData= typeArr; 
-    hID.degData=degArr;
-    hID.uniData=uniArr;
-    hID.dateData=dateArr;
-    hID.studyData=studyArr;
-    httEducation.send(JSON.stringify(hID));  
+            //Sends the inputs to the backend to be added
+        httEducation = new XMLHttpRequest();
+        httEducation.open("POST","Education/addEducation/",true);
+        httEducation.onload=showEducation;
+        var hID = {};
+        hID.typeData= typeArr; 
+        hID.degData=degArr;
+        hID.uniData=uniArr;
+        hID.dateData=dateArr;
+        hID.studyData=studyArr;
+        httEducation.send(JSON.stringify(hID));  
     }
 	
 				 
@@ -145,7 +147,6 @@ function addQual()
 function showEducation(ev)
 {
     y++;
-    
     alert(JSON.parse(httEducation.responseText));
     resetEducation();
 }
@@ -194,14 +195,13 @@ function listEducation()
 {
     qualList=JSON.parse(httLoadEducation.responseText);
     var listSize=qualList.length;
-	
 	var div = document.getElementById("showEducation");
-	
-	if(listSize==0){
+    if(listSize==0)
+    {
 		div.style.display="none";
 	}
-	else{
-	
+    else
+    {
 		for(var i=0;i<listSize;i++)
 		{
 			var row = document.createElement("tr");
@@ -239,8 +239,6 @@ function listEducation()
 			uniHidden.setAttribute("id", "univ"+i);
 			uniHidden.setAttribute("value",qualList[i].University_id);
 
-			
-			
 			var updUniBut = document.createElement("input");
 			updUniBut.setAttribute("type","button");
 			updUniBut.setAttribute("class","button btnupdate");
@@ -275,9 +273,9 @@ function resetter()
 {
     addQualBut.style.display="block";
     updQualButton.style.display="none";
-     canQualUpd.style.display="none";
-     document.getElementById("date0").style.display="none";
-     resetEducation();
+    canQualUpd.style.display="none";
+    document.getElementById("date0").style.display="none";
+    resetEducation();
 }
 
 
@@ -295,7 +293,6 @@ function listDelete(ev)
 {
     alert(JSON.parse(httDeleteEducation.responseText));
     resetter();
-
 }
 
 //This method puts the details of the educaiton you want to update into the fields and shows the updates button
@@ -303,7 +300,7 @@ function updateQualification(ids)
 {
     addQualBut.style.display="none";
     updQualButton.style.display="block";
-     canQualUpd.style.display="block";
+    canQualUpd.style.display="block";
 
 
      typeUpd = document.getElementById("type0");
@@ -319,7 +316,6 @@ function updateQualification(ids)
      {
         typeUpd.getElementsByTagName('option')[3].selected='selected';
      }    
-
      degUpd=document.getElementById("degree0");
      uniUpd=document.getElementById("uni0");
      dateUpd=studyArr=document.getElementById("date0");
@@ -328,41 +324,36 @@ function updateQualification(ids)
      {
         studyUpd.getElementsByTagName('option')[1].selected='selected';
         document.getElementById("date0").style.display="none";
-
     }
-     if(qualList[ids].finished==1)
-     {
+    if(qualList[ids].finished==1)
+    {
         //studyUpd.value = "Completed";
         studyUpd.getElementsByTagName('option')[2].selected='selected';
         document.getElementById("date0").style.display="block";
         dateUpd.value=qualList[ids].end_date;
     }
 
-     degUpd.value=qualList[ids].qualification_name;
-     uniUpd.value=qualList[ids].University_name;
-    qualId=document.getElementById("edu"+ids).value;
-    
-    
-
-     
-    }
+    degUpd.value=qualList[ids].qualification_name;
+    uniUpd.value=qualList[ids].University_name;
+    qualId=document.getElementById("edu"+ids).value; 
+}
 
     //This funciton retrieves the new vlaues form the fields and sends an ajax request to the backend
-    function updEdu()
+function updEdu()
+{
+    var typeUpdate = document.getElementById("type0").value;
+    var degUpdate= document.getElementById("degree0").value;
+    var uniUpdate= document.getElementById("uni0").value;
+    var dateUpdate=document.getElementById("date0").value;
+    var studyUpdate=document.getElementById("study0").value;
+                                
+    //Sends the inputs to the backend to be added
+    if(typeUpdate==""||degUpdate==""||uniUpdate==""||studyUpdate=="")
     {
-        var typeUpdate = document.getElementById("type0").value;
-        var degUpdate= document.getElementById("degree0").value;
-        var uniUpdate= document.getElementById("uni0").value;
-        var dateUpdate=document.getElementById("date0").value;
-        var studyUpdate=document.getElementById("study0").value;
-                                    
-        //Sends the inputs to the backend to be added
-       //Sends the inputs to the backend to be added
-		if(typeUpdate==""||degUpdate==""||uniUpdate==""||studyUpdate=="")
-		{
-			alert("Please ensure you complete all fields.");
-		}
-		else{
+        alert("Please ensure you complete all fields.");
+    }
+    else
+    {
         httUpdateEducation = new XMLHttpRequest();
         httUpdateEducation.open("PUT","Education/updateEducation/",true);
         httUpdateEducation.onload=showEducationUpdate;
@@ -375,8 +366,8 @@ function updateQualification(ids)
         hIDUpdate.dateData=dateUpdate;
         hIDUpdate.studyData=studyUpdate;
         httUpdateEducation.send(JSON.stringify(hIDUpdate)); 
-		} 
-    }
+    } 
+}
 
 
     //Lets the user know if update was successful or not

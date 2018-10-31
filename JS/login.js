@@ -1,5 +1,6 @@
 var httLogin;
 var httRegister;
+var httRegisterEmail;
 var titles= document.getElementById("tTitle");
 var fNames= document.getElementById("tFirstName");
 var lNames = document.getElementById("tLastName");
@@ -30,25 +31,6 @@ emails.addEventListener('change',function(ev)
     validate();
 },false);
 
-/*emails.addEventListener("keydown",function(ev)
-{
-    var eKey=ev.keyCode;
-    console.log(eKey);
-    if(!atfound||eKey==50)
-    {
-    if(eKey==50)
-    {
-        atcount=at;
-        atfound = true;
-    }
-    else{
-        at++;
-    }
-}
-else{
-    ev.preventDefault();
-}
-},false);*/
 pass1s.addEventListener('change',function(ev)
 {
     validate();
@@ -76,16 +58,14 @@ function validate()
 	
 	if(titlea==''||fNamea==''||lNamea==''||emaila==''||pass1a==''||pass2a==''|| pass1a!=pass2a)
     {
-
         document.getElementById("sub").disabled=true;
+        document.getElementById("sub3").disabled=true;
     }
-	else{  
-		document.getElementById("sub").disabled=false;
-    }
-	
-	
-	
-	
+    else
+    {  
+        document.getElementById("sub").disabled=false;
+        document.getElementById("sub3").disabled=false;
+    }	
 }
 function register()
 {
@@ -117,29 +97,86 @@ function register()
         unis=0;
     }
 
-  if(bachelor.checked)
-{
-    httRegister = new XMLHttpRequest();
-    httRegister.open("POST","Account/register/",true);
-    httRegister.onload = registerResponse;
-    var reg = {};
-	
-    reg.title=title;
-    reg.fName=fName;
-    reg.lName=lName;
-    reg.email=email;
-    reg.pass1=pass1;
-    reg.pass2=pass2;
-  //  reg.bach = bach;
-    reg.uni = unis;
-    httRegister.send(JSON.stringify(reg));
-}
-if(!bachelor.checked){
-alert("A minimum of a Bachelor's Degree is required to progress")
-}
+    if(bachelor.checked)
+    {
+        httRegister = new XMLHttpRequest();
+        httRegister.open("POST","Account/register/",true);
+        httRegister.onload = registerResponse;
+        var reg = {};
+        
+        reg.title=title;
+        reg.fName=fName;
+        reg.lName=lName;
+        reg.email=email;
+        reg.pass1=pass1;
+        reg.pass2=pass2;
+    //  reg.bach = bach;
+        reg.uni = unis;
+        httRegister.send(JSON.stringify(reg));
+    }
+    if(!bachelor.checked)
+    {
+        alert("A minimum of a Bachelor's Degree is required to progress")
+    }
 	
 
 }
+function registerWithEmail()
+{
+    var title= document.getElementById("tTitle").value;
+    var fName= document.getElementById("tFirstName").value;
+    var lName = document.getElementById("tLastName").value;
+    var email = document.getElementById("tEmail").value;
+    var pass1 = document.getElementById("regPassword").value;
+    var pass2 = document.getElementById("tConfirm").value;
+    var bachelor= document.getElementById("bachelorCheck");
+    var uniWork=document.getElementById("uniCheck");
+    var bach=0;
+    var unis;
+    if(bachelor.checked)
+    {
+        bach = 1;
+    }
+    if(!bachelor.checked)
+    {
+        bach = 0;
+    }
+    if(uniWork.checked)
+    {
+        unis=1;
+      
+    }
+    if(!uniWork.checked)
+    {
+        unis=0;
+    }
+
+    if(bachelor.checked)
+    {
+        httRegisterEmail = new XMLHttpRequest();
+        httRegisterEmail.open("POST","Account/registerWithEmail/",true);
+        httRegisterEmail.onload = registerEmailResponse;
+        var reg = {};
+        
+        reg.title=title;
+        reg.fName=fName;
+        reg.lName=lName;
+        reg.email=email;
+        reg.pass1=pass1;
+        reg.pass2=pass2;
+
+        reg.uni = unis;
+
+        httRegisterEmail.send(JSON.stringify(reg));
+    }
+    if(!bachelor.checked)
+    {
+        alert("A minimum of a Bachelor's Degree is required to progress")
+    }
+	
+
+}
+
 
 function registerResponse(ev)
 {
@@ -154,28 +191,35 @@ function registerResponse(ev)
         alert(regRes);
     }
 }
+function registerEmailResponse(ev)
+{
+    var regRes = JSON.parse(httRegisterEmail.responseText);
+    alert(regRes);
+
+}
 function login()
 {
     var userName= document.getElementById("tUsername").value;
     
     var passWord=  document.getElementById("tPassword").value;
-        if(userName=='')
-        {
-            alert("PLease enter an email address");
-        }
+    if(userName=='')
+    {
+        alert("Please enter an email address");
+    }
     if(passWord=='')
-        {
-            alert("Please enter a password");
-        }
-   if(passWord!=''&&userName!=''){
-    httLogin=new XMLHttpRequest();
-    httLogin.open("POST","Account/login/",true);
-  
-    httLogin.onload=loginResponse;
-    var log={};
-    log.user=userName;
-    log.pass=passWord;
-    httLogin.send(JSON.stringify(log));
+    {
+        alert("Please enter a password");
+    }
+    if(passWord!=''&&userName!='')
+    {
+        httLogin=new XMLHttpRequest();
+        httLogin.open("POST","Account/login/",true);
+    
+        httLogin.onload=loginResponse;
+        var log={};
+        log.user=userName;
+        log.pass=passWord;
+        httLogin.send(JSON.stringify(log));
    }
 
 }
@@ -185,8 +229,7 @@ function loginResponse(ev)
 {
     var res = JSON.parse(httLogin.responseText);
     if (res=="success")
-    {
-		
+    {		
         document.getElementById("login").submit();  
     }
     else

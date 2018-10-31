@@ -510,9 +510,9 @@ $router->register("PUT",'#^/updateWork/(\d+)#', function($params)
 {
     session_start();
     require_once "default.php";
-$req = file_get_contents('php://input');
-//Converts the contents into a PHP Object
-$req_obj = json_decode($req);
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
 
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     $text="";
@@ -542,13 +542,13 @@ $router->register("GET",'#^/getContact/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "SELECT title, first_name,middle_name, last_name,address,phone_number,day_dob,month_dob,year_dob FROM Users WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"d",$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "SELECT title, email, first_name,middle_name, last_name,address,phone_number,day_dob,month_dob,year_dob FROM Users WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"d",$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
 
     $row=mysqli_fetch_assoc($results);
 
@@ -570,24 +570,24 @@ $router->register("PUT",'#^/updateTitle/#', function($params)
     $req_obj = json_decode($req);
     $fname = $req_obj->value;
 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "UPDATE Users SET title =? WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $row="";
-        if($success)
-        {
-            $query1= "SELECT title FROM Users WHERE user_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"d",$user_id);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "UPDATE Users SET title =? WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    $row="";
+    if($success)
+    {
+        $query1= "SELECT title FROM Users WHERE user_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"d",$user_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
 
-            $row=mysqli_fetch_assoc($results1);
-        }
+        $row=mysqli_fetch_assoc($results1);
+    }
             
 
   //  $json_result[]=$row;
@@ -608,24 +608,24 @@ $router->register("PUT",'#^/updateFirstName/#', function($params)
     $req_obj = json_decode($req);
     $fname = htmlentities($req_obj->value);
 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "UPDATE Users SET first_name =? WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $row="";
-        if($success)
-        {
-            $query1= "SELECT first_name FROM Users WHERE user_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"d",$user_id);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "UPDATE Users SET first_name =? WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    $row="";
+    if($success)
+    {
+        $query1= "SELECT first_name FROM Users WHERE user_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"d",$user_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
 
-            $row=mysqli_fetch_assoc($results1);
-        }
+        $row=mysqli_fetch_assoc($results1);
+    }
             
 
   //  $json_result[]=$row;
@@ -645,23 +645,23 @@ $router->register("PUT",'#^/updateMiddleName/#', function($params)
     $req_obj = json_decode($req);
     $fname = htmlentities($req_obj->value);
 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "UPDATE Users SET middle_name =? WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $row="";
-        if($success)
-        {
-            $query1= "SELECT middle_name FROM Users WHERE user_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"d",$user_id);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
-            $row=mysqli_fetch_assoc($results1);
-        }
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "UPDATE Users SET middle_name =? WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    $row="";
+    if($success)
+    {
+        $query1= "SELECT middle_name FROM Users WHERE user_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"d",$user_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
+        $row=mysqli_fetch_assoc($results1);
+    }
             
 
   //  $json_result[]=$row;
@@ -681,23 +681,23 @@ $router->register("PUT",'#^/updateLastName/#', function($params)
     $req_obj = json_decode($req);
     $fname = htmlentities($req_obj->value);
 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "UPDATE Users SET last_name =? WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $row="";
-        if($success)
-        {
-            $query1= "SELECT last_name FROM Users WHERE user_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"d",$user_id);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "UPDATE Users SET last_name =? WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    $row="";
+    if($success)
+    {
+        $query1= "SELECT last_name FROM Users WHERE user_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"d",$user_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
 
-            $row=mysqli_fetch_assoc($results1);
+        $row=mysqli_fetch_assoc($results1);
         }
             
 
@@ -823,7 +823,147 @@ $router->register("PUT",'#^/updateDateOfBirth/#', function($params)
     //Encodes and sends it back
     echo json_encode($row);
 });
+$router->register("POST",'#^/updateEmail/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $newEmail = $req_obj->value;
+    $text = "";
+            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
+    $id = logged_in_user();
+    $message ="";
+    $query = "UPDATE Users SET email=?,status ='pending' WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sd", $newEmail,$id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    //$last_id = mysqli_insert_id($conn);
+    if($success)
+    {
+        loginEmail($newEmail);
+        $message = '<html><head>
+                <title>Email Verification</title>
+                </head>
+                <body>';
+        $message .= '<h1>Hi ' . getName(). '!</h1>';
+        $message .= '<p>You have submitted a request to update your email. Please click the below link to verify your new email address <a href="'.SITE_URL.'activate.php?id=' . base64_encode($id) . '">CLICK TO ACTIVATE YOUR ACCOUNT</a>';
+        $message .= "</body></html>";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        mail($newEmail,"Welcome to the Federation University Research Register sent via php mail",$message,$headers);
+        $text="Email been sent to Email Address: ".$newEmail;
+
+    }
+
+  //  $json_result[]=$row;
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+});
+$router->register("POST",'#^/registerWithEmail/#', function($params) 
+{
+    session_start();
+    require_once "default.php";
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $text="";
+        $title = $req_obj->title;
+        $last = $req_obj->lName;
+        $first = $req_obj->fName;
+
+        $email = $req_obj->email;
+        $message ="";
+
+        $password = $req_obj->pass1;
+        $cPassword=$req_obj->pass2;
+        $work =$req_obj->uni;
+        $perm = 0;
+        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+        $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
+        $hashed_password = crypt($password, $salt);
+        $hashed_conf_password = crypt($cPassword, $salt);
+        $q_e="SELECT * FROM Users WHERE email=?";
+        $stmt3 = mysqli_prepare($conn, $q_e);
+        mysqli_stmt_bind_param($stmt3, "s",$email);
+        $success1 = mysqli_stmt_execute($stmt3);
+        $results1= mysqli_stmt_get_result($stmt3);
+
+        $i=0;
+       
+        while($row = mysqli_fetch_assoc($results1))
+        {
+            $i++;
+        }
+        if($i>0)
+        {
+            $text="Email already exists.";
+             }
+        else
+        {
+            if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
+            {
+                $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
+            } 
+            else 
+            {
+                if (strcmp($hashed_password, $hashed_conf_password) == 0) 
+                {
+                    
+                    $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork) VALUES (?,?,?,?,?,?,?);";
+                    $stmt = mysqli_prepare($conn, $query);
+                    mysqli_stmt_bind_param($stmt, "sssssdd", $title, $first, $last, $email, $hashed_password, $perm, $work);
+                    $success = mysqli_stmt_execute($stmt);
+                    $results = mysqli_stmt_get_result($stmt);
+                    $last_id = mysqli_insert_id($conn);
+                    login($last_id);
+                    loginName($first);
+                    loginEmail($email);
+                    setPermission($perm);
+                    setWork($work);
+                
+                    if ($success) 
+                    {
+                                $message = '<html><head>
+                                        <title>Email Verification</title>
+                                        </head>
+                                        <body>';
+                                $message .= '<h1>Hi ' . $first ." ".$last . '!</h1>';
+                                $message .= '<p>Welcome to the Federation University Research Register.\n Please click the below link to verify your email address <a href="'.SITE_URL.'activate.php?id=' . base64_encode($last_id) . '">CLICK TO ACTIVATE YOUR ACCOUNT</a>';
+                                $message .= "</body></html>";
+                                $headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                                mail($email,"Welcome to the Federation University Research Register sent via php mail",$message,$headers);
+                                $text="Email been sent to email address";
+
+                    }
+                    else{
+                        $text="Registration Failed";
+                    }				
+                }
+                else 
+                {
+                    $text= "password don't match";
+                   
+                } 
+            }
+        }
+    
+    
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
+});
 $router->register("POST",'#^/uploadFile/#', function($params) 
 {
     session_start();

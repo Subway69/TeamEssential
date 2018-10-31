@@ -54,17 +54,17 @@ updFNames.addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (updFNames.value.length>20)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 20 characters");
-            }
-        }
-        if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
         {
             ev.preventDefault();
+            alert("Can't enter more than 20 characters");
         }
+    }
+    if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+    {
+        ev.preventDefault();
+    }
 
 },false)
 
@@ -73,17 +73,17 @@ updLNames.addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (updLNames.value.length>40)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 40 characters");
-            }
-        }
-    if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
         {
             ev.preventDefault();
+            alert("Can't enter more than 40 characters");
         }
+    }
+    if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+    {
+        ev.preventDefault();
+    }
 },false)
 
 updMNames.addEventListener('keydown',function(ev)
@@ -98,7 +98,7 @@ updMNames.addEventListener('keydown',function(ev)
                 alert("Can't enter more than 40 characters");
             }
         }
-                if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+        if((key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
         {
             ev.preventDefault();
         }
@@ -109,13 +109,13 @@ updMNames.addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (updAddresss.value.length>150)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 100 characters");
-            }
+        {
+            ev.preventDefault();
+            alert("Can't enter more than 100 characters");
         }
+    }
 
 },false)
 var httContacts;
@@ -126,7 +126,7 @@ var httPhone;
 var httAddress;
 var httDOB;
 var httTitle;
-
+var httEmail;
 
 var contactList;
 var selMonth;
@@ -138,26 +138,26 @@ loadContact();
 
     
 document.getElementById("monthUpd").addEventListener("change",function(ev){
-            var myNoder = document.getElementById("dayUpd");
-        while (myNoder.firstChild) 
-        {   
-            console.log("hey");
-            myNoder.removeChild(myNoder.firstChild);
-        }
-        selMonth=updMonths.value;
-        selYear=updYearss.value;
+    var myNoder = document.getElementById("dayUpd");
+    while (myNoder.firstChild) 
+    {   
+        console.log("hey");
+        myNoder.removeChild(myNoder.firstChild);
+    }
+    selMonth=updMonths.value;
+    selYear=updYearss.value;
     loadDays();
 },false)
 
 document.getElementById("yearUpd").addEventListener("change",function(ev){
-            var myNoder = document.getElementById("dayUpd");
-        while (myNoder.firstChild) 
-        {   
-            console.log("hey");
-            myNoder.removeChild(myNoder.firstChild);
-        }
-        selMonth=updMonths.value;
-        selYear=updYearss.value;
+    var myNoder = document.getElementById("dayUpd");
+    while (myNoder.firstChild) 
+    {   
+        console.log("hey");
+        myNoder.removeChild(myNoder.firstChild);
+    }
+    selMonth=updMonths.value;
+    selYear=updYearss.value;
     loadDays();
 },false)
 
@@ -223,6 +223,14 @@ function showContact(ev)
     {
         PAddress.innerHTML=contactList.address;
     }
+    if(contactList.email==null)
+    {
+        PEmail.innerHTML="Not Specified";
+    }
+    else
+    {
+        PEmail.innerHTML=contactList.email;
+    }
     if(contactList.day_dob==null||contactList.month_dob==null||contactList.year_dob==null)
     {
         PDOB.innerHTML="Not Specified";
@@ -232,20 +240,21 @@ function showContact(ev)
         var prefix;
         //contactList.day_dob==1 
         if(contactList.day_dob==1 ||contactList.day_dob==21 ||contactList.day_dob==31 )
-            {
-                prefix = "st"
-            }
+        {
+            prefix = "st"
+        }
         else if(contactList.day_dob==2 ||contactList.day_dob==22)
-            {
-                prefix = "nd"
-            }
+        {
+            prefix = "nd"
+        }
         else if(contactList.day_dob==3 ||contactList.day_dob==23)
-            {
-                prefix = "rd"
-            }
-       else{
-                prefix = "th";
-            }
+        {
+            prefix = "rd"
+        }
+       else
+        {
+            prefix = "th";
+        }
         PDOB.innerHTML=contactList.day_dob + prefix+" of "+contactList.month_dob+" "+contactList.year_dob;
     }
     selMonth=contactList.month_dob;
@@ -261,58 +270,56 @@ function loadDates()
     var year = date.getFullYear();
     loadDays();
 
-        for(var i =year;i>1920;i--)
-        {
-            var yearOpt = document.createElement("option");
-            yearOpt.setAttribute("value",i);
-            yearOpt.innerHTML=i;
+    for(var i =year;i>1920;i--)
+    {
+        var yearOpt = document.createElement("option");
+        yearOpt.setAttribute("value",i);
+        yearOpt.innerHTML=i;
 
-            updYearss.appendChild(yearOpt);
-        }
+        updYearss.appendChild(yearOpt);
+    }
 }
-    function loadDays()
+function loadDays()
+{
+
+    var maxDays = 32;
+    if(selMonth=="February")
+    {
+        
+        maxDays = 29
+    }
+    else if(selMonth=="February"&& selYear%4==0&&selYear%100==0&&selYear%400==0)
+    {
+        
+        maxDays = 30
+    }
+    else if(selMonth=="April" ||selMonth=="June"||selMonth=="September"|| selMonth=="November" )
     {
 
-    var maxDays = 32
-    alert(contactList.month_dob)
-    if(selMonth=="February")
-        {
-            
-            maxDays = 29
-        }
-    else if(selMonth=="February"&& selYear%4==0&&selYear%100==0&&selYear%400==0)
-        {
-            
-            maxDays = 30
-        }
-    else if(selMonth=="April" ||selMonth=="June"||selMonth=="September"|| selMonth=="November" )
-        {
-        
-            maxDays = 31
-        }
-    for(var i =1;i<maxDays;i++)
-        {
-           // alert(i);
-            var dayOpt = document.createElement("option");
-            dayOpt.setAttribute("value",i);
-            dayOpt.innerHTML=i;
-
-            updDays.appendChild(dayOpt);
-        }
+        maxDays = 31
     }
+    for(var i =1;i<maxDays;i++)
+    {
+        var dayOpt = document.createElement("option");
+        dayOpt.setAttribute("value",i);
+        dayOpt.innerHTML=i;
+
+        updDays.appendChild(dayOpt);
+    }
+}
 
 updPhones.addEventListener('keydown', function(ev) {
     var key   = ev.keyCode;
     if(!(key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
-        {
-            ev.preventDefault();
-        }
+    {
+        ev.preventDefault();
+    }
     if(updPhones.value.length>13)
         {
             if(key!=8&&key!=46)
-                {
-            ev.preventDefault();
-                }
+            {
+                ev.preventDefault();
+            }
         }
 
 });
@@ -339,12 +346,12 @@ function saveTitles()
 	}
 	else
 	{
-    httTitle = new XMLHttpRequest()
-    httTitle.open("PUT","Account/updateTitle/",true);
-    httTitle.onload= canTitle;
-    var fn = {};
-    fn.value = updTitles.value;
-    httTitle.send(JSON.stringify(fn));
+        httTitle = new XMLHttpRequest()
+        httTitle.open("PUT","Account/updateTitle/",true);
+        httTitle.onload= canTitle;
+        var fn = {};
+        fn.value = updTitles.value;
+        httTitle.send(JSON.stringify(fn));
 	}
 
 }
@@ -390,12 +397,12 @@ function saveFNames()
 	}
 	else
 	{
-    httFName = new XMLHttpRequest()
-    httFName.open("PUT","Account/updateFirstName/",true);
-    httFName.onload= canFName;
-    var fn = {};
-    fn.value = updFNames.value;
-    httFName.send(JSON.stringify(fn));
+        httFName = new XMLHttpRequest()
+        httFName.open("PUT","Account/updateFirstName/",true);
+        httFName.onload= canFName;
+        var fn = {};
+        fn.value = updFNames.value;
+        httFName.send(JSON.stringify(fn));
 	}
 }
 
@@ -478,13 +485,14 @@ function saveLNames()
    {
 	   alert("Please enter your Last Name");
    }
-   else{
-   httLName = new XMLHttpRequest()
-    httLName.open("PUT","Account/updateLastName/",true);
-    httLName.onload= canLName;
-    var fn = {};
-    fn.value = updLNames.value;
-    httLName.send(JSON.stringify(fn));
+   else
+    {
+        httLName = new XMLHttpRequest()
+        httLName.open("PUT","Account/updateLastName/",true);
+        httLName.onload= canLName;
+        var fn = {};
+        fn.value = updLNames.value;
+        httLName.send(JSON.stringify(fn));
    }
 }
 
@@ -512,7 +520,6 @@ function updPhone()
     butPhone.style.display="none";
     savePhone.style.display="block";
     cancelPhone.style.display="block";
-
     updPhones.value=contactList.phone_number;
 }
 
@@ -609,20 +616,21 @@ function canDOB()
         contactList.year_dob=JSON.parse(httDOB.responseText).year_dob;
         var prefix;
         if(contactList.day_dob==1 ||contactList.day_dob==21 ||contactList.day_dob==31 )
-            {
-                prefix = "st"
-            }
+        {
+            prefix = "st"
+        }
         else if(contactList.day_dob==2 ||contactList.day_dob==22)
-            {
-                prefix = "nd"
-            }
-       else  if(contactList.day_dob==3 ||contactList.day_dob==23)
-            {
-                prefix = "rd"
-            }
-        else{
-                prefix = "th";
-            }
+        {
+            prefix = "nd"
+        }
+       else if(contactList.day_dob==3 ||contactList.day_dob==23)
+        {
+            prefix = "rd"
+        }
+        else
+        {
+            prefix = "th";
+        }
         PDOB.innerHTML=contactList.day_dob + prefix+" of "+contactList.month_dob+" "+contactList.year_dob;
     }
 }
@@ -645,13 +653,14 @@ function saveAddresss()
     {
         alert("Please enter an address")
     }
-    else{
-    httAddress = new XMLHttpRequest()
-    httAddress.open("PUT","Account/updateAddress/",true);
-    httAddress.onload= canAddress;
-    var fn = {};
-    fn.value = updAddresss.value;
-    httAddress.send(JSON.stringify(fn));
+    else
+    {
+        httAddress = new XMLHttpRequest()
+        httAddress.open("PUT","Account/updateAddress/",true);
+        httAddress.onload= canAddress;
+        var fn = {};
+        fn.value = updAddresss.value;
+        httAddress.send(JSON.stringify(fn));
     }
 }
 
@@ -668,4 +677,50 @@ function canAddress()
         PAddress.innerHTML=JSON.parse(httAddress.responseText).address;
         contactList.address=JSON.parse(httAddress.responseText).address;
     }
+}
+//Shows the input fields and buttons 
+function updEmail()
+{
+    updEmails.style.display="block";
+    PEmail.style.display="none";
+    butEmail.style.display="none";
+    saveEmail.style.display="block";
+    cancelEmail.style.display="block";
+    updEmails.value=contactList.email;
+}
+
+//Saves the address
+function saveEmails()
+{
+    if(updEmails.value=="")
+    {
+        alert("Please enter an address")
+    }
+    else
+    {
+        httEmail = new XMLHttpRequest()
+        httEmail.open("POST","Account/updateEmail/",true);
+        httEmail.onload= canEmail;
+        var fn = {};
+        fn.value = updEmails.value;
+
+        httEmail.send(JSON.stringify(fn));
+    }
+}
+
+//Cancels the update
+function canEmail()
+{
+    if(httEmail!=null)
+    {
+        alert(JSON.parse(httEmail.responseText))
+        PEmail.innerHTML=updEmails.value;
+        contactList.email=updEmails.value;
+    }
+    updEmails.style.display="none";
+    PEmail.style.display="block";
+    butEmail.style.display="block";
+    saveEmail.style.display="none";
+    cancelEmail.style.display="none";
+
 }

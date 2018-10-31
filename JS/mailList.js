@@ -119,7 +119,7 @@ function groupMail()
 	{
 		groupMailBox.appendChild(document.createTextNode(sAdminArray[something]+", "));
 	}
-	// groupMailBox.appendChild(document.createElement("p"));
+
 	
 
 }

@@ -52,36 +52,36 @@ function listUni(ev)
     var uniForm =document.getElementById("addUni0");
     var uniTab = document.getElementById("uniTable");
     for(var i = 0;i<uniList.length;i++)
-        {
-            var uniRow= document.createElement("tr");
-            var uniColOne= document.createElement("td");
-            var uniColTwo= document.createElement("td");
-            var uniColThree= document.createElement("td");
-            var uniName= document.createTextNode(uniList[i].University_name);
-            
-            uniColOne.appendChild(uniName);
-            var delUniButs = document.createElement("input");
-            delUniButs.setAttribute("type","button");
-			delUniButs.setAttribute("class", "button btndelete");
-            delUniButs.setAttribute("id",uniList[i].University_id);
-			delUniButs.setAttribute("onClick","deleteUni(this.id)");
-            // delUniButs.setAttribute("value","Delete");
+    {
+        var uniRow= document.createElement("tr");
+        var uniColOne= document.createElement("td");
+        var uniColTwo= document.createElement("td");
+        var uniColThree= document.createElement("td");
+        var uniName= document.createTextNode(uniList[i].University_name);
+        
+        uniColOne.appendChild(uniName);
+        var delUniButs = document.createElement("input");
+        delUniButs.setAttribute("type","button");
+        delUniButs.setAttribute("class", "button btndelete");
+        delUniButs.setAttribute("id",uniList[i].University_id);
+        delUniButs.setAttribute("onClick","deleteUni(this.id)");
+        // delUniButs.setAttribute("value","Delete");
 
-            var updUniButs = document.createElement("input");
-            updUniButs.setAttribute("type","button");
-			updUniButs.setAttribute("class", "button btnupdate");
-            updUniButs.setAttribute("id",i);
-            updUniButs.setAttribute("onClick","updateUni(this.id)");
-            // updUniButs.setAttribute("value","Update");
+        var updUniButs = document.createElement("input");
+        updUniButs.setAttribute("type","button");
+        updUniButs.setAttribute("class", "button btnupdate");
+        updUniButs.setAttribute("id",i);
+        updUniButs.setAttribute("onClick","updateUni(this.id)");
+        // updUniButs.setAttribute("value","Update");
 
-            uniColThree.appendChild(delUniButs);
-            uniColTwo.appendChild(updUniButs);
-            uniRow.appendChild(uniColOne);
-            uniRow.appendChild(uniColTwo);
-            uniRow.appendChild(uniColThree);
-          
-            uniTab.appendChild(uniRow);
-        }
+        uniColThree.appendChild(delUniButs);
+        uniColTwo.appendChild(updUniButs);
+        uniRow.appendChild(uniColOne);
+        uniRow.appendChild(uniColTwo);
+        uniRow.appendChild(uniColThree);
+        
+        uniTab.appendChild(uniRow);
+    }
 }
 //Lists all the categories and adds a delete button to each
 function listCats(ev)
@@ -111,7 +111,7 @@ function listCats(ev)
             var catSkill = document.createTextNode(catList[i].skill_type);
             
 			cell1.appendChild(catSkill);
-            //selCates.appendChild(catSkill);
+        
             
 
 			
@@ -120,27 +120,24 @@ function listCats(ev)
 			updButs.setAttribute("class", "button btnupdate");
             updButs.setAttribute("id",i);
             updButs.setAttribute("onClick","updateCategory(this.id)");
-            // updButs.setAttribute("value","Update");
+        
 
 			cell2.appendChild(updButs);
-			// cell2.appendChild(delButs);
+		
 
 			var delButs = document.createElement("input");
             delButs.setAttribute("type","button");
 			delButs.setAttribute("class", "button btndelete");
             delButs.setAttribute("id",catList[i].skill_type);
             delButs.setAttribute("onClick","deleteCat(this.id)");
-            // delButs.setAttribute("value","Delete");
+     
 			
 			cell3.appendChild(delButs);
 			
 			row.appendChild(cell1);
 			row.appendChild(cell2);
 			row.appendChild(cell3);
-            // selCates.appendChild(delButs);
-            // selCates.appendChild(updButs);
-			
-            // selCates.appendChild(document.createElement("P"));
+
             selCates.appendChild(row);           
         }
     
@@ -172,7 +169,7 @@ function addSkill()
     else
     {
        alert("Please select a Category");
-   }
+    }
     
 }
 //Resets the fields and lets the user know if successful or not
@@ -188,7 +185,6 @@ function addCategory()
 {
     var newCat= document.getElementById("catName0").value;
     var newSkill= "Other "+ newCat + " Skill";
-
     if (newCat !="")
     {
         
@@ -235,15 +231,16 @@ function listSkills(ev)
 {
     clear();
     skillLists = JSON.parse(httSkills.responseText);
-;
+
     skillSize = skillLists.length;
     var formSkill = document.getElementById("addSkillsForm");
 
-
-	if(selCats.value==""){
+    if(selCats.value=="")
+    {
 		formSkill.style.display="none";
 	}
-	else{
+    else
+    {
 		
 		formSkill.style.display="block";
 		for(var i =0; i<skillSize;i++)
@@ -254,26 +251,23 @@ function listSkills(ev)
 			
             var nameSkill = document.createTextNode(skillLists[i].skill_name);
 			
-            // formSkill.appendChild(nameSkill);
+            
             cell1.appendChild(nameSkill);
-			// cell1.setAttribute("class","sn");
+			
 
             var updBut = document.createElement("input");
             updBut.setAttribute("type","button");
 			updBut.setAttribute("class","button btnupdate");
             updBut.setAttribute("id",i);
             updBut.setAttribute("onClick","updateSkill(this.id)");
-            // updBut.setAttribute("value","Update");
+     
 			
 			var delBut = document.createElement("input");
             delBut.setAttribute("type","button");
 			delBut.setAttribute("class","button btndelete");
             delBut.setAttribute("id",skillLists[i].skill_id);
             delBut.setAttribute("onClick","deleteSkill(this.id)");
-            // delBut.setAttribute("value","Delete");
 
-            /* formSkill.appendChild(delBut);
-            formSkill.appendChild(document.createElement("P")); */
             cell2.appendChild(updBut);
 			cell2.appendChild(delBut);            
 
@@ -352,7 +346,6 @@ function updCategory()
     catHid.sID=oldCat;
     catHid.value=document.getElementById("catName0").value;
     httCatUpdate.send(JSON.stringify(catHid));
-    
 }
 
 function showCatUpdate(ev)
@@ -362,7 +355,6 @@ function showCatUpdate(ev)
     document.getElementById("canCatBut").style.display="none";
     document.getElementById("catBut").style.display="block";
     document.getElementById("catName0").value="";
-
     clearCategories();
     loadCategories();
 }
@@ -371,20 +363,17 @@ function clear()
 {
     for(var i = 0; i<skillSize;i++)
     {
-
         var myNode = document.getElementById("addSkillsForm");
         while (myNode.firstChild) 
         {
             myNode.removeChild(myNode.firstChild);
         }
-
     }
 }
 
 //Deletes the skills
 function deleteSkill(id)
 {
-   
     delHtt = new XMLHttpRequest();
     delHtt.open("DELETE","Skills/deleteSkill/"+id,true);
     delHtt.onload=skillDelete;
@@ -396,7 +385,7 @@ function deleteSkill(id)
 function deleteCat(id)
 {
     delCatHtt = new XMLHttpRequest();
-        var delCatID={};
+    var delCatID={};
     delCatID.id=id;
     delCatHtt.open("POST","Skills/deleteCategory/",true);
     delCatHtt.onload=categoryDelete;
@@ -417,7 +406,6 @@ function skillDelete(ev)
 function categoryDelete(ev)
 {
     alert(JSON.parse(delCatHtt.responseText));
-  
     clearCategories();
     loadCategories();
 }
@@ -426,7 +414,6 @@ function clearCategories()
 {
     for(var i = 0; i<catSizes;i++)
     {
-
         var myNodes = document.getElementById("addCat0");
         while (myNodes.firstChild) 
         {

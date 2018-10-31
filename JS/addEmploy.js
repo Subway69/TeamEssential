@@ -14,12 +14,14 @@ var today = new Date();
 var dd = today.getDate(); 
 var mm = today.getMonth()+1; //January is 0! 
 var yyyy = today.getFullYear(); 
- if(dd<10){ 
-        dd='0'+dd 
-    }  
-    if(mm<10){ 
-        mm='0'+mm 
-    }  
+if(dd<10)
+{ 
+    dd='0'+dd 
+}  
+if(mm<10)
+{ 
+    mm='0'+mm 
+}  
  
 today = yyyy+'-'+mm+'-'+dd; 
 var starting=document.getElementById("startDate1");
@@ -40,13 +42,13 @@ document.getElementById('title1').addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (document.getElementById('title1').value.length>50)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 50 characters");
-            }
+        {
+            ev.preventDefault();
+            alert("Can't enter more than 50 characters");
         }
+    }
 
 },false)
 //Restricts the length of this field
@@ -55,13 +57,13 @@ document.getElementById('manager1').addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (document.getElementById('manager1').value.length>50)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 50 characters");
-            }
+        {
+            ev.preventDefault();
+            alert("Can't enter more than 50 characters");
         }
+    }
 
 
 },false)
@@ -71,13 +73,13 @@ document.getElementById('org1').addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (document.getElementById('org1').value.length>50)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 50 characters");
-            }
+        {
+            ev.preventDefault();
+            alert("Can't enter more than 50 characters");
         }
+    }
 
 },false)
 //Restricts the length of this field
@@ -86,30 +88,29 @@ document.getElementById('tasks1').addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (document.getElementById('tasks1').value.length>250)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 50 characters");
-            }
+        {
+            ev.preventDefault();
+            alert("Can't enter more than 50 characters");
         }
+    }
 
 },false)
 //Restricts the length of this field and limits it to only numbers
 document.getElementById('managerPhone1').addEventListener('keydown', function(ev) {
     var key   = ev.keyCode;
     if(!(key ==8||key==46||key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+    {
+        ev.preventDefault();
+    }
+    if(document.getElementById('managerPhone1').value.length>13)
+    {  
+        if(key!=8&&key!=46)
         {
             ev.preventDefault();
         }
-    if(document.getElementById('managerPhone1').value.length>13)
-        {  
-            alert("Whatup");
-            if(key!=8&&key!=46)
-                {
-            ev.preventDefault();
-                }
-        }
+    }
 
 });
 
@@ -126,32 +127,29 @@ function addEmp()
     var endArr=document.getElementById("endDate1").value;
     var taskArr = document.getElementById("tasks1").value;
     if(endArr<startArr)
-        {
-            alert("Start Date can't be after end date")
-        }
-    if(endArr<document.getElementById("endDate1").max)
+    {
+        alert("Start Date can't be after end date")
+    }
+    if(endArr>document.getElementById("endDate1").max)
     {
         alert("Cant be a future date")
     }
-        else{
-    document.getElementById('msg1').innerHTML='';
-    httEmploy = new XMLHttpRequest();
-    httEmploy.open("POST","Employment/addEmployment/",true);
-    httEmploy.onload=showEmp;
-    var hID = {};
-    hID.typeData= typeArr; 
-    hID.titleData=titleArr;
-    hID.manData=manNArr;
-    hID.manPData=manPArr;
-    hID.orgData=orgArr;
-    hID.startData=startArr;
-    hID.endData=endArr;
-    hID.taskData=taskArr;
-    httEmploy.send(JSON.stringify(hID));
-        }
-
-    
-    
+    else
+    {
+        httEmploy = new XMLHttpRequest();
+        httEmploy.open("POST","Employment/addEmployment/",true);
+        httEmploy.onload=showEmp;
+        var hID = {};
+        hID.typeData= typeArr; 
+        hID.titleData=titleArr;
+        hID.manData=manNArr;
+        hID.manPData=manPArr;
+        hID.orgData=orgArr;
+        hID.startData=startArr;
+        hID.endData=endArr;
+        hID.taskData=taskArr;
+        httEmploy.send(JSON.stringify(hID));
+    }   
 }
 //Lets the user know if it was successful or not
 function showEmp(ev)
@@ -177,8 +175,6 @@ function reset()
         divEmploy1.removeChild(divEmploy1.firstChild);
     }
     loadEmloyment();
-
-
 }
 
 
@@ -202,7 +198,8 @@ function listEmployment(ev)
 	if(employSize==0){
 		divEmp.style.display="none";
 	}
-	else{
+    else
+    {
 		divEmp.style.display="block";
 	
 		for(var i=0;i<employSize;i++)

@@ -28,11 +28,11 @@ function listCat(ev)
     {
         var catText=catLists[i].skill_type;
 
-            var catOption = document.createElement("option");
-            catOption.setAttribute("value",catText);
-			catOption.setAttribute("class","select");
-            catOption.innerHTML=catText;
-            selCat.appendChild(catOption);
+        var catOption = document.createElement("option");
+        catOption.setAttribute("value",catText);
+        catOption.setAttribute("class","select");
+        catOption.innerHTML=catText;
+        selCat.appendChild(catOption);
                              
     }
         getList(catLists[0].skill_type)
@@ -68,11 +68,11 @@ function getList(d)
     htt = new XMLHttpRequest();
 
     choice = d;
-        var temp = {};
+    var temp = {};
     temp.category = d;
     htt.open("POST","Skills/getSpecificCategory/",true);
     htt.onload= listy;
-        htt.send(JSON.stringify(temp));
+    htt.send(JSON.stringify(temp));
 } 
 
 //Lists the skills
@@ -219,42 +219,39 @@ function checkSkills(ev)
     {
         var hidValues =document.getElementById("hids"+countss).value;
         for(s =0;s<checkSizes;s++)
-            {
+        {
+            
+            var a=checkListss[s].skill_id;
+            
+            if(a==hidValues)   
+            {  
+                aS[testcountS]=a;
+                testcountS++;					
                 
-                var a=checkListss[s].skill_id;
-                
-				
-                if(a==hidValues)   
-                {  
-
-					aS[testcountS]=a;
-					testcountS++;					
-					
-                    if(checkListss[s].skill_level=="Low")
-                    {
-                        var tRadio = document.getElementById("lows"+countss);
-                        tRadio.checked=true;
-                        update[countss]=0;
-                        break;
-
-                    }
-                    if(checkListss[s].skill_level=="Medium")
-                    {
-                        var tRadio = document.getElementById("meds"+countss);
-                        tRadio.checked=true;
-                        update[countss]=0;
-                        break;
-                    }
-                    if(checkListss[s].skill_level=="High")
-                    {
-                        var tRadio = document.getElementById("highs"+countss);
-                        tRadio.checked=true;
-                        update[countss]=0;
-                        break;
-                    }     
-                
+                if(checkListss[s].skill_level=="Low")
+                {
+                    var tRadio = document.getElementById("lows"+countss);
+                    tRadio.checked=true;
+                    update[countss]=0;
+                    break;
                 }
+                if(checkListss[s].skill_level=="Medium")
+                {
+                    var tRadio = document.getElementById("meds"+countss);
+                    tRadio.checked=true;
+                    update[countss]=0;
+                    break;
+                }
+                if(checkListss[s].skill_level=="High")
+                {
+                    var tRadio = document.getElementById("highs"+countss);
+                    tRadio.checked=true;
+                    update[countss]=0;
+                    break;
+                }     
+            
             }
+        }
         
         countss++;
     }
@@ -265,35 +262,35 @@ function disableSkills(g)
     var chks= document.getElementById(g);
 
     if(g.substring(0,3)=="low")
+    {
+        
+        var lens = g.length;
+        var idss = g.substring(3,lens);
+        if(chks.checked)
         {
-         
-            var lens = g.length;
-            var idss = g.substring(3,lens);
-            if(chks.checked)
-                {
-                    document.getElementById("med"+idss).checked=false;
-                    document.getElementById("high"+idss).checked=false;            
-                }
+            document.getElementById("med"+idss).checked=false;
+            document.getElementById("high"+idss).checked=false;            
         }
-        if(g.substring(0,3)=="med")
+    }
+    if(g.substring(0,3)=="med")
+    {
+
+        var lens = g.length;
+        var idss = g.substring(3,lens);
+        if(chks.checked)
         {
-  
-            var lens = g.length;
-            var idss = g.substring(3,lens);
-            if(chks.checked)
-                {
-                    document.getElementById("low"+idss).checked=false;
-                    document.getElementById("high"+idss).checked=false;
-                }
+            document.getElementById("low"+idss).checked=false;
+            document.getElementById("high"+idss).checked=false;
         }
-        if(g.substring(0,4)=="high")
+    }
+    if(g.substring(0,4)=="high")
+    {
+        var lens = g.length;
+        var idss = g.substring(4,lens);
+        if(chks.checked)
         {
-            var lens = g.length;
-            var idss = g.substring(4,lens);
-            if(chks.checked)
-                {
-                    document.getElementById("med"+idss).checked=false;
-                    document.getElementById("low"+idss).checked=false;   
-                }
+            document.getElementById("med"+idss).checked=false;
+            document.getElementById("low"+idss).checked=false;   
         }
+    }
 }

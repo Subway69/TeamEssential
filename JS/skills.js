@@ -201,36 +201,36 @@ function disableSkill(y)
     var chk= document.getElementById(y);
 
     if(y.substring(0,3)=="low")
+    {
+        console.log("A low skill");
+        var len = y.length;
+        var ids = y.substring(3,len);
+        if(chk.checked)
         {
-            console.log("A low skill");
-            var len = y.length;
-            var ids = y.substring(3,len);
-            if(chk.checked)
-                {
-                    document.getElementById("med"+ids).checked=false;
-                    document.getElementById("high"+ids).checked=false;            
-                }
+            document.getElementById("med"+ids).checked=false;
+            document.getElementById("high"+ids).checked=false;            
         }
+    }
         if(y.substring(0,3)=="med")
         {
             console.log("A med skill");
             var len = y.length;
             var ids = y.substring(3,len);
             if(chk.checked)
-                {
-                    document.getElementById("low"+ids).checked=false;
-                    document.getElementById("high"+ids).checked=false;
-                }
+            {
+                document.getElementById("low"+ids).checked=false;
+                document.getElementById("high"+ids).checked=false;
+            }
         }
         if(y.substring(0,4)=="high")
         {
             var len = y.length;
             var ids = y.substring(4,len);
             if(chk.checked)
-                {
-                    document.getElementById("med"+ids).checked=false;
-                    document.getElementById("low"+ids).checked=false;   
-                }
+            {
+                document.getElementById("med"+ids).checked=false;
+                document.getElementById("low"+ids).checked=false;   
+            }
         }
 }
 
