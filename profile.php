@@ -135,7 +135,7 @@ require_once "PHP/default.php";
 								
 								<!--<div class="form-group">-->
 								<input id="manager1" placeholder="Manager's Name" required="" class="input" />
-								<input type="number" min="0"id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
+								<input type="number" min="0" max="12" id="managerPhone1" placeholder="Manager's Contact Number" required="" class="input" />
 								<!--</div>-->
 								
 								<input id = "startDate1" type = "text"onfocus="(this.type='date')" placeholder="Start Date" required="" max="2000-13-13"class="input"/>
@@ -162,17 +162,17 @@ require_once "PHP/default.php";
 				<div id="genskl-tab" data-tab-content="1" class="tab-content">
 					
 					<div id="tab-row" class="row">
-						<div id="form-cell" class="cell"><!---->
+						<div id="form-cell" class="cell">
 						
 							<form class="form gen">
 							
 								<table class="gstable" id="genskl">
 									<thead class="shead">
 										<tr>
-											<td class="sheads">Skill Level</td>
-											<td class="sheadr L"><span>Low</span></td>
-											<td class="sheadr M"><span>Medium</span></td>
-											<td class="sheadr H"><span>High</span></td>
+											<td class="sheads"></td>
+											<td class="sheadr L"></td>
+											<td class="sheadr M"></td>
+											<td class="sheadr H"></td>
 										<tr>
 										
 									</thead>
@@ -185,7 +185,7 @@ require_once "PHP/default.php";
 								<button type="button" onClick="addGeneralSkill()" class="button">Add</button>
 								
 							</form>
-						</div><!---->
+						</div>
 					</div>
 				</div>
 				
@@ -208,9 +208,9 @@ require_once "PHP/default.php";
 									<thead class="shead">
 										<tr>
 											<td class="sheads">Skill Level</td>
-											<td class="sheadr L"><span>Low</span></td>
-											<td class="sheadr M"><span>Medium</span></td>
-											<td class="sheadr H"><span>High</span></td>
+											<td class="sheadr L"><span></span></td>
+											<td class="sheadr M"><span></span></td>
+											<td class="sheadr H"><span></span></td>
 										<tr>
 									</thead>
 									<tbody id="form10" class="table-striped">
@@ -373,9 +373,7 @@ require_once "PHP/default.php";
 									<input type="file" id="file" class="inputfile" name="filetest"  onChange="fileValidation()" />
 									<label for="file" id="cfile"><span>Choose a file</span></label>
 									<input type="submit" class="button btnupload" name="submit" id="upload" disabled></input>
-									 <!-- <div class="form-group"> -->
 									
-									 <!-- </div> -->
 									<script src="JS/extension.js"></script>	
 								
 								</div> <!--added this --> 

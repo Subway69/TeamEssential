@@ -16,7 +16,8 @@
 	font-size:16px;
 	--navbar: #1e284b;
 	/*263169*/
-	--body-bg: #afb4d2;
+	/* --body-bg: #afb4d2; */
+	--body-bg: #dddeed;
 	--white: #ffffff;
 	--tab-active: #4d557f; /*placeholder, select ph */
 	--tab-text: #263169;
@@ -267,16 +268,6 @@ input {
 input[type=radio]{
 	margin: 3px 20px;
 }
-/* input[type=button]{ */
-	/* background-repeat: no-repeat; */
-	/* background-color:transparent; */
-	/* background-position:center; */
-	/* box-shadow:none; */
-	
-	/* width:50%; */
-	/* margin:0; */
-	/* padding:0; */
-/* } */
 buttin:active{ /*press effect*/
 	box-shadow:none;
 }
@@ -290,7 +281,6 @@ input.button.regbtn{
 	background:transparent;
 	box-shadow:none;
 }
-
 .btn:after{ /*something*/
 	content: '';
 	position: absolute;
@@ -299,7 +289,6 @@ input.button.regbtn{
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
-
 .inputfile {
 	width: 0.1px;
 	height: 0.1px;
@@ -352,46 +341,12 @@ form#addCat0.form > input[type=button]{	/*CATMAN OTHER FORM BUTTONS*/
 form.blank > input[type=submit]{ /*profile>users>go buttons */
 	margin:5px 0 5px 0; 
 }
-/* .button:hover{ */
-	/* background: var(--button-hover);	 */
-/* } */
 .button:disabled{
 	/* background:green; */
 	cursor: not-allowed;
 	opacity:0.45;
 }
-/* .button:disabled:hover{ */
-	/* background: var(--button-disabled); */
-	/* color:graytext; */
-/* } */
 
-
-
-.val:valid{ /*valid input class */
-	/* background-color: #93d0ad; */
-}
-input:invalid {
-	/* border-style:solid; */
-	/* border-color: #ff0000; */
-	/* border-color: #555; */
-	/* background-color: #7e7c84; */
-	/* background-color: #a76868; pinkish */
-	/* background: linear-gradient(#dbdbdb, #f7f7f7); */
-	/* border-color: #f42c2c; */	
-}
-input:required {
-  /* border-color: #800000; */
-	/* border-width: 1px; */
-	/* background-color: #e0eef9; */
-	/* background-color: #7e7c84; */
-	/* color: #1d1d1d; */
-}
-input:hover{
-	/* background-color: #e0eef9; */
-}
-input:focus {
-    /* border: 2px solid #555; */
-}
 select {
 	border-radius: 2px;
 }
@@ -424,13 +379,13 @@ a#logout{
 	height:30px;
 	width:30px;
 }
-/* a#logout::before{ */
-	/* content: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='50' height='30' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-log-out'%3e%3cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'%3e%3c/path%3e%3cpolyline points='16 17 21 12 16 7'%3e%3c/polyline%3e%3cline x1='21' y1='12' x2='9' y2='12'%3e%3c/line%3e%3c/svg%3e"); */
-/* } */
-/* a#logout:hover{ */
-	/* background:transparent; */
+a#logout::before{
+	content: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='50' height='30' viewBox='9 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-log-out'%3e%3cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'%3e%3c/path%3e%3cpolyline points='16 17 21 12 16 7'%3e%3c/polyline%3e%3cline x1='21' y1='12' x2='9' y2='12'%3e%3c/line%3e%3c/svg%3e");
+}
+a#logout:hover{
+	background:transparent;
 	/* content: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-log-out'%3e%3cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'%3e%3c/path%3e%3cpolyline points='16 17 21 12 16 7'%3e%3c/polyline%3e%3cline x1='21' y1='12' x2='9' y2='12'%3e%3c/line%3e%3c/svg%3e"); */
-/* } */
+}
 
 /* ******************************PREFERENCE ****************************** */
 
@@ -538,10 +493,21 @@ tbody#gensklstable.specificTable{
 	width:370px;
 	padding-bottom:10px;
 }
+.sheads:before{
+	content:"Skill Level";
+}
 .sn{
 	width:75%;
 }	
-
+.L:before{
+	content: "Low";
+}
+.M:before{
+	content: "Medium";
+}
+.H:before{
+	content: "High";
+}
 
 /* ******************************HELP****************************** */
 
