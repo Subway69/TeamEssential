@@ -209,8 +209,8 @@ $router->register("POST",'#^/register/#', function($params)
                 else 
                 {
                     $text= "password don't match";
-                    ?>  <?php
-                } ?> <?php
+                    
+                } 
             }
         } 
             //Inform the client that we are sending back JSON    
@@ -220,11 +220,11 @@ $router->register("POST",'#^/register/#', function($params)
 });
 
 
-$router->register("DELETE",'#^/deleteAccount/(\d+)#', function($params) 
+$router->register("DELETE",'#^/deleteAccount/#', function($params) 
 {
     session_start();
     require_once "default.php";
-    $id=$params[1];
+    $id=logged_in_user();
     
 
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
@@ -418,7 +418,7 @@ $router->register("PUT",'#^/updatePassword/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
     $password = $req_obj->pID;
-    $user = $req_obj->uID;
+    $user =logged_in_user();
     $currPass=$req_obj->cPass;
     $confimPass=$req_obj->confPass;
 
@@ -1069,7 +1069,7 @@ $router->register("GET",'#^/UserFiles/#', function($params)
     echo json_encode($json_result);
 });
 
-$router->register("GET",'#^/deleteFiles/(\d+)#', function($params) 
+$router->register("POST",'#^/deleteFiles/#', function($params) 
 {
     session_start();
     require_once "default.php";
@@ -1078,7 +1078,7 @@ $router->register("GET",'#^/deleteFiles/(\d+)#', function($params)
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-$file_id=$params[1];
+$file_id=$req_obj->id;
  
   $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
   $query = "SELECT file_location FROM Files WHERE file_id = ?;";

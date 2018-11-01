@@ -61,9 +61,12 @@ function listFiles()
 function deleteFile(gg)
 {
 	httDelFiles = new XMLHttpRequest();
-	httDelFiles.open("GET","Account/deleteFiles/"+gg,true);
+	httDelFiles.open("POST","Account/deleteFiles/",true);
+	var filDel = {};
+	filDel.id = gg;
 	httDelFiles.onload=showDelete;
-	httDelFiles.send();
+
+	httDelFiles.send(JSON.stringify(filDel));
 }
 function showDelete(ev)
 {
