@@ -44,7 +44,7 @@ var mms = todays.getMonth()+1; //January is 0!
 var yyyys = todays.getFullYear(); 
 if(dds<10)
 { 
-dd='0'+dd 
+dds='0'+dds 
 }  
 if(mms<10)
 { 
@@ -77,6 +77,7 @@ loadEducation();
 //Loads all the Universities using Ajax
 function loadUni()
 {
+    alert("AHHH");
     httd = new XMLHttpRequest();
     httd.open("GET","Education/getUniversity/",true);
     httd.onload= lists;
