@@ -211,14 +211,16 @@ $router->register("GET",'#^/getEducation/#', function($params)
     echo json_encode($json_result);
             
 });
-$router->register("DELETE",'#^/deleteEducation/(\d+)#', function($params) 
+$router->register("POST",'#^/deleteEducation/#', function($params) 
 {
     session_start();
     require_once "default.php";
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
+        //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
 
-    $id =$params[1];
+    $id =$req_obj->id;
     $user= logged_in_user();
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 

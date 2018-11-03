@@ -42,17 +42,10 @@ require_once "PHP/default.php";
 										<input type = "hidden" id="passUser" name = "tUser"value = <?php echo $user_id;?>/>
 										<input placeholder="Current Password" id = "field_pwd" required type="password"class="input"/>
 										
-										<!--<input name = "currPass" type="password" class="input val" id= "field_pwd1" 
-											placeholder="New Password" required
-											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
-												if(this.checkValidity()) form.tConfirm.pattern = RegExp.escape(this.value);"/>-->			  
+		  
 												<input type="password" class="input val" id= "field_pwd1" 
 											placeholder="New Password" required/>
-								<!--		<input id = "confirmPass" type="password" class="input val" id="field_pwd2" 
-											placeholder="Confirm New Password" required 
-											pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-											onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>-->
+
 											<input type="password" class="input val" id="field_pwd2" 
 											placeholder="Confirm New Password" required />
 										<input type="button" onclick="updatePass()" class="button" value="Update Password"/>

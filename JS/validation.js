@@ -82,7 +82,7 @@ function qualValidate()
 
 function empValidate()
 {
-    if(typeArrss.value==''||titleArrs.value==''||manNArrs.value==''||manPArrs.value==''||orgArrs.value==''||startArrs.value==''||taskArrs.value==''||(endArrs.value!=''&&endArrs.value>startArrs.value))
+    if(typeArrss.value==''||titleArrs.value==''||manNArrs.value==''||manPArrs.value==''||orgArrs.value==''||startArrs.value==''||taskArrs.value==''||(endArrs.value!=''&&endArrs.value<startArrs.value))
     {
         document.getElementById('addEmpBut').disabled=true;
         document.getElementById('updEmpBut').disabled=true;

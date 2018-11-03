@@ -530,12 +530,14 @@ $router->register("PUT",'#^/updateCategory/#', function($params)
     echo json_encode($text);
 });
 
-$router->register("DELETE",'#^/deleteSkill/(\d+)#', function($params) 
+$router->register("POST",'#^/deleteSkill/#', function($params) 
 {
     session_start();
     require_once "default.php";
-
-    $id =$params[1];
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $id =$req_obj->id;
     $text = "";
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 

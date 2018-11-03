@@ -25,15 +25,15 @@ function updatePass()
    var curPass=document.getElementById("field_pwd").value;
     var newPass = document.getElementById("field_pwd1").value;
 	var confirmPass=document.getElementById("field_pwd2").value;
- if(curPass==""||newPass==""||confirmPass=="")
- {
-	 alert("Please enter a value in all fields.");
- }
- if(newPass!=confirmPass)
- {
-     alert("New passwords don't match");
- }
- else
+    if(curPass==""||newPass==""||confirmPass=="")
+    {
+        alert("Please enter a value in all fields.");
+    }
+    if(newPass!=confirmPass)
+    {
+        alert("New passwords don't match");
+    }
+    else
     {
         var userID= document.getElementById("passUser").value;
         httPass = new XMLHttpRequest();

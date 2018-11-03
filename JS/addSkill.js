@@ -65,14 +65,14 @@ function listUni(ev)
         delUniButs.setAttribute("class", "button btndelete");
         delUniButs.setAttribute("id",uniList[i].University_id);
         delUniButs.setAttribute("onClick","deleteUni(this.id)");
-        // delUniButs.setAttribute("value","Delete");
+      
 
         var updUniButs = document.createElement("input");
         updUniButs.setAttribute("type","button");
         updUniButs.setAttribute("class", "button btnupdate");
         updUniButs.setAttribute("id",i);
         updUniButs.setAttribute("onClick","updateUni(this.id)");
-        // updUniButs.setAttribute("value","Update");
+        
 
         uniColThree.appendChild(delUniButs);
         uniColTwo.appendChild(updUniButs);
@@ -374,22 +374,30 @@ function clear()
 //Deletes the skills
 function deleteSkill(id)
 {
-    delHtt = new XMLHttpRequest();
-    delHtt.open("DELETE","Skills/deleteSkill/"+id,true);
-    delHtt.onload=skillDelete;
-    delHtt.send();
+    if(confirm("Please confirm if you would like to delete this skill?"))
+    {
+        delHtt = new XMLHttpRequest();
+        delHtt.open("POST","Skills/deleteSkill/",true);
+        var val = {};
+        val.id = id;
+        delHtt.onload=skillDelete;
+        delHtt.send(JSON.stringify(val));
+    }
     
 }
 
 //Deletes the Category
 function deleteCat(id)
 {
-    delCatHtt = new XMLHttpRequest();
-    var delCatID={};
-    delCatID.id=id;
-    delCatHtt.open("POST","Skills/deleteCategory/",true);
-    delCatHtt.onload=categoryDelete;
-    delCatHtt.send(JSON.stringify(delCatID));
+    if(confirm("Please confirm if you would like to delete this category?"))
+    {
+        delCatHtt = new XMLHttpRequest();
+        var delCatID={};
+        delCatID.id=id;
+        delCatHtt.open("POST","Skills/deleteCategory/",true);
+        delCatHtt.onload=categoryDelete;
+        delCatHtt.send(JSON.stringify(delCatID));
+    }
 
 }
 
@@ -538,12 +546,15 @@ function canUniversity()
 //Iniates the ajax request that will delete the uni
 function deleteUni(j)
 {
-    delUniHtt = new XMLHttpRequest();
+    if(confirm("Please confirm if you would like to delete this university?"))
+    {
+        delUniHtt = new XMLHttpRequest();
         var delUniID={};
-    delUniID.id=j;
-    delUniHtt.open("DELETE","Education/deleteUniversity/",true);
-    delUniHtt.onload=uniDelete;
-    delUniHtt.send(JSON.stringify(delUniID));
+        delUniID.id=j;
+        delUniHtt.open("DELETE","Education/deleteUniversity/",true);
+        delUniHtt.onload=uniDelete;
+        delUniHtt.send(JSON.stringify(delUniID));
+    }
 }
 
 //Shows the response

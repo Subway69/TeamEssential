@@ -940,7 +940,7 @@ $router->register("POST",'#^/registerWithEmail/#', function($params)
                                 $message .= '<p>Welcome to the Federation University Research Register.\n Please click the below link to verify your email address <a href="'.SITE_URL.'activate.php?id=' . base64_encode($last_id) . '">CLICK TO ACTIVATE YOUR ACCOUNT</a>';
                                 $message .= "</body></html>";
                                 $headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
                                 mail($email,"Welcome to the Federation University Research Register sent via php mail",$message,$headers);
                                 $text="Email been sent to email address";

@@ -617,15 +617,15 @@ function canDOB()
         var prefix;
         if(contactList.day_dob==1 ||contactList.day_dob==21 ||contactList.day_dob==31 )
         {
-            prefix = "st"
+            prefix = "st";
         }
         else if(contactList.day_dob==2 ||contactList.day_dob==22)
         {
-            prefix = "nd"
+            prefix = "nd";
         }
        else if(contactList.day_dob==3 ||contactList.day_dob==23)
         {
-            prefix = "rd"
+            prefix = "rd";
         }
         else
         {

@@ -77,7 +77,7 @@ loadEducation();
 //Loads all the Universities using Ajax
 function loadUni()
 {
-    alert("AHHH");
+  
     httd = new XMLHttpRequest();
     httd.open("GET","Education/getUniversity/",true);
     httd.onload= lists;
@@ -283,10 +283,15 @@ function resetter()
 //Initiates the ajax that will delete the education
 function deleteQualification(delID)
 {
-    httDeleteEducation=new XMLHttpRequest();
-    httDeleteEducation.open("DELETE","Education/deleteEducation/"+delID,true);
-    httDeleteEducation.onload=listDelete;
-    httDeleteEducation.send();
+    if(confirm("Please confirm if you would like to delete this qualification?"))
+    {
+        httDeleteEducation=new XMLHttpRequest();
+        httDeleteEducation.open("POST","Education/deleteEducation/",true);
+        var val = {};
+        val.id = delID;
+        httDeleteEducation.onload=listDelete;
+        httDeleteEducation.send(JSON.stringify(val));
+    }
 }
 
 //Shows if the delete was successful and resets fields

@@ -64,110 +64,107 @@ $router->register("POST",'#^/addEmployment/#', function($params)
     session_start();
     require_once "default.php";
     $req = file_get_contents('php://input');
-//Converts the contents into a PHP Object
-$req_obj = json_decode($req);
-$text ="";
-//Grabs the data from the AJAX
-$typeID = $req_obj->typeData;
-$titleID = htmlentities($req_obj->titleData);
-$manID = htmlentities($req_obj->manData);
-$manPID = htmlentities($req_obj->manPData);
-$orgID = htmlentities($req_obj->orgData);
-$startID = $req_obj->startData;
-$endID = $req_obj->endData;
-$taskID = htmlentities($req_obj->taskData);
-$text="";
-//Gets the id of the user logged in
-$userid = logged_in_user();
-$conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-if($typeID=="")
-{
-    $text= $text."Invalid/Empty Type \n";
-}
-if($titleID=="")
-{
-    $text= $text."Invalid/Empty Title\n";
-}
-if(strlen($titleID)>50)
-{
-    $text= $text."Posiiton title can't be more than 50 characters\n";
-}
-if($manID=='')
-{
-    $text= $text."Invalid/Empty Manager Name\n";
-}
-if(strlen($manID)>50)
-{
-    $text= $text."Manager's Name can't be more than 50 characters\n";
-}
-if($orgID=='')
-{
-    $text= $text."Invalid/Empty Department Name\n";
-}
-if(strlen($orgID)>50)
-{
-    $text= $text."Department Name can't be more than 50 characters\n";
-}
-if($manPID=='')
-{
-    $text= $text."Invalid/Empty Manager Phone\n";
-}
-if($manPID<=0)
-{
-    $text= $text."Invalid/Empty Manager Phone\n";
-}
-if($startID=='')
-{
-    $text= $text."Invalid/Empty Start Date\n";
-}
-if($endID!=''&&strtotime($endID)<strtotime($startID))
-{
-    $text= $text."End Date is before Start Date\n";
-}
-if($taskID=="")
-{
-    $text= $text."Invalid/Empty Tasks\n";
-}
-if(strlen($taskID)>250)
-{
-    $text= $text."Tasks can't be more than 250 characters\n";
-}
-	if(is_nan($manPID))
-	{$text= $text."Invalid/Empty Manager Phone\n";
-	}
-else
-{
-    //Inserts the Job into the database
-    $query = "INSERT INTO Employment(work_rate,position_title,manager,manager_phone,organisation,startDate,endDate,tasks) VALUES (?,?,?,?,?,?,?,?);";   
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt,"ssssssss",$typeID,$titleID,$manID,$manPID,$orgID,$startID,$endID,$taskID);
-    $success = mysqli_stmt_execute($stmt);
-    $results = mysqli_stmt_get_result($stmt);
-    $last_id = mysqli_insert_id($conn);
-
-    //Connects the User to the job
-    $query1 = "INSERT INTO User_Employment(user_id,employment_id) VALUES (?,?);";
-    $stmt1 = mysqli_prepare($conn, $query1);
-    mysqli_stmt_bind_param($stmt1,"dd", $userid,$last_id);
-    $success1 = mysqli_stmt_execute($stmt1);
-    $results1 = mysqli_stmt_get_result($stmt1);
-
-    
-    if($success1)
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $text ="";
+    //Grabs the data from the AJAX
+    $typeID = $req_obj->typeData;
+    $titleID = htmlentities($req_obj->titleData);
+    $manID = htmlentities($req_obj->manData);
+    $manPID = htmlentities($req_obj->manPData);
+    $orgID = htmlentities($req_obj->orgData);
+    $startID = $req_obj->startData;
+    $endID = $req_obj->endData;
+    $taskID = htmlentities($req_obj->taskData);
+    $text="";
+    //Gets the id of the user logged in
+    $userid = logged_in_user();
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    if($typeID=="")
     {
-        $text = "Employment Successfully Added.";
+        $text= $text."Invalid/Empty Type \n";
     }
+    if($titleID=="")
+    {
+        $text= $text."Invalid/Empty Title\n";
+    }
+    if(strlen($titleID)>50)
+    {
+        $text= $text."Posiiton title can't be more than 50 characters\n";
+    }
+    if($manID=='')
+    {
+        $text= $text."Invalid/Empty Manager Name\n";
+    }
+    if(strlen($manID)>50)
+    {
+        $text= $text."Manager's Name can't be more than 50 characters\n";
+    }
+    if($orgID=='')
+    {
+        $text= $text."Invalid/Empty Department Name\n";
+    }
+    if(strlen($orgID)>50)
+    {
+        $text= $text."Department Name can't be more than 50 characters\n";
+    }
+    if($manPID=='')
+    {
+        $text= $text."Invalid/Empty Manager Phone\n";
+    }
+    if($manPID<=0)
+    {
+        $text= $text."Invalid/Empty Manager Phone\n";
+    }
+    if($startID=='')
+    {
+        $text= $text."Invalid/Empty Start Date\n";
+    }
+
+    if($taskID=="")
+    {
+        $text= $text."Invalid/Empty Tasks\n";
+    }
+    if(strlen($taskID)>250)
+    {
+        $text= $text."Tasks can't be more than 250 characters\n";
+    }
+        if(is_nan($manPID))
+        {$text= $text."Invalid/Empty Manager Phone\n";
+        }
     else
     {
-        $text = "Employment was unsuccessful";
+        //Inserts the Job into the database
+        $query = "INSERT INTO Employment(work_rate,position_title,manager,manager_phone,organisation,startDate,endDate,tasks) VALUES (?,?,?,?,?,?,?,?);";   
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"ssssssss",$typeID,$titleID,$manID,$manPID,$orgID,$startID,$endID,$taskID);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $last_id = mysqli_insert_id($conn);
 
-    }
-       
-}	
-    //Inform the client that we are sending back JSON    
-    header("Content-Type: application/json");
-    //Encodes and sends it back
-    echo json_encode($text);
+        //Connects the User to the job
+        $query1 = "INSERT INTO User_Employment(user_id,employment_id) VALUES (?,?);";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"dd", $userid,$last_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
+
+        
+        if($success1)
+        {
+            $text = "Employment Successfully Added.";
+        }
+        else
+        {
+            $text = "Employment was unsuccessful";
+
+        }
+        
+    }	
+        //Inform the client that we are sending back JSON    
+        header("Content-Type: application/json");
+        //Encodes and sends it back
+        echo json_encode($text);
     
 
 });
@@ -202,12 +199,13 @@ $router->register("GET",'#^/getEmployment/#', function($params)
             
 });
 
-$router->register("DELETE",'#^/deleteEmployment/(\d+)#', function($params) 
+$router->register("POST",'#^/deleteEmployment/#', function($params) 
 {
     session_start();
     require_once "default.php";
-
-    $id =$params[1];
+    $req = file_get_contents('php://input');
+    $req_obj = json_decode($req);
+    $id =$req_obj->id;
     $user= logged_in_user();
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     

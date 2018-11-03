@@ -60,13 +60,15 @@ function listFiles()
 }
 function deleteFile(gg)
 {
-	httDelFiles = new XMLHttpRequest();
-	httDelFiles.open("POST","Account/deleteFiles/",true);
-	var filDel = {};
-	filDel.id = gg;
-	httDelFiles.onload=showDelete;
-
-	httDelFiles.send(JSON.stringify(filDel));
+	if(confirm("Please confirm if you would like to delete this file?"))
+    {
+		httDelFiles = new XMLHttpRequest();
+		httDelFiles.open("POST","Account/deleteFiles/",true);
+		var filDel = {};
+		filDel.id = gg;
+		httDelFiles.onload=showDelete;
+		httDelFiles.send(JSON.stringify(filDel));
+	}
 }
 function showDelete(ev)
 {

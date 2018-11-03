@@ -42,10 +42,28 @@ require_once "PHP/default.php";
 		$stmt= mysqli_prepare($conn,$query);
 		mysqli_stmt_bind_param($stmt,"d",$user_id);
 
+		$prefix = "th";
+
+
 		$success = mysqli_stmt_execute($stmt);
 		$results = mysqli_stmt_get_result($stmt);
 		$row = mysqli_fetch_assoc($results);
-
+        if($row['day_dob']==1 ||$row['day_dob']==21 ||$row['day_dob']==31 )
+        {
+            $prefix = "st";
+        }
+        else if($row['day_dob']==2 ||$row['day_dob']==22)
+        {
+            $prefix = "nd";
+        }
+       else if($row['day_dob']==3 ||$row['day_dob']==23)
+        {
+            $prefix = "rd";
+        }
+        else
+        {
+            $prefix = "th";
+        }
 		echo "<h1>Contact Info</h1>";
 
 		echo "Full Name: ". $row['title']." ". $row['first_name']." ". $row['middle_name']." ". $row['last_name'];
@@ -53,7 +71,7 @@ require_once "PHP/default.php";
 		echo "Email: ". $row['email']."</p>";
 		echo "Address: ". $row['address']."</p>";
 		echo "Phone: ". $row['phone_number']."</p>";
-		echo "Date of Birth: ". $row['day_dob']."/".$row['month_dob']."/".$row['year_dob']."</p>";
+		echo "Date of Birth: ". $row['day_dob'].$prefix." of ".$row['month_dob']." ".$row['year_dob']."</p>";
 		$av = $row['avail'];
 		$work=$row['uniWork'];
 

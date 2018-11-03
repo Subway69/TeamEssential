@@ -126,7 +126,7 @@ function addEmp()
     var startArr= document.getElementById("startDate1").value;
     var endArr=document.getElementById("endDate1").value;
     var taskArr = document.getElementById("tasks1").value;
-    if(endArr<startArr)
+    if((endArrs.value!=''&&endArrs.value<startArrs.value))
     {
         alert("Start Date can't be after end date")
     }
@@ -269,10 +269,15 @@ function resettter()
 //Initiates the ajax request that deletes the employment
 function DeleteEmploy(delEmpID)
 {
-    httDeleteEmploy=new XMLHttpRequest();
-    httDeleteEmploy.open("DELETE","Employment/deleteEmployment/"+delEmpID,true);
-    httDeleteEmploy.onload=listEmployDelete;
-    httDeleteEmploy.send();
+    if(confirm("Please confirm if you would like to delete this employment?"))
+    {
+        httDeleteEmploy=new XMLHttpRequest();
+        httDeleteEmploy.open("POST","Employment/deleteEmployment/",true);
+        var val = {};
+        val.id = delEmpID;
+        httDeleteEmploy.onload=listEmployDelete;
+        httDeleteEmploy.send(JSON.stringify(val));
+    }
 }
 
 
