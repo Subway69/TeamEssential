@@ -110,7 +110,6 @@ function register()
         reg.email=email;
         reg.pass1=pass1;
         reg.pass2=pass2;
-    //  reg.bach = bach;
         reg.uni = unis;
         httRegister.send(JSON.stringify(reg));
     }

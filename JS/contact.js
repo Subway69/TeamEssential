@@ -137,7 +137,8 @@ loadContact();
 
 
     
-document.getElementById("monthUpd").addEventListener("change",function(ev){
+document.getElementById("monthUpd").addEventListener("change",function(ev)
+{
     var myNoder = document.getElementById("dayUpd");
     while (myNoder.firstChild) 
     {   
@@ -149,7 +150,8 @@ document.getElementById("monthUpd").addEventListener("change",function(ev){
     loadDays();
 },false)
 
-document.getElementById("yearUpd").addEventListener("change",function(ev){
+document.getElementById("yearUpd").addEventListener("change",function(ev)
+{
     var myNoder = document.getElementById("dayUpd");
     while (myNoder.firstChild) 
     {   
@@ -315,12 +317,12 @@ updPhones.addEventListener('keydown', function(ev) {
         ev.preventDefault();
     }
     if(updPhones.value.length>13)
+    {
+        if(key!=8&&key!=46)
         {
-            if(key!=8&&key!=46)
-            {
-                ev.preventDefault();
-            }
+            ev.preventDefault();
         }
+    }
 
 });
 
@@ -481,11 +483,11 @@ function updLName()
 //Saves the last name
 function saveLNames()
 {
-   if(updLNames.value=="")
-   {
+    if(updLNames.value=="")
+    {
 	   alert("Please enter your Last Name");
-   }
-   else
+    }
+    else
     {
         httLName = new XMLHttpRequest()
         httLName.open("PUT","Account/updateLastName/",true);

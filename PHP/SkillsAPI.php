@@ -192,7 +192,7 @@ $router->register("POST",'#^/getSpecificCategory/#', function($params)
 
 $router->register("GET",'#^/getUserSkills/#', function($params) 
 {
-     session_start();
+    session_start();
     require_once "default.php";
  //This gets the raw request body
     $req = file_get_contents('php://input');
@@ -229,11 +229,11 @@ $router->register("GET",'#^/getUserSkills/#', function($params)
 
 $router->register("POST",'#^/getUserSpecificSkills/#', function($params) 
 {
- session_start();
+    session_start();
     require_once "default.php";
     
  //This gets the raw request body
-   $req = file_get_contents('php://input');
+    $req = file_get_contents('php://input');
 
     $req_obj = json_decode($req);
 
@@ -241,7 +241,7 @@ $router->register("POST",'#^/getUserSpecificSkills/#', function($params)
     $user_id = logged_in_user();
    
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-      $sid = $req_obj->category;
+    $sid = $req_obj->category;
     $query = "SELECT Skills.skill_id,Skills.skill_name, User_Skills.skill_level  FROM Skills INNER JOIN User_Skills ON Skills.skill_id=User_Skills.skill_id WHERE User_Skills.user_id = ? AND Skills.skill_type = ?";
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"ds",$user_id,$sid);
@@ -265,7 +265,7 @@ $router->register("POST",'#^/addSkills/#', function($params)
 {      
     session_start();
     require_once "default.php";
-        $req = file_get_contents('php://input');
+    $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
 
@@ -314,7 +314,8 @@ $router->register("POST",'#^/addSkills/#', function($params)
     {
 	    $text = $count . " skills successfully added";
     }
-    else{
+    else
+    {
         $text = "No Skills Added";
     }
 
@@ -328,7 +329,7 @@ $router->register("POST",'#^/addNewSkill/#', function($params)
 {      
     session_start();
     require_once "default.php";
-     $req = file_get_contents('php://input');
+    $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
 
@@ -467,24 +468,25 @@ $router->register("PUT",'#^/updateSkills/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
  
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $text="";
-        $value = htmlentities($req_obj->value);
-        $sID=$req_obj->sID;
-            //Inserts the new skill
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $text="";
+    $value = htmlentities($req_obj->value);
+    $sID=$req_obj->sID;
+        //Inserts the new skill
 	if($value=="")
-	{$text="Please enter a suitable skill name";
+	{
+        $text="Please enter a suitable skill name";
 	}
 	else
 	{
-            $query= "UPDATE Skills SET skill_name =? WHERE skill_id=?;";
-            $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt,"sd",$value,$sID);
-            $success = mysqli_stmt_execute($stmt);
-            if($success)
-            {
-                $text="Skill Successfully Updated.";
-            }
+        $query= "UPDATE Skills SET skill_name =? WHERE skill_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$value,$sID);
+        $success = mysqli_stmt_execute($stmt);
+        if($success)
+        {
+            $text="Skill Successfully Updated.";
+        }
 	}        
     
 
@@ -501,10 +503,10 @@ $router->register("PUT",'#^/updateCategory/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
- 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $text="";
-        $value = htmlentities($req_obj->value);
+
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $text="";
+    $value = htmlentities($req_obj->value);
 	if($value=="")
 	{
 		 $text="Please enter name of category";
@@ -512,15 +514,15 @@ $router->register("PUT",'#^/updateCategory/#', function($params)
 	else
 	{
        $sID=$req_obj->sID;
-            //Inserts the new skill
-            $query= "UPDATE Skills SET skill_type =? WHERE skill_type=?;";
-            $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt,"ss",$value,$sID);
-            $success = mysqli_stmt_execute($stmt);
-            if($success)
-            {
-                $text="Category Successfully Updated.";
-            }
+        //Inserts the new skill
+        $query= "UPDATE Skills SET skill_type =? WHERE skill_type=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"ss",$value,$sID);
+        $success = mysqli_stmt_execute($stmt);
+        if($success)
+        {
+            $text="Category Successfully Updated.";
+        }
             
 	}
 
@@ -570,9 +572,9 @@ $router->register("POST",'#^/deleteCategory/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
     $id =$req_obj->id;
-   $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 
-   $text = "";
+    $text = "";
     //Before we delete the skill we msut delete all its connections with the users
     $query1= "SELECT skill_id FROM Skills WHERE skill_type = ?;";
     $stmt1= mysqli_prepare($conn,$query1);
