@@ -134,9 +134,9 @@ $router->register("POST",'#^/addEducation/#', function($params)
     else
     {
             //Grabs the user of the user currently logged in
-    $userid = logged_in_user();
+        $userid = logged_in_user();
 
-    
+        
         //Connects to the database	
         $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
 
@@ -261,7 +261,7 @@ $router->register("PUT",'#^/updateEducation/#', function($params)
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-   $text ="";
+    $text ="";
     //Collects the data from the Json object
     $qualID = $req_obj->qualId;
     $typeID = $req_obj->typeData;
@@ -271,7 +271,7 @@ $router->register("PUT",'#^/updateEducation/#', function($params)
     $studyID = $req_obj->studyData;
     
     //Grabs the user of the user currently logged in
-   $userid = logged_in_user();
+    $userid = logged_in_user();
 
    
 	//Connects to the database	
@@ -303,41 +303,41 @@ $router->register("PUT",'#^/updateEducation/#', function($params)
     }
     else
     {
-            //Inserts the degree information into the database
-            $query = "UPDATE Qualification SET qualification_type=?,qualification_name=?,end_date=?,finished=? WHERE qualification_id=?;"; 
-            $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt,"sssdd",$typeID,$degID,$dateID,$studyID,$qualID);
-            $success = mysqli_stmt_execute($stmt);
-            $results = mysqli_stmt_get_result($stmt);
-            $last_id = mysqli_insert_id($conn);
+        //Inserts the degree information into the database
+        $query = "UPDATE Qualification SET qualification_type=?,qualification_name=?,end_date=?,finished=? WHERE qualification_id=?;"; 
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sssdd",$typeID,$degID,$dateID,$studyID,$qualID);
+        $success = mysqli_stmt_execute($stmt);
+        $results = mysqli_stmt_get_result($stmt);
+        $last_id = mysqli_insert_id($conn);
 
-            //Retrieves the uni selected
-            $query2 = "SELECT University_id FROM University WHERE University_name = ?;";
-            $stmt2 = mysqli_prepare($conn,$query2);
-            mysqli_stmt_bind_param($stmt2,"s",$uniID);
-            $success2 = mysqli_stmt_execute($stmt2);
-            $results2 = mysqli_stmt_get_result($stmt2);
-            $row2 =mysqli_fetch_assoc($results2);
-            $unID = $row2['University_id'];
+        //Retrieves the uni selected
+        $query2 = "SELECT University_id FROM University WHERE University_name = ?;";
+        $stmt2 = mysqli_prepare($conn,$query2);
+        mysqli_stmt_bind_param($stmt2,"s",$uniID);
+        $success2 = mysqli_stmt_execute($stmt2);
+        $results2 = mysqli_stmt_get_result($stmt2);
+        $row2 =mysqli_fetch_assoc($results2);
+        $unID = $row2['University_id'];
 
-            //Inserts degree and uni and user into the db
-            $query1 = "UPDATE Study SET University_id=? WHERE user_id=? AND qualification_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"ddd", $unID,$userid,$qualID);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
+        //Inserts degree and uni and user into the db
+        $query1 = "UPDATE Study SET University_id=? WHERE user_id=? AND qualification_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"ddd", $unID,$userid,$qualID);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
 
-            //Checks if it was successful
-         
-            if($success1)
-            {
-                $text = "Education updated succesfully.";
-            }
-            else
-            {
-                $text = "Education update was unsuccessful";
+        //Checks if it was successful
+        
+        if($success1)
+        {
+            $text = "Education updated succesfully.";
+        }
+        else
+        {
+            $text = "Education update was unsuccessful";
 
-            }
+        }
     }  
 	//Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
@@ -408,34 +408,34 @@ $router->register("PUT",'#^/updateUniversity/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
  
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $text="";
-        $value = htmlentities($req_obj->value);
-       $sID=$req_obj->uID;
-       if($value=="")
-       {
-           $text="Please enter a value for University";
-       }
-        if(strlen($value)>100)
-       {
-           $text="Please enter a value for University";
-       }
-       else
-       {
-            //Inserts the new skill
-            $query= "UPDATE University SET University_name =? WHERE University_id=?;";
-            $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt,"sd",$value,$sID);
-            $success = mysqli_stmt_execute($stmt);
-            if($success)
-            {
-                $text="University Successfully Updated.";
-            }
-            else{
-                $text = "University Unsuccessfully Updated";
-            }
-            
-       }
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $text="";
+    $value = htmlentities($req_obj->value);
+    $sID=$req_obj->uID;
+    if($value=="")
+    {
+        $text="Please enter a value for University";
+    }
+    if(strlen($value)>100)
+    {
+        $text="Please enter a value for University";
+    }
+    else
+    {
+        //Inserts the new skill
+        $query= "UPDATE University SET University_name =? WHERE University_id=?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt,"sd",$value,$sID);
+        $success = mysqli_stmt_execute($stmt);
+        if($success)
+        {
+            $text="University Successfully Updated.";
+        }
+        else{
+            $text = "University Unsuccessfully Updated";
+        }
+        
+    }
 
         //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
@@ -475,7 +475,8 @@ $router->register("DELETE",'#^/deleteUniversity/#', function($params)
     {
         $text="University successfully deleted";
     }
-    else{
+    else
+    {
         $text="University was unsuccessfully deleted";
     }
 

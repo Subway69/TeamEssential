@@ -17,7 +17,7 @@ function logout()
 
 function logoutResult(ev)
 {
-	console.log(httLog.responseText); //checked for the data being parsed
+	
     if(JSON.parse(httLog.responseText)=="You have successfully logged out.")
     {
         alert(JSON.parse(httLog.responseText));

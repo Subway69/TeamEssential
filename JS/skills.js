@@ -115,40 +115,40 @@ function checkSkill(ev)
         var hidValue =document.getElementById("hid"+counts).value;
 
         for(y =0;y<checkSize;y++)
-            {
-                var x = checkLists[y].skill_id;
-				
-                if(x==hidValue)   
-                {        
-			
-					aG[testcount]=x;
-					testcount++;
-			
-                    if(checkLists[y].skill_level=="Low")
-                    {
-                        var tRadios = document.getElementById("low"+counts);
-                        tRadios.checked=true;
-                        updates[counts]=0;
-                        break;
-					
-                    }
-                    if(checkLists[y].skill_level=="Medium")
-                    {
-                        var tRadios = document.getElementById("med"+counts);
-                        tRadios.checked=true;
-                        updates[counts]=0;
-                        break;
-                    }
-                    if(checkLists[y].skill_level=="High")
-                    {
-                        var tRadios = document.getElementById("high"+counts);
-                        tRadios.checked=true;
-                        updates[counts]=0;
-                        break;
-                    }
-               
+        {
+            var x = checkLists[y].skill_id;
+            
+            if(x==hidValue)   
+            {        
+        
+                aG[testcount]=x;
+                testcount++;
+        
+                if(checkLists[y].skill_level=="Low")
+                {
+                    var tRadios = document.getElementById("low"+counts);
+                    tRadios.checked=true;
+                    updates[counts]=0;
+                    break;
+                
                 }
+                if(checkLists[y].skill_level=="Medium")
+                {
+                    var tRadios = document.getElementById("med"+counts);
+                    tRadios.checked=true;
+                    updates[counts]=0;
+                    break;
+                }
+                if(checkLists[y].skill_level=="High")
+                {
+                    var tRadios = document.getElementById("high"+counts);
+                    tRadios.checked=true;
+                    updates[counts]=0;
+                    break;
+                }
+            
             }
+        }
         
         counts++;
     }
@@ -161,10 +161,13 @@ function addGeneralSkill()
 	var array1= [];		//	count array1
 	var arr=[];			//	L/M/H
 		
-	while(count<sizea){
+    while(count<sizea)
+    {
 		var tRads = document.getElementsByName("tChck"+count);
-		for(var i=0;i<tRads.length;i++){
-			if(tRads[i].checked){
+        for(var i=0;i<tRads.length;i++)
+        {
+            if(tRads[i].checked)
+            {
 				
 				array1[count] = document.getElementById("hid"+count).value;;
                 arr[count]= tRads[i].value;break;

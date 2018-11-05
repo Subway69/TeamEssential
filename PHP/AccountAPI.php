@@ -62,11 +62,10 @@ $router = new Router();
 $router->register("POST",'#^/login/#', function($params) 
 {
     session_start();
-require_once "default.php" ?> 
-<?php 
- $req = file_get_contents('php://input');
-        //Converts the contents into a PHP Object
-        $req_obj = json_decode($req);
+    require_once "default.php" 
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
 	$email= htmlentities($req_obj->user);
 	$password=$req_obj->pass;
 	$text="Account doesn't exist.";
@@ -139,84 +138,85 @@ $router->register("POST",'#^/register/#', function($params)
 {
     session_start();
     require_once "default.php" ;
-        $req = file_get_contents('php://input');
-        //Converts the contents into a PHP Object
-        $req_obj = json_decode($req);
-        $title = $req_obj->title;
-        $last = htmlentities($req_obj->lName);
-        $first =htmlentities($req_obj->fName);
-        $email = htmlentities($req_obj->email);
-        $errPass = "";
-        $password = $req_obj->pass1;
-        $cPassword = $req_obj->pass2;
-        $work = $req_obj->uni;
-        $perm = 0;
-        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
-        $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
-        $hashed_password = crypt($password, $salt);
-        $hashed_conf_password = crypt($cPassword, $salt);
-        $err_password = "";
-        $q_e="SELECT * FROM Users WHERE email=?";
-        $stmt3 = mysqli_prepare($conn, $q_e);
-        mysqli_stmt_bind_param($stmt3, "s",$email);
-        $success1 = mysqli_stmt_execute($stmt3);
-        $results1= mysqli_stmt_get_result($stmt3);
-        $approve = "approved";
-        $i=0;
-        $text="";
-        while($row = mysqli_fetch_assoc($results1))
+    $req = file_get_contents('php://input');
+    //Converts the contents into a PHP Object
+    $req_obj = json_decode($req);
+    $title = $req_obj->title;
+    $last = htmlentities($req_obj->lName);
+    $first =htmlentities($req_obj->fName);
+    $email = htmlentities($req_obj->email);
+    $errPass = "";
+    $password = $req_obj->pass1;
+    $cPassword = $req_obj->pass2;
+    $work = $req_obj->uni;
+    $perm = 0;
+    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+    $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
+    $hashed_password = crypt($password, $salt);
+    $hashed_conf_password = crypt($cPassword, $salt);
+    $err_password = "";
+    $q_e="SELECT * FROM Users WHERE email=?";
+    $stmt3 = mysqli_prepare($conn, $q_e);
+    mysqli_stmt_bind_param($stmt3, "s",$email);
+    $success1 = mysqli_stmt_execute($stmt3);
+    $results1= mysqli_stmt_get_result($stmt3);
+    $approve = "approved";
+    $i=0;
+    $text="";
+    while($row = mysqli_fetch_assoc($results1))
+    {
+        $i++;
+    }
+    if($i>0)
+    {
+        $text="Email already Exists";
+    }
+    else
+    {
+        if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
         {
-            $i++;
-        }
-        if($i>0)
+            $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
+            
+        } 
+        else 
         {
-            $text="Email already Exists";
-             }
-        else
-        {
-            if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
+            if (strcmp($hashed_password, $hashed_conf_password) == 0) 
             {
-                $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
-             
-            } 
+                
+                $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork,status) VALUES (?,?,?,?,?,?,?,?);";
+                $stmt = mysqli_prepare($conn, $query);
+                mysqli_stmt_bind_param($stmt, "sssssdds", $title, $first, $last, $email, $hashed_password, $perm, $work,$approve);
+                $success = mysqli_stmt_execute($stmt);
+                $results = mysqli_stmt_get_result($stmt);
+                $last_id = mysqli_insert_id($conn);
+                login($last_id);
+                loginName($first);
+                loginEmail($email);
+                setPermission($perm);
+                setWork($work);
+                setValid($approve);
+            
+                if ($success) 
+                {
+                    $text="Registration Success";
+                    
+                }
+                else
+                {
+                    $text="Registration Failed";
+                }				
+            }
             else 
             {
-                if (strcmp($hashed_password, $hashed_conf_password) == 0) 
-                {
-                    
-                    $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork,status) VALUES (?,?,?,?,?,?,?,?);";
-                    $stmt = mysqli_prepare($conn, $query);
-                    mysqli_stmt_bind_param($stmt, "sssssdds", $title, $first, $last, $email, $hashed_password, $perm, $work,$approve);
-                    $success = mysqli_stmt_execute($stmt);
-                    $results = mysqli_stmt_get_result($stmt);
-                    $last_id = mysqli_insert_id($conn);
-                    login($last_id);
-                    loginName($first);
-                    loginEmail($email);
-                    setPermission($perm);
-                    setWork($work);
-                    setValid($approve);
+                $text= "password don't match";
                 
-                    if ($success) 
-                    {
-                        $text="Registration Success";
-                        
-                    }
-                    else{
-                        $text="Registration Failed";
-                    }				
-                }
-                else 
-                {
-                    $text= "password don't match";
-                    
-                } 
-            }
-        } 
-            //Inform the client that we are sending back JSON    
-            header("Content-Type: application/json");
-            //Encodes and sends it back
-            echo json_encode($text);
+            } 
+        }
+    } 
+    //Inform the client that we are sending back JSON    
+    header("Content-Type: application/json");
+    //Encodes and sends it back
+    echo json_encode($text);
 });
 
 
@@ -232,14 +232,15 @@ $router->register("DELETE",'#^/deleteAccount/#', function($params)
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"d",$id);
     $success = mysqli_stmt_execute($stmt);
-     $results = mysqli_stmt_get_result($stmt);
-     $row = mysqli_fetch_array($results);
+    $results = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_array($results);
     $text="";
-     if($row['permission']==3)
-     {
+    if($row['permission']==3)
+    {
         $text = "Can't delete the root account";
-     }
-    else{
+    }
+    else
+    {
         //Following queries delete all the users information
         $query = "DELETE FROM User_Skills WHERE user_id = ?;";
         $stmt= mysqli_prepare($conn,$query);
@@ -355,9 +356,6 @@ $router->register("GET",'#^/Preferences/#', function($params)
 
     //Stores the results
     $row=mysqli_fetch_assoc($results);
-
-  //  $json_result[]=$row;
-    
     
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
@@ -371,12 +369,13 @@ $router->register("GET",'#^/logout/#', function($params)
     require_once "default.php";
     if(is_logged_in())
     {
-       $req = file_get_contents('php://input');
-           $req_obj = json_decode($req);
-	logout();
-    $text = "You have successfully logged out.";
+        $req = file_get_contents('php://input');
+        $req_obj = json_decode($req);
+        logout();
+        $text = "You have successfully logged out.";
     }
-    else{
+    else
+    {
         $text = "You are not currently logged in.";
     }
     header("Content-Type: application/json");
@@ -430,43 +429,43 @@ $router->register("PUT",'#^/updatePassword/#', function($params)
     $text="";
     if(strcmp($hashed_confirmed_pass,$hashed_password)==0)
     {
-    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
-    $query2= "SELECT * FROM Users WHERE user_id =?;";
-    $stmt2 = mysqli_prepare($conn,$query2);
-    mysqli_stmt_bind_param($stmt2,"d",$user);
-    $success2= mysqli_stmt_execute($stmt2);
-    $result2=mysqli_stmt_get_result($stmt2);
-    $row2 = mysqli_fetch_array($result2);
-    $db_pass=$row2['password'];
-    $hpass= crypt($currPass,$db_pass);
-    if($db_pass===$hpass)
-    {
-    //Updates the password
-    $query = "UPDATE Users SET password = ? WHERE user_id = ?;";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sd",$hashed_password, $user);
-    $success = mysqli_stmt_execute($stmt);
-    $results = mysqli_stmt_get_result($stmt);
-    
-    if ($success) 
-    {
-        $text = "Password Succesfully Changed";
-    } 
-    else 
-    {
-        $text = "Password Unsuccessful Changed";
+        $query2= "SELECT * FROM Users WHERE user_id =?;";
+        $stmt2 = mysqli_prepare($conn,$query2);
+        mysqli_stmt_bind_param($stmt2,"d",$user);
+        $success2= mysqli_stmt_execute($stmt2);
+        $result2=mysqli_stmt_get_result($stmt2);
+        $row2 = mysqli_fetch_array($result2);
+        $db_pass=$row2['password'];
+        $hpass= crypt($currPass,$db_pass);
+        if($db_pass===$hpass)
+        {
+            //Updates the password
+            $query = "UPDATE Users SET password = ? WHERE user_id = ?;";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "sd",$hashed_password, $user);
+            $success = mysqli_stmt_execute($stmt);
+            $results = mysqli_stmt_get_result($stmt);
+            
+            if ($success) 
+            {
+                $text = "Password Succesfully Changed";
+            } 
+            else 
+            {
+                $text = "Password Unsuccessful Changed";
+            }
+        }
+        else
+        {
+
+            $text="Incorrent Current Password Entered";
+        }
     }
-}
-else
-{
-
-    $text="Incorrent Current Password Entered";
-}
-}
-else{
-    $text= "Passwords don't match";
-}
+    else{
+        $text= "Passwords don't match";
+    }
     
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
@@ -489,7 +488,7 @@ $router->register("PUT",'#^/updatePermission/#', function($params)
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     $query= "UPDATE Users SET permission = ? WHERE user_id = ?;";
 
-$text ="";
+    $text ="";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt,"dd",$perm,$user);
     $success = mysqli_stmt_execute($stmt);
@@ -498,7 +497,8 @@ $text ="";
     {
         $text="User's Permission updated successfully";
     }
-    else{
+    else
+    {
         $text="Unable to update User Permission";
     }
     //Inform the client that we are sending back JSON    
@@ -552,9 +552,7 @@ $router->register("GET",'#^/getContact/#', function($params)
 
     $row=mysqli_fetch_assoc($results);
 
-  //  $json_result[]=$row;
-    
-    
+
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
     //Encodes and sends it back
@@ -588,11 +586,7 @@ $router->register("PUT",'#^/updateTitle/#', function($params)
 
         $row=mysqli_fetch_assoc($results1);
     }
-            
-
-  //  $json_result[]=$row;
-    
-    
+                
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
     //Encodes and sends it back
@@ -698,11 +692,10 @@ $router->register("PUT",'#^/updateLastName/#', function($params)
         $results1 = mysqli_stmt_get_result($stmt1);
 
         $row=mysqli_fetch_assoc($results1);
-        }
+    }
             
 
-  //  $json_result[]=$row;
-    
+
     
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
@@ -718,24 +711,24 @@ $router->register("PUT",'#^/updatePhone/#', function($params)
     $req_obj = json_decode($req);
     $fname = htmlentities($req_obj->value);
 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "UPDATE Users SET phone_number =? WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $row="";
-        if($success)
-        {
-            $query1= "SELECT phone_number FROM Users WHERE user_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"d",$user_id);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "UPDATE Users SET phone_number =? WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    $row="";
+    if($success)
+    {
+        $query1= "SELECT phone_number FROM Users WHERE user_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"d",$user_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
 
-            $row=mysqli_fetch_assoc($results1);
-        }
+        $row=mysqli_fetch_assoc($results1);
+    }
             
 
   //  $json_result[]=$row;
@@ -756,27 +749,27 @@ $router->register("PUT",'#^/updateAddress/#', function($params)
     $req_obj = json_decode($req);
     $fname = htmlentities($req_obj->value);
 
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "UPDATE Users SET address =? WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $row="";
-        if($success)
-        {
-            $query1= "SELECT address FROM Users WHERE user_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"d",$user_id);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "UPDATE Users SET address =? WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"sd",$fname,$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    $row="";
+    if($success)
+    {
+        $query1= "SELECT address FROM Users WHERE user_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"d",$user_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
 
-            $row=mysqli_fetch_assoc($results1);
-        }
+        $row=mysqli_fetch_assoc($results1);
+    }
             
 
-  //  $json_result[]=$row;
+
     
     
     //Inform the client that we are sending back JSON    
@@ -793,29 +786,29 @@ $router->register("PUT",'#^/updateDateOfBirth/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
     $day = $req_obj->day;
-     $month = $req_obj->month;
-        $year = $req_obj->year;
-        $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-        $user_id = logged_in_user();
-        $query= "UPDATE Users SET day_dob =?,month_dob=?,year_dob=? WHERE user_id=?;";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt,"dsdd",$day,$month,$year,$user_id);
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
-        $row="";
-        if($success)
-        {
-            $query1= "SELECT day_dob,month_dob,year_dob FROM Users WHERE user_id=?;";
-            $stmt1 = mysqli_prepare($conn, $query1);
-            mysqli_stmt_bind_param($stmt1,"d",$user_id);
-            $success1 = mysqli_stmt_execute($stmt1);
-            $results1 = mysqli_stmt_get_result($stmt1);
+    $month = $req_obj->month;
+    $year = $req_obj->year;
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $user_id = logged_in_user();
+    $query= "UPDATE Users SET day_dob =?,month_dob=?,year_dob=? WHERE user_id=?;";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt,"dsdd",$day,$month,$year,$user_id);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    $row="";
+    if($success)
+    {
+        $query1= "SELECT day_dob,month_dob,year_dob FROM Users WHERE user_id=?;";
+        $stmt1 = mysqli_prepare($conn, $query1);
+        mysqli_stmt_bind_param($stmt1,"d",$user_id);
+        $success1 = mysqli_stmt_execute($stmt1);
+        $results1 = mysqli_stmt_get_result($stmt1);
 
-            $row=mysqli_fetch_assoc($results1);
-        }
+        $row=mysqli_fetch_assoc($results1);
+    }
             
 
-  //  $json_result[]=$row;
+  
     
     
     //Inform the client that we are sending back JSON    
@@ -832,7 +825,7 @@ $router->register("POST",'#^/updateEmail/#', function($params)
     $req_obj = json_decode($req);
     $newEmail = $req_obj->value;
     $text = "";
-            $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
     $id = logged_in_user();
     $message ="";
@@ -841,7 +834,6 @@ $router->register("POST",'#^/updateEmail/#', function($params)
     mysqli_stmt_bind_param($stmt, "sd", $newEmail,$id);
     $success = mysqli_stmt_execute($stmt);
     $results = mysqli_stmt_get_result($stmt);
-    //$last_id = mysqli_insert_id($conn);
     if($success)
     {
         loginEmail($newEmail);
@@ -860,7 +852,7 @@ $router->register("POST",'#^/updateEmail/#', function($params)
 
     }
 
-  //  $json_result[]=$row;
+
     
     
     //Inform the client that we are sending back JSON    
@@ -876,88 +868,89 @@ $router->register("POST",'#^/registerWithEmail/#', function($params)
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
     $text="";
-        $title = $req_obj->title;
-        $last = $req_obj->lName;
-        $first = $req_obj->fName;
+    $title = $req_obj->title;
+    $last = $req_obj->lName;
+    $first = $req_obj->fName;
 
-        $email = $req_obj->email;
-        $message ="";
+    $email = $req_obj->email;
+    $message ="";
 
-        $password = $req_obj->pass1;
-        $cPassword=$req_obj->pass2;
-        $work =$req_obj->uni;
-        $perm = 0;
-        $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
-        $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
-        $hashed_password = crypt($password, $salt);
-        $hashed_conf_password = crypt($cPassword, $salt);
-        $q_e="SELECT * FROM Users WHERE email=?";
-        $stmt3 = mysqli_prepare($conn, $q_e);
-        mysqli_stmt_bind_param($stmt3, "s",$email);
-        $success1 = mysqli_stmt_execute($stmt3);
-        $results1= mysqli_stmt_get_result($stmt3);
+    $password = $req_obj->pass1;
+    $cPassword=$req_obj->pass2;
+    $work =$req_obj->uni;
+    $perm = 0;
+    $conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
+    $salt = '$2y$12$' . base64_encode(openssl_random_pseudo_bytes(32));
+    $hashed_password = crypt($password, $salt);
+    $hashed_conf_password = crypt($cPassword, $salt);
+    $q_e="SELECT * FROM Users WHERE email=?";
+    $stmt3 = mysqli_prepare($conn, $q_e);
+    mysqli_stmt_bind_param($stmt3, "s",$email);
+    $success1 = mysqli_stmt_execute($stmt3);
+    $results1= mysqli_stmt_get_result($stmt3);
 
-        $i=0;
-       
-        while($row = mysqli_fetch_assoc($results1))
+    $i=0;
+    
+    while($row = mysqli_fetch_assoc($results1))
+    {
+        $i++;
+    }
+    if($i>0)
+    {
+        $text="Email already exists.";
+            }
+    else
+    {
+        if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
         {
-            $i++;
-        }
-        if($i>0)
+            $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
+        } 
+        else 
         {
-            $text="Email already exists.";
-             }
-        else
-        {
-            if (!preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[A-Z]).*$/", $password)) 
+            if (strcmp($hashed_password, $hashed_conf_password) == 0) 
             {
-                $text= "The minimum length of your password must be 8 characters. Enter at least one capital letter and one number.";
-            } 
+                
+                $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork) VALUES (?,?,?,?,?,?,?);";
+                $stmt = mysqli_prepare($conn, $query);
+                mysqli_stmt_bind_param($stmt, "sssssdd", $title, $first, $last, $email, $hashed_password, $perm, $work);
+                $success = mysqli_stmt_execute($stmt);
+                $results = mysqli_stmt_get_result($stmt);
+                $last_id = mysqli_insert_id($conn);
+                login($last_id);
+                loginName($first);
+                loginEmail($email);
+                setPermission($perm);
+                setWork($work);
+            
+                if ($success) 
+                {
+                            $message = '<html><head>
+                                    <title>Email Verification</title>
+                                    </head>
+                                    <body>';
+                            $message .= '<h1>Hi ' . $first ." ".$last . '!</h1>';
+                            $message .= '<p>Welcome to the Federation University Research Register.\n Please click the below link to verify your email address <a href="'.SITE_URL.'activate.php?id=' . base64_encode($last_id) . '">CLICK TO ACTIVATE YOUR ACCOUNT</a>';
+                            $message .= "</body></html>";
+                            $headers = "MIME-Version: 1.0" . "\r\n";
+                            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+                            mail($email,"Welcome to the Federation University Research Register sent via php mail",$message,$headers);
+                            $text="Email been sent to email address";
+
+                }
+                else
+                {
+                    $text="Registration Failed";
+                }				
+            }
             else 
             {
-                if (strcmp($hashed_password, $hashed_conf_password) == 0) 
-                {
-                    
-                    $query = "INSERT INTO Users(title,first_name,last_name,email,password,permission,uniWork) VALUES (?,?,?,?,?,?,?);";
-                    $stmt = mysqli_prepare($conn, $query);
-                    mysqli_stmt_bind_param($stmt, "sssssdd", $title, $first, $last, $email, $hashed_password, $perm, $work);
-                    $success = mysqli_stmt_execute($stmt);
-                    $results = mysqli_stmt_get_result($stmt);
-                    $last_id = mysqli_insert_id($conn);
-                    login($last_id);
-                    loginName($first);
-                    loginEmail($email);
-                    setPermission($perm);
-                    setWork($work);
+                $text= "password don't match";
                 
-                    if ($success) 
-                    {
-                                $message = '<html><head>
-                                        <title>Email Verification</title>
-                                        </head>
-                                        <body>';
-                                $message .= '<h1>Hi ' . $first ." ".$last . '!</h1>';
-                                $message .= '<p>Welcome to the Federation University Research Register.\n Please click the below link to verify your email address <a href="'.SITE_URL.'activate.php?id=' . base64_encode($last_id) . '">CLICK TO ACTIVATE YOUR ACCOUNT</a>';
-                                $message .= "</body></html>";
-                                $headers = "MIME-Version: 1.0" . "\r\n";
-                                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-                                mail($email,"Welcome to the Federation University Research Register sent via php mail",$message,$headers);
-                                $text="Email been sent to email address";
-
-                    }
-                    else{
-                        $text="Registration Failed";
-                    }				
-                }
-                else 
-                {
-                    $text= "password don't match";
-                   
-                } 
-            }
+            } 
         }
-    
+    }
+
     
     //Inform the client that we are sending back JSON    
     header("Content-Type: application/json");
@@ -1001,9 +994,12 @@ $router->register("POST",'#^/uploadFile/#', function($params)
         'docx'
     ); 
     $text="";
-    if (in_array($file_real_ext, $allowed)) {
-        if ($file_error == 0) {
-            if ($file_size < 5000000) {
+    if (in_array($file_real_ext, $allowed)) 
+    {
+        if ($file_error == 0)
+        {
+            if ($file_size < 5000000) 
+            {
                 $file_new_name = uniqid(' ', true) . "." . $file_real_ext;
                 $file_location = '../Files/' . $file_new_name;
                 move_uploaded_file($file_tmp_name, $file_location);
@@ -1019,7 +1015,8 @@ $router->register("POST",'#^/uploadFile/#', function($params)
                 $stmt1  = mysqli_prepare($conn, $query1);
                 mysqli_stmt_bind_param($stmt1, "dd", $last_id, $user_id);
                 $success1 = mysqli_stmt_execute($stmt1);
-                if ($success1) {
+                if ($success1)
+                {
                     //header('Location:profile.php');
                     $text="File Uploaded Successfully";
                 }
@@ -1045,22 +1042,22 @@ $router->register("GET",'#^/UserFiles/#', function($params)
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-     $json_result= array();
+    $json_result= array();
 
-            $query = "SELECT Files.file_name,Files.file_location ,Files.file_id
-                FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
-                WHERE User_Files.user_id = ?;";
+    $query = "SELECT Files.file_name,Files.file_location ,Files.file_id
+            FROM Files INNER JOIN User_Files ON Files.file_id=User_Files.file_id 
+            WHERE User_Files.user_id = ?;";
 
-        $stmt= mysqli_prepare($conn,$query);
-        mysqli_stmt_bind_param($stmt,"d",$user_id);
+    $stmt= mysqli_prepare($conn,$query);
+    mysqli_stmt_bind_param($stmt,"d",$user_id);
 
-        $success = mysqli_stmt_execute($stmt);
-        $results = mysqli_stmt_get_result($stmt);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
 
-        while($row1 = mysqli_fetch_assoc($results))
-        {
-            $json_result[]=$row1;
-        }
+    while($row1 = mysqli_fetch_assoc($results))
+    {
+        $json_result[]=$row1;
+    }
 
 
     //Inform the client that we are sending back JSON    
@@ -1078,27 +1075,25 @@ $router->register("POST",'#^/deleteFiles/#', function($params)
     $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);
-$file_id=$req_obj->id;
+    $file_id=$req_obj->id;
  
-  $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
-  $query = "SELECT file_location FROM Files WHERE file_id = ?;";
+    $conn = mysqli_connect($DB_HOST,$DB_USER,$DB_PASSWORD,$DB_NAME);
+    $query = "SELECT file_location FROM Files WHERE file_id = ?;";
 
-$stmt= mysqli_prepare($conn,$query);
-mysqli_stmt_bind_param($stmt,"d",$file_id);
+    $stmt= mysqli_prepare($conn,$query);
+    mysqli_stmt_bind_param($stmt,"d",$file_id);
 
-$success = mysqli_stmt_execute($stmt);
-$results = mysqli_stmt_get_result($stmt);
-while($row1 = mysqli_fetch_assoc($results))
-{
-	$path=$row1['file_location'];
-	unlink('../'.$path);
+    $success = mysqli_stmt_execute($stmt);
+    $results = mysqli_stmt_get_result($stmt);
+    while($row1 = mysqli_fetch_assoc($results))
+    {
+        $path=$row1['file_location'];
+        unlink('../'.$path);
 
-}
-
-
+    }
 	
 	$text ="";
-   $query2 = "DELETE FROM User_Files WHERE file_id = ?;";
+    $query2 = "DELETE FROM User_Files WHERE file_id = ?;";
     $stmt2= mysqli_prepare($conn,$query2);
     mysqli_stmt_bind_param($stmt2,"d",$file_id);
     $success1 = mysqli_stmt_execute($stmt2);

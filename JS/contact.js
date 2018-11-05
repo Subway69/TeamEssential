@@ -91,20 +91,20 @@ updMNames.addEventListener('keydown',function(ev)
     var key = ev.keyCode;
 
     if(key!=8&key!=39&&key!=38&&key!=37&&key!=40&&key!=46)
-        {
+    {
         if (updMNames.value.length>40)
-            {
-                ev.preventDefault();
-                alert("Can't enter more than 40 characters");
-            }
-        }
-        if((key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
         {
             ev.preventDefault();
+            alert("Can't enter more than 40 characters");
         }
+    }
+    if((key ==48||key ==49||key ==50||key ==51||key ==52||key ==53||key ==54||key ==55||key ==56||key ==57||key ==96||key ==97||key ==98||key ==99||key ==100||key ==101||key ==102||key ==103||key ==104||key ==105))
+    {
+        ev.preventDefault();
+    }
 
 },false)
-    updAddresss.addEventListener('keydown',function(ev)
+updAddresss.addEventListener('keydown',function(ev)
 {
     var key = ev.keyCode;
 

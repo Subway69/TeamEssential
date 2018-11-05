@@ -159,7 +159,7 @@ $router->register("GET",'#^/getDisciplines/#', function($params)
 });
 $router->register("POST",'#^/getSpecificCategory/#', function($params) 
 {
- session_start();
+    session_start();
     require_once "default.php";
  //This gets the raw request body
     $req = file_get_contents('php://input');

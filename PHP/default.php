@@ -1,31 +1,35 @@
 <?php
-define('SITE_URL', 'http://localhost/gitkraken/teamessential/');
+	define('SITE_URL', 'http://localhost/gitkraken/teamessential/');
     $DB_HOST= "localhost";
 	$DB_USER="raUser";
 	$DB_PASSWORD="67qUfDFLA72Kujkz";
 	$DB_NAME= "FedUni_RA_Register";
-	function login($username) {
-	$_SESSION['username'] = $username;
-}
-	function logged_in_user() {
-	return $_SESSION['username'];
-}
+	function login($username)
+	{
+		$_SESSION['username'] = $username;
+	}
+	function logged_in_user()
+	{
+		return $_SESSION['username'];
+	}
 
 
 	function loginName($name)
 	{
 		$_SESSION['name']=$name;
 	}
-	function getName() {
-	return $_SESSION['name'];
-}
+	function getName() 
+	{
+		return $_SESSION['name'];
+	}
 	function loginEmail($email)
 	{
 		$_SESSION['email']=$email;
 	}
-	function getEmail() {
+	function getEmail() 
+	{
 	return $_SESSION['email'];
-}
+	}
 	function is_logged_in() 
 	{
 		return isset($_SESSION['username']);
