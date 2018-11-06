@@ -200,12 +200,12 @@ function results(ev)
 
 function disableSkill(y)
 {
-    console.log(y);
+    
     var chk= document.getElementById(y);
 
     if(y.substring(0,3)=="low")
     {
-        console.log("A low skill");
+        
         var len = y.length;
         var ids = y.substring(3,len);
         if(chk.checked)
@@ -216,7 +216,7 @@ function disableSkill(y)
     }
         if(y.substring(0,3)=="med")
         {
-            console.log("A med skill");
+            
             var len = y.length;
             var ids = y.substring(3,len);
             if(chk.checked)

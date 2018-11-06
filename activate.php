@@ -4,8 +4,7 @@
 session_start();
 require_once "PHP/default.php";
 ?>
-<!-- need to add - logout functionality to menu -->
-<!-- need to add - graduate confirmation to register form -->
+
 
 <head>
     <meta charset="utf-8">

@@ -142,7 +142,7 @@ document.getElementById("monthUpd").addEventListener("change",function(ev)
     var myNoder = document.getElementById("dayUpd");
     while (myNoder.firstChild) 
     {   
-        console.log("hey");
+        
         myNoder.removeChild(myNoder.firstChild);
     }
     selMonth=updMonths.value;
@@ -155,7 +155,7 @@ document.getElementById("yearUpd").addEventListener("change",function(ev)
     var myNoder = document.getElementById("dayUpd");
     while (myNoder.firstChild) 
     {   
-        console.log("hey");
+     
         myNoder.removeChild(myNoder.firstChild);
     }
     selMonth=updMonths.value;

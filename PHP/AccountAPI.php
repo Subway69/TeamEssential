@@ -62,7 +62,7 @@ $router = new Router();
 $router->register("POST",'#^/login/#', function($params) 
 {
     session_start();
-    require_once "default.php" 
+    require_once "default.php";
     $req = file_get_contents('php://input');
     //Converts the contents into a PHP Object
     $req_obj = json_decode($req);

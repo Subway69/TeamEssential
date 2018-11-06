@@ -206,7 +206,7 @@ $router->register("GET",'#^/getUserSkills/#', function($params)
     
     $a = "General";
     $b = "Research";
-    $query = "SELECT Skills.skill_id,Skills.skill_name, User_Skills.skill_level  FROM Skills INNER JOIN User_Skills ON Skills.skill_id=User_Skills.skill_id WHERE User_Skills.user_id = ? AND Skills.skill_type = ? OR Skills.skill_type=?;";
+    $query = "SELECT Skills.skill_id,Skills.skill_name, User_Skills.skill_level  FROM Skills INNER JOIN User_Skills ON Skills.skill_id=User_Skills.skill_id WHERE User_Skills.user_id = ? AND (Skills.skill_type = ? OR Skills.skill_type=?);";
     $stmt= mysqli_prepare($conn,$query);
     mysqli_stmt_bind_param($stmt,"dss",$user_id,$a,$b);
 
